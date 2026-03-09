@@ -10,10 +10,11 @@
 /* global $, vis, systemDictionary */
 
 // add translations for edit mode
-$.extend(
-    true,
-    systemDictionary,
-    {
+if (typeof systemDictionary !== "undefined") {
+    $.extend(
+        true,
+        systemDictionary,
+        {
         "sig_title":    { "en": "Title",             "de": "Titel" },
         "sig_darkmode": { "en": "Dark mode",         "de": "Dunkelmodus" },
         "sig_animation":{ "en": "Animation",         "de": "Animation" },
@@ -33,8 +34,9 @@ $.extend(
         "oid_discharg": { "en": "Daily Discharge OID","de": "Tages-Entladung OID" },
         "oid_covtime":  { "en": "Battery Coverage OID","de": "Batteriedeckung OID" },
         "oid_chargt":   { "en": "Daily Charge Time OID","de": "Tages-Ladezeit OID" }
-    }
-);
+        }
+    );
+}
 
 vis.binds["vis-2-widgets-sigenergy"] = {
     version: "0.1.2",
@@ -134,7 +136,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-bat"   id="sig_ef_baticon_'   + w + '">&#128267;</div><div class="sig-ef-label">Batterie</div><div class="sig-ef-val" id="sig_ef_bat_'   + w + '">-- kW</div></div>' +
             '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-grid"  id="sig_ef_gridicon_'  + w + '">&#128268;</div><div class="sig-ef-label">Netz</div><div class="sig-ef-val" id="sig_ef_grid_'  + w + '">-- kW</div></div>' +
             '<div></div>' +
-            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-house" id="sig_ef_houseicon_" + w + ">&#127968;</div><div class="sig-ef-label">Haus</div><div class="sig-ef-val" id="sig_ef_house_' + w + '">-- kW</div></div>' +
+            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-house" id="sig_ef_houseicon_' + w + '">&#127968;</div><div class="sig-ef-label">Haus</div><div class="sig-ef-val" id="sig_ef_house_' + w + '">-- kW</div></div>' +
             '</div>' +
             '</div></div>'
         );

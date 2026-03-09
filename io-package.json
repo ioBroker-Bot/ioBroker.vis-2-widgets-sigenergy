@@ -62,7 +62,7 @@
         "loglevel": "info",
         "tier": 3,
         "restartAdapters": [
-            "vis"
+            "vis-2"
         ],
         "onlyWWW": true,
         "singleton": true,
@@ -72,7 +72,9 @@
             "config": "none"
         },
         "dependencies": [
-            "vis"
+            {
+                "vis-2": ">=2.0.0"
+            }
         ],
         "globalDependencies": []
     },
