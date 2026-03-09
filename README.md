@@ -66,7 +66,8 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
+### 1.0.5 (2026-03-09)
+* Korrekturen
 ### 1.0.4 (2026-03-09)
 * Korrekturen
 ### 1.0.3 (2026-03-09)
