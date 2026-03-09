@@ -66,6 +66,8 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.3 (2026-03-09)
+npm
 
 ### 0.2.2 (2026-03-09)
 * (ssbingo) 4 Widgets neu erstellt im VIS-2-konformen Format

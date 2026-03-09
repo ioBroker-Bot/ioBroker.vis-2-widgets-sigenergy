@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "0.2.2",
+        "version": "0.2.3",
         "news": {
-            "0.2.2": {
+            "0.2.3": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
                 "ru": "Начальная версия",
@@ -50,12 +50,13 @@
             "sigenergy",
             "vis-2"
         ],
+        "license": "MIT",
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
         },
         "platform": "Javascript/Node.js",
-        "icon": "vis-2-widgets-sigenergy.png",
+        "icon": "admin/vis-2-widgets-sigenergy.png",
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
         "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
@@ -66,7 +67,7 @@
         ],
         "onlyWWW": true,
         "singleton": true,
-        "type": "visualization-widgets",
+        "type": "visualisation-widgets",
         "mode": "none",
         "adminUI": {
             "config": "none"
