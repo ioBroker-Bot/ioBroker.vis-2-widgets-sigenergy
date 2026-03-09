@@ -1,4 +1,375 @@
-/* Style your widget here */
-.vis-2-widgets-sigenergy-class {
-    font-style: italic;
+/*
+    ioBroker vis-2-widgets-sigenergy — Widget CSS
+    version: 0.1.0
+    Copyright 2026 ssbingo s.sternitzke@online.de
+
+    Struktur:
+      [1] Gemeinsame Animationen & Reset
+      [2] Widget 1 — Energiefluss
+      [3] Widget 2 — Akku-Status
+      [4] Widget 3 — Echtzeit-Leistung
+      [5] Widget 4 — Energiestatistiken
+*/
+
+/* ================================================================
+   [1] GEMEINSAME ANIMATIONEN & RESET
+   ================================================================ */
+
+@keyframes sig-dash {
+    from { stroke-dashoffset: 24; }
+    to   { stroke-dashoffset: 0;  }
+}
+
+@keyframes sig-pulse {
+    0%,  100% { transform: scale(1);   opacity: 1;   }
+    50%        { transform: scale(1.6); opacity: 0.4; }
+}
+
+/* Gemeinsame Box-Grundlage fuer alle Widgets */
+.sig-ef-wrap,
+.sig-bat-wrap,
+.sig-pow-wrap,
+.sig-stats-wrap {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+
+/* ================================================================
+   [2] WIDGET 1 — ENERGIEFLUSS-DIAGRAMM
+   ================================================================ */
+
+/* Hintergrund Dark / Light */
+.sig-ef-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+}
+.sig-ef-wrap.sig-ef-light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    color: #2c3e50;
+}
+
+/* Titelzeile */
+.sig-ef-title {
+    font-size: .66rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: .65;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+/* SVG-Canvas */
+.sig-ef-svg {
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+/* Energiefluss-Pfade */
+.sig-ef-path {
+    fill: none;
+    stroke-width: 2.2;
+    stroke-dasharray: 7, 4;
+    stroke-dashoffset: 0;
+    opacity: .35;
+    animation: sig-dash 0.8s linear infinite;
+    animation-play-state: paused;
+}
+.sig-ef-path.sig-ef-active {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* Pfadfarben je Quelle */
+.sig-ef-pv   { stroke: #f39c12; }
+.sig-ef-bat  { stroke: #9b59b6; }
+.sig-ef-grid { stroke: #3498db; }
+.sig-ef-hous { stroke: #27ae60; }
+
+/* Node-Grid: 3 Spalten (links | Mitte | rechts), 2 Zeilen */
+.sig-ef-grid {
+    display: grid;
+    grid-template-columns: 1fr 36px 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px 8px;
+    margin-top: 4px;
+}
+
+/* Einzelner Knoten (Icon + Label + Wert) */
+.sig-ef-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Rundes Icon-Badge */
+.sig-ef-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.sig-ef-label {
+    font-size: .56rem;
+    opacity: .65;
+    text-align: center;
+}
+
+.sig-ef-val {
+    font-size: .82rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Blitz-Icon in der Mitte */
+.sig-ef-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    opacity: .45;
+}
+
+
+/* ================================================================
+   [3] WIDGET 2 — AKKU-STATUS & PROGNOSEN
+   ================================================================ */
+
+.sig-bat-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+}
+.sig-bat-wrap.sig-bat-light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    color: #2c3e50;
+}
+
+/* Header-Zeile: Icon + Titel + SOH-Badge */
+.sig-bat-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.sig-bat-head-icon  { font-size: 1.1rem; }
+.sig-bat-head-title { font-size: .9rem; font-weight: 600; }
+
+.sig-bat-soh {
+    margin-left: auto;
+    font-size: .6rem;
+    opacity: .6;
+    background: rgba(255, 255, 255, .1);
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+.sig-bat-light .sig-bat-soh { background: rgba(0, 0, 0, .07); }
+
+/* Grosse SOC-Prozentanzeige */
+.sig-bat-soc-big {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1;
+}
+
+/* SOC-Ladebalken */
+.sig-bat-bar-bg {
+    background: rgba(255, 255, 255, .1);
+    border-radius: 6px;
+    height: 10px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+.sig-bat-light .sig-bat-bar-bg { background: rgba(0, 0, 0, .08); }
+
+.sig-bat-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: #27ae60;
+    transition: width .5s ease;
+}
+.sig-bat-bar-fill.sig-bat-warn { background: #f39c12; }
+.sig-bat-bar-fill.sig-bat-crit { background: #e74c3c; }
+
+/* Prozentkennziffern unter dem Balken */
+.sig-bat-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: .52rem;
+    opacity: .45;
+    margin-bottom: 10px;
+}
+
+/* Kachelraster 2 Spalten */
+.sig-bat-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.sig-bat-tile {
+    background: rgba(255, 255, 255, .07);
+    border-radius: 8px;
+    padding: 8px 6px;
+    text-align: center;
+}
+.sig-bat-light .sig-bat-tile {
+    background: rgba(0, 0, 0, .04);
+    border: 1px solid #e8eef5;
+}
+
+.sig-bat-tile-label {
+    font-size: .58rem;
+    opacity: .62;
+    margin-bottom: 3px;
+}
+.sig-bat-tile-val {
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+
+/* ================================================================
+   [4] WIDGET 3 — ECHTZEIT-LEISTUNG
+   ================================================================ */
+
+.sig-pow-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+}
+.sig-pow-wrap.sig-pow-light {
+    background: #ffffff;
+    color: #2c3e50;
+    border: 1px solid #e8eef5;
+}
+
+/* Titelzeile mit Live-Punkt */
+.sig-pow-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .66rem;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    opacity: .68;
+    margin-bottom: 10px;
+}
+
+/* Pulsierender Dot */
+.sig-pow-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e74c3c;
+    animation: sig-pulse 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+/* Einzelne Zeile */
+.sig-pow-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+}
+.sig-pow-row.sig-pow-row-sep {
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+.sig-pow-light .sig-pow-row.sig-pow-row-sep {
+    border-bottom-color: #f0f4f8;
+}
+
+/* Linke Seite: Punkt + Icon + Label */
+.sig-pow-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: .82rem;
+}
+
+.sig-pow-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Rechtsbündiger Wert */
+.sig-pow-val {
+    font-size: .88rem;
+    font-weight: 700;
+}
+
+/* Netz: Bezug = rot, Einspeisung = gruen */
+.sig-pow-val.sig-pow-buy  { color: #e74c3c; }
+.sig-pow-val.sig-pow-sell { color: #27ae60; }
+
+
+/* ================================================================
+   [5] WIDGET 4 — ENERGIESTATISTIKEN
+   ================================================================ */
+
+.sig-stats-wrap {
+    background: #ffffff;
+    color: #2c3e50;
+    border: 1px solid #e8eef5;
+}
+.sig-stats-wrap.sig-stats-dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+    border: none;
+}
+
+/* Titelzeile */
+.sig-stats-title {
+    font-size: .66rem;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    opacity: .65;
+    margin-bottom: 10px;
+}
+
+/* 2x4 Kachelraster */
+.sig-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.sig-stats-tile {
+    background: #f7f9fc;
+    border: 1px solid #e8eef5;
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+}
+.sig-stats-dark .sig-stats-tile {
+    background: rgba(255, 255, 255, .06);
+    border-color: rgba(255, 255, 255, .09);
+}
+
+.sig-stats-tile-label {
+    font-size: .56rem;
+    opacity: .62;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    margin-bottom: 5px;
+}
+
+.sig-stats-tile-val {
+    font-size: 1.2rem;
+    font-weight: 700;
 }

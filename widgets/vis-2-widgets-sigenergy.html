@@ -1,135 +1,85 @@
 <!--
     ioBroker.vis vis-2-widgets-sigenergy Widget-Set
-
-    version: "0.0.1"
-
+    version: "0.1.0"
     Copyright 2026 ssbingo s.sternitzke@online.de
+
+    4 Sigenergy-Widgets fuer Solarenergieanlagen:
+      1. tplSigenergyEnergyFlow      — Energiefluss-Diagramm
+      2. tplSigenergyBatteryStatus   — Akku-Status & Prognosen
+      3. tplSigenergyPowerOverview   — Echtzeit-Leistung
+      4. tplSigenergyStatistics      — Energiestatistiken
 -->
-<!-- here you can include so many css as you want -->
 <link rel="stylesheet" href="widgets/vis-2-widgets-sigenergy/css/style.css" />
-<!-- here you can include so many js-files as you want -->
 <script type="text/javascript" src="widgets/vis-2-widgets-sigenergy/js/vis-2-widgets-sigenergy.js"></script>
 
-<!-- the full description of format in data-vis-attrs can be found here:
-    https://github.com/ioBroker/ioBroker.vis/blob/master/www/js/visEditInspect.js#L39
 
-    ----------------------------------------------------------
-    Mandatory XML attributes:
-        id="tplVis-2-widgets-sigenergyWIDGETNAME"
+<!-- ===============================================================
+     WIDGET 1 — Energiefluss-Diagramm
+     Zeigt PV / Batterie / Netz / Haus mit animierten SVG-Pfeilen
+     =============================================================== -->
+<script id="tplSigenergyEnergyFlow"
         type="text/ejs"
         class="vis-tpl"
-
-        "type" and "class" are always the same. "id" is unique and must start with "tplSETNAME" and ends with widget name. Use camel-case for it.
-
-    ----------------------------------------------------------
-    data-vis-attrs - divided with semicolon the list of attributes, like attr1/id;attr2/color
-        Full format of one attribute is: attr_name(start-end)[default_value]/type,idFilter/onChangeFunc
-            attr_name - the name of the attribute, e.g. "myID"
-            start-end - creates automatically attributes from attr_namestart to attr_nameend, like "myID(1-3)" creates myID1, myID2, myID3
-            default_value - by creation of widget this attribute will be filled with this value, e.g. "myID[#001122]/color"
-            type - some predefined types have edit helpers, else it will be shown as text field
-
-                Type format:
-                      id - Object ID Dialog
-                      checkbox
-                      image - image
-                      number,min,max,step - non-float number. min,max,step are optional
-                      color - color picker
-                      views - Name of the view
-                      effect - jquery UI show/hide effects
-                      eff_opt - additional option to effect slide (up, down, left, right)
-                      fontName - Font name
-                      slider,min,max,step - Default step is ((max - min) / 100)
-                      select,value1,value2,... - dropdown select
-                      nselect,value1,value2,... - same as select, but without translation of items
-                      style,fileFilter,nameFilter,attrFilter
-                      custom,functionName,options,... - custom editor - functionName is starting from vis.binds.[widgetset.funct]. E.g. custom/timeAndWeather.editWeather,short
-                      group.name - define new or old group. All following attributes belongs to new group till new group.xyz
-                      group.name/byindex - like group, but all following attributes will be grouped by ID. Like group.windows/byindex;slide(1-4)/id;slide_type(1-4)/select,open,closed  Following groups will be created Windows1(slide1,slide_type1), Windows2(slide2,slide_type2), Windows3(slide3,slide_type3), Windows4(slide4,slide_type4)
-                      text - dialog box with html editor
-                      html - dialog box with html editor
-
-                If type is "id", you can define filer for "Select ID Dialog", like "myID/id,level.temperature".
-                Additionally you can define callback(onChangeFunc), which will be called if this attribute was changed by user for different purposes: validate entry, fill other attributes, ...
-
-        You can define additional data-vis-attrs line: data-vis-attrs0, data-vis-attrs1. Anyway data-vis-attrs must be there. You may not skip numbers.
-        E.g. in "data-vis-attrs="A;" data-vis-attrs1="B" attribute B will be not parsed.
-
-    --------------------------------------------------------
-    data-vis-type
-        Help information for user. Used for search.
-        You can define more than one type divided by comma.
-        There are following common types, but you can use your own specific types:
-            ctrl   - widget that can write some Object IDs
-            val    - widget that shows some information from Object IDs
-            static - widget do not read information from Object IDs or URL
-            button - button widget
-            dimmer - dimmer widget
-            weather - weather widget
-            ...
-
-    --------------------------------------------------------
-    data-vis-set
-        Name of the widget set. Must be equal to the name of this HTML file
-
-    --------------------------------------------------------
-    data-vis-prev
-        Html code used as preview of this widget. If widget is complex you can just use image as preview:
-        data-vis-prev='<img src="widgets/hqwidgets/img/prev/Prev_tplVis-2-widgets-sigenergyShowInstance.png"></img>'
-        Of course the image must exist.
-
-    --------------------------------------------------------
-    data-vis-name
-        Readable name of widget shown in vis editor.
-
-    --------------------------------------------------------
-    data-vis-beta="true"
-        Shows "BETA" symbol in vis editor by preview
-
-    --------------------------------------------------------
-    data-vis-update-style="true"
-        Call redraw of widget if some of the CSS styles in editor for this widget was changed
-
-    You can read about Magic tags here: http://canjs.com/guides/EJS.html
-    Following magic tags are exist:
-        <% %> - execute javascript
-        <%= %> - place escaped result to HTML document
-        <%== %> - place unescaped result to HTML document
-
-    You can do "if" conditions and "for" cycles.
-
--->
-<script id="tplVis-2-widgets-sigenergyShowInstance"
-        type="text/ejs"
-        class="vis-tpl"
-        data-vis-prev='<div id="prev_tplVis-2-widgets-sigenergyShowInstance" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="vis-2-widgets-sigenergy-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
-        data-vis-attrs="oid/id;myColor/color;htmlText/text;"
-        data-vis-attrs0="group.extraVis-2-widgets-sigenergy;extraAttr"
         data-vis-set="vis-2-widgets-sigenergy"
-        data-vis-type="helper"
-        data-vis-name="Show instance">
-    <div class="vis-widget <%== this.data.attr('class') %>" style="width:230px; height:210px;" id="<%= this.data.attr('wid') %>" >
-        <div class="vis-2-widgets-sigenergy-class vis-widget-body <%== this.data.attr('class') %>" style="padding:2px" >
-            OID: <%= this.data.attr('oid') %><br>
-            OID value: <%== vis.states.attr(this.data['oid'] + '.val') %><br>
-            Color: <span style="color: <%= this.data.attr('myColor') %>"><%= this.data.attr('myColor') %></span><br>
-            extraAttr: <%== this.data.attr('extraAttr') %><br>
-            Browser instance: <%= vis.instance %><br>
-            htmlText: <textarea readonly style="width: calc(100% - 10px)"><%== this.data.attr('htmlText') %></textarea><br>
-        </div>
-    </div>
+        data-vis-name="Energiefluss-Diagramm"
+        data-vis-type="val"
+        data-vis-prev='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:14px;width:320px;height:260px;font-family:sans-serif;color:#e0e6ef;box-sizing:border-box"><div style="font-size:.68rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.6;text-align:center;margin-bottom:8px">&#9889; Energiefluss</div><div style="display:grid;grid-template-columns:1fr 40px 1fr;grid-template-rows:1fr 1fr;gap:12px;margin-top:16px"><div style="text-align:center"><div style="font-size:1.6rem">&#9728;</div><div style="font-size:.58rem;opacity:.55;margin-top:2px">Solar PV</div><div style="font-size:.88rem;font-weight:700;color:#f39c12">3.20 kW</div></div><div style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;opacity:.4">&#9889;</div><div style="text-align:center"><div style="font-size:1.6rem">&#128267;</div><div style="font-size:.58rem;opacity:.55;margin-top:2px">Batterie</div><div style="font-size:.88rem;font-weight:700;color:#9b59b6">1.50 kW</div></div><div style="text-align:center"><div style="font-size:1.6rem">&#128268;</div><div style="font-size:.58rem;opacity:.55;margin-top:2px">Netz</div><div style="font-size:.88rem;font-weight:700;color:#3498db">0.00 kW</div></div><div></div><div style="text-align:center"><div style="font-size:1.6rem">&#127968;</div><div style="font-size:.58rem;opacity:.55;margin-top:2px">Haus</div><div style="font-size:.88rem;font-weight:700;color:#27ae60">1.70 kW</div></div></div></div>'
+        data-vis-attrs="group.OIDs;oid_pv[sigenergy.0.plant.pvPower]/id;oid_bat[sigenergy.0.plant.essPower]/id;oid_grid[sigenergy.0.plant.gridActivePower]/id;oid_house[sigenergy.0.statistics.housePower]/id;oid_soc[sigenergy.0.plant.essSoc]/id;group.Darstellung;sig_title[Energiefluss]/text;sig_darkmode[true]/checkbox;sig_animation[true]/checkbox">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width:340px; height:270px;" id="<%= this.data.attr('wid') %>"><%
+        vis.binds['vis-2-widgets-sigenergy'].createEnergyFlow(this.data.attr('wid'), this.view, this.data, this.style);
+    %></div>
 </script>
 
-<script id="tplVis-2-widgets-sigenergyHelper"
+
+<!-- ===============================================================
+     WIDGET 2 — Akku-Status & Prognosen
+     SOC-Balken, SOH, Leistung, Zeiten, Eigenverbrauch, Autarkie
+     =============================================================== -->
+<script id="tplSigenergyBatteryStatus"
         type="text/ejs"
         class="vis-tpl"
-        data-vis-prev='<div id="prev_tplVis-2-widgets-sigenergyHelper" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="vis-2-widgets-sigenergy-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
-        data-vis-attrs="oid/id;myColor/color;htmlText/text;"
-        data-vis-attrs0="group.extraVis-2-widgets-sigenergy;extraAttr"
         data-vis-set="vis-2-widgets-sigenergy"
-        data-vis-type="helper"
-        data-vis-name="Helper">
-    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
-        vis.binds['vis-2-widgets-sigenergy'].createWidget(this.data.wid, this.view, this.data, this.style);
+        data-vis-name="Akku-Status &amp; Prognosen"
+        data-vis-type="val"
+        data-vis-prev='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:14px;width:290px;height:300px;font-family:sans-serif;color:#e0e6ef;box-sizing:border-box"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-size:1.1rem">&#128267;</span><span style="font-size:.9rem;font-weight:600">Batterie Status</span><span style="margin-left:auto;font-size:.58rem;opacity:.55;background:rgba(255,255,255,.1);padding:2px 7px;border-radius:4px">SOH: 98%</span></div><div style="font-size:2.5rem;font-weight:700;text-align:center;color:#27ae60;margin-bottom:7px">74%</div><div style="background:rgba(255,255,255,.1);border-radius:6px;height:10px;margin-bottom:4px;overflow:hidden"><div style="width:74%;height:100%;border-radius:6px;background:#27ae60"></div></div><div style="display:flex;justify-content:space-between;font-size:.52rem;opacity:.4;margin-bottom:10px"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><div style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px;text-align:center"><div style="font-size:.56rem;opacity:.6;margin-bottom:3px">&#9889; Leistung</div><div style="font-size:.88rem;font-weight:700;color:#f39c12">1.50 kW</div></div><div style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px;text-align:center"><div style="font-size:.56rem;opacity:.6;margin-bottom:3px">&#8987; Bis Voll</div><div style="font-size:.88rem;font-weight:700">1h 42m</div></div><div style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px;text-align:center"><div style="font-size:.56rem;opacity:.6;margin-bottom:3px">&#9203; Restlaufzeit</div><div style="font-size:.88rem;font-weight:700">4h 20m</div></div><div style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px;text-align:center"><div style="font-size:.56rem;opacity:.6;margin-bottom:3px">&#9728; Eigenverbrauch</div><div style="font-size:.88rem;font-weight:700">87%</div></div><div style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px;text-align:center"><div style="font-size:.56rem;opacity:.6;margin-bottom:3px">&#127969; Autarkierate</div><div style="font-size:.88rem;font-weight:700">82%</div></div></div></div>'
+        data-vis-attrs="group.OIDs;oid_soc[sigenergy.0.plant.essSoc]/id;oid_soh[sigenergy.0.plant.essSoh]/id;oid_bat[sigenergy.0.plant.essPower]/id;oid_ttf[sigenergy.0.statistics.batteryTimeToFull]/id;oid_ttr[sigenergy.0.statistics.batteryTimeRemaining]/id;oid_sc[sigenergy.0.statistics.selfConsumptionRate]/id;oid_aut[sigenergy.0.statistics.autarkyRate]/id;group.Darstellung;sig_darkmode[true]/checkbox">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width:300px; height:320px;" id="<%= this.data.attr('wid') %>"><%
+        vis.binds['vis-2-widgets-sigenergy'].createBatteryStatus(this.data.attr('wid'), this.view, this.data, this.style);
+    %></div>
+</script>
+
+
+<!-- ===============================================================
+     WIDGET 3 — Echtzeit-Leistung
+     Kompakte Liste aller 5 Leistungswerte mit Live-Indikator
+     =============================================================== -->
+<script id="tplSigenergyPowerOverview"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="vis-2-widgets-sigenergy"
+        data-vis-name="Echtzeit-Leistung"
+        data-vis-type="val"
+        data-vis-prev='<div style="background:#fff;border-radius:14px;padding:14px;width:260px;height:240px;font-family:sans-serif;color:#2c3e50;box-sizing:border-box;border:1px solid #e8eef5"><div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;font-size:.65rem;text-transform:uppercase;letter-spacing:.5px;opacity:.6"><div style="width:7px;height:7px;border-radius:50%;background:#e74c3c"></div>Live Leistung</div><div style="border-bottom:1px solid #f0f4f8;padding:7px 0;display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:8px;font-size:.8rem"><span style="width:9px;height:9px;border-radius:50%;background:#f39c12;display:inline-block"></span>&#9728; Solar PV</span><span style="font-size:.85rem;font-weight:700;color:#f39c12">3.20 kW</span></div><div style="border-bottom:1px solid #f0f4f8;padding:7px 0;display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:8px;font-size:.8rem"><span style="width:9px;height:9px;border-radius:50%;background:#9b59b6;display:inline-block"></span>&#128267; Batterie</span><span style="font-size:.85rem;font-weight:700">1.50 kW</span></div><div style="border-bottom:1px solid #f0f4f8;padding:7px 0;display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:8px;font-size:.8rem"><span style="width:9px;height:9px;border-radius:50%;background:#3498db;display:inline-block"></span>&#128268; Netz</span><span style="font-size:.85rem;font-weight:700">0.00 kW</span></div><div style="border-bottom:1px solid #f0f4f8;padding:7px 0;display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:8px;font-size:.8rem"><span style="width:9px;height:9px;border-radius:50%;background:#27ae60;display:inline-block"></span>&#127968; Haus</span><span style="font-size:.85rem;font-weight:700;color:#27ae60">1.70 kW</span></div><div style="padding:7px 0;display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:8px;font-size:.8rem"><span style="width:9px;height:9px;border-radius:50%;background:#8e44ad;display:inline-block"></span>&#128267; SOC</span><span style="font-size:.85rem;font-weight:700">74%</span></div></div>'
+        data-vis-attrs="group.OIDs;oid_pv[sigenergy.0.plant.pvPower]/id;oid_bat[sigenergy.0.plant.essPower]/id;oid_grid[sigenergy.0.plant.gridActivePower]/id;oid_house[sigenergy.0.statistics.housePower]/id;oid_soc[sigenergy.0.plant.essSoc]/id;group.Darstellung;sig_title[Live Leistung]/text;sig_darkmode[false]/checkbox">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width:270px; height:255px;" id="<%= this.data.attr('wid') %>"><%
+        vis.binds['vis-2-widgets-sigenergy'].createPowerOverview(this.data.attr('wid'), this.view, this.data, this.style);
+    %></div>
+</script>
+
+
+<!-- ===============================================================
+     WIDGET 4 — Energiestatistiken
+     8 Tageskennwerte als 2x4 Kachelraster
+     =============================================================== -->
+<script id="tplSigenergyStatistics"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="vis-2-widgets-sigenergy"
+        data-vis-name="Energiestatistiken"
+        data-vis-type="val"
+        data-vis-prev='<div style="background:#fff;border-radius:14px;padding:14px;width:290px;height:310px;font-family:sans-serif;color:#2c3e50;box-sizing:border-box;border:1px solid #e8eef5"><div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.5px;opacity:.6;margin-bottom:10px">&#128202; Tagesstatistik</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px"><div style="background:#f7f9fc;border:1px solid #e8eef5;border-radius:10px;padding:10px;text-align:center"><div style="font-size:.54rem;opacity:.6;text-transform:uppercase;margin-bottom:4px">&#127969; Autarkie</div><div style="font-size:1.2rem;font-weight:700;color:#27ae60">82%</div></div><div style="background:#f7f9fc;border:1px solid #e8eef5;border-radius:10px;padding:10px;text-align:center"><div style="font-size:.54rem;opacity:.6;text-transform:uppercase;margin-bottom:4px">&#8635; Eigenverbrauch</div><div style="font-size:1.2rem;font-weight:700;color:#9b59b6">94%</div></div><div style="background:#f7f9fc;border:1px solid #e8eef5;border-radius:10px;padding:10px;text-align:center"><div style="font-size:.54rem;opacity:.6;text-transform:uppercase;margin-bottom:4px">&#8593; Max SOC</div><div style="font-size:1.2rem;font-weight:700;color:#f39c12">98%</div></div><div style="background:#f7f9fc;border:1px solid #e8eef5;border-radius:10px;padding:10px;text-align:center"><div style="font-size:.54rem;opacity:.6;text-transform:uppercase;margin-bottom:4px">&#8595; Min SOC</div><div style="font-size:1.2rem;font-weight:700;color:#3498db">21%</div></div><div style="background:#f7f9fc;border:1px solid #e8eef5;border-radius:10px;padding:10px;text-align:center"><div style="font-size:.54rem;opacity:.6;text-transform:uppercase;margin-bottom:4px">&#11014; Tages-Ladung</div><div style="font-size:1.2rem;font-weight:700;color:#16a085">8.4 kWh</div></div><div style="background:#f7f9fc;border:1px solid #e8eef5;border-radius:10px;padding:10px;text-align:center"><div style="font-size:.54rem;opacity:.6;text-transform:uppercase;margin-bottom:4px">&#11015; Entladung</div><div style="font-size:1.2rem;font-weight:700;color:#e74c3c">7.1 kWh</div></div></div></div>'
+        data-vis-attrs="group.OIDs;oid_aut[sigenergy.0.statistics.autarkyRate]/id;oid_sc[sigenergy.0.statistics.selfConsumptionRate]/id;oid_maxsoc[sigenergy.0.statistics.dayMaxSoc]/id;oid_minsoc[sigenergy.0.statistics.dayMinSoc]/id;oid_charg[sigenergy.0.inverter.essDailyChargeEnergy]/id;oid_discharg[sigenergy.0.inverter.essDailyDischargeEnergy]/id;oid_covtime[sigenergy.0.statistics.batteryCoverageToday]/id;oid_chargt[sigenergy.0.statistics.batteryDailyChargeTime]/id;group.Darstellung;sig_title[Tagesstatistik]/text;sig_darkmode[false]/checkbox">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width:300px; height:330px;" id="<%= this.data.attr('wid') %>"><%
+        vis.binds['vis-2-widgets-sigenergy'].createStatistics(this.data.attr('wid'), this.view, this.data, this.style);
     %></div>
 </script>

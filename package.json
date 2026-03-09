@@ -1,7 +1,7 @@
 {
   "name": "iobroker.vis-2-widgets-sigenergy",
-  "version": "0.0.1",
-  "description": "Widgets for Sigenergy",
+  "version": "0.1.1",
+  "description": "4 professional VIS-2 widgets for Sigenergy solar energy systems",
   "author": {
     "name": "ssbingo",
     "email": "s.sternitzke@online.de"
@@ -11,7 +11,14 @@
   "license": "MIT",
   "keywords": [
     "sigenergy",
-    "vis-2"
+    "solar",
+    "energy",
+    "battery",
+    "pv",
+    "vis-2",
+    "widgets",
+    "inverter",
+    "iobroker"
   ],
   "repository": {
     "type": "git",
@@ -33,6 +40,7 @@
   "files": [
     "widgets/**/!(tsconfig|tsconfig.*|.eslintrc).json",
     "widgets/**/*.{html,css,png,svg,jpg,js}",
+    "admin/words.js",
     "www/",
     "io-package.json",
     "LICENSE"

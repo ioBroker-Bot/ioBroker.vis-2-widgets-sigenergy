@@ -1,8 +1,25 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "0.0.1",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "Version bump to 0.1.1",
+                "de": "Versionsanhebung auf 0.1.1"
+            },
+            "0.1.0": {
+                "en": "4 Sigenergy widgets rebuilt from scratch: Energy Flow, Battery Status, Power Overview, Statistics",
+                "de": "4 Sigenergy-Widgets komplett neu programmiert: Energiefluss, Akku-Status, Echtzeit-Leistung, Statistiken",
+                "ru": "4 виджета Sigenergy пересозданы с нуля",
+                "pt": "4 widgets Sigenergy reconstruídos do zero",
+                "nl": "4 Sigenergy-widgets volledig opnieuw gebouwd",
+                "fr": "4 widgets Sigenergy reconstruits de zéro",
+                "it": "4 widget Sigenergy ricostruiti da zero",
+                "es": "4 widgets Sigenergy reconstruidos desde cero",
+                "pl": "4 widżety Sigenergy zbudowane od podstaw",
+                "uk": "4 віджети Sigenergy побудовані з нуля",
+                "zh-cn": "4 个 Sigenergy 小部件从头重建"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
@@ -20,7 +37,7 @@
         "titleLang": {
             "en": "Vis 2 Widgets Sigenergy",
             "de": "Vis 2 Widgets Sigenergy",
-            "ru": "Виджеты Vis 2",
+            "ru": "Виджеты Vis 2 Sigenergy",
             "pt": "Vis 2 Widgets Sigenergy",
             "nl": "Vis 2 Widgets Sigenergy",
             "fr": "Vis 2 Widgets Sigénergie",
@@ -31,24 +48,30 @@
             "zh-cn": "Vis 2 小部件 Sigenergy"
         },
         "desc": {
-            "en": "Widgets for Sigenergy",
-            "de": "Widgets für Sigenergy",
-            "ru": "Виджеты для Sigenergy",
-            "pt": "Widgets para Sigenergy",
-            "nl": "Widgets voor Sigenergy",
-            "fr": "Widgets pour Sigenergy",
-            "it": "Widget per Sigenergy",
-            "es": "Widgets para Sigenergy",
-            "pl": "Widżety dla Sigenergy",
-            "uk": "Віджети для Sigenergy",
-            "zh-cn": "Sigenergy 小部件"
+            "en": "4 professional widgets for Sigenergy solar energy systems: Energy Flow diagram, Battery Status with SOC bar, Live Power Overview and Daily Statistics",
+            "de": "4 professionelle Widgets für Sigenergy-Solarenergieanlagen: Energiefluss-Diagramm, Akku-Status mit SOC-Balken, Echtzeit-Leistungsübersicht und Tagesstatistiken",
+            "ru": "4 профессиональных виджета для солнечных систем Sigenergy",
+            "pt": "4 widgets profissionais para sistemas de energia solar Sigenergy",
+            "nl": "4 professionele widgets voor Sigenergy zonne-energiesystemen",
+            "fr": "4 widgets professionnels pour les systèmes d'énergie solaire Sigenergy",
+            "it": "4 widget professionali per sistemi di energia solare Sigenergy",
+            "es": "4 widgets profesionales para sistemas de energía solar Sigenergy",
+            "pl": "4 profesjonalne widżety dla systemów energii słonecznej Sigenergy",
+            "uk": "4 професійних віджети для сонячних систем Sigenergy",
+            "zh-cn": "4 个专业的 Sigenergy 太阳能系统小部件"
         },
         "authors": [
             "ssbingo <s.sternitzke@online.de>"
         ],
         "keywords": [
             "sigenergy",
-            "vis-2"
+            "solar",
+            "energy",
+            "battery",
+            "pv",
+            "vis-2",
+            "widgets",
+            "inverter"
         ],
         "licenseInformation": {
             "type": "free",
@@ -76,10 +99,7 @@
         ],
         "globalDependencies": []
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
-    },
+    "native": {},
     "objects": [],
     "instanceObjects": []
 }
