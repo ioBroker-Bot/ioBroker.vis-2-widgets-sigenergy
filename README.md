@@ -67,7 +67,7 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
     ### **WORK IN PROGRESS**
 -->
 
-### 0.2.1 (2026-03-09)
+### 0.2.2 (2026-03-09)
 * (ssbingo) 4 Widgets neu erstellt im VIS-2-konformen Format
 * (ssbingo) Energiefluss-Diagramm mit SVG-Animationen
 * (ssbingo) Akku-Status & Prognosen Widget

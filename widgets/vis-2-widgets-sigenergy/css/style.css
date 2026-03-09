@@ -200,3 +200,89 @@
     height: 4px;
 }
 .sig-ac-slider-val { font-size: .78rem; font-weight: 700; color: #3498db; min-width: 34px; text-align: right; }
+
+/* ── Widget 6: DC-Charger ────────────────────────────────────────────────── */
+.sig-dc-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+    border-radius: 14px; padding: 14px;
+    width: 100%; height: 100%; box-sizing: border-box;
+    display: flex; flex-direction: column;
+}
+.sig-dc-wrap.light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    color: #2c3e50;
+}
+.sig-dc-head {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-shrink: 0;
+}
+.sig-dc-head .icon  { font-size: 1.2rem; }
+.sig-dc-head .title { font-size: .9rem; font-weight: 600; }
+.sig-dc-badge {
+    margin-left: auto; font-size: .65rem; padding: 2px 9px;
+    border-radius: 10px; font-weight: 600;
+}
+.sig-dc-badge.charging { background: #27ae60; color: #fff; }
+.sig-dc-badge.idle     { background: rgba(255,255,255,.15); color: #e0e6ef; }
+.sig-dc-badge.error    { background: #e74c3c; color: #fff; }
+.sig-dc-wrap.light .sig-dc-badge.idle { background: rgba(0,0,0,.1); color: #2c3e50; }
+
+.sig-dc-power-big {
+    font-size: 2.2rem; font-weight: 700; text-align: center;
+    color: #f39c12; line-height: 1.1; flex-shrink: 0;
+}
+.sig-dc-power-lbl {
+    font-size: .62rem; text-align: center; opacity: .6; margin-bottom: 8px; flex-shrink: 0;
+}
+
+/* SOC-Balken */
+.sig-dc-soc-row {
+    display: flex; justify-content: space-between;
+    align-items: center; font-size: .65rem; margin-bottom: 4px; flex-shrink: 0;
+}
+.sig-dc-soc-lbl { opacity: .6; }
+.sig-dc-soc-val { font-weight: 700; }
+.sig-dc-soc-bar-bg {
+    background: rgba(255,255,255,.1); border-radius: 5px;
+    height: 8px; margin-bottom: 10px; flex-shrink: 0;
+}
+.sig-dc-wrap.light .sig-dc-soc-bar-bg { background: rgba(0,0,0,.08); }
+.sig-dc-soc-bar-fill { height: 100%; border-radius: 5px; transition: width .5s; }
+
+/* Statistik-Kacheln */
+.sig-dc-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+    margin-bottom: 10px; flex-shrink: 0;
+}
+.sig-dc-stat-box {
+    background: rgba(255,255,255,.07); border-radius: 8px; padding: 8px; text-align: center;
+}
+.sig-dc-wrap.light .sig-dc-stat-box { background: rgba(0,0,0,.04); border: 1px solid #e8eef5; }
+.sig-dc-stat-lbl { font-size: .58rem; opacity: .6; margin-bottom: 2px; }
+.sig-dc-stat-val { font-size: .88rem; font-weight: 700; }
+
+/* Steuerbereich */
+.sig-dc-ctrl {
+    background: rgba(255,255,255,.06); border-radius: 10px;
+    padding: 10px; flex-shrink: 0;
+}
+.sig-dc-wrap.light .sig-dc-ctrl { background: rgba(0,0,0,.04); border: 1px solid #e8eef5; }
+.sig-dc-ctrl-lbl {
+    font-size: .6rem; opacity: .6; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: .5px;
+}
+.sig-dc-btn-row { display: flex; gap: 8px; }
+.sig-dc-btn {
+    flex: 1; padding: 8px; border-radius: 8px; border: none;
+    font-size: .78rem; font-weight: 600; cursor: pointer;
+    transition: opacity .15s;
+}
+.sig-dc-btn:active { opacity: .7; }
+.sig-dc-btn.start { background: #27ae60; color: #fff; }
+.sig-dc-btn.stop  {
+    background: transparent; color: #e0e6ef;
+    border: 1px solid rgba(255,255,255,.25);
+}
+.sig-dc-wrap.light .sig-dc-btn.stop { color: #2c3e50; border-color: rgba(0,0,0,.2); }
+.sig-dc-btn.active-state { box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
+.sig-dc-btn.start.active-state { box-shadow: 0 0 0 2px #27ae60; }

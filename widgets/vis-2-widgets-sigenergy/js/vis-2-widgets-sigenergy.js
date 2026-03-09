@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "0.2.1"
+    version: "0.2.2"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -39,7 +39,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "0.2.1",
+    version: "0.2.2",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -519,6 +519,155 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         B._subscribe(widgetID, data,
             ["oid_state", "oid_power", "oid_energy", "oid_ratedPower", "oid_ratedCurrent",
              "oid_alarm1", "oid_alarm2", "oid_alarm3", "oid_startStop", "oid_current"],
+            update);
+        update();
+    },
+
+    // ── Widget 6: DC-Charger ─────────────────────────────────────────────────
+    //
+    // Lese-OIDs:
+    //   dcCharger.outputPower                Ausgangsleistung  kW
+    //   dcCharger.vehicleSoc                 Fahrzeug-SOC      %
+    //   dcCharger.vehicleBatteryVoltage      Fahrzeugbatterie  V
+    //   dcCharger.chargingCurrent            Ladestrom         A
+    //   dcCharger.currentChargingCapacity    Sitzungsenergie   kWh
+    //   dcCharger.currentChargingDuration    Sitzungsdauer     s
+    //
+    // Steuer-OID:
+    //   dcCharger.control.startStop          0=Start, 1=Stop   WO
+    //
+    createDcCharger: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createDcCharger(widgetID, view, data, style); }, 100);
+        }
+
+        var dark  = B._isDark(data);
+        var title = data.attr("sig_title") || "DC-Charger";
+        var cls   = "sig-dc-wrap" + (dark ? "" : " light");
+        var w     = widgetID;
+
+        // Dauer in Sekunden → "Xh Ym" oder "Ym"
+        function fmtDuration(sec) {
+            var s = Math.round(Math.abs(parseFloat(sec) || 0));
+            if (!s) return "0 min";
+            var h = Math.floor(s / 3600);
+            var m = Math.floor((s % 3600) / 60);
+            return h ? h + "h " + m + "m" : m + " min";
+        }
+
+        // Fahrzeug-SOC → Farbe
+        function vsocCol(p) {
+            return parseFloat(p) > 60 ? "#27ae60" : parseFloat(p) > 25 ? "#f39c12" : "#e74c3c";
+        }
+
+        // Ladestatustext aus Leistung ableiten (kein eigenes State-Register)
+        function badgeInfo(pwr) {
+            if (pwr > 0.05) return { label: "Lädt",    cls: "charging" };
+            if (pwr < 0)    return { label: "Fehler",  cls: "error" };
+            return              { label: "Bereit",  cls: "idle" };
+        }
+
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            // ── Kopfzeile ────────────────────────────────────────────
+            '<div class="sig-dc-head">' +
+            '<span class="icon">&#9889;</span>' +
+            '<span class="title">' + title + '</span>' +
+            '<span class="sig-dc-badge idle" id="sig_dc_badge_' + w + '">Bereit</span>' +
+            '</div>' +
+            // ── Leistung groß ─────────────────────────────────────
+            '<div class="sig-dc-power-big" id="sig_dc_power_' + w + '">-- kW</div>' +
+            '<div class="sig-dc-power-lbl">Ausgangsleistung</div>' +
+            // ── Fahrzeug-SOC Balken ───────────────────────────────
+            '<div class="sig-dc-soc-row">' +
+            '<span class="sig-dc-soc-lbl">&#128664; Fahrzeug SOC</span>' +
+            '<span class="sig-dc-soc-val" id="sig_dc_vsoc_' + w + '">--%</span>' +
+            '</div>' +
+            '<div class="sig-dc-soc-bar-bg">' +
+            '<div class="sig-dc-soc-bar-fill" id="sig_dc_bar_' + w + '" style="width:0%;background:#27ae60"></div>' +
+            '</div>' +
+            // ── Statistik-Kacheln ─────────────────────────────────
+            '<div class="sig-dc-stats">' +
+            '<div class="sig-dc-stat-box"><div class="sig-dc-stat-lbl">Spannung</div><div class="sig-dc-stat-val" id="sig_dc_volt_' + w + '" style="color:#3498db">-- V</div></div>' +
+            '<div class="sig-dc-stat-box"><div class="sig-dc-stat-lbl">Strom</div><div class="sig-dc-stat-val" id="sig_dc_curr_' + w + '" style="color:#3498db">-- A</div></div>' +
+            '<div class="sig-dc-stat-box"><div class="sig-dc-stat-lbl">Sitzungsenergie</div><div class="sig-dc-stat-val" id="sig_dc_en_' + w + '" style="color:#9b59b6">-- kWh</div></div>' +
+            '<div class="sig-dc-stat-box"><div class="sig-dc-stat-lbl">Sitzungsdauer</div><div class="sig-dc-stat-val" id="sig_dc_dur_' + w + '" style="color:#9b59b6">--</div></div>' +
+            '</div>' +
+            // ── Steuerung ─────────────────────────────────────────
+            '<div class="sig-dc-ctrl">' +
+            '<div class="sig-dc-ctrl-lbl">Steuerung</div>' +
+            '<div class="sig-dc-btn-row">' +
+            '<button class="sig-dc-btn start" id="sig_dc_start_' + w + '">&#9654; Start</button>' +
+            '<button class="sig-dc-btn stop"  id="sig_dc_stop_'  + w + '">&#9646;&#9646; Stop</button>' +
+            '</div>' +
+            '</div>' +
+            '</div></div>'
+        );
+
+        // ── Anzeige aktualisieren ───────────────────────────────────────────
+        function update() {
+            var pwr  = parseFloat(B._val(data, "oid_power"))    || 0;
+            var vsoc = parseFloat(B._val(data, "oid_vsoc"))     || 0;
+            var volt = parseFloat(B._val(data, "oid_vvolt"))    || 0;
+            var curr = parseFloat(B._val(data, "oid_curr"))     || 0;
+            var en   = parseFloat(B._val(data, "oid_energy"))   || 0;
+            var dur  = parseFloat(B._val(data, "oid_duration")) || 0;
+
+            // Badge
+            var bi = badgeInfo(pwr);
+            var badge = B._el("sig_dc_badge_" + w);
+            if (badge) { badge.textContent = bi.label; badge.className = "sig-dc-badge " + bi.cls; }
+
+            // Leistung
+            B._txt("sig_dc_power_" + w, B._fmtKW(pwr));
+            B._css("sig_dc_power_" + w, "color", pwr > 0.05 ? "#f39c12" : (dark ? "#e0e6ef" : "#2c3e50"));
+
+            // Fahrzeug-SOC
+            var col = vsocCol(vsoc);
+            B._txt("sig_dc_vsoc_" + w, B._fmtPct(vsoc));
+            B._css("sig_dc_vsoc_" + w, "color", col);
+            var bar = B._el("sig_dc_bar_" + w);
+            if (bar) { bar.style.width = Math.min(100, vsoc) + "%"; bar.style.background = col; }
+
+            // Kacheln
+            B._txt("sig_dc_volt_" + w, volt ? volt.toFixed(0) + " V"   : "-- V");
+            B._txt("sig_dc_curr_" + w, curr ? curr.toFixed(1) + " A"   : "-- A");
+            B._txt("sig_dc_en_"   + w, en   ? en.toFixed(2)   + " kWh" : "-- kWh");
+            B._txt("sig_dc_dur_"  + w, dur  ? fmtDuration(dur)         : "--");
+
+            // Start/Stop-Buttons hervorheben
+            var ssOid    = data.attr("oid_startStop");
+            var ssVal    = ssOid ? parseInt(vis.states[ssOid + ".val"]) : null;
+            var btnStart = B._el("sig_dc_start_" + w);
+            var btnStop  = B._el("sig_dc_stop_"  + w);
+            if (btnStart && btnStop) {
+                btnStart.classList.toggle("active-state", ssVal === 0);
+                btnStop.classList.toggle("active-state",  ssVal === 1);
+            }
+        }
+
+        // ── Steuer-Events ───────────────────────────────────────────────────
+        var startBtn = B._el("sig_dc_start_" + w);
+        var stopBtn  = B._el("sig_dc_stop_"  + w);
+
+        if (startBtn) {
+            startBtn.addEventListener("click", function () {
+                var oid = data.attr("oid_startStop");
+                if (oid) vis.setValue(oid, 0);
+            });
+        }
+        if (stopBtn) {
+            stopBtn.addEventListener("click", function () {
+                var oid = data.attr("oid_startStop");
+                if (oid) vis.setValue(oid, 1);
+            });
+        }
+
+        B._subscribe(widgetID, data,
+            ["oid_power", "oid_vsoc", "oid_vvolt", "oid_curr",
+             "oid_energy", "oid_duration", "oid_startStop"],
             update);
         update();
     }
