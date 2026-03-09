@@ -11,7 +11,8 @@
   "license": "MIT",
   "keywords": [
     "sigenergy",
-    "vis-2"
+    "vis-2",
+    "iobroker"
   ],
   "repository": {
     "type": "git",
