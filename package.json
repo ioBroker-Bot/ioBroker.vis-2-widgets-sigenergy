@@ -10,8 +10,10 @@
   "homepage": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "sigenergy",
-    "vis-2"
+    "vis-2",
+    "visualization-widgets"
   ],
   "repository": {
     "type": "git",
