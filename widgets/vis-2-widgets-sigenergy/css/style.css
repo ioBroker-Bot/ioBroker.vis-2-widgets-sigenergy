@@ -11,8 +11,9 @@
 .sig-ef-wrap {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: #e0e6ef;
-    border-radius: 14px; padding: 12px;
+    border-radius: 14px; padding: 10px 10px 6px;
     width: 100%; height: 100%; box-sizing: border-box;
+    display: flex; flex-direction: column;
 }
 .sig-ef-wrap.light {
     background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
@@ -21,25 +22,26 @@
 .sig-ef-title {
     font-size: .65rem; text-transform: uppercase;
     letter-spacing: 1px; text-align: center;
-    margin-bottom: 8px; opacity: .7;
+    margin-bottom: 4px; opacity: .7; flex-shrink: 0;
 }
-.sig-ef-svg     { width: 100%; height: 110px; }
-.sig-flow-path  { fill: none; stroke-width: 2; stroke-dasharray: 6,3; opacity: .4; }
-.sig-flow-path.active { opacity: 1; }
-.pv-color       { stroke: #f39c12; }
-.bat-color      { stroke: #9b59b6; }
-.grid-color     { stroke: #3498db; }
-.house-color    { stroke: #27ae60; }
-.sig-ef-grid    { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
-.sig-ef-node    { text-align: center; }
-.sig-ef-icon    { font-size: 1.4rem; }
-.sig-ef-label   { font-size: .58rem; opacity: .7; margin-top: 2px; }
-.sig-ef-val     { font-size: .8rem; font-weight: 700; }
-.sig-ef-center  { display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-.sig-icon-pv    { color: #f39c12; }
-.sig-icon-bat   { color: #9b59b6; }
-.sig-icon-grid  { color: #3498db; }
-.sig-icon-house { color: #27ae60; }
+.sig-ef-svg-wrap { flex: 1; min-height: 0; }
+.sig-ef-svg-wrap svg { width: 100%; height: 100%; }
+@keyframes sig-dash { to { stroke-dashoffset: -24; } }
+.sig-flow-path {
+    fill: none; stroke-width: 2.5;
+    stroke-dasharray: 8, 4;
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+    transition: opacity 0.4s;
+}
+.sig-flow-path.active {
+    opacity: 1;
+    animation: sig-dash 0.9s linear infinite;
+}
+.pv-color    { stroke: #f39c12; }
+.bat-color   { stroke: #9b59b6; }
+.grid-color  { stroke: #3498db; }
+.house-color { stroke: #27ae60; }
 
 /* ── Widget 2: Akku-Status ──────────────────────────────────────────────── */
 .sig-bat-wrap {

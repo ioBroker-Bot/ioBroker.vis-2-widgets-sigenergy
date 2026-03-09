@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "0.1.2"
+    version: "0.1.3"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -39,7 +39,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "0.1.2",
+    version: "0.1.3",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -103,6 +103,20 @@ vis.binds["vis-2-widgets-sigenergy"] = {
     },
 
     // ── Widget 1: Energiefluss-Diagramm ─────────────────────────────────────
+    //
+    // SVG-Koordinaten (viewBox 0 0 300 248):
+    //   Solar PV   oben-links  (58, 42)
+    //   Batterie   oben-rechts (242, 42)
+    //   Netz       unten-links (58, 208)
+    //   Haus       unten-rechts(242, 208)
+    //   Hub ⚡     Mitte       (150, 125)
+    //
+    // Pfade:
+    //   PV   → Hub  M58,63   Q58,125  142,125
+    //   Bat  → Hub  M242,63  Q242,125 158,125
+    //   Netz → Hub  M58,191  Q58,125  142,125
+    //   Hub  → Haus M158,125 Q242,125 242,191
+    //
     createEnergyFlow: function (widgetID, view, data, style) {
         var B    = vis.binds["vis-2-widgets-sigenergy"];
         var $div = $("#" + widgetID);
@@ -113,31 +127,60 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var dark  = data.attr("sig_darkmode") !== "false";
         var title = data.attr("sig_title") || "Energiefluss";
         var cls   = dark ? "sig-ef-wrap" : "sig-ef-wrap light";
+        var tc    = dark ? "#e0e6ef" : "#2c3e50";  // text colour
         var w     = widgetID;
+
+        // ── Einheitliches SVG: Pfeile + Icons + Labels + Werte ──────────────
+        // Alle 5 Knoten liegen im selben Koordinatenraum wie die Pfade,
+        // daher zeigen Pfeile immer exakt auf die Icons.
+
+        var svg =
+            '<svg viewBox="0 0 300 248" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">' +
+
+            // ── Pfeil-Marker ─────────────────────────────────────────────
+            '<defs>' +
+            '<marker id="mPv_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f39c12"/></marker>' +
+            '<marker id="mBat_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
+            '<marker id="mGrid_' + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
+            '<marker id="mHouse_'+ w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
+            '</defs>' +
+
+            // ── Animierte Flusspfade ──────────────────────────────────────
+            '<path id="sig_path_pv_'   + w + '" class="sig-flow-path pv-color"    d="M58,63  Q58,125  142,125" marker-end="url(#mPv_'   + w + ')"/>' +
+            '<path id="sig_path_bat_'  + w + '" class="sig-flow-path bat-color"   d="M242,63 Q242,125 158,125" marker-end="url(#mBat_'  + w + ')"/>' +
+            '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125" marker-end="url(#mGrid_' + w + ')"/>' +
+            '<path id="sig_path_house_'+ w + '" class="sig-flow-path house-color" d="M158,125 Q242,125 242,191" marker-end="url(#mHouse_'+ w + ')"/>' +
+
+            // ── Hub-Kreis Mitte ───────────────────────────────────────────
+            '<circle cx="150" cy="125" r="18" fill="' + (dark ? 'rgba(255,255,255,.08)' : 'rgba(0,0,0,.06)') + '"/>' +
+            '<text x="150" y="125" text-anchor="middle" dominant-baseline="central" font-size="18" fill="' + tc + '" opacity="0.85">&#9889;</text>' +
+
+            // ── Solar PV  (oben-links, Knotenmitte 58, 42) ───────────────
+            '<text x="58" y="28"  text-anchor="middle" dominant-baseline="central" font-size="20" fill="#f39c12">&#9728;</text>' +
+            '<text x="58" y="45"  text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Solar PV</text>' +
+            '<text id="sig_ef_pv_'   + w + '" x="58" y="57" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#f39c12">-- kW</text>' +
+
+            // ── Batterie  (oben-rechts, Knotenmitte 242, 42) ─────────────
+            '<text id="sig_ef_baticon_'+ w + '" x="242" y="28" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#9b59b6">&#128267;</text>' +
+            '<text x="242" y="45" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Batterie</text>' +
+            '<text id="sig_ef_bat_'  + w + '" x="242" y="57" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#9b59b6">-- kW</text>' +
+
+            // ── Netz  (unten-links, Knotenmitte 58, 208) ─────────────────
+            '<text x="58" y="197" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#3498db">&#128268;</text>' +
+            '<text x="58" y="214" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Netz</text>' +
+            '<text id="sig_ef_grid_' + w + '" x="58" y="226" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#3498db">-- kW</text>' +
+
+            // ── Haus  (unten-rechts, Knotenmitte 242, 208) ───────────────
+            '<text x="242" y="197" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#27ae60">&#127968;</text>' +
+            '<text x="242" y="214" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Haus</text>' +
+            '<text id="sig_ef_house_'+ w + '" x="242" y="226" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#27ae60">-- kW</text>' +
+
+            '</svg>';
 
         $div.html(
             '<div class="sig-w"><div class="' + cls + '">' +
             '<div class="sig-ef-title">&#9889; ' + title + '</div>' +
-            '<svg class="sig-ef-svg" viewBox="0 0 300 200" preserveAspectRatio="none">' +
-            '<defs>' +
-            '<marker id="mPv_'    + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#f39c12"/></marker>' +
-            '<marker id="mBat_'   + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#9b59b6"/></marker>' +
-            '<marker id="mGrid_'  + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#3498db"/></marker>' +
-            '<marker id="mHouse_' + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#27ae60"/></marker>' +
-            '</defs>' +
-            '<path id="sig_path_pv_'    + w + '" class="sig-flow-path pv-color"    d="M70,55 Q150,100 150,100"   marker-end="url(#mPv_'    + w + ')"/>' +
-            '<path id="sig_path_bat_'   + w + '" class="sig-flow-path bat-color"   d="M230,55 Q150,100 150,100"  marker-end="url(#mBat_'   + w + ')"/>' +
-            '<path id="sig_path_grid_'  + w + '" class="sig-flow-path grid-color"  d="M70,155 Q150,100 150,100"  marker-end="url(#mGrid_'  + w + ')"/>' +
-            '<path id="sig_path_house_' + w + '" class="sig-flow-path house-color active" d="M150,100 Q230,100 230,155" marker-end="url(#mHouse_' + w + ')"/>' +
-            '</svg>' +
-            '<div class="sig-ef-grid">' +
-            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-pv"    id="sig_ef_pvicon_'    + w + '">&#9728;</div><div class="sig-ef-label">Solar PV</div><div class="sig-ef-val" id="sig_ef_pv_'    + w + '">-- kW</div></div>' +
-            '<div class="sig-ef-center">&#9889;</div>' +
-            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-bat"   id="sig_ef_baticon_'   + w + '">&#128267;</div><div class="sig-ef-label">Batterie</div><div class="sig-ef-val" id="sig_ef_bat_'   + w + '">-- kW</div></div>' +
-            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-grid"  id="sig_ef_gridicon_'  + w + '">&#128268;</div><div class="sig-ef-label">Netz</div><div class="sig-ef-val" id="sig_ef_grid_'  + w + '">-- kW</div></div>' +
-            '<div></div>' +
-            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-house" id="sig_ef_houseicon_' + w + '">&#127968;</div><div class="sig-ef-label">Haus</div><div class="sig-ef-val" id="sig_ef_house_' + w + '">-- kW</div></div>' +
-            '</div>' +
+            '<div class="sig-ef-svg-wrap">' + svg + '</div>' +
             '</div></div>'
         );
 
@@ -148,13 +191,18 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             var hous = parseFloat(B._val(data, "oid_house")) || 0;
             var soc  = parseFloat(B._val(data, "oid_soc"))   || 0;
 
+            // Werte setzen (SVG-Text-Knoten)
             B._txt("sig_ef_pv_"    + w, B._fmtKW(pv));
             B._txt("sig_ef_bat_"   + w, B._fmtKW(bat));
             B._txt("sig_ef_grid_"  + w, B._fmtKW(grid));
             B._txt("sig_ef_house_" + w, B._fmtKW(hous));
-            B._css("sig_ef_grid_"  + w, "color", grid < 0 ? "#27ae60" : "#e74c3c");
-            B._css("sig_ef_baticon_" + w, "color", B._socCol(soc));
 
+            // Netz-Farbe: grün = Einspeisung, rot = Bezug
+            B._css("sig_ef_grid_"    + w, "fill", grid < 0 ? "#27ae60" : "#e74c3c");
+            // Batterie-Icon: Farbe nach SOC
+            B._css("sig_ef_baticon_" + w, "fill", B._socCol(soc));
+
+            // Pfade aktivieren/deaktivieren → startet/stoppt CSS-Dash-Animation
             var paths = ["pv", "bat", "grid", "house"];
             var vals  = [pv, bat, grid, hous];
             for (var i = 0; i < paths.length; i++) {

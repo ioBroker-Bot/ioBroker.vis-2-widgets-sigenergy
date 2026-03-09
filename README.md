@@ -100,7 +100,7 @@ For later updates:
     ### **WORK IN PROGRESS**
 -->
 
-### 0.1.2 (2026-03-09)
+### 0.1.3 (2026-03-09)
 * (ssbingo) 4 Widgets neu erstellt im VIS-2-konformen Format
 * (ssbingo) Energiefluss-Diagramm mit SVG-Animationen
 * (ssbingo) Akku-Status & Prognosen Widget
