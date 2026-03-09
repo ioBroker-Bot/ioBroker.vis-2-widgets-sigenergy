@@ -118,3 +118,85 @@
 .sig-stats-wrap.dark .sig-stats-item { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.08); }
 .s-label { font-size: .58rem; opacity: .65; text-transform: uppercase; margin-bottom: 4px; }
 .s-value { font-size: 1.2rem; font-weight: 700; }
+
+/* ── Widget 5: AC-Charger ────────────────────────────────────────────────── */
+.sig-ac-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+    border-radius: 14px; padding: 14px;
+    width: 100%; height: 100%; box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 0;
+}
+.sig-ac-wrap.light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    color: #2c3e50;
+}
+.sig-ac-head {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-shrink: 0;
+}
+.sig-ac-head .icon  { font-size: 1.2rem; }
+.sig-ac-head .title { font-size: .9rem; font-weight: 600; }
+.sig-ac-badge {
+    margin-left: auto; font-size: .65rem; padding: 2px 9px;
+    border-radius: 10px; font-weight: 600;
+}
+.sig-ac-badge.charging { background: #27ae60; color: #fff; }
+.sig-ac-badge.idle     { background: rgba(255,255,255,.15); color: #e0e6ef; }
+.sig-ac-badge.error    { background: #e74c3c; color: #fff; }
+.sig-ac-wrap.light .sig-ac-badge.idle { background: rgba(0,0,0,.1); color: #2c3e50; }
+
+.sig-ac-power-big {
+    font-size: 2.2rem; font-weight: 700; text-align: center;
+    color: #3498db; line-height: 1.1; flex-shrink: 0;
+}
+.sig-ac-power-lbl {
+    font-size: .62rem; text-align: center; opacity: .6; margin-bottom: 10px; flex-shrink: 0;
+}
+.sig-ac-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+    margin-bottom: 10px; flex-shrink: 0;
+}
+.sig-ac-stat-box {
+    background: rgba(255,255,255,.07); border-radius: 8px;
+    padding: 8px; text-align: center;
+}
+.sig-ac-wrap.light .sig-ac-stat-box { background: rgba(0,0,0,.04); border: 1px solid #e8eef5; }
+.sig-ac-stat-lbl { font-size: .58rem; opacity: .6; margin-bottom: 2px; }
+.sig-ac-stat-val { font-size: .88rem; font-weight: 700; }
+
+.sig-ac-ctrl {
+    background: rgba(255,255,255,.06); border-radius: 10px;
+    padding: 10px; flex-shrink: 0;
+}
+.sig-ac-wrap.light .sig-ac-ctrl { background: rgba(0,0,0,.04); border: 1px solid #e8eef5; }
+.sig-ac-ctrl-lbl {
+    font-size: .6rem; opacity: .6; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: .5px;
+}
+.sig-ac-btn-row  { display: flex; gap: 8px; margin-bottom: 10px; }
+.sig-ac-btn {
+    flex: 1; padding: 8px; border-radius: 8px; border: none;
+    font-size: .78rem; font-weight: 600; cursor: pointer;
+    transition: opacity .15s;
+}
+.sig-ac-btn:active { opacity: .7; }
+.sig-ac-btn.start {
+    background: #27ae60; color: #fff;
+}
+.sig-ac-btn.stop {
+    background: transparent; color: #e0e6ef;
+    border: 1px solid rgba(255,255,255,.25);
+}
+.sig-ac-wrap.light .sig-ac-btn.stop { color: #2c3e50; border-color: rgba(0,0,0,.2); }
+.sig-ac-btn.start.active-state { box-shadow: 0 0 0 2px #27ae60; }
+.sig-ac-btn.stop.active-state  { box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
+
+.sig-ac-slider-row {
+    display: flex; align-items: center; gap: 8px;
+}
+.sig-ac-slider-lbl { font-size: .7rem; opacity: .7; white-space: nowrap; }
+.sig-ac-slider {
+    flex: 1; accent-color: #3498db; cursor: pointer;
+    height: 4px;
+}
+.sig-ac-slider-val { font-size: .78rem; font-weight: 700; color: #3498db; min-width: 34px; text-align: right; }

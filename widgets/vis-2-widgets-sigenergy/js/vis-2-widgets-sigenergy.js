@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "0.1.9"
+    version: "0.2.1"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -39,7 +39,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "0.1.9",
+    version: "0.2.1",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -354,6 +354,172 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             B._txt("sig_st_cht_"    + w, B._fmtMin(B._val(data, "oid_chargt")));
         }
         B._subscribe(widgetID, data, ["oid_aut", "oid_sc", "oid_maxsoc", "oid_minsoc", "oid_charg", "oid_discharg", "oid_covtime", "oid_chargt"], update);
+        update();
+    },
+
+    // ── Widget 5: AC-Charger (Sigen EVAC) ───────────────────────────────────
+    //
+    // Systemzustände (IEC 61851-1):
+    //   0 = Standby (nicht verbunden)
+    //   1 = Warte auf Fahrzeug
+    //   2 = Lädt
+    //   3 = Laden abgeschlossen / Fehler
+    //
+    // Steuerung:
+    //   acCharger.control.startStop   0=Start, 1=Stop  (WO)
+    //   acCharger.control.outputCurrent  6..rated A    (RW)
+    //
+    createAcCharger: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createAcCharger(widgetID, view, data, style); }, 100);
+        }
+
+        var dark  = B._isDark(data);
+        var title = data.attr("sig_title") || "AC-Charger";
+        var cls   = "sig-ac-wrap" + (dark ? "" : " light");
+        var w     = widgetID;
+
+        // Systemzustand → lesbarer Text + Badge-Klasse
+        function stateInfo(v) {
+            var n = parseInt(v);
+            switch (n) {
+                case 0: return { label: "Bereit",     badge: "idle" };
+                case 1: return { label: "Verbunden",  badge: "idle" };
+                case 2: return { label: "Lädt",       badge: "charging" };
+                case 3: return { label: "Fertig",     badge: "idle" };
+                default:return { label: "Unbekannt",  badge: "error" };
+            }
+        }
+
+        // Alarm-Text: 0 = kein Alarm
+        function alarmText(a1, a2, a3) {
+            var v = (parseInt(a1) || 0) | (parseInt(a2) || 0) | (parseInt(a3) || 0);
+            return v ? "⚠ Alarm " + v.toString(16).toUpperCase() : "OK";
+        }
+
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            // ── Kopfzeile ──────────────────────────────────────────────
+            '<div class="sig-ac-head">' +
+            '<span class="icon">&#128268;</span>' +
+            '<span class="title">' + title + '</span>' +
+            '<span class="sig-ac-badge idle" id="sig_ac_badge_' + w + '">Bereit</span>' +
+            '</div>' +
+            // ── Ladeleistung groß ────────────────────────────────────
+            '<div class="sig-ac-power-big" id="sig_ac_power_' + w + '">-- kW</div>' +
+            '<div class="sig-ac-power-lbl">Ladeleistung</div>' +
+            // ── Statistik-Kacheln ────────────────────────────────────
+            '<div class="sig-ac-stats">' +
+            '<div class="sig-ac-stat-box"><div class="sig-ac-stat-lbl">Nennleistung</div><div class="sig-ac-stat-val" id="sig_ac_rp_' + w + '" style="color:#f39c12">-- kW</div></div>' +
+            '<div class="sig-ac-stat-box"><div class="sig-ac-stat-lbl">Nennstrom</div><div class="sig-ac-stat-val" id="sig_ac_rc_' + w + '" style="color:#f39c12">-- A</div></div>' +
+            '<div class="sig-ac-stat-box"><div class="sig-ac-stat-lbl">Gesamtenergie</div><div class="sig-ac-stat-val" id="sig_ac_en_' + w + '" style="color:#27ae60">-- kWh</div></div>' +
+            '<div class="sig-ac-stat-box"><div class="sig-ac-stat-lbl">Alarm</div><div class="sig-ac-stat-val" id="sig_ac_alm_' + w + '" style="color:#27ae60">--</div></div>' +
+            '</div>' +
+            // ── Steuerung ────────────────────────────────────────────
+            '<div class="sig-ac-ctrl">' +
+            '<div class="sig-ac-ctrl-lbl">Steuerung</div>' +
+            '<div class="sig-ac-btn-row">' +
+            '<button class="sig-ac-btn start" id="sig_ac_start_' + w + '">&#9654; Start</button>' +
+            '<button class="sig-ac-btn stop"  id="sig_ac_stop_'  + w + '">&#9646;&#9646; Stop</button>' +
+            '</div>' +
+            '<div class="sig-ac-slider-row">' +
+            '<span class="sig-ac-slider-lbl">Ladestrom:</span>' +
+            '<input type="range" class="sig-ac-slider" id="sig_ac_slider_' + w + '" min="6" max="32" step="1" value="16">' +
+            '<span class="sig-ac-slider-val" id="sig_ac_slider_val_' + w + '">16 A</span>' +
+            '</div>' +
+            '</div>' +
+            '</div></div>'
+        );
+
+        // ── Anzeige aktualisieren ────────────────────────────────────────────
+        function update() {
+            var state = B._val(data, "oid_state");
+            var si    = stateInfo(state);
+            var badge = B._el("sig_ac_badge_" + w);
+            if (badge) { badge.textContent = si.label; badge.className = "sig-ac-badge " + si.badge; }
+
+            var pwr   = parseFloat(B._val(data, "oid_power")) || 0;
+            B._txt("sig_ac_power_"   + w, B._fmtKW(pwr));
+            B._css("sig_ac_power_"   + w, "color", pwr > 0.05 ? "#3498db" : (dark ? "#e0e6ef" : "#2c3e50"));
+
+            var rp    = parseFloat(B._val(data, "oid_ratedPower"))   || 0;
+            var rc    = parseFloat(B._val(data, "oid_ratedCurrent")) || 0;
+            var en    = parseFloat(B._val(data, "oid_energy"))       || 0;
+            B._txt("sig_ac_rp_"      + w, rp ? rp.toFixed(1) + " kW" : "-- kW");
+            B._txt("sig_ac_rc_"      + w, rc ? Math.round(rc) + " A" : "-- A");
+            B._txt("sig_ac_en_"      + w, en ? en.toFixed(1) + " kWh" : "-- kWh");
+
+            var a1 = B._val(data, "oid_alarm1");
+            var a2 = B._val(data, "oid_alarm2");
+            var a3 = B._val(data, "oid_alarm3");
+            var alTxt = alarmText(a1, a2, a3);
+            B._txt("sig_ac_alm_"     + w, alTxt);
+            B._css("sig_ac_alm_"     + w, "color", alTxt === "OK" ? "#27ae60" : "#e74c3c");
+
+            // Ladestrom-Slider: Aktuellen Wert anzeigen
+            var curOid = data.attr("oid_current");
+            if (curOid) {
+                var curVal = parseFloat(vis.states[curOid + ".val"]) || 16;
+                var slider = B._el("sig_ac_slider_" + w);
+                if (slider && !slider._dragging) {
+                    slider.value = Math.round(curVal);
+                    B._txt("sig_ac_slider_val_" + w, Math.round(curVal) + " A");
+                }
+            }
+
+            // Start/Stop-Button Zustand hervorheben
+            var ssOid  = data.attr("oid_startStop");
+            var ssVal  = ssOid ? parseInt(vis.states[ssOid + ".val"]) : null;
+            var btnStart = B._el("sig_ac_start_" + w);
+            var btnStop  = B._el("sig_ac_stop_"  + w);
+            if (btnStart && btnStop) {
+                btnStart.classList.toggle("active-state", ssVal === 0);
+                btnStop.classList.toggle("active-state",  ssVal === 1);
+            }
+        }
+
+        // ── Steuer-Events ────────────────────────────────────────────────────
+        var startBtn = B._el("sig_ac_start_" + w);
+        var stopBtn  = B._el("sig_ac_stop_"  + w);
+        var slider   = B._el("sig_ac_slider_" + w);
+        var sliderLbl= B._el("sig_ac_slider_val_" + w);
+
+        if (startBtn) {
+            startBtn.addEventListener("click", function () {
+                var oid = data.attr("oid_startStop");
+                if (oid) vis.setValue(oid, 0);
+            });
+        }
+        if (stopBtn) {
+            stopBtn.addEventListener("click", function () {
+                var oid = data.attr("oid_startStop");
+                if (oid) vis.setValue(oid, 1);
+            });
+        }
+        if (slider && sliderLbl) {
+            slider.addEventListener("input", function () {
+                sliderLbl.textContent = slider.value + " A";
+            });
+            slider.addEventListener("mousedown",  function () { slider._dragging = true;  });
+            slider.addEventListener("touchstart", function () { slider._dragging = true;  });
+            slider.addEventListener("mouseup",    function () {
+                slider._dragging = false;
+                var oid = data.attr("oid_current");
+                if (oid) vis.setValue(oid, parseFloat(slider.value));
+            });
+            slider.addEventListener("touchend",   function () {
+                slider._dragging = false;
+                var oid = data.attr("oid_current");
+                if (oid) vis.setValue(oid, parseFloat(slider.value));
+            });
+        }
+
+        B._subscribe(widgetID, data,
+            ["oid_state", "oid_power", "oid_energy", "oid_ratedPower", "oid_ratedCurrent",
+             "oid_alarm1", "oid_alarm2", "oid_alarm3", "oid_startStop", "oid_current"],
+            update);
         update();
     }
 };
