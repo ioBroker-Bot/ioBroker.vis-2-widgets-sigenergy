@@ -67,7 +67,7 @@
         "onlyWWW": true,
         "singleton": true,
         "type": "visualization-widgets",
-        "mode": "once",
+        "mode": "none",
         "adminUI": {
             "config": "none"
         },
