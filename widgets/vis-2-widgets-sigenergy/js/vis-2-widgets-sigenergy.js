@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "0.2.2"
+    version: "1.0.1"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -39,7 +39,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "0.2.2",
+    version: "1.0.1",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -668,6 +668,307 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         B._subscribe(widgetID, data,
             ["oid_power", "oid_vsoc", "oid_vvolt", "oid_curr",
              "oid_energy", "oid_duration", "oid_startStop"],
+            update);
+        update();
+    },
+
+    // ── Widget 7: Inverter ───────────────────────────────────────────────────
+    //
+    // Tabs: Leistung | Batterie | Netz | Alarme | Info
+    //
+    // runningState: 0=Standby, 1=Running, 2=Fault, 3=Shutdown
+    // control.startStop: 0=Stop, 1=Start  (ACHTUNG: invertiert zu Charger-Widgets!)
+    //
+    createInverter: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createInverter(widgetID, view, data, style); }, 100);
+        }
+
+        var dark  = B._isDark(data);
+        var title = data.attr("sig_title") || "Inverter";
+        var cls   = "sig-inv-wrap" + (dark ? "" : " light");
+        var w     = widgetID;
+
+        // Betriebsstatus-Mapping
+        function stateInfo(v) {
+            switch (parseInt(v)) {
+                case 0: return { label: "Standby",  cls: "standby"  };
+                case 1: return { label: "Running",  cls: "running"  };
+                case 2: return { label: "Fault",    cls: "fault"    };
+                case 3: return { label: "Shutdown", cls: "shutdown" };
+                default:return { label: "–",        cls: "standby"  };
+            }
+        }
+
+        // Temperaturfarbe
+        function tempCol(t) {
+            var v = parseFloat(t);
+            return v > 50 ? "#e74c3c" : v > 35 ? "#f39c12" : "#27ae60";
+        }
+
+        // Alarm-Darstellung: 0 = OK
+        function almInfo(v) {
+            var n = parseInt(v) || 0;
+            return n === 0
+                ? { text: "OK",          cls: "ok",    valCls: "ok"    }
+                : { text: "0x" + n.toString(16).toUpperCase(), cls: "error", valCls: "error" };
+        }
+
+        // ── HTML aufbauen ────────────────────────────────────────────────────
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+
+            // Kopfzeile
+            '<div class="sig-inv-head">' +
+            '<span class="icon">&#9889;</span>' +
+            '<span class="title">' + title + '</span>' +
+            '<span class="sig-inv-badge standby" id="si_badge_' + w + '">–</span>' +
+            '<button class="sig-inv-startstop" id="si_ss_btn_' + w + '">Start</button>' +
+            '</div>' +
+
+            // Tab-Leiste
+            '<div class="sig-inv-tabs">' +
+            '<div class="sig-inv-tab active" data-tab="power"  id="si_t0_' + w + '">Leistung</div>' +
+            '<div class="sig-inv-tab"        data-tab="bat"    id="si_t1_' + w + '">Batterie</div>' +
+            '<div class="sig-inv-tab"        data-tab="grid"   id="si_t2_' + w + '">Netz</div>' +
+            '<div class="sig-inv-tab"        data-tab="alarms" id="si_t3_' + w + '">Alarme</div>' +
+            '<div class="sig-inv-tab"        data-tab="info"   id="si_t4_' + w + '">Info</div>' +
+            '</div>' +
+
+            // ── Tab 0: Leistung ──────────────────────────────────────────────
+            '<div class="sig-inv-panel active" id="si_p0_' + w + '">' +
+            '<div class="sig-inv-row2">' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">Wirkleistung</div><div class="sig-inv-box-val" id="si_apwr_' + w + '" style="color:#3498db">-- kW</div></div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">PV-Leistung</div><div class="sig-inv-box-val" id="si_pv_' + w + '" style="color:#f39c12">-- kW</div></div>' +
+            '</div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">Batterie Laden/Entladen</div><div class="sig-inv-box-val" id="si_esspwr_' + w + '" style="color:#9b59b6">-- kW</div><div class="sig-inv-box-sub" id="si_ess_dir_' + w + '"></div></div>' +
+            '<div class="sig-inv-box">' +
+            '<div class="sig-inv-box-lbl" style="margin-bottom:5px">Leistungsanteil EMS</div>' +
+            '<div style="display:flex;align-items:center;gap:8px">' +
+            '<input type="range" style="flex:1;accent-color:#3498db" min="-100" max="100" step="1" value="0" id="si_pct_sl_' + w + '">' +
+            '<span class="sig-inv-ctrl-val" id="si_pct_lbl_' + w + '">–</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+
+            // ── Tab 1: Batterie ───────────────────────────────────────────────
+            '<div class="sig-inv-panel" id="si_p1_' + w + '">' +
+            '<div class="sig-inv-row2">' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">SOC</div><div class="sig-inv-box-val" id="si_soc_' + w + '">--%</div></div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">SOH</div><div class="sig-inv-box-val" id="si_soh_' + w + '">--%</div></div>' +
+            '</div>' +
+            '<div class="sig-inv-box">' +
+            '<div class="sig-inv-box-lbl" style="margin-bottom:5px">SOC-Verlauf</div>' +
+            '<div class="sig-inv-soc-bar-bg"><div class="sig-inv-soc-bar-fill" id="si_soc_bar_' + w + '" style="width:0%;background:#27ae60"></div></div>' +
+            '</div>' +
+            '<div class="sig-inv-temp-grid">' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">&#127777; Ø Zelltemp.</div><div class="sig-inv-box-val" id="si_ct_' + w + '">-- °C</div></div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">Ø Zellspannung</div><div class="sig-inv-box-val" id="si_cv_' + w + '" style="color:#3498db">-- V</div></div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">&#127777; Max Temp.</div><div class="sig-inv-box-val" id="si_tmax_' + w + '">-- °C</div></div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">&#127777; Min Temp.</div><div class="sig-inv-box-val" id="si_tmin_' + w + '">-- °C</div></div>' +
+            '</div>' +
+            '</div>' +
+
+            // ── Tab 2: Netz ───────────────────────────────────────────────────
+            '<div class="sig-inv-panel" id="si_p2_' + w + '">' +
+            '<div class="sig-inv-phase-row">' +
+            '<div class="sig-inv-phase-box"><div class="sig-inv-phase-lbl">L1</div><div class="sig-inv-phase-val" id="si_uA_' + w + '">-- V</div></div>' +
+            '<div class="sig-inv-phase-box"><div class="sig-inv-phase-lbl">L2</div><div class="sig-inv-phase-val" id="si_uB_' + w + '">-- V</div></div>' +
+            '<div class="sig-inv-phase-box"><div class="sig-inv-phase-lbl">L3</div><div class="sig-inv-phase-val" id="si_uC_' + w + '">-- V</div></div>' +
+            '</div>' +
+            '<div class="sig-inv-row2">' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">Netzfrequenz</div><div class="sig-inv-box-val" id="si_freq_' + w + '" style="color:#3498db">-- Hz</div></div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">Leistungsfaktor</div><div class="sig-inv-box-val" id="si_pf_' + w + '" style="color:#3498db">--</div></div>' +
+            '</div>' +
+            '<div class="sig-inv-box"><div class="sig-inv-box-lbl">&#127777; PCS-Innentemperatur</div><div class="sig-inv-box-val" id="si_pcs_t_' + w + '">-- °C</div></div>' +
+            '</div>' +
+
+            // ── Tab 3: Alarme ──────────────────────────────────────────────────
+            '<div class="sig-inv-panel" id="si_p3_' + w + '">' +
+            '<div class="sig-inv-alm-row ok" id="si_alm1row_' + w + '"><span class="sig-inv-alm-lbl">Alarm 1 (PCS)</span><span class="sig-inv-alm-val ok" id="si_alm1_' + w + '">–</span></div>' +
+            '<div class="sig-inv-alm-row ok" id="si_alm2row_' + w + '"><span class="sig-inv-alm-lbl">Alarm 2 (PCS)</span><span class="sig-inv-alm-val ok" id="si_alm2_' + w + '">–</span></div>' +
+            '<div class="sig-inv-alm-row ok" id="si_alm3row_' + w + '"><span class="sig-inv-alm-lbl">Alarm 3 (ESS)</span><span class="sig-inv-alm-val ok" id="si_alm3_' + w + '">–</span></div>' +
+            '<div class="sig-inv-alm-row ok" id="si_alm4row_' + w + '"><span class="sig-inv-alm-lbl">Alarm 4 (Gateway)</span><span class="sig-inv-alm-val ok" id="si_alm4_' + w + '">–</span></div>' +
+            '<div class="sig-inv-alm-row ok" id="si_alm5row_' + w + '"><span class="sig-inv-alm-lbl">Alarm 5 (DC-Charger)</span><span class="sig-inv-alm-val ok" id="si_alm5_' + w + '">–</span></div>' +
+            '</div>' +
+
+            // ── Tab 4: Info ────────────────────────────────────────────────────
+            '<div class="sig-inv-panel" id="si_p4_' + w + '">' +
+            '<div class="sig-inv-info-row"><div class="sig-inv-info-lbl">Modell</div><div class="sig-inv-info-val" id="si_model_' + w + '">–</div></div>' +
+            '<div class="sig-inv-info-row"><div class="sig-inv-info-lbl">Seriennummer</div><div class="sig-inv-info-val" id="si_serial_' + w + '">–</div></div>' +
+            '<div class="sig-inv-info-row"><div class="sig-inv-info-lbl">Firmware</div><div class="sig-inv-info-val" id="si_fw_' + w + '">–</div></div>' +
+            '<div class="sig-inv-ctrl-row">' +
+            '<span class="sig-inv-ctrl-lbl">Remote EMS</span>' +
+            '<button class="sig-inv-toggle off" id="si_ems_btn_' + w + '">Inaktiv</button>' +
+            '</div>' +
+            '</div>' +
+
+            '</div></div>'
+        );
+
+        // ── Tab-Umschaltung ──────────────────────────────────────────────────
+        var tabs   = ["si_t0_", "si_t1_", "si_t2_", "si_t3_", "si_t4_"];
+        var panels = ["si_p0_", "si_p1_", "si_p2_", "si_p3_", "si_p4_"];
+
+        tabs.forEach(function (tid, idx) {
+            var tabEl = B._el(tid + w);
+            if (!tabEl) return;
+            tabEl.addEventListener("click", function () {
+                tabs.forEach(function (t, i) {
+                    var te = B._el(t + w);
+                    var pe = B._el(panels[i] + w);
+                    if (te) te.classList.toggle("active", i === idx);
+                    if (pe) pe.classList.toggle("active", i === idx);
+                });
+            });
+        });
+
+        // ── Anzeige aktualisieren ────────────────────────────────────────────
+        function update() {
+            // Betriebsstatus
+            var si = stateInfo(B._val(data, "oid_runState"));
+            var badge = B._el("si_badge_" + w);
+            if (badge) { badge.textContent = si.label; badge.className = "sig-inv-badge " + si.cls; }
+
+            // Start/Stop-Button: 0=Stop, 1=Start (invertiert zu Charger!)
+            var ssOid  = data.attr("oid_startStop");
+            var ssVal  = ssOid ? parseInt(vis.states[ssOid + ".val"]) : null;
+            var ssBtn  = B._el("si_ss_btn_" + w);
+            if (ssBtn) {
+                var isRunning = (ssVal === 1 || si.cls === "running");
+                ssBtn.textContent = isRunning ? "Stop" : "Start";
+                ssBtn.className   = "sig-inv-startstop " + (isRunning ? "running" : "stopped");
+            }
+
+            // Tab Leistung
+            var ap  = parseFloat(B._val(data, "oid_activePower")) || 0;
+            var pv  = parseFloat(B._val(data, "oid_pvPower"))     || 0;
+            var ess = parseFloat(B._val(data, "oid_essPower"))    || 0;
+            B._txt("si_apwr_"    + w, B._fmtKW(ap));
+            B._txt("si_pv_"      + w, B._fmtKW(pv));
+            B._txt("si_esspwr_"  + w, B._fmtKW(ess));
+            B._txt("si_ess_dir_" + w, ess > 0.05 ? "▲ Laden" : ess < -0.05 ? "▼ Entladen" : "Bereit");
+            B._css("si_esspwr_"  + w, "color", ess > 0.05 ? "#27ae60" : ess < -0.05 ? "#e74c3c" : "#9b59b6");
+
+            // Leistungsanteil-Slider
+            var pctOid = data.attr("oid_pwrPct");
+            var pctVal = pctOid ? parseFloat(vis.states[pctOid + ".val"]) || 0 : 0;
+            var pctSl  = B._el("si_pct_sl_" + w);
+            if (pctSl && !pctSl._dragging) pctSl.value = Math.round(pctVal);
+            B._txt("si_pct_lbl_" + w, pctOid ? Math.round(pctVal) + " %" : "–");
+
+            // Tab Batterie
+            var soc  = parseFloat(B._val(data, "oid_soc"))      || 0;
+            var soh  = parseFloat(B._val(data, "oid_soh"))      || 0;
+            var ct   = B._val(data, "oid_cellTemp");
+            var cv   = parseFloat(B._val(data, "oid_cellVolt")) || 0;
+            var tmax = B._val(data, "oid_maxTemp");
+            var tmin = B._val(data, "oid_minTemp");
+            var socCol = B._socCol(soc);
+            B._txt("si_soc_"  + w, B._fmtPct(soc));  B._css("si_soc_" + w, "color", socCol);
+            B._txt("si_soh_"  + w, B._fmtPct(soh));  B._css("si_soh_" + w, "color", soh > 80 ? "#27ae60" : "#f39c12");
+            var bar = B._el("si_soc_bar_" + w);
+            if (bar) { bar.style.width = Math.min(100, soc) + "%"; bar.style.background = socCol; }
+            B._txt("si_ct_"   + w, ct   !== undefined ? parseFloat(ct).toFixed(1)   + " °C" : "-- °C");
+            B._css("si_ct_"   + w, "color", ct !== undefined ? tempCol(ct) : "#e0e6ef");
+            B._txt("si_cv_"   + w, cv   ? cv.toFixed(3) + " V"  : "-- V");
+            B._txt("si_tmax_" + w, tmax !== undefined ? parseFloat(tmax).toFixed(1) + " °C" : "-- °C");
+            B._css("si_tmax_" + w, "color", tmax !== undefined ? tempCol(tmax) : "#e0e6ef");
+            B._txt("si_tmin_" + w, tmin !== undefined ? parseFloat(tmin).toFixed(1) + " °C" : "-- °C");
+
+            // Tab Netz
+            var uA   = parseFloat(B._val(data, "oid_uA"))   || 0;
+            var uB   = parseFloat(B._val(data, "oid_uB"))   || 0;
+            var uC   = parseFloat(B._val(data, "oid_uC"))   || 0;
+            var freq = parseFloat(B._val(data, "oid_freq")) || 0;
+            var pf   = parseFloat(B._val(data, "oid_pf"))   || 0;
+            var pcsT = B._val(data, "oid_pcsTemp");
+            B._txt("si_uA_"   + w, uA   ? uA.toFixed(1)   + " V"  : "-- V");
+            B._txt("si_uB_"   + w, uB   ? uB.toFixed(1)   + " V"  : "-- V");
+            B._txt("si_uC_"   + w, uC   ? uC.toFixed(1)   + " V"  : "-- V");
+            B._txt("si_freq_" + w, freq ? freq.toFixed(2)  + " Hz" : "-- Hz");
+            B._txt("si_pf_"   + w, pf   ? pf.toFixed(3)           : "--");
+            B._txt("si_pcs_t_"+ w, pcsT !== undefined ? parseFloat(pcsT).toFixed(1) + " °C" : "-- °C");
+            B._css("si_pcs_t_"+ w, "color", pcsT !== undefined ? tempCol(pcsT) : (dark ? "#e0e6ef" : "#2c3e50"));
+
+            // Tab Alarme
+            [1,2,3,4,5].forEach(function (i) {
+                var ai  = almInfo(B._val(data, "oid_alm" + i));
+                var row = B._el("si_alm" + i + "row_" + w);
+                var val = B._el("si_alm" + i + "_"    + w);
+                if (row) { row.className = "sig-inv-alm-row " + ai.cls; }
+                if (val) { val.textContent = ai.text; val.className = "sig-inv-alm-val " + ai.valCls; }
+            });
+
+            // Tab Info
+            B._txt("si_model_"  + w, B._val(data, "oid_model")  || "–");
+            B._txt("si_serial_" + w, B._val(data, "oid_serial") || "–");
+            B._txt("si_fw_"     + w, B._val(data, "oid_fw")     || "–");
+
+            // EMS-Button
+            var emsOid = data.attr("oid_emsEnable");
+            var emsVal = emsOid ? parseInt(vis.states[emsOid + ".val"]) : null;
+            var emsBtn = B._el("si_ems_btn_" + w);
+            if (emsBtn) {
+                var emsOn = (emsVal === 1);
+                emsBtn.textContent = emsOn ? "Aktiv" : "Inaktiv";
+                emsBtn.className   = "sig-inv-toggle " + (emsOn ? "on" : "off");
+            }
+        }
+
+        // ── Steuer-Events ────────────────────────────────────────────────────
+        // Start/Stop (0=Stop, 1=Start)
+        var ssBtn = B._el("si_ss_btn_" + w);
+        if (ssBtn) {
+            ssBtn.addEventListener("click", function () {
+                var oid = data.attr("oid_startStop");
+                if (!oid) return;
+                var cur = parseInt(vis.states[oid + ".val"]);
+                vis.setValue(oid, cur === 1 ? 0 : 1);
+            });
+        }
+
+        // EMS-Toggle
+        var emsBtn = B._el("si_ems_btn_" + w);
+        if (emsBtn) {
+            emsBtn.addEventListener("click", function () {
+                var oid = data.attr("oid_emsEnable");
+                if (!oid) return;
+                var cur = parseInt(vis.states[oid + ".val"]);
+                vis.setValue(oid, cur === 1 ? 0 : 1);
+            });
+        }
+
+        // Leistungsanteil-Slider
+        var pctSl  = B._el("si_pct_sl_" + w);
+        var pctLbl = B._el("si_pct_lbl_" + w);
+        if (pctSl && pctLbl) {
+            pctSl.addEventListener("input", function () {
+                pctLbl.textContent = pctSl.value + " %";
+            });
+            pctSl.addEventListener("mousedown",  function () { pctSl._dragging = true;  });
+            pctSl.addEventListener("touchstart", function () { pctSl._dragging = true;  });
+            pctSl.addEventListener("mouseup",    function () {
+                pctSl._dragging = false;
+                var oid = data.attr("oid_pwrPct");
+                if (oid) vis.setValue(oid, parseFloat(pctSl.value));
+            });
+            pctSl.addEventListener("touchend",   function () {
+                pctSl._dragging = false;
+                var oid = data.attr("oid_pwrPct");
+                if (oid) vis.setValue(oid, parseFloat(pctSl.value));
+            });
+        }
+
+        B._subscribe(widgetID, data,
+            ["oid_activePower","oid_pvPower","oid_essPower","oid_runState",
+             "oid_soc","oid_soh","oid_cellTemp","oid_cellVolt","oid_maxTemp","oid_minTemp",
+             "oid_uA","oid_uB","oid_uC","oid_freq","oid_pf","oid_pcsTemp",
+             "oid_alm1","oid_alm2","oid_alm3","oid_alm4","oid_alm5",
+             "oid_fw","oid_model","oid_serial",
+             "oid_startStop","oid_emsEnable","oid_pwrPct"],
             update);
         update();
     }

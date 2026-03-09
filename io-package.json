@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "0.2.5",
+        "version": "1.0.1",
         "news": {
-            "0.2.5": {
+            "1.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
                 "ru": "Начальная версия",
@@ -67,7 +67,7 @@
         "onlyWWW": true,
         "singleton": true,
         "type": "visualization-widgets",
-        "mode": "none",
+        "mode": "once",
         "adminUI": {
             "config": "none"
         },

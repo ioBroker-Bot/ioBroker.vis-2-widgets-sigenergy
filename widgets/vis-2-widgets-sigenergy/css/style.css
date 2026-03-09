@@ -286,3 +286,126 @@
 .sig-dc-wrap.light .sig-dc-btn.stop { color: #2c3e50; border-color: rgba(0,0,0,.2); }
 .sig-dc-btn.active-state { box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
 .sig-dc-btn.start.active-state { box-shadow: 0 0 0 2px #27ae60; }
+
+/* ── Widget 7: Inverter ──────────────────────────────────────────────────── */
+.sig-inv-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e6ef;
+    border-radius: 14px; padding: 14px;
+    width: 100%; height: 100%; box-sizing: border-box;
+    display: flex; flex-direction: column;
+}
+.sig-inv-wrap.light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    color: #2c3e50;
+}
+
+/* Kopfzeile */
+.sig-inv-head {
+    display: flex; align-items: center; gap: 7px;
+    margin-bottom: 9px; flex-shrink: 0;
+}
+.sig-inv-head .icon  { font-size: 1.1rem; }
+.sig-inv-head .title { font-size: .88rem; font-weight: 600; }
+.sig-inv-badge {
+    font-size: .62rem; padding: 2px 8px;
+    border-radius: 10px; font-weight: 600;
+}
+.sig-inv-badge.running  { background: #27ae60; color: #fff; }
+.sig-inv-badge.standby  { background: rgba(255,255,255,.15); color: #e0e6ef; }
+.sig-inv-badge.fault    { background: #e74c3c; color: #fff; }
+.sig-inv-badge.shutdown { background: #7f8c8d; color: #fff; }
+.sig-inv-wrap.light .sig-inv-badge.standby { background: rgba(0,0,0,.1); color: #2c3e50; }
+
+.sig-inv-startstop {
+    margin-left: auto; padding: 3px 10px; border-radius: 7px;
+    font-size: .65rem; font-weight: 600; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.25);
+    background: transparent; color: #e0e6ef;
+    transition: background .15s;
+}
+.sig-inv-wrap.light .sig-inv-startstop { color: #2c3e50; border-color: rgba(0,0,0,.2); }
+.sig-inv-startstop.running { background: #c0392b; border-color: #c0392b; color: #fff; }
+.sig-inv-startstop.stopped { background: #27ae60; border-color: #27ae60; color: #fff; }
+
+/* Tab-Leiste */
+.sig-inv-tabs {
+    display: flex; gap: 3px;
+    margin-bottom: 9px; flex-shrink: 0;
+}
+.sig-inv-tab {
+    flex: 1; text-align: center; padding: 4px 2px;
+    border-radius: 7px; font-size: .6rem; cursor: pointer;
+    opacity: .45; transition: opacity .15s, background .15s;
+    user-select: none;
+}
+.sig-inv-tab.active {
+    opacity: 1; background: rgba(52,152,219,.22); color: #3498db; font-weight: 600;
+}
+.sig-inv-wrap.light .sig-inv-tab.active { background: rgba(52,152,219,.15); }
+
+/* Tab-Inhalt */
+.sig-inv-panel { display: none; flex: 1; flex-direction: column; gap: 6px; overflow: hidden; }
+.sig-inv-panel.active { display: flex; }
+
+/* Allgemeine Kachel */
+.sig-inv-box {
+    background: rgba(255,255,255,.07); border-radius: 8px; padding: 8px 10px;
+}
+.sig-inv-wrap.light .sig-inv-box { background: rgba(0,0,0,.04); border: 1px solid #e8eef5; }
+.sig-inv-box-lbl { font-size: .58rem; opacity: .6; margin-bottom: 2px; }
+.sig-inv-box-val { font-size: 1.05rem; font-weight: 700; }
+.sig-inv-box-sub { font-size: .65rem; opacity: .6; margin-top: 1px; }
+
+/* 2-spaltige Kachel-Reihe */
+.sig-inv-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+/* Temperaturen */
+.sig-inv-temp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+/* Netz-Phasen */
+.sig-inv-phase-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; }
+.sig-inv-phase-box { background: rgba(255,255,255,.07); border-radius: 7px; padding: 7px; text-align: center; }
+.sig-inv-wrap.light .sig-inv-phase-box { background: rgba(0,0,0,.04); border: 1px solid #e8eef5; }
+.sig-inv-phase-lbl { font-size: .55rem; opacity: .6; margin-bottom: 1px; }
+.sig-inv-phase-val { font-size: .82rem; font-weight: 700; color: #3498db; }
+
+/* Alarm-Liste */
+.sig-inv-alm-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 10px; border-radius: 7px;
+    background: rgba(255,255,255,.05); font-size: .72rem;
+}
+.sig-inv-wrap.light .sig-inv-alm-row { background: rgba(0,0,0,.03); border: 1px solid #e8eef5; }
+.sig-inv-alm-row.ok    { }
+.sig-inv-alm-row.error { background: rgba(231,76,60,.15); border: 1px solid rgba(231,76,60,.3); }
+.sig-inv-alm-lbl { opacity: .7; }
+.sig-inv-alm-val.ok    { color: #27ae60; font-weight: 600; }
+.sig-inv-alm-val.error { color: #e74c3c; font-weight: 700; }
+
+/* Info-Zeilen */
+.sig-inv-info-row {
+    padding: 6px 10px; border-radius: 7px;
+    background: rgba(255,255,255,.05); font-size: .7rem;
+}
+.sig-inv-wrap.light .sig-inv-info-row { background: rgba(0,0,0,.03); border: 1px solid #e8eef5; }
+.sig-inv-info-lbl { font-size: .55rem; opacity: .6; margin-bottom: 1px; }
+.sig-inv-info-val { font-weight: 600; word-break: break-all; }
+
+/* EMS & Leistungsregler */
+.sig-inv-ctrl-row { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 7px; background: rgba(255,255,255,.05); }
+.sig-inv-wrap.light .sig-inv-ctrl-row { background: rgba(0,0,0,.03); border: 1px solid #e8eef5; }
+.sig-inv-ctrl-lbl { font-size: .65rem; opacity: .7; white-space: nowrap; }
+.sig-inv-ctrl-val { font-size: .75rem; font-weight: 700; color: #3498db; min-width: 36px; text-align: right; }
+.sig-inv-toggle {
+    margin-left: auto; padding: 3px 10px; border-radius: 6px;
+    font-size: .65rem; font-weight: 600; cursor: pointer; border: none;
+}
+.sig-inv-toggle.on  { background: #27ae60; color: #fff; }
+.sig-inv-toggle.off { background: rgba(255,255,255,.1); color: #e0e6ef; }
+.sig-inv-wrap.light .sig-inv-toggle.off { background: rgba(0,0,0,.08); color: #2c3e50; }
+
+/* SOC-Balken in Batterie-Tab */
+.sig-inv-soc-bar-bg { background: rgba(255,255,255,.1); border-radius: 5px; height: 7px; }
+.sig-inv-wrap.light .sig-inv-soc-bar-bg { background: rgba(0,0,0,.08); }
+.sig-inv-soc-bar-fill { height: 100%; border-radius: 5px; transition: width .5s; }
