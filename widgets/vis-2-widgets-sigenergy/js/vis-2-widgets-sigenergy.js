@@ -1,597 +1,304 @@
 /*
-    ioBroker.vis vis-2-widgets-sigenergy Widget-Set
-    version: "0.1.1",
+    ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
+    4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
+
+    version: "0.1.2"
     Copyright 2026 ssbingo s.sternitzke@online.de
-
-    4 Widgets fuer Sigenergy Solarenergieanlagen:
-      createEnergyFlow     — Energiefluss-Diagramm
-      createBatteryStatus  — Akku-Status & Prognosen
-      createPowerOverview  — Echtzeit-Leistung
-      createStatistics     — Energiestatistiken
-
-    Architektur (identisch mit Template-Muster):
-      - createXXX() baut kompletten HTML-String und injiziert ihn per .html()
-      - vis.states.bind() abonniert OID-Aenderungen fuer Live-Updates
-      - $div.data('bound', [...]) gibt vis die OID-Keys zum Lifecycle-Management
-      - $div.data('bindHandler', fn) fuer spaeteren unbind
 */
-'use strict';
+"use strict";
 
 /* global $, vis, systemDictionary */
 
-/* ================================================================
-   UEBERSETZUNGEN fuer den VIS-Editor
-   ================================================================ */
-$.extend(true, systemDictionary, {
-    /* Gruppen */
-    'group_oids':    { en: 'OID Assignments',       de: 'OID-Zuweisungen'         },
-    'group_appear':  { en: 'Appearance',             de: 'Darstellung'             },
+// add translations for edit mode
+$.extend(
+    true,
+    systemDictionary,
+    {
+        "sig_title":    { "en": "Title",             "de": "Titel" },
+        "sig_darkmode": { "en": "Dark mode",         "de": "Dunkelmodus" },
+        "sig_animation":{ "en": "Animation",         "de": "Animation" },
+        "oid_pv":       { "en": "PV Power OID",      "de": "PV-Leistung OID" },
+        "oid_bat":      { "en": "Battery Power OID", "de": "Batterie-Leistung OID" },
+        "oid_grid":     { "en": "Grid Power OID",    "de": "Netz-Leistung OID" },
+        "oid_house":    { "en": "House Power OID",   "de": "Haus-Leistung OID" },
+        "oid_soc":      { "en": "Battery SOC OID",   "de": "Batterie SOC OID" },
+        "oid_soh":      { "en": "Battery SOH OID",   "de": "Batterie SOH OID" },
+        "oid_ttf":      { "en": "Time to Full OID",  "de": "Zeit bis Voll OID" },
+        "oid_ttr":      { "en": "Time Remaining OID","de": "Restlaufzeit OID" },
+        "oid_sc":       { "en": "Self Consumption OID","de": "Eigenverbrauch OID" },
+        "oid_aut":      { "en": "Autarky Rate OID",  "de": "Autarkierate OID" },
+        "oid_maxsoc":   { "en": "Day Max SOC OID",   "de": "Tages Max SOC OID" },
+        "oid_minsoc":   { "en": "Day Min SOC OID",   "de": "Tages Min SOC OID" },
+        "oid_charg":    { "en": "Daily Charge OID",  "de": "Tages-Ladung OID" },
+        "oid_discharg": { "en": "Daily Discharge OID","de": "Tages-Entladung OID" },
+        "oid_covtime":  { "en": "Battery Coverage OID","de": "Batteriedeckung OID" },
+        "oid_chargt":   { "en": "Daily Charge Time OID","de": "Tages-Ladezeit OID" }
+    }
+);
 
-    /* OID-Felder */
-    'oid_pv':        { en: 'OID — PV Power (kW)',            de: 'OID — PV-Leistung (kW)'         },
-    'oid_bat':       { en: 'OID — Battery Power (kW)',       de: 'OID — Batterie-Leistung (kW)'   },
-    'oid_grid':      { en: 'OID — Grid Power (kW)',          de: 'OID — Netz-Leistung (kW)'       },
-    'oid_house':     { en: 'OID — House Consumption (kW)',   de: 'OID — Haus-Verbrauch (kW)'      },
-    'oid_soc':       { en: 'OID — Battery SOC (%)',          de: 'OID — Batterie-Ladung (%)'      },
-    'oid_soh':       { en: 'OID — Battery Health SOH (%)',   de: 'OID — Batterie-Gesundheit (%)'  },
-    'oid_ttf':       { en: 'OID — Time to Full (min)',       de: 'OID — Zeit bis Voll (min)'      },
-    'oid_ttr':       { en: 'OID — Time Remaining (min)',     de: 'OID — Restlaufzeit (min)'       },
-    'oid_sc':        { en: 'OID — Self Consumption (%)',     de: 'OID — Eigenverbrauch (%)'       },
-    'oid_aut':       { en: 'OID — Autarky Rate (%)',         de: 'OID — Autarkierate (%)'         },
-    'oid_maxsoc':    { en: 'OID — Day Max SOC (%)',          de: 'OID — Tages-Max SOC (%)'        },
-    'oid_minsoc':    { en: 'OID — Day Min SOC (%)',          de: 'OID — Tages-Min SOC (%)'        },
-    'oid_charg':     { en: 'OID — Daily Charge Energy (kWh)',    de: 'OID — Tages-Ladung (kWh)'       },
-    'oid_discharg':  { en: 'OID — Daily Discharge Energy (kWh)', de: 'OID — Tages-Entladung (kWh)'    },
-    'oid_covtime':   { en: 'OID — Battery Coverage Time (min)',  de: 'OID — Batteriedeckungszeit (min)'},
-    'oid_chargt':    { en: 'OID — Daily Charge Time (min)',  de: 'OID — Tages-Ladezeit (min)'     },
+vis.binds["vis-2-widgets-sigenergy"] = {
+    version: "0.1.2",
 
-    /* Darstellungsoptionen */
-    'sig_title':     { en: 'Widget Title',           de: 'Widget-Titel'            },
-    'sig_darkmode':  { en: 'Dark Mode',              de: 'Dunkelmodus'             },
-    'sig_animation': { en: 'Animate Energy Flow',    de: 'Energiefluss animieren'  },
-});
-
-/* ================================================================
-   HAUPTMODUL
-   ================================================================ */
-vis.binds['vis-2-widgets-sigenergy'] = {
-
-    version: '0.1.1',
-
-    /* ── Version beim Laden einmalig loggen ── */
     showVersion: function () {
-        if (vis.binds['vis-2-widgets-sigenergy'].version) {
-            console.log('[vis-2-widgets-sigenergy] v' + vis.binds['vis-2-widgets-sigenergy'].version + ' geladen');
-            vis.binds['vis-2-widgets-sigenergy'].version = null;
+        if (vis.binds["vis-2-widgets-sigenergy"].version) {
+            console.log("Version vis-2-widgets-sigenergy: " + vis.binds["vis-2-widgets-sigenergy"].version);
+            vis.binds["vis-2-widgets-sigenergy"].version = null;
         }
     },
 
-    /* ============================================================
-       INTERNE HELFER
-       ============================================================ */
-
-    /* Formatiert Kilowatt-Werte */
+    // ── Helfer ──────────────────────────────────────────────────────────────
     _fmtKW: function (v) {
         var n = parseFloat(v);
-        if (isNaN(n)) return '-- kW';
-        return (Math.abs(n) >= 10 ? n.toFixed(1) : n.toFixed(2)) + ' kW';
+        return isNaN(n) ? "-- kW" : (Math.abs(n) >= 10 ? n.toFixed(1) : n.toFixed(2)) + " kW";
     },
-
-    /* Formatiert Prozentwerte */
     _fmtPct: function (v) {
         var n = parseFloat(v);
-        return isNaN(n) ? '--%' : Math.round(n) + '%';
+        return isNaN(n) ? "--%"    : Math.round(n) + "%";
     },
-
-    /* Formatiert Minutenwerte als lesbare Zeit */
-    _fmtMin: function (v) {
-        var m = Math.round(Math.abs(parseFloat(v) || 0));
-        if (!m) return '0 min';
-        if (m < 60) return m + ' min';
-        var h = Math.floor(m / 60);
-        var r = m % 60;
-        return h + 'h' + (r ? ' ' + r + 'm' : '');
-    },
-
-    /* Formatiert Kilowattstunden */
     _fmtKWh: function (v) {
         var n = parseFloat(v);
-        return isNaN(n) ? '-- kWh' : n.toFixed(1) + ' kWh';
+        return isNaN(n) ? "-- kWh" : n.toFixed(2) + " kWh";
+    },
+    _fmtMin: function (v) {
+        var m = Math.round(Math.abs(parseFloat(v) || 0));
+        if (!m) return "0 min";
+        return m < 60 ? m + " min" : Math.floor(m / 60) + "h " + (m % 60) + "m";
+    },
+    _socCol: function (p) {
+        return parseFloat(p) > 60 ? "#27ae60" : parseFloat(p) > 25 ? "#f39c12" : "#e74c3c";
+    },
+    _el: function (id) { return document.getElementById(id); },
+    _txt: function (id, v) {
+        var e = vis.binds["vis-2-widgets-sigenergy"]._el(id);
+        if (e) e.textContent = v;
+    },
+    _css: function (id, p, v) {
+        var e = vis.binds["vis-2-widgets-sigenergy"]._el(id);
+        if (e) e.style[p] = v;
     },
 
-    /* Liest aktuellen OID-Wert aus vis.states */
-    _getVal: function (data, attr) {
-        var oid = data.attr ? data.attr(attr) : data[attr];
+    // State-Zugriff: vis.states[key + '.val']
+    _val: function (data, attr) {
+        var oid = data.attr(attr);
         if (!oid) return undefined;
-        return vis.states[oid + '.val'];
+        return vis.states[oid + ".val"];
     },
 
-    /* SOC-Farbe: gruen / orange / rot */
-    _socColor: function (soc) {
-        return soc < 20 ? '#e74c3c' : soc < 40 ? '#f39c12' : '#27ae60';
-    },
-
-    /* Wartet bis Container im DOM ist, dann Callback */
-    _whenReady: function (widgetID, cb) {
-        var $div = $('#' + widgetID);
-        if (!$div.length) {
-            return setTimeout(function () {
-                vis.binds['vis-2-widgets-sigenergy']._whenReady(widgetID, cb);
-            }, 100);
-        }
-        cb($div);
-    },
-
-    /*
-     * Kernfunktion: OID binden + initialen Wert liefern
-     *   oid    — OID-String
-     *   bound  — Array, in das '.val'-Key eingetragen wird (fuer vis lifecycle)
-     *   cb     — Callback(newValue) bei jeder Aenderung
-     * Gibt eine Funktion zurueck, die den Initialwert ausloest (oder null).
-     */
-    _bind: function (oid, bound, cb) {
-        if (!oid) return null;
-        var key = oid + '.val';
-        bound.push(key);
-        vis.states.bind(key, function (e, newVal) { cb(newVal); });
-        var cur = vis.states[key];
-        return (cur !== undefined && cur !== null) ? function () { cb(cur); } : null;
-    },
-
-    /* Fuehrt alle gesammelten Initialisierungsfunktionen aus und speichert Binding-Info */
-    _applyBindings: function (widgetID, bound, deferred) {
-        setTimeout(function () {
-            for (var i = 0; i < deferred.length; i++) {
-                try { deferred[i](); } catch (e) { /* ignorieren */ }
+    // Subscription mit VIS-konformem $div.data()-Muster
+    _subscribe: function (wid, data, attrs, onChange) {
+        var $div  = $("#" + wid);
+        var bound = [];
+        for (var i = 0; i < attrs.length; i++) {
+            var oid = data.attr(attrs[i]);
+            if (oid) {
+                var key = oid + ".val";
+                bound.push(key);
+                vis.states.bind(key, onChange);
             }
-            var $d = $('#' + widgetID);
-            if ($d.length) {
-                $d.data('bound', bound);
-                $d.data('bindHandler', null);
-            }
-        }, 50);
-    },
-
-    /* Setzt Textinhalt eines Elements per ID */
-    _setText: function (id, text) {
-        var el = document.getElementById(id);
-        if (el) el.textContent = text;
-    },
-
-    /* Setzt Textinhalt UND style.color eines Elements per ID */
-    _setTextColor: function (id, text, color) {
-        var el = document.getElementById(id);
-        if (el) {
-            el.textContent = text;
-            if (color !== undefined) el.style.color = color;
         }
+        $div.data("bound",       bound);
+        $div.data("bindHandler", onChange);
     },
 
-
-    /* ============================================================
-       WIDGET 1 — ENERGIEFLUSS-DIAGRAMM
-       Aufbau: Titelzeile + SVG-Pfeildiagramm + 2x3-Node-Grid
-       ============================================================ */
+    // ── Widget 1: Energiefluss-Diagramm ─────────────────────────────────────
     createEnergyFlow: function (widgetID, view, data, style) {
-        var B   = vis.binds['vis-2-widgets-sigenergy'];
-        var wid = widgetID;
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createEnergyFlow(widgetID, view, data, style); }, 100);
+        }
 
-        B._whenReady(wid, function ($div) {
-            /* --- Konfiguration lesen --- */
-            var dark  = data.attr('sig_darkmode') !== 'false';
-            var anim  = data.attr('sig_animation') !== 'false';
-            var title = data.attr('sig_title') || 'Energiefluss';
+        var dark  = data.attr("sig_darkmode") !== "false";
+        var title = data.attr("sig_title") || "Energiefluss";
+        var cls   = dark ? "sig-ef-wrap" : "sig-ef-wrap light";
+        var w     = widgetID;
 
-            /* --- Aktuelle Werte --- */
-            var pvW   = parseFloat(B._getVal(data, 'oid_pv'))    || 0;
-            var batW  = parseFloat(B._getVal(data, 'oid_bat'))   || 0;
-            var gridW = parseFloat(B._getVal(data, 'oid_grid'))  || 0;
-            var housW = parseFloat(B._getVal(data, 'oid_house')) || 0;
-            var socV  = parseFloat(B._getVal(data, 'oid_soc'))   || 0;
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            '<div class="sig-ef-title">&#9889; ' + title + '</div>' +
+            '<svg class="sig-ef-svg" viewBox="0 0 300 200" preserveAspectRatio="none">' +
+            '<defs>' +
+            '<marker id="mPv_'    + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#f39c12"/></marker>' +
+            '<marker id="mBat_'   + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#9b59b6"/></marker>' +
+            '<marker id="mGrid_'  + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#3498db"/></marker>' +
+            '<marker id="mHouse_' + w + '" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#27ae60"/></marker>' +
+            '</defs>' +
+            '<path id="sig_path_pv_'    + w + '" class="sig-flow-path pv-color"    d="M70,55 Q150,100 150,100"   marker-end="url(#mPv_'    + w + ')"/>' +
+            '<path id="sig_path_bat_'   + w + '" class="sig-flow-path bat-color"   d="M230,55 Q150,100 150,100"  marker-end="url(#mBat_'   + w + ')"/>' +
+            '<path id="sig_path_grid_'  + w + '" class="sig-flow-path grid-color"  d="M70,155 Q150,100 150,100"  marker-end="url(#mGrid_'  + w + ')"/>' +
+            '<path id="sig_path_house_' + w + '" class="sig-flow-path house-color active" d="M150,100 Q230,100 230,155" marker-end="url(#mHouse_' + w + ')"/>' +
+            '</svg>' +
+            '<div class="sig-ef-grid">' +
+            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-pv"    id="sig_ef_pvicon_'    + w + '">&#9728;</div><div class="sig-ef-label">Solar PV</div><div class="sig-ef-val" id="sig_ef_pv_'    + w + '">-- kW</div></div>' +
+            '<div class="sig-ef-center">&#9889;</div>' +
+            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-bat"   id="sig_ef_baticon_'   + w + '">&#128267;</div><div class="sig-ef-label">Batterie</div><div class="sig-ef-val" id="sig_ef_bat_'   + w + '">-- kW</div></div>' +
+            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-grid"  id="sig_ef_gridicon_'  + w + '">&#128268;</div><div class="sig-ef-label">Netz</div><div class="sig-ef-val" id="sig_ef_grid_'  + w + '">-- kW</div></div>' +
+            '<div></div>' +
+            '<div class="sig-ef-node"><div class="sig-ef-icon sig-icon-house" id="sig_ef_houseicon_" + w + ">&#127968;</div><div class="sig-ef-label">Haus</div><div class="sig-ef-val" id="sig_ef_house_' + w + '">-- kW</div></div>' +
+            '</div>' +
+            '</div></div>'
+        );
 
-            /* --- Pfad-Richtungen (Batterie und Netz koennen umkehren) --- */
-            var batPath  = batW  < -0.05 ? 'M150,100 Q150,80 230,55' : 'M230,55 Q150,80 150,100';
-            var gridPath = gridW < -0.05 ? 'M150,100 Q100,120 70,155' : 'M70,155 Q100,120 150,100';
+        function update() {
+            var pv   = parseFloat(B._val(data, "oid_pv"))    || 0;
+            var bat  = parseFloat(B._val(data, "oid_bat"))   || 0;
+            var grid = parseFloat(B._val(data, "oid_grid"))  || 0;
+            var hous = parseFloat(B._val(data, "oid_house")) || 0;
+            var soc  = parseFloat(B._val(data, "oid_soc"))   || 0;
 
-            function activeClass(v) { return Math.abs(parseFloat(v) || 0) > 0.05 ? ' sig-ef-active' : ''; }
+            B._txt("sig_ef_pv_"    + w, B._fmtKW(pv));
+            B._txt("sig_ef_bat_"   + w, B._fmtKW(bat));
+            B._txt("sig_ef_grid_"  + w, B._fmtKW(grid));
+            B._txt("sig_ef_house_" + w, B._fmtKW(hous));
+            B._css("sig_ef_grid_"  + w, "color", grid < 0 ? "#27ae60" : "#e74c3c");
+            B._css("sig_ef_baticon_" + w, "color", B._socCol(soc));
 
-            /* --- CSS-Klassen je Theme --- */
-            var wrap  = dark ? 'sig-ef-wrap' : 'sig-ef-wrap sig-ef-light';
-            var bgPv  = dark ? 'rgba(243,156,18,.15)'  : 'rgba(243,156,18,.12)';
-            var bgBat = dark ? 'rgba(155,89,182,.15)'  : 'rgba(155,89,182,.12)';
-            var bgGrd = dark ? 'rgba(52,152,219,.15)'  : 'rgba(52,152,219,.12)';
-            var bgHou = dark ? 'rgba(39,174,96,.15)'   : 'rgba(39,174,96,.12)';
-            var batIcon = socV < 20 ? '&#129707;' : '&#128267;';
-
-            /* --- HTML-Ausgabe --- */
-            var html = '<div class="' + wrap + '">';
-
-            /* Titel */
-            html += '<div class="sig-ef-title">&#9889; ' + title + '</div>';
-
-            /* SVG Flussdiagramm */
-            html += '<svg class="sig-ef-svg" viewBox="0 0 300 210" preserveAspectRatio="none">'
-                  + '<defs>'
-                  + '<marker id="mk-pv-'   + wid + '" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#f39c12"/></marker>'
-                  + '<marker id="mk-bat-'  + wid + '" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#9b59b6"/></marker>'
-                  + '<marker id="mk-grid-' + wid + '" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#3498db"/></marker>'
-                  + '<marker id="mk-hous-' + wid + '" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#27ae60"/></marker>'
-                  + '</defs>'
-                  /* PV → Zentrum */
-                  + '<path id="sig-p-pv-'   + wid + '" class="sig-ef-path sig-ef-pv'   + activeClass(pvW)   + '" d="M70,55 Q110,78 150,100"   marker-end="url(#mk-pv-'   + wid + ')"/>'
-                  /* Bat ↔ Zentrum */
-                  + '<path id="sig-p-bat-'  + wid + '" class="sig-ef-path sig-ef-bat'  + activeClass(batW)  + '" d="' + batPath  + '" marker-end="url(#mk-bat-'  + wid + ')"/>'
-                  /* Grid ↔ Zentrum */
-                  + '<path id="sig-p-grid-' + wid + '" class="sig-ef-path sig-ef-grid' + activeClass(gridW) + '" d="' + gridPath + '" marker-end="url(#mk-grid-' + wid + ')"/>'
-                  /* Zentrum → Haus */
-                  + '<path id="sig-p-hous-' + wid + '" class="sig-ef-path sig-ef-hous' + activeClass(housW) + '" d="M150,100 Q190,128 230,155" marker-end="url(#mk-hous-' + wid + ')"/>'
-                  + '</svg>';
-
-            /* Node-Grid: PV | ⚡ | Bat / Grid | _ | Haus */
-            html += '<div class="sig-ef-grid">'
-                  /* PV */
-                  + '<div class="sig-ef-node">'
-                  +   '<div class="sig-ef-icon" style="background:' + bgPv + ';color:#f39c12">&#9728;</div>'
-                  +   '<div class="sig-ef-label">Solar PV</div>'
-                  +   '<div id="sig-v-pv-' + wid + '" class="sig-ef-val" style="color:#f39c12">' + B._fmtKW(pvW) + '</div>'
-                  + '</div>'
-                  /* Zentrum */
-                  + '<div class="sig-ef-center">&#9889;</div>'
-                  /* Batterie */
-                  + '<div class="sig-ef-node">'
-                  +   '<div id="sig-icon-bat-' + wid + '" class="sig-ef-icon" style="background:' + bgBat + ';color:#9b59b6">' + batIcon + '</div>'
-                  +   '<div class="sig-ef-label">Batterie</div>'
-                  +   '<div id="sig-v-bat-' + wid + '" class="sig-ef-val" style="color:#9b59b6">' + B._fmtKW(batW) + '</div>'
-                  + '</div>'
-                  /* Netz */
-                  + '<div class="sig-ef-node">'
-                  +   '<div class="sig-ef-icon" style="background:' + bgGrd + ';color:#3498db">&#128268;</div>'
-                  +   '<div class="sig-ef-label">Netz</div>'
-                  +   '<div id="sig-v-grid-' + wid + '" class="sig-ef-val" style="color:#3498db">' + B._fmtKW(gridW) + '</div>'
-                  + '</div>'
-                  /* Leer-Slot Mitte unten */
-                  + '<div></div>'
-                  /* Haus */
-                  + '<div class="sig-ef-node">'
-                  +   '<div class="sig-ef-icon" style="background:' + bgHou + ';color:#27ae60">&#127968;</div>'
-                  +   '<div class="sig-ef-label">Haus</div>'
-                  +   '<div id="sig-v-hous-' + wid + '" class="sig-ef-val" style="color:#27ae60">' + B._fmtKW(housW) + '</div>'
-                  + '</div>'
-                  + '</div>'; /* /sig-ef-grid */
-
-            html += '</div>'; /* /sig-ef-wrap */
-
-            $div.html(html);
-
-            /* --- Live-Bindings --- */
-            var bound = [], def = [];
-            function q(d) { if (d) def.push(d); }
-
-            /* Hilfsfunktion: SVG-Pfad und Aktivierungsklasse aktualisieren */
-            function updatePath(pathId, classBase, val, batOrGrid) {
-                var el = document.getElementById(pathId);
-                if (!el) return;
-                var active = Math.abs(parseFloat(val) || 0) > 0.05;
-                el.className = 'sig-ef-path sig-ef-' + classBase + (active ? ' sig-ef-active' : '');
-                if (anim && active) {
-                    el.style.animationPlayState = 'running';
-                } else {
-                    el.style.animationPlayState = 'paused';
-                }
-                /* Richtungspfad fuer Batterie und Netz */
-                if (batOrGrid === 'bat') {
-                    var pw = parseFloat(val) || 0;
-                    el.setAttribute('d', pw < -0.05 ? 'M150,100 Q150,80 230,55' : 'M230,55 Q150,80 150,100');
-                }
-                if (batOrGrid === 'grid') {
-                    var gw = parseFloat(val) || 0;
-                    el.setAttribute('d', gw < -0.05 ? 'M150,100 Q100,120 70,155' : 'M70,155 Q100,120 150,100');
-                }
-            }
-
-            q(B._bind(data.attr('oid_pv'), bound, function (v) {
-                B._setText('sig-v-pv-' + wid, B._fmtKW(v));
-                updatePath('sig-p-pv-' + wid, 'pv', v, null);
-            }));
-
-            q(B._bind(data.attr('oid_bat'), bound, function (v) {
-                B._setText('sig-v-bat-' + wid, B._fmtKW(v));
-                updatePath('sig-p-bat-' + wid, 'bat', v, 'bat');
-            }));
-
-            q(B._bind(data.attr('oid_grid'), bound, function (v) {
-                B._setText('sig-v-grid-' + wid, B._fmtKW(v));
-                updatePath('sig-p-grid-' + wid, 'grid', v, 'grid');
-            }));
-
-            q(B._bind(data.attr('oid_house'), bound, function (v) {
-                B._setText('sig-v-hous-' + wid, B._fmtKW(v));
-                updatePath('sig-p-hous-' + wid, 'hous', v, null);
-            }));
-
-            q(B._bind(data.attr('oid_soc'), bound, function (v) {
-                var el = document.getElementById('sig-icon-bat-' + wid);
-                if (el) el.innerHTML = (parseFloat(v) || 0) < 20 ? '&#129707;' : '&#128267;';
-            }));
-
-            B._applyBindings(wid, bound, def);
-        });
-    },
-
-
-    /* ============================================================
-       WIDGET 2 — AKKU-STATUS & PROGNOSEN
-       Aufbau: Header (Icon + Titel + SOH) | SOC-Zahl + Balken |
-               5-Kacheln-Grid (Leistung, Zeit bis Voll,
-               Restlaufzeit, Eigenverbrauch, Autarkie)
-       ============================================================ */
-    createBatteryStatus: function (widgetID, view, data, style) {
-        var B   = vis.binds['vis-2-widgets-sigenergy'];
-        var wid = widgetID;
-
-        B._whenReady(wid, function ($div) {
-            var dark = data.attr('sig_darkmode') !== 'false';
-
-            /* --- Aktuelle Werte --- */
-            var socRaw = parseFloat(B._getVal(data, 'oid_soc')) || 0;
-            var soc    = Math.max(0, Math.min(100, socRaw));
-            var sohV   = B._getVal(data, 'oid_soh');
-            var batW   = parseFloat(B._getVal(data, 'oid_bat')) || 0;
-            var ttfV   = B._getVal(data, 'oid_ttf');
-            var ttrV   = B._getVal(data, 'oid_ttr');
-            var scV    = B._getVal(data, 'oid_sc');
-            var autV   = B._getVal(data, 'oid_aut');
-
-            var sc     = B._socColor(soc);
-            var barCls = 'sig-bat-bar-fill' + (soc < 20 ? ' sig-bat-crit' : soc < 40 ? ' sig-bat-warn' : '');
-            var wrap   = dark ? 'sig-bat-wrap' : 'sig-bat-wrap sig-bat-light';
-
-            /* Leistungsrichtung und -farbe */
-            function batPowText(w) {
-                w = parseFloat(w) || 0;
-                var dir = w > 0.05 ? '\u2191 ' : w < -0.05 ? '\u2193 ' : '';
-                return dir + B._fmtKW(Math.abs(w));
-            }
-            function batPowColor(w) {
-                w = parseFloat(w) || 0;
-                return w > 0.05 ? '#f39c12' : w < -0.05 ? '#27ae60' : '';
-            }
-
-            /* --- HTML --- */
-            var html = '<div class="' + wrap + '">';
-
-            /* Header */
-            html += '<div class="sig-bat-head">'
-                  +   '<span class="sig-bat-head-icon">&#128267;</span>'
-                  +   '<span class="sig-bat-head-title">Batterie Status</span>'
-                  +   '<span id="sig-soh-' + wid + '" class="sig-bat-soh">SOH: ' + B._fmtPct(sohV) + '</span>'
-                  + '</div>';
-
-            /* Grosse SOC-Zahl */
-            html += '<div id="sig-soc-big-' + wid + '" class="sig-bat-soc-big" style="color:' + sc + '">'
-                  +   Math.round(soc) + '%'
-                  + '</div>';
-
-            /* SOC-Balken */
-            html += '<div class="sig-bat-bar-bg">'
-                  +   '<div id="sig-soc-bar-' + wid + '" class="' + barCls + '" style="width:' + soc + '%;background:' + sc + '"></div>'
-                  + '</div>';
-
-            /* Skalenbeschriftung */
-            html += '<div class="sig-bat-scale"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>';
-
-            /* Statistik-Kacheln (2 Spalten) */
-            html += '<div class="sig-bat-stats">';
-
-            var tiles = [
-                { id: 'sig-bat-pow-'  + wid, label: '&#9889; Leistung',       val: batPowText(batW),   color: batPowColor(batW) },
-                { id: 'sig-bat-ttf-'  + wid, label: '&#8987; Bis Voll',       val: B._fmtMin(ttfV),    color: '' },
-                { id: 'sig-bat-ttr-'  + wid, label: '&#9203; Restlaufzeit',   val: B._fmtMin(ttrV),    color: '' },
-                { id: 'sig-bat-sc-'   + wid, label: '&#9728; Eigenverbrauch', val: B._fmtPct(scV),     color: '' },
-                { id: 'sig-bat-aut-'  + wid, label: '&#127969; Autarkierate', val: B._fmtPct(autV),    color: '' },
-            ];
-
-            for (var i = 0; i < tiles.length; i++) {
-                var t = tiles[i];
-                html += '<div class="sig-bat-tile">'
-                      +   '<div class="sig-bat-tile-label">' + t.label + '</div>'
-                      +   '<div id="' + t.id + '" class="sig-bat-tile-val"'
-                      +     (t.color ? ' style="color:' + t.color + '"' : '') + '>'
-                      +     t.val
-                      +   '</div>'
-                      + '</div>';
-            }
-
-            html += '</div>'; /* /sig-bat-stats */
-            html += '</div>'; /* /sig-bat-wrap */
-
-            $div.html(html);
-
-            /* --- Live-Bindings --- */
-            var bound = [], def = [];
-            function q(d) { if (d) def.push(d); }
-
-            q(B._bind(data.attr('oid_soc'), bound, function (v) {
-                var s = Math.max(0, Math.min(100, parseFloat(v) || 0));
-                var c = B._socColor(s);
-                var bc = 'sig-bat-bar-fill' + (s < 20 ? ' sig-bat-crit' : s < 40 ? ' sig-bat-warn' : '');
-                B._setTextColor('sig-soc-big-' + wid, Math.round(s) + '%', c);
-                var bar = document.getElementById('sig-soc-bar-' + wid);
-                if (bar) { bar.style.width = s + '%'; bar.style.background = c; bar.className = bc; }
-            }));
-
-            q(B._bind(data.attr('oid_soh'), bound, function (v) {
-                B._setText('sig-soh-' + wid, 'SOH: ' + B._fmtPct(v));
-            }));
-
-            q(B._bind(data.attr('oid_bat'), bound, function (v) {
-                B._setTextColor('sig-bat-pow-' + wid, batPowText(v), batPowColor(v));
-            }));
-
-            q(B._bind(data.attr('oid_ttf'),  bound, function (v) { B._setText('sig-bat-ttf-'  + wid, B._fmtMin(v)); }));
-            q(B._bind(data.attr('oid_ttr'),  bound, function (v) { B._setText('sig-bat-ttr-'  + wid, B._fmtMin(v)); }));
-            q(B._bind(data.attr('oid_sc'),   bound, function (v) { B._setText('sig-bat-sc-'   + wid, B._fmtPct(v)); }));
-            q(B._bind(data.attr('oid_aut'),  bound, function (v) { B._setText('sig-bat-aut-'  + wid, B._fmtPct(v)); }));
-
-            B._applyBindings(wid, bound, def);
-        });
-    },
-
-
-    /* ============================================================
-       WIDGET 3 — ECHTZEIT-LEISTUNG
-       Aufbau: Titelzeile mit Live-Punkt + 5 Zeilen (PV, Bat,
-               Grid, Haus, SOC) mit farbigen Dots und Werten
-       ============================================================ */
-    createPowerOverview: function (widgetID, view, data, style) {
-        var B   = vis.binds['vis-2-widgets-sigenergy'];
-        var wid = widgetID;
-
-        B._whenReady(wid, function ($div) {
-            var dark  = data.attr('sig_darkmode') === 'true';
-            var title = data.attr('sig_title') || 'Live Leistung';
-
-            /* --- Aktuelle Werte --- */
-            var pvW   = B._getVal(data, 'oid_pv');
-            var batW  = B._getVal(data, 'oid_bat');
-            var gridW = B._getVal(data, 'oid_grid');
-            var housW = B._getVal(data, 'oid_house');
-            var socV  = B._getVal(data, 'oid_soc');
-
-            var wrap  = dark ? 'sig-pow-wrap' : 'sig-pow-wrap sig-pow-light';
-
-            /* Netz-CSS-Klasse abhaengig von Bezug/Einspeisung */
-            function gridValClass(v) {
-                var gw = parseFloat(v) || 0;
-                return 'sig-pow-val' + (gw > 0.05 ? ' sig-pow-buy' : gw < -0.05 ? ' sig-pow-sell' : '');
-            }
-
-            /* Zeilendaten */
-            var rows = [
-                { id: 'sig-pow-pv-'   + wid, dot: '#f39c12', icon: '&#9728;',  label: 'Solar PV',  val: B._fmtKW(pvW),   cls: 'sig-pow-val', color: '#f39c12' },
-                { id: 'sig-pow-bat-'  + wid, dot: '#9b59b6', icon: '&#128267;',label: 'Batterie',   val: B._fmtKW(batW),  cls: 'sig-pow-val', color: ''        },
-                { id: 'sig-pow-grid-' + wid, dot: '#3498db', icon: '&#128268;', label: 'Netz',      val: B._fmtKW(gridW), cls: gridValClass(gridW), color: '' },
-                { id: 'sig-pow-hous-' + wid, dot: '#27ae60', icon: '&#127968;', label: 'Haus',      val: B._fmtKW(housW), cls: 'sig-pow-val', color: '#27ae60' },
-                { id: 'sig-pow-soc-'  + wid, dot: '#8e44ad', icon: '&#128267;', label: 'Akku SOC',  val: B._fmtPct(socV), cls: 'sig-pow-val', color: ''        },
-            ];
-
-            /* --- HTML --- */
-            var html = '<div class="' + wrap + '">';
-
-            /* Titelzeile */
-            html += '<div class="sig-pow-title">'
-                  +   '<div class="sig-pow-live-dot"></div>'
-                  +   title
-                  + '</div>';
-
-            /* Zeilen */
-            for (var i = 0; i < rows.length; i++) {
-                var r   = rows[i];
-                var sep = i < rows.length - 1 ? ' sig-pow-row-sep' : '';
-                html += '<div class="sig-pow-row' + sep + '">'
-                      +   '<div class="sig-pow-left">'
-                      +     '<div class="sig-pow-dot" style="background:' + r.dot + '"></div>'
-                      +     r.icon + ' ' + r.label
-                      +   '</div>'
-                      +   '<div id="' + r.id + '" class="' + r.cls + '"'
-                      +     (r.color ? ' style="color:' + r.color + '"' : '') + '>'
-                      +     r.val
-                      +   '</div>'
-                      + '</div>';
-            }
-
-            html += '</div>'; /* /sig-pow-wrap */
-
-            $div.html(html);
-
-            /* --- Live-Bindings --- */
-            var bound = [], def = [];
-            function q(d) { if (d) def.push(d); }
-
-            q(B._bind(data.attr('oid_pv'),    bound, function (v) { B._setText('sig-pow-pv-'   + wid, B._fmtKW(v)); }));
-            q(B._bind(data.attr('oid_bat'),   bound, function (v) { B._setText('sig-pow-bat-'  + wid, B._fmtKW(v)); }));
-
-            q(B._bind(data.attr('oid_grid'),  bound, function (v) {
-                var el = document.getElementById('sig-pow-grid-' + wid);
+            var paths = ["pv", "bat", "grid", "house"];
+            var vals  = [pv, bat, grid, hous];
+            for (var i = 0; i < paths.length; i++) {
+                var el = B._el("sig_path_" + paths[i] + "_" + w);
                 if (el) {
-                    el.textContent = B._fmtKW(v);
-                    el.className   = gridValClass(v);
+                    if (Math.abs(vals[i]) > 0.05) el.classList.add("active");
+                    else                           el.classList.remove("active");
                 }
-            }));
-
-            q(B._bind(data.attr('oid_house'), bound, function (v) { B._setText('sig-pow-hous-' + wid, B._fmtKW(v)); }));
-            q(B._bind(data.attr('oid_soc'),   bound, function (v) { B._setText('sig-pow-soc-'  + wid, B._fmtPct(v)); }));
-
-            B._applyBindings(wid, bound, def);
-        });
-    },
-
-
-    /* ============================================================
-       WIDGET 4 — ENERGIESTATISTIKEN
-       Aufbau: Titelzeile + 8 Kacheln als 2x4 Grid
-       ============================================================ */
-    createStatistics: function (widgetID, view, data, style) {
-        var B   = vis.binds['vis-2-widgets-sigenergy'];
-        var wid = widgetID;
-
-        B._whenReady(wid, function ($div) {
-            var dark  = data.attr('sig_darkmode') === 'true';
-            var title = data.attr('sig_title') || 'Tagesstatistik';
-
-            var wrap = dark ? 'sig-stats-wrap sig-stats-dark' : 'sig-stats-wrap';
-
-            /* Kacheldaten (id, icon, label, formatierten Wert, Farbe) */
-            var tiles = [
-                { id: 'sig-st-aut-'    + wid, icon: '&#127969;', label: 'Autarkierate',    val: B._fmtPct(B._getVal(data,'oid_aut')),     color: '#27ae60' },
-                { id: 'sig-st-sc-'     + wid, icon: '&#8635;',   label: 'Eigenverbrauch',  val: B._fmtPct(B._getVal(data,'oid_sc')),      color: '#9b59b6' },
-                { id: 'sig-st-maxsoc-' + wid, icon: '&#8593;',   label: 'Max SOC heute',   val: B._fmtPct(B._getVal(data,'oid_maxsoc')),  color: '#f39c12' },
-                { id: 'sig-st-minsoc-' + wid, icon: '&#8595;',   label: 'Min SOC heute',   val: B._fmtPct(B._getVal(data,'oid_minsoc')),  color: '#3498db' },
-                { id: 'sig-st-chg-'    + wid, icon: '&#11014;',  label: 'Tages-Ladung',    val: B._fmtKWh(B._getVal(data,'oid_charg')),   color: '#16a085' },
-                { id: 'sig-st-dchg-'   + wid, icon: '&#11015;',  label: 'Tages-Entladung', val: B._fmtKWh(B._getVal(data,'oid_discharg')),color: '#e74c3c' },
-                { id: 'sig-st-cov-'    + wid, icon: '&#8987;',   label: 'Batteriedeckung', val: B._fmtMin(B._getVal(data,'oid_covtime')), color: '#8e44ad' },
-                { id: 'sig-st-cht-'    + wid, icon: '&#9889;',   label: 'Ladezeit heute',  val: B._fmtMin(B._getVal(data,'oid_chargt')),  color: '#c0392b' },
-            ];
-
-            /* --- HTML --- */
-            var html = '<div class="' + wrap + '">';
-
-            /* Titel */
-            html += '<div class="sig-stats-title">&#128202; ' + title + '</div>';
-
-            /* Kachelraster */
-            html += '<div class="sig-stats-grid">';
-            for (var i = 0; i < tiles.length; i++) {
-                var t = tiles[i];
-                html += '<div class="sig-stats-tile">'
-                      +   '<div class="sig-stats-tile-label">' + t.icon + ' ' + t.label + '</div>'
-                      +   '<div id="' + t.id + '" class="sig-stats-tile-val" style="color:' + t.color + '">'
-                      +     t.val
-                      +   '</div>'
-                      + '</div>';
             }
-            html += '</div>'; /* /sig-stats-grid */
-            html += '</div>'; /* /sig-stats-wrap */
-
-            $div.html(html);
-
-            /* --- Live-Bindings --- */
-            var bound = [], def = [];
-            function q(d) { if (d) def.push(d); }
-
-            q(B._bind(data.attr('oid_aut'),      bound, function (v) { B._setText('sig-st-aut-'    + wid, B._fmtPct(v)); }));
-            q(B._bind(data.attr('oid_sc'),       bound, function (v) { B._setText('sig-st-sc-'     + wid, B._fmtPct(v)); }));
-            q(B._bind(data.attr('oid_maxsoc'),   bound, function (v) { B._setText('sig-st-maxsoc-' + wid, B._fmtPct(v)); }));
-            q(B._bind(data.attr('oid_minsoc'),   bound, function (v) { B._setText('sig-st-minsoc-' + wid, B._fmtPct(v)); }));
-            q(B._bind(data.attr('oid_charg'),    bound, function (v) { B._setText('sig-st-chg-'    + wid, B._fmtKWh(v)); }));
-            q(B._bind(data.attr('oid_discharg'), bound, function (v) { B._setText('sig-st-dchg-'   + wid, B._fmtKWh(v)); }));
-            q(B._bind(data.attr('oid_covtime'),  bound, function (v) { B._setText('sig-st-cov-'    + wid, B._fmtMin(v)); }));
-            q(B._bind(data.attr('oid_chargt'),   bound, function (v) { B._setText('sig-st-cht-'    + wid, B._fmtMin(v)); }));
-
-            B._applyBindings(wid, bound, def);
-        });
+        }
+        B._subscribe(widgetID, data, ["oid_pv", "oid_bat", "oid_grid", "oid_house", "oid_soc"], update);
+        update();
     },
 
+    // ── Widget 2: Akku-Status & Prognosen ───────────────────────────────────
+    createBatteryStatus: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createBatteryStatus(widgetID, view, data, style); }, 100);
+        }
+
+        var dark = data.attr("sig_darkmode") !== "false";
+        var cls  = "sig-bat-wrap" + (dark ? "" : " light");
+        var w    = widgetID;
+
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            '<div class="sig-bat-head"><span class="icon">&#128267;</span><span class="title">Batterie Status</span>' +
+            '<span class="sig-bat-soh" id="sig_bat_soh_' + w + '">SOH: --%</span></div>' +
+            '<div class="sig-soc-big" id="sig_bat_soc_' + w + '">--%</div>' +
+            '<div class="sig-soc-bar-bg"><div class="sig-soc-bar-fill" id="sig_bat_bar_' + w + '" style="width:0%"></div></div>' +
+            '<div class="sig-soc-labels"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>' +
+            '<div class="sig-bat-stats">' +
+            '<div class="sig-stat-box"><div class="sig-stat-label">&#9889; Leistung</div><div class="sig-stat-val" id="sig_bat_pow_' + w + '">--</div></div>' +
+            '<div class="sig-stat-box"><div class="sig-stat-label">&#8987; Bis Voll</div><div class="sig-stat-val" id="sig_bat_ttf_' + w + '">--</div></div>' +
+            '<div class="sig-stat-box"><div class="sig-stat-label">&#9203; Restlaufzeit</div><div class="sig-stat-val" id="sig_bat_ttr_' + w + '">--</div></div>' +
+            '<div class="sig-stat-box"><div class="sig-stat-label">&#9728; Eigenverbrauch</div><div class="sig-stat-val" id="sig_bat_sc_' + w + '">--</div></div>' +
+            '<div class="sig-stat-box"><div class="sig-stat-label">&#127969; Autarkierate</div><div class="sig-stat-val" id="sig_bat_aut_' + w + '">--</div></div>' +
+            '</div></div></div>'
+        );
+
+        function update() {
+            var soc = parseFloat(B._val(data, "oid_soc")) || 0;
+            var col = B._socCol(soc);
+            B._txt("sig_bat_soh_" + w, "SOH: " + B._fmtPct(B._val(data, "oid_soh")));
+            B._txt("sig_bat_soc_" + w, B._fmtPct(soc));
+            B._css("sig_bat_soc_" + w, "color", col);
+            var bar = B._el("sig_bat_bar_" + w);
+            if (bar) { bar.style.width = Math.min(100, soc) + "%"; bar.style.background = col; }
+            var bat = parseFloat(B._val(data, "oid_bat")) || 0;
+            B._txt("sig_bat_pow_" + w, B._fmtKW(bat));
+            B._css("sig_bat_pow_" + w, "color", bat >= 0 ? "#27ae60" : "#e74c3c");
+            B._txt("sig_bat_ttf_" + w, B._fmtMin(B._val(data, "oid_ttf")));
+            B._txt("sig_bat_ttr_" + w, B._fmtMin(B._val(data, "oid_ttr")));
+            B._txt("sig_bat_sc_"  + w, B._fmtPct(B._val(data, "oid_sc")));
+            B._txt("sig_bat_aut_" + w, B._fmtPct(B._val(data, "oid_aut")));
+        }
+        B._subscribe(widgetID, data, ["oid_soc", "oid_soh", "oid_bat", "oid_ttf", "oid_ttr", "oid_sc", "oid_aut"], update);
+        update();
+    },
+
+    // ── Widget 3: Echtzeit-Leistung ─────────────────────────────────────────
+    createPowerOverview: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createPowerOverview(widgetID, view, data, style); }, 100);
+        }
+
+        var dark  = data.attr("sig_darkmode") === "true";
+        var title = data.attr("sig_title") || "Live Leistung";
+        var cls   = "sig-pow-wrap" + (dark ? "" : " light");
+        var w     = widgetID;
+
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            '<div class="sig-pow-title"><div class="sig-live-dot"></div>' + title + '</div>' +
+            '<div class="sig-pow-row"><div class="sig-pow-left"><div class="sig-dot" style="background:#f39c12"></div>&#9728; Solar PV</div><div class="sig-pow-val" id="sig_pow_pv_'    + w + '">-- kW</div></div>' +
+            '<div class="sig-pow-row"><div class="sig-pow-left"><div class="sig-dot" style="background:#9b59b6"></div>&#128267; Batterie</div><div class="sig-pow-val" id="sig_pow_bat_'   + w + '">-- kW</div></div>' +
+            '<div class="sig-pow-row"><div class="sig-pow-left"><div class="sig-dot" style="background:#3498db"></div>&#128268; Netz</div><div class="sig-pow-val" id="sig_pow_grid_'  + w + '">-- kW</div></div>' +
+            '<div class="sig-pow-row"><div class="sig-pow-left"><div class="sig-dot" style="background:#27ae60"></div>&#127968; Haus</div><div class="sig-pow-val" id="sig_pow_house_' + w + '">-- kW</div></div>' +
+            '<div class="sig-pow-row" style="border-top:1px solid rgba(128,128,128,.15);margin-top:6px;padding-top:6px;">' +
+            '<div class="sig-pow-left"><div class="sig-dot" style="background:#8e44ad"></div>&#128267; SOC</div>' +
+            '<div class="sig-pow-val" id="sig_pow_soc_' + w + '">--%</div></div>' +
+            '</div></div>'
+        );
+
+        function update() {
+            var bat  = parseFloat(B._val(data, "oid_bat"))  || 0;
+            var grid = parseFloat(B._val(data, "oid_grid")) || 0;
+            var soc  = B._val(data, "oid_soc");
+            B._txt("sig_pow_pv_"    + w, B._fmtKW(B._val(data, "oid_pv")));
+            B._txt("sig_pow_bat_"   + w, B._fmtKW(bat));
+            B._css("sig_pow_bat_"   + w, "color", bat  < 0 ? "#e74c3c" : "#27ae60");
+            B._txt("sig_pow_grid_"  + w, B._fmtKW(grid));
+            B._css("sig_pow_grid_"  + w, "color", grid < 0 ? "#27ae60" : "#e74c3c");
+            B._txt("sig_pow_house_" + w, B._fmtKW(B._val(data, "oid_house")));
+            B._txt("sig_pow_soc_"   + w, B._fmtPct(soc));
+            B._css("sig_pow_soc_"   + w, "color", B._socCol(soc));
+        }
+        B._subscribe(widgetID, data, ["oid_pv", "oid_bat", "oid_grid", "oid_house", "oid_soc"], update);
+        update();
+    },
+
+    // ── Widget 4: Energiestatistiken ────────────────────────────────────────
+    createStatistics: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createStatistics(widgetID, view, data, style); }, 100);
+        }
+
+        var dark  = data.attr("sig_darkmode") === "true";
+        var title = data.attr("sig_title") || "Tagesstatistik";
+        var cls   = "sig-stats-wrap" + (dark ? " dark" : "");
+        var w     = widgetID;
+
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            '<div class="sig-stats-title">&#128202; ' + title + '</div>' +
+            '<div class="sig-stats-grid">' +
+            '<div class="sig-stats-item"><div class="s-label">&#127969; Autarkierate</div><div class="s-value" style="color:#27ae60" id="sig_st_aut_'    + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#8635; Eigenverbrauch</div><div class="s-value" style="color:#9b59b6" id="sig_st_sc_'     + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#8593; Max SOC heute</div><div class="s-value" style="color:#f39c12" id="sig_st_maxsoc_'  + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#8595; Min SOC heute</div><div class="s-value" style="color:#3498db" id="sig_st_minsoc_'  + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#11014; Tages-Ladung</div><div class="s-value" style="color:#16a085" id="sig_st_chg_'    + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#11015; Tages-Entladung</div><div class="s-value" style="color:#e74c3c" id="sig_st_dchg_' + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#8987; Batteriedeckung</div><div class="s-value" style="color:#8e44ad" id="sig_st_cov_'   + w + '">--</div></div>' +
+            '<div class="sig-stats-item"><div class="s-label">&#9889; Ladezeit heute</div><div class="s-value" style="color:#c0392b" id="sig_st_cht_'    + w + '">--</div></div>' +
+            '</div></div></div>'
+        );
+
+        function update() {
+            B._txt("sig_st_aut_"    + w, B._fmtPct(B._val(data, "oid_aut")));
+            B._txt("sig_st_sc_"     + w, B._fmtPct(B._val(data, "oid_sc")));
+            B._txt("sig_st_maxsoc_" + w, B._fmtPct(B._val(data, "oid_maxsoc")));
+            B._txt("sig_st_minsoc_" + w, B._fmtPct(B._val(data, "oid_minsoc")));
+            B._txt("sig_st_chg_"    + w, B._fmtKWh(B._val(data, "oid_charg")));
+            B._txt("sig_st_dchg_"   + w, B._fmtKWh(B._val(data, "oid_discharg")));
+            B._txt("sig_st_cov_"    + w, B._fmtMin(B._val(data, "oid_covtime")));
+            B._txt("sig_st_cht_"    + w, B._fmtMin(B._val(data, "oid_chargt")));
+        }
+        B._subscribe(widgetID, data, ["oid_aut", "oid_sc", "oid_maxsoc", "oid_minsoc", "oid_charg", "oid_discharg", "oid_covtime", "oid_chargt"], update);
+        update();
+    }
 };
 
-vis.binds['vis-2-widgets-sigenergy'].showVersion();
+vis.binds["vis-2-widgets-sigenergy"].showVersion();

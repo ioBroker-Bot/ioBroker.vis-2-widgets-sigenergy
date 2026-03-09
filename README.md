@@ -100,8 +100,12 @@ For later updates:
     ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
-* (ssbingo) initial release
+### 0.1.2 (2026-03-09)
+* (ssbingo) 4 Widgets neu erstellt im VIS-2-konformen Format
+* (ssbingo) Energiefluss-Diagramm mit SVG-Animationen
+* (ssbingo) Akku-Status & Prognosen Widget
+* (ssbingo) Echtzeit-Leistung Widget
+* (ssbingo) Energiestatistiken Widget
 
 ## License
 MIT License
