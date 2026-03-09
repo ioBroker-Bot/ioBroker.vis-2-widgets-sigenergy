@@ -67,6 +67,8 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
     ### **WORK IN PROGRESS**
 -->
 
+### 1.0.2 (2026-03-09)
+* Korrekturen
 ### 1.0.1 (2026-03-09)
 * (ssbingo) 4 Widgets neu erstellt im VIS-2-konformen Format
 * (ssbingo) Energiefluss-Diagramm mit SVG-Animationen
