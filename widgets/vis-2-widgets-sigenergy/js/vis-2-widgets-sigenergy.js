@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "0.1.3"
+    version: "0.1.5"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -39,7 +39,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "0.1.3",
+    version: "0.1.5",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -86,6 +86,13 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         return vis.states[oid + ".val"];
     },
 
+    // Darkmode-Checkbox: VIS-2 liefert Boolean true/false ODER String "true"/"false"
+    // Diese Funktion normalisiert beide Varianten zuverlaessig.
+    _isDark: function (data) {
+        var v = data.attr("sig_darkmode");
+        return (v === true || v === "true" || v === "1" || v === 1);
+    },
+
     // Subscription mit VIS-konformem $div.data()-Muster
     _subscribe: function (wid, data, attrs, onChange) {
         var $div  = $("#" + wid);
@@ -124,7 +131,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             return setTimeout(function () { B.createEnergyFlow(widgetID, view, data, style); }, 100);
         }
 
-        var dark  = data.attr("sig_darkmode") !== "false";
+        var dark  = B._isDark(data);
         var title = data.attr("sig_title") || "Energiefluss";
         var cls   = dark ? "sig-ef-wrap" : "sig-ef-wrap light";
         var tc    = dark ? "#e0e6ef" : "#2c3e50";  // text colour
@@ -225,7 +232,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             return setTimeout(function () { B.createBatteryStatus(widgetID, view, data, style); }, 100);
         }
 
-        var dark = data.attr("sig_darkmode") !== "false";
+        var dark = B._isDark(data);
         var cls  = "sig-bat-wrap" + (dark ? "" : " light");
         var w    = widgetID;
 
@@ -273,7 +280,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             return setTimeout(function () { B.createPowerOverview(widgetID, view, data, style); }, 100);
         }
 
-        var dark  = data.attr("sig_darkmode") === "true";
+        var dark  = B._isDark(data);
         var title = data.attr("sig_title") || "Live Leistung";
         var cls   = "sig-pow-wrap" + (dark ? "" : " light");
         var w     = widgetID;
@@ -316,7 +323,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             return setTimeout(function () { B.createStatistics(widgetID, view, data, style); }, 100);
         }
 
-        var dark  = data.attr("sig_darkmode") === "true";
+        var dark  = B._isDark(data);
         var title = data.attr("sig_title") || "Tagesstatistik";
         var cls   = "sig-stats-wrap" + (dark ? " dark" : "");
         var w     = widgetID;
