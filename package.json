@@ -32,6 +32,7 @@
   },
   "main": "widgets/vis-2-widgets-sigenergy.html",
   "files": [
+    "admin/",
     "widgets/**/!(tsconfig|tsconfig.*|.eslintrc).json",
     "widgets/**/*.{html,css,png,svg,jpg,js}",
     "www/",

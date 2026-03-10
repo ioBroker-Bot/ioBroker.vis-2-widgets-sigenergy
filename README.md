@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.2 (2026-03-10)
+* `admin/` in package.json `files`-Feld ergänzt — Icon-PNG wird jetzt korrekt mit installiert
+
 ### 1.1.1 (2026-03-10)
 * E1012 behoben: `icon` = Dateiname, `extIcon` = identische GitHub-Raw-URL
 
