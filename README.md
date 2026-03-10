@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.3 (2026-03-10)
+* Keyword `ioBroker` in io-package.json ergänzt
+
 ### 1.1.2 (2026-03-10)
 * `admin/` in package.json `files`-Feld ergänzt — Icon-PNG wird jetzt korrekt mit installiert
 
