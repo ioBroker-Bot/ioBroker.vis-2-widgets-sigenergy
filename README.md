@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.0 (2026-03-10)
+* Icon als Base64-Data-URI in io-package.json eingebettet — unabhängig von Admin-Ordner-Serving
+
 ### 1.0.9 (2026-03-10)
 * Icon-Auflösung auf 512×512 px korrigiert (war 64×64 px)
 
