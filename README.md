@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.0.7 (2026-03-10)
+* Icon-Einbindung korrigiert: `icon` als Dateiname, `extIcon` als Base64-URI
+
 ### 1.0.6 (2026-03-10)
 * Sigenergy-Logo als Adapter-Icon hinterlegt
 

@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.0.6",
+        "version": "1.0.7",
         "news": {
-            "1.0.6": {
+            "1.0.7": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
                 "ru": "Начальная версия",
@@ -57,7 +57,7 @@
         "platform": "Javascript/Node.js",
         "icon": "vis-2-widgets-sigenergy.png",
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
+        "extIcon": "data:image/png;base64,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",
         "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
         "loglevel": "info",
         "tier": 3,
