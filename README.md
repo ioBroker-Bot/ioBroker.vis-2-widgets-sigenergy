@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.7 (2026-03-10)
+* W1084 behoben: veraltetes `common.title` entfernt
+
 ### 1.1.6 (2026-03-10)
 * `title`: "SigenEnergy Widgets" in io-package.json ergänzt
 
