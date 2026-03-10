@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.0.8 (2026-03-10)
+* `extIcon` auf GitHub-Raw-URL korrigiert (E1012)
+
 ### 1.0.7 (2026-03-10)
 * Icon-Einbindung korrigiert: `icon` als Dateiname, `extIcon` als Base64-URI
 
