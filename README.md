@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.4 (2026-03-10)
+* W1068 behoben: `ioBroker` aus keywords entfernt
+
 ### 1.1.3 (2026-03-10)
 * Keyword `ioBroker` in io-package.json ergänzt
 
