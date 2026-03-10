@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.1 (2026-03-10)
+* E1012 behoben: `icon` = Dateiname, `extIcon` = identische GitHub-Raw-URL
+
 ### 1.1.0 (2026-03-10)
 * Icon als Base64-Data-URI in io-package.json eingebettet — unabhängig von Admin-Ordner-Serving
 
