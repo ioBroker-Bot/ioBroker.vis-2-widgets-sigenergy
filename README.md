@@ -41,30 +41,42 @@ Fließende Pfeile visualisieren aktive Verbindungen in Echtzeit.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
+![Energiefluss-Diagramm](img/widget-energiefluss.png)
+
 ### Akku-Status & Prognosen
 Zeigt SOC, SOH, Ladeleistung sowie Prognosen für Ladezeit, Restlaufzeit, Eigenverbrauch und Autarkierate.
 
 **OIDs:** `essSoc`, `essSoh`, `essPower`, `batteryTimeToFull`, `batteryTimeRemaining`, `selfConsumptionRate`, `autarkyRate`
+
+![Akku-Status & Prognosen](img/widget-batterie.png)
 
 ### Echtzeit-Leistung
 Kompakte Listenansicht aller aktuellen Leistungswerte mit farbkodierter Richtungsanzeige.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
+![Echtzeit-Leistung](img/widget-leistung.png)
+
 ### Energiestatistiken
 Tagesübersicht mit Autarkierate, Eigenverbrauch, SOC-Verlauf, Lade-/Entladeenergie und Batteriedeckung.
 
 **OIDs:** `autarkyRate`, `selfConsumptionRate`, `dayMaxSoc`, `dayMinSoc`, `essDailyChargeEnergy`, `essDailyDischargeEnergy`, `batteryCoverageToday`, `batteryDailyChargeTime`
+
+![Energiestatistiken](img/widget-statistiken.png)
 
 ### AC-Lader (Sigen EVAC)
 Überwachung und Steuerung des Sigenergy AC-Laders (EVAC). Zeigt Ladeleistung, Systemzustand, Nennleistung, Nennstrom und Gesamtenergieverbrauch. Alarme werden farblich hervorgehoben. Der Ladestrom lässt sich per Schieberegler (6–32 A) direkt einstellen.
 
 **OIDs:** `acCharger.systemState`, `acCharger.chargingPower`, `acCharger.totalEnergyConsumed`, `acCharger.ratedPower`, `acCharger.ratedCurrent`, `acCharger.alarm1/2/3`, `acCharger.control.startStop`, `acCharger.control.outputCurrent`
 
+![AC-Lader](img/widget-ac-charger.png)
+
 ### DC-Lader
 Überwachung und Steuerung des Sigenergy DC-Laders. Zeigt Ausgangsleistung, Fahrzeug-SOC mit Fortschrittsbalken, Fahrzeugspannung, Ladestrom sowie Energie und Dauer der aktuellen Ladesitzung.
 
 **OIDs:** `dcCharger.outputPower`, `dcCharger.vehicleSoc`, `dcCharger.vehicleBatteryVoltage`, `dcCharger.chargingCurrent`, `dcCharger.currentChargingCapacity`, `dcCharger.currentChargingDuration`, `dcCharger.control.startStop`
+
+![DC-Lader](img/widget-dc-charger.png)
 
 ### Inverter
 Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Zeigt Betriebs­zustand, Leistungsdaten, Batterietemperaturen, Phasenspannungen, alle 5 Alarm-Register sowie Geräteinformationen (Modell, Seriennummer, Firmware).
@@ -76,6 +88,8 @@ Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Ze
 | **Netz** | Phasenspannungen L1/L2/L3, Netzfrequenz, Leistungsfaktor, PCS-Innentemperatur |
 | **Alarme** | 5 Alarm-Register (PCS ×2, ESS, Gateway, DC-Lader) mit Hex-Code und Farbmarkierung |
 | **Info** | Modelltyp, Seriennummer, Firmware-Version, Remote-EMS-Toggle |
+
+![Inverter](img/widget-inverter.png)
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
