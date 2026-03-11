@@ -99,6 +99,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.2.4 (2026-03-11)
+* `common.mode` auf `none` geändert
+
 ### 1.2.3 (2026-03-11)
 * `common.mode` auf `once` geändert
 
