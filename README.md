@@ -99,6 +99,17 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.2.1 (2026-03-11)
+* Korrektur README.md
+
+### 1.2.0 (2026-03-11)
+* README: Widget-Screenshots für alle 7 Widgets ergänzt
+* `img/` Ordner mit Screenshots in `package.json` files aufgenommen
+
+### 1.1.9 (2026-03-11)
+* Energiefluss-Widget: Batterie-Pfeilkopf korrigiert — Laden zeigt zur Batterie (marker-start-reverse), Entladen zur Mitte (marker-end)
+* CSS: `@keyframes sig-dash-reverse` und Klasse `.active.reverse` für umgekehrte Pfadanimation ergänzt
+
 ### 1.1.8 (2026-03-11)
 * Energiefluss-Widget: Batterie-Pfeilrichtung korrigiert (Laden vs. Entladen war vertauscht)
 
