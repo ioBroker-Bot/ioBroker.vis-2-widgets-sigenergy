@@ -148,6 +148,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<defs>' +
             '<marker id="mPv_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f39c12"/></marker>' +
             '<marker id="mBat_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
+            '<marker id="mBatRev_'+ w + '" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
             '<marker id="mGrid_' + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
             '<marker id="mHouse_'+ w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
             '</defs>' +
@@ -219,12 +220,23 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                     else                           el.classList.remove("active");
                 }
             }
-            // Batterie-Richtung: Pfad ist Battery→Mitte (= Entladen, bat < 0).
-            // Bei bat > 0 (Laden) Animation umkehren → Pfeil zeigt Mitte→Battery
+            // Batterie-Richtung:
+            // Pfad: Battery(242,63)→Mitte(158,125)
+            // bat < 0 = Entladen: Energie fließt Battery→Mitte → marker-end (Pfeil an Mitte), normale Animation
+            // bat > 0 = Laden:    Energie fließt Mitte→Battery → marker-start-reverse (Pfeil an Battery), reverse Animation
             var batEl = B._el("sig_path_bat_" + w);
             if (batEl) {
-                if (bat > 0.05) batEl.classList.add("reverse");
-                else            batEl.classList.remove("reverse");
+                if (bat > 0.05) {
+                    // Laden: Pfeil zeigt zur Batterie
+                    batEl.setAttribute("marker-start", "url(#mBatRev_" + w + ")");
+                    batEl.removeAttribute("marker-end");
+                    batEl.classList.add("reverse");
+                } else {
+                    // Entladen oder inaktiv: Pfeil zeigt zur Mitte
+                    batEl.setAttribute("marker-end", "url(#mBat_" + w + ")");
+                    batEl.removeAttribute("marker-start");
+                    batEl.classList.remove("reverse");
+                }
             }
         }
         B._subscribe(widgetID, data, ["oid_pv", "oid_bat", "oid_grid", "oid_house", "oid_soc"], update);
