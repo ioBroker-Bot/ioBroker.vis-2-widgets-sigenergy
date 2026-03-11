@@ -85,6 +85,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.1.8 (2026-03-11)
+* Energiefluss-Widget: Batterie-Pfeilrichtung korrigiert (Laden vs. Entladen war vertauscht)
+
 ### 1.1.7 (2026-03-10)
 * W1084 behoben: veraltetes `common.title` entfernt
 

@@ -26,7 +26,8 @@
 }
 .sig-ef-svg-wrap { flex: 1; min-height: 0; }
 .sig-ef-svg-wrap svg { width: 100%; height: 100%; }
-@keyframes sig-dash { to { stroke-dashoffset: -24; } }
+@keyframes sig-dash         { to { stroke-dashoffset: -24; } }
+@keyframes sig-dash-reverse { to { stroke-dashoffset:  24; } }
 .sig-flow-path {
     fill: none; stroke-width: 2.5;
     stroke-dasharray: 8, 4;
@@ -37,6 +38,9 @@
 .sig-flow-path.active {
     opacity: 1;
     animation: sig-dash 0.9s linear infinite;
+}
+.sig-flow-path.active.reverse {
+    animation: sig-dash-reverse 0.9s linear infinite;
 }
 .pv-color    { stroke: #f39c12; }
 .bat-color   { stroke: #9b59b6; }

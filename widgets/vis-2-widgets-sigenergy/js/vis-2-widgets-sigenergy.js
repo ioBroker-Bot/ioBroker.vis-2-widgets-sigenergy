@@ -219,6 +219,13 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                     else                           el.classList.remove("active");
                 }
             }
+            // Batterie-Richtung: Pfad ist Battery→Mitte (= Entladen, bat < 0).
+            // Bei bat > 0 (Laden) Animation umkehren → Pfeil zeigt Mitte→Battery
+            var batEl = B._el("sig_path_bat_" + w);
+            if (batEl) {
+                if (bat > 0.05) batEl.classList.add("reverse");
+                else            batEl.classList.remove("reverse");
+            }
         }
         B._subscribe(widgetID, data, ["oid_pv", "oid_bat", "oid_grid", "oid_house", "oid_soc"], update);
         update();
