@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-2-widgets-sigenergy",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Widgets for Sigenergy",
   "author": {
     "name": "ssbingo",
@@ -32,7 +32,8 @@
   },
   "main": "widgets/vis-2-widgets-sigenergy.html",
   "files": [
-    "admin/", "doc/",
+    "admin/",
+    "doc/",
     "img/",
     "widgets/**/!(tsconfig|tsconfig.*|.eslintrc).json",
     "widgets/**/*.{html,css,png,svg,jpg,js}",
