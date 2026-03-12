@@ -155,8 +155,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
             // ── Animierte Flusspfade ──────────────────────────────────────
             '<path id="sig_path_pv_'   + w + '" class="sig-flow-path pv-color"    d="M58,63  Q58,125  142,125" marker-end="url(#mPv_'   + w + ')"/>' +
-            '<path id="sig_path_bat_dis_' + w + '" class="sig-flow-path bat-color"   d="M242,75 Q242,125 158,125" marker-end="url(#mBat_' + w + ')"/>' +
-            '<path id="sig_path_bat_chg_' + w + '" class="sig-flow-path bat-color"   d="M158,125 Q242,125 242,75"  marker-end="url(#mBat_' + w + ')"/>' +
+            '<path id="sig_path_bat_dis_' + w + '" class="sig-flow-path bat-color"   d="M242,71 Q242,125 158,125" marker-end="url(#mBat_' + w + ')"/>' +
+            '<path id="sig_path_bat_chg_' + w + '" class="sig-flow-path bat-color"   d="M158,125 Q242,125 242,71"  marker-end="url(#mBat_' + w + ')"/>' +
             '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125"/>' +
             '<path id="sig_path_house_'+ w + '" class="sig-flow-path house-color" d="M158,125 Q242,125 242,191" marker-end="url(#mHouse_'+ w + ')"/>' +
 
