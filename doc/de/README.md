@@ -1,16 +1,16 @@
-![Logo](admin/vis-2-widgets-sigenergy.png)
+![Logo](../../admin/vis-2-widgets-sigenergy.png)
 # ioBroker.vis-2-widgets-sigenergy
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.vis-2-widgets-sigenergy.svg)](https://www.npmjs.com/package/iobroker.vis-2-widgets-sigenergy)
+[![NPM-Version](https://img.shields.io/npm/v/iobroker.vis-2-widgets-sigenergy.svg)](https://www.npmjs.com/package/iobroker.vis-2-widgets-sigenergy)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.vis-2-widgets-sigenergy.svg)](https://www.npmjs.com/package/iobroker.vis-2-widgets-sigenergy)
-![Number of Installations](https://iobroker.live/badges/vis-2-widgets-sigenergy-installed.svg)
-![Current version in stable repository](https://iobroker.live/badges/vis-2-widgets-sigenergy-stable.svg)
+![Anzahl Installationen](https://iobroker.live/badges/vis-2-widgets-sigenergy-installed.svg)
+![Aktuelle Version im Stable-Repository](https://iobroker.live/badges/vis-2-widgets-sigenergy-stable.svg)
 
 [![NPM](https://nodei.co/npm/iobroker.vis-2-widgets-sigenergy.png?downloads=true)](https://nodei.co/npm/iobroker.vis-2-widgets-sigenergy/)
 
-**Tests:** ![Test and Release](https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/workflows/Test%20and%20Release/badge.svg)
+**Tests:** ![Test und Release](https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/workflows/Test%20and%20Release/badge.svg)
 
-## vis-2-widgets-sigenergy adapter for ioBroker
+## vis-2-widgets-sigenergy Adapter für ioBroker
 
 VIS-2 Widget-Set für den Sigenergy-Energiespeicher-Adapter (`ioBroker.sigenergy`).
 Enthält 7 Widgets zur Visualisierung und Steuerung von Energiefluss, Batteriestatus, Echtzeit-Leistung, Tagesstatistiken, AC-Lader, DC-Lader und Inverter.
@@ -41,45 +41,54 @@ Fließende Pfeile visualisieren aktive Verbindungen in Echtzeit.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
-![Energiefluss-Diagramm](img/widget-energiefluss.png)
+![Energiefluss-Diagramm](../../img/widget-energiefluss.png)
+
+#### Flussrichtungen
+
+| Datenpunkt | Wert > 0 | Wert < 0 |
+|---|---|---|
+| `essPower` | Batterie wird geladen → Pfeil von Mitte zur Batterie | Batterie entlädt → Pfeil von Batterie zur Mitte |
+| `gridActivePower` | Netzbezug → Pfeil vom Netz zur Mitte | Einspeisung → Pfeil von Mitte zum Netz |
+| `pvPower` | PV erzeugt → Pfeil von PV zur Mitte | — |
+| `housePower` | Haus verbraucht → Pfeil von Mitte zum Haus | — |
 
 ### Akku-Status & Prognosen
 Zeigt SOC, SOH, Ladeleistung sowie Prognosen für Ladezeit, Restlaufzeit, Eigenverbrauch und Autarkierate.
 
 **OIDs:** `essSoc`, `essSoh`, `essPower`, `batteryTimeToFull`, `batteryTimeRemaining`, `selfConsumptionRate`, `autarkyRate`
 
-![Akku-Status & Prognosen](img/widget-batterie.png)
+![Akku-Status & Prognosen](../../img/widget-batterie.png)
 
 ### Echtzeit-Leistung
 Kompakte Listenansicht aller aktuellen Leistungswerte mit farbkodierter Richtungsanzeige.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
-![Echtzeit-Leistung](img/widget-leistung.png)
+![Echtzeit-Leistung](../../img/widget-leistung.png)
 
 ### Energiestatistiken
 Tagesübersicht mit Autarkierate, Eigenverbrauch, SOC-Verlauf, Lade-/Entladeenergie und Batteriedeckung.
 
 **OIDs:** `autarkyRate`, `selfConsumptionRate`, `dayMaxSoc`, `dayMinSoc`, `essDailyChargeEnergy`, `essDailyDischargeEnergy`, `batteryCoverageToday`, `batteryDailyChargeTime`
 
-![Energiestatistiken](img/widget-statistiken.png)
+![Energiestatistiken](../../img/widget-statistiken.png)
 
 ### AC-Lader (Sigen EVAC)
 Überwachung und Steuerung des Sigenergy AC-Laders (EVAC). Zeigt Ladeleistung, Systemzustand, Nennleistung, Nennstrom und Gesamtenergieverbrauch. Alarme werden farblich hervorgehoben. Der Ladestrom lässt sich per Schieberegler (6–32 A) direkt einstellen.
 
 **OIDs:** `acCharger.systemState`, `acCharger.chargingPower`, `acCharger.totalEnergyConsumed`, `acCharger.ratedPower`, `acCharger.ratedCurrent`, `acCharger.alarm1/2/3`, `acCharger.control.startStop`, `acCharger.control.outputCurrent`
 
-![AC-Lader](img/widget-ac-charger.png)
+![AC-Lader](../../img/widget-ac-charger.png)
 
 ### DC-Lader
 Überwachung und Steuerung des Sigenergy DC-Laders. Zeigt Ausgangsleistung, Fahrzeug-SOC mit Fortschrittsbalken, Fahrzeugspannung, Ladestrom sowie Energie und Dauer der aktuellen Ladesitzung.
 
 **OIDs:** `dcCharger.outputPower`, `dcCharger.vehicleSoc`, `dcCharger.vehicleBatteryVoltage`, `dcCharger.chargingCurrent`, `dcCharger.currentChargingCapacity`, `dcCharger.currentChargingDuration`, `dcCharger.control.startStop`
 
-![DC-Lader](img/widget-dc-charger.png)
+![DC-Lader](../../img/widget-dc-charger.png)
 
 ### Inverter
-Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Zeigt Betriebs­zustand, Leistungsdaten, Batterietemperaturen, Phasenspannungen, alle 5 Alarm-Register sowie Geräteinformationen (Modell, Seriennummer, Firmware).
+Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Zeigt Betriebszustand, Leistungsdaten, Batterietemperaturen, Phasenspannungen, alle 5 Alarm-Register sowie Geräteinformationen (Modell, Seriennummer, Firmware).
 
 | Tab | Inhalt |
 |---|---|
@@ -89,14 +98,13 @@ Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Ze
 | **Alarme** | 5 Alarm-Register (PCS ×2, ESS, Gateway, DC-Lader) mit Hex-Code und Farbmarkierung |
 | **Info** | Modelltyp, Seriennummer, Firmware-Version, Remote-EMS-Toggle |
 
-![Inverter](img/widget-inverter.png)
+![Inverter](../../img/widget-inverter.png)
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
 ## Darstellung
 
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
-
 
 ## Changelog
 ### 1.3.2 (2026-03-12)
@@ -127,7 +135,7 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 * `common.mode` auf `once` geändert
 
 ### 1.2.2 (2026-03-11)
-* fixes
+* Korrekturen
 
 ### 1.2.1 (2026-03-11)
 * Korrektur README.md
@@ -137,8 +145,7 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 * `img/` Ordner mit Screenshots in `package.json` files aufgenommen
 
 ### 1.1.9 (2026-03-11)
-* Energiefluss-Widget: Batterie-Pfeilkopf korrigiert — Laden zeigt zur Batterie (marker-start-reverse), Entladen zur Mitte (marker-end)
-* CSS: `@keyframes sig-dash-reverse` und Klasse `.active.reverse` für umgekehrte Pfadanimation ergänzt
+* Energiefluss-Widget: Batterie-Pfeilkopf korrigiert — Laden zeigt zur Batterie, Entladen zur Mitte
 
 ### 1.1.8 (2026-03-11)
 * Energiefluss-Widget: Batterie-Pfeilrichtung korrigiert (Laden vs. Entladen war vertauscht)
@@ -147,7 +154,7 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 * W1084 behoben: veraltetes `common.title` entfernt
 
 ### 1.1.6 (2026-03-10)
-* `title`: "SigenEnergy Widgets" in io-package.json ergänzt
+* `title`: „SigenEnergy Widgets" in io-package.json ergänzt
 
 ### 1.1.5 (2026-03-10)
 * `vis` zu `restartAdapters` in io-package.json ergänzt
@@ -165,16 +172,16 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 * E1012 behoben: `icon` = Dateiname, `extIcon` = identische GitHub-Raw-URL
 
 ### 1.1.0 (2026-03-10)
-* Icon als Base64-Data-URI in io-package.json eingebettet — unabhängig von Admin-Ordner-Serving
+* Icon als Base64-Data-URI in io-package.json eingebettet
 
 ### 1.0.9 (2026-03-10)
-* Icon-Auflösung auf 512×512 px korrigiert (war 64×64 px)
+* Icon-Auflösung auf 512×512 px korrigiert
 
 ### 1.0.8 (2026-03-10)
 * `extIcon` auf GitHub-Raw-URL korrigiert (E1012)
 
 ### 1.0.7 (2026-03-10)
-* Icon-Einbindung korrigiert: `icon` als Dateiname, `extIcon` als Base64-URI
+* Icon-Einbindung korrigiert
 
 ### 1.0.6 (2026-03-10)
 * Sigenergy-Logo als Adapter-Icon hinterlegt
@@ -194,34 +201,32 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 * (ssbingo) Echtzeit-Leistung Widget
 * (ssbingo) Energiestatistiken Widget
 
-## License
+## Lizenz
 MIT License
 
 Copyright (c) 2026 ssbingo <s.sternitzke@online.de>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen
+Dokumentationen (die „Software") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu nutzen,
+inklusive und ohne Ausnahme mit dem Recht, sie zu verwenden, zu kopieren, zu verändern,
+zusammenzuführen, zu veröffentlichen, zu verbreiten, zu unterlizenzieren und/oder zu verkaufen,
+und Personen, denen diese Software überlassen wird, diese Rechte zu verschaffen, unter den
+folgenden Bedingungen:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen Kopien oder
+wesentlichen Teilen der Software beizulegen.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT,
+EINSCHLIEẞLICH DER GARANTIE ZUR BENUTZBARKEIT, EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND
+NICHTVERLETZUNG. IN KEINEM FALL SIND DIE AUTOREN ODER COPYRIGHTINHABER FÜR EINEN SCHADEN
+ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFÜLLUNG EINES VERTRAGES,
+EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER VERWENDUNG
+DER SOFTWARE ENTSTANDEN.
 
+## Dokumentation
 
-## Documentation
-
-- 🇬🇧 [English](README.md) — this file
-- 🇩🇪 [Deutsch](doc/de/README.md)
-- 🇷🇺 [Русский](doc/ru/README.md)
-- 🇳🇱 [Nederlands](doc/nl/README.md)
-- 🇫🇷 [Français](doc/fr/README.md)
+- 🇩🇪 [Deutsch](../../doc/de/README.md) — diese Datei
+- 🇬🇧 [English](../../README.md)
+- 🇷🇺 [Русский](../../doc/ru/README.md)
+- 🇳🇱 [Nederlands](../../doc/nl/README.md)
+- 🇫🇷 [Français](../../doc/fr/README.md)

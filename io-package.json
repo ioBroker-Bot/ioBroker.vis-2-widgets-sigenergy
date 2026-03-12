@@ -1,88 +1,101 @@
 {
-    "common": {
-        "name": "vis-2-widgets-sigenergy",
-        "version": "1.3.0",
-        "news": {
-            "1.3.0": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "titleLang": {
-            "en": "Vis 2 Widgets Sigenergy",
-            "de": "Vis 2 Widgets Sigenergy",
-            "ru": "Виджеты Vis 2",
-            "pt": "Vis 2 Widgets Sigenergy",
-            "nl": "Vis 2 Widgets Sigenergy",
-            "fr": "Vis 2 Widgets Sigénergie",
-            "it": "Visualizza 2 widget Sigenergy",
-            "es": "Vis 2 Widgets Sigenergía",
-            "pl": "Vis 2 Widżety Sigenergy",
-            "uk": "Віджети Vis 2 Sigenergy",
-            "zh-cn": "Vis 2 小部件 Sigenergy"
-        },
-        "desc": {
-            "en": "Widgets for Sigenergy",
-            "de": "Widgets für Sigenergy",
-            "ru": "Виджеты для Sigenergy",
-            "pt": "Widgets para Sigenergy",
-            "nl": "Widgets voor Sigenergy",
-            "fr": "Widgets pour Sigenergy",
-            "it": "Widget per Sigenergy",
-            "es": "Widgets para Sigenergy",
-            "pl": "Widżety dla Sigenergy",
-            "uk": "Віджети для Sigenergy",
-            "zh-cn": "Sigenergy 小部件"
-        },
-        "authors": [
-            "ssbingo <s.sternitzke@online.de>"
-        ],
-        "keywords": [
-            "sigenergy",
-            "vis-2"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "vis-2-widgets-sigenergy.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
-        "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
-        "loglevel": "info",
-        "tier": 3,
-        "restartAdapters": [
-            "vis-2",
-            "vis"
-        ],
-        "onlyWWW": true,
-        "singleton": true,
-        "type": "visualization-widgets",
-        "mode": "none",
-        "adminUI": {
-            "config": "none"
-        },
-        "dependencies": [
-            {
-                "vis-2": ">=2.0.0"
-            }
-        ],
-        "globalDependencies": []
+  "common": {
+    "name": "vis-2-widgets-sigenergy",
+    "version": "1.3.2",
+    "news": {
+      "1.3.2": {
+        "en": "Documentation added to README.md - multilingual",
+        "de": "Dokumentation in README.md eingefügt - mehrsprachig",
+        "ru": "Документация добавлена в README.md — многоязычная",
+        "nl": "Documentatie toegevoegd aan README.md — meertalig",
+        "fr": "Documentation ajoutée dans README.md — multilingue",
+        "it": "Documentazione aggiunta in README.md — multilingue",
+        "es": "Documentación añadida en README.md — multilingüe",
+        "pl": "Dokumentacja dodana do README.md — wielojęzyczna",
+        "pt": "Documentação adicionada ao README.md — multilíngue",
+        "uk": "Документацію додано до README.md — багатомовна",
+        "zh-cn": "文档已添加到 README.md — 多语言"
+      },
+      "1.3.1": {
+        "en": "Documentation added: German README under doc/de/README.md",
+        "de": "Dokumentation ergänzt: Deutsche README unter doc/de/README.md",
+        "ru": "Добавлена документация: немецкий README в doc/de/README.md",
+        "nl": "Documentatie toegevoegd: Duitse README in doc/de/README.md",
+        "fr": "Documentation ajoutée : README allemand sous doc/de/README.md",
+        "it": "Documentazione aggiunta: README tedesco in doc/de/README.md",
+        "es": "Documentación añadida: README alemán en doc/de/README.md",
+        "pl": "Dodano dokumentację: README po niemiecku w doc/de/README.md",
+        "pt": "Documentação adicionada: README alemão em doc/de/README.md",
+        "uk": "Додано документацію: README німецькою мовою в doc/de/README.md",
+        "zh-cn": "添加文档：doc/de/README.md 中的德语 README"
+      }
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
+    "titleLang": {
+      "en": "Vis 2 Widgets Sigenergy",
+      "de": "Vis 2 Widgets Sigenergy",
+      "ru": "Виджеты Vis 2",
+      "pt": "Vis 2 Widgets Sigenergy",
+      "nl": "Vis 2 Widgets Sigenergy",
+      "fr": "Vis 2 Widgets Sigénergie",
+      "it": "Visualizza 2 widget Sigenergy",
+      "es": "Vis 2 Widgets Sigenergía",
+      "pl": "Vis 2 Widżety Sigenergy",
+      "uk": "Віджети Vis 2 Sigenergy",
+      "zh-cn": "Vis 2 小部件 Sigenergy"
     },
-    "objects": [],
-    "instanceObjects": []
+    "desc": {
+      "en": "Widgets for Sigenergy",
+      "de": "Widgets für Sigenergy",
+      "ru": "Виджеты для Sigenergy",
+      "pt": "Widgets para Sigenergy",
+      "nl": "Widgets voor Sigenergy",
+      "fr": "Widgets pour Sigenergy",
+      "it": "Widget per Sigenergy",
+      "es": "Widgets para Sigenergy",
+      "pl": "Widżety dla Sigenergy",
+      "uk": "Віджети для Sigenergy",
+      "zh-cn": "Sigenergy 小部件"
+    },
+    "authors": [
+      "ssbingo <s.sternitzke@online.de>"
+    ],
+    "keywords": [
+      "sigenergy",
+      "vis-2"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "vis-2-widgets-sigenergy.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
+    "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "restartAdapters": [
+      "vis-2",
+      "vis"
+    ],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "mode": "none",
+    "adminUI": {
+      "config": "none"
+    },
+    "dependencies": [
+      {
+        "vis-2": ">=2.0.0"
+      }
+    ],
+    "globalDependencies": []
+  },
+  "native": {
+    "option1": true,
+    "option2": "42"
+  },
+  "objects": [],
+  "instanceObjects": []
 }
