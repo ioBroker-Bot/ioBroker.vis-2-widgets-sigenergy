@@ -149,14 +149,15 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<marker id="mPv_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f39c12"/></marker>' +
             '<marker id="mBat_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
             '<marker id="mBatRev_'+ w + '" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
-            '<marker id="mGrid_' + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
-            '<marker id="mHouse_'+ w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
+            '<marker id="mGrid_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
+            '<marker id="mGridRev_'+ w + '" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
+            '<marker id="mHouse_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
             '</defs>' +
 
             // ── Animierte Flusspfade ──────────────────────────────────────
             '<path id="sig_path_pv_'   + w + '" class="sig-flow-path pv-color"    d="M58,63  Q58,125  142,125" marker-end="url(#mPv_'   + w + ')"/>' +
             '<path id="sig_path_bat_'  + w + '" class="sig-flow-path bat-color"   d="M242,63 Q242,125 158,125" marker-end="url(#mBat_'  + w + ')"/>' +
-            '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125" marker-end="url(#mGrid_' + w + ')"/>' +
+            '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125"/>' +
             '<path id="sig_path_house_'+ w + '" class="sig-flow-path house-color" d="M158,125 Q242,125 242,191" marker-end="url(#mHouse_'+ w + ')"/>' +
 
             // ── Hub-Kreis Mitte ───────────────────────────────────────────
@@ -220,22 +221,38 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                     else                           el.classList.remove("active");
                 }
             }
-            // Batterie-Richtung:
-            // Pfad: Battery(242,63)→Mitte(158,125)
-            // bat > 0 = Entladen: Energie fließt Battery→Mitte → marker-end (Pfeil zeigt zur Mitte), normale Animation
-            // bat < 0 = Laden:    Energie fließt Mitte→Battery → marker-start-reverse (Pfeil zeigt zur Batterie), reverse Animation
+            // Batterie-Richtung (essPower):
+            // bat > 0 = Laden:    Energie fließt Mitte→Battery → reverse Animation, Pfeil zur Batterie
+            // bat < 0 = Entladen: Energie fließt Battery→Mitte → normale Animation, Pfeil zur Mitte
             var batEl = B._el("sig_path_bat_" + w);
             if (batEl) {
-                if (bat < -0.05) {
-                    // Laden: Pfeil zeigt zur Batterie
+                if (bat > 0.05) {
+                    // Laden: Pfeil zeigt zur Batterie, Animation rückwärts
                     batEl.setAttribute("marker-start", "url(#mBatRev_" + w + ")");
                     batEl.removeAttribute("marker-end");
                     batEl.classList.add("reverse");
                 } else {
-                    // Entladen oder inaktiv: Pfeil zeigt zur Mitte
+                    // Entladen: Pfeil zeigt zur Mitte, Animation vorwärts
                     batEl.setAttribute("marker-end", "url(#mBat_" + w + ")");
                     batEl.removeAttribute("marker-start");
                     batEl.classList.remove("reverse");
+                }
+            }
+            // Netz-Richtung (gridActivePower):
+            // grid > 0 = Einspeisung: Energie fließt Mitte→Netz → reverse Animation, Pfeil zum Netz
+            // grid < 0 = Netzbezug:   Energie fließt Netz→Mitte → normale Animation, Pfeil zur Mitte
+            var gridEl = B._el("sig_path_grid_" + w);
+            if (gridEl) {
+                if (grid > 0.05) {
+                    // Einspeisung: Pfeil zeigt zum Netz, Animation rückwärts
+                    gridEl.setAttribute("marker-start", "url(#mGridRev_" + w + ")");
+                    gridEl.removeAttribute("marker-end");
+                    gridEl.classList.add("reverse");
+                } else {
+                    // Netzbezug: Pfeil zeigt zur Mitte, Animation vorwärts
+                    gridEl.setAttribute("marker-end", "url(#mGrid_" + w + ")");
+                    gridEl.removeAttribute("marker-start");
+                    gridEl.classList.remove("reverse");
                 }
             }
         }
