@@ -99,6 +99,10 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.2.8 (2026-03-12)
+* Energiefluss-Widget: Batterie-Pfeil beim Laden unterhalb der Ziffern positioniert
+* Energiefluss-Widget: Schriftgröße der Wertangaben von 10.5 auf 12.5 erhöht
+
 ### 1.2.7 (2026-03-12)
 * Energiefluss-Widget: Batterie-Richtung komplett neu – zwei separate Pfade (Laden/Entladen) ersetzen fehlerhaftes auto-start-reverse
 

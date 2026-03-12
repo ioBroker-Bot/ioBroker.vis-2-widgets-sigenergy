@@ -155,8 +155,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
             // ── Animierte Flusspfade ──────────────────────────────────────
             '<path id="sig_path_pv_'   + w + '" class="sig-flow-path pv-color"    d="M58,63  Q58,125  142,125" marker-end="url(#mPv_'   + w + ')"/>' +
-            '<path id="sig_path_bat_dis_' + w + '" class="sig-flow-path bat-color"   d="M242,63 Q242,125 158,125" marker-end="url(#mBat_' + w + ')"/>' +
-            '<path id="sig_path_bat_chg_' + w + '" class="sig-flow-path bat-color"   d="M158,125 Q242,125 242,63"  marker-end="url(#mBat_' + w + ')"/>' +
+            '<path id="sig_path_bat_dis_' + w + '" class="sig-flow-path bat-color"   d="M242,75 Q242,125 158,125" marker-end="url(#mBat_' + w + ')"/>' +
+            '<path id="sig_path_bat_chg_' + w + '" class="sig-flow-path bat-color"   d="M158,125 Q242,125 242,75"  marker-end="url(#mBat_' + w + ')"/>' +
             '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125"/>' +
             '<path id="sig_path_house_'+ w + '" class="sig-flow-path house-color" d="M158,125 Q242,125 242,191" marker-end="url(#mHouse_'+ w + ')"/>' +
 
@@ -167,22 +167,22 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             // ── Solar PV  (oben-links, Knotenmitte 58, 42) ───────────────
             '<text x="58" y="28"  text-anchor="middle" dominant-baseline="central" font-size="20" fill="#f39c12">&#9728;</text>' +
             '<text x="58" y="45"  text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Solar PV</text>' +
-            '<text id="sig_ef_pv_'   + w + '" x="58" y="57" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#f39c12">-- kW</text>' +
+            '<text id="sig_ef_pv_'   + w + '" x="58" y="57" text-anchor="middle" dominant-baseline="central" font-size="12.5" font-weight="700" fill="#f39c12">-- kW</text>' +
 
             // ── Batterie  (oben-rechts, Knotenmitte 242, 42) ─────────────
             '<text id="sig_ef_baticon_'+ w + '" x="242" y="28" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#9b59b6">&#128267;</text>' +
             '<text x="242" y="45" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Batterie</text>' +
-            '<text id="sig_ef_bat_'  + w + '" x="242" y="57" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#9b59b6">-- kW</text>' +
+            '<text id="sig_ef_bat_'  + w + '" x="242" y="57" text-anchor="middle" dominant-baseline="central" font-size="12.5" font-weight="700" fill="#9b59b6">-- kW</text>' +
 
             // ── Netz  (unten-links, Knotenmitte 58, 208) ─────────────────
             '<text x="58" y="197" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#3498db">&#128268;</text>' +
             '<text x="58" y="214" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Netz</text>' +
-            '<text id="sig_ef_grid_' + w + '" x="58" y="226" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#3498db">-- kW</text>' +
+            '<text id="sig_ef_grid_' + w + '" x="58" y="226" text-anchor="middle" dominant-baseline="central" font-size="12.5" font-weight="700" fill="#3498db">-- kW</text>' +
 
             // ── Haus  (unten-rechts, Knotenmitte 242, 208) ───────────────
             '<text x="242" y="197" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#27ae60">&#127968;</text>' +
             '<text x="242" y="214" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Haus</text>' +
-            '<text id="sig_ef_house_'+ w + '" x="242" y="226" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#27ae60">-- kW</text>' +
+            '<text id="sig_ef_house_'+ w + '" x="242" y="226" text-anchor="middle" dominant-baseline="central" font-size="12.5" font-weight="700" fill="#27ae60">-- kW</text>' +
 
             '</svg>';
 
