@@ -99,6 +99,10 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.3.0 (2026-03-12)
+* Energiefluss-Widget: Netz-Animation auf zwei separate Pfade umgestellt (Netzbezug/Einspeisung)
+* Energiefluss-Widget: auto-start-reverse vollständig entfernt – alle Richtungen über separate Pfade
+
 ### 1.2.9 (2026-03-12)
 * Energiefluss-Widget: Batterie-Pfad Ankerpunkt y=75 → y=71
 

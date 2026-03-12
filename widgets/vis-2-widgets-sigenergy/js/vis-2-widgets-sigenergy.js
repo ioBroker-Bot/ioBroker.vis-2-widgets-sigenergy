@@ -149,15 +149,15 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<marker id="mPv_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f39c12"/></marker>' +
             '<marker id="mBat_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
             '<marker id="mGrid_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
-            '<marker id="mGridRev_'+ w + '" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
-            '<marker id="mHouse_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
+                        '<marker id="mHouse_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
             '</defs>' +
 
             // ── Animierte Flusspfade ──────────────────────────────────────
             '<path id="sig_path_pv_'   + w + '" class="sig-flow-path pv-color"    d="M58,63  Q58,125  142,125" marker-end="url(#mPv_'   + w + ')"/>' +
             '<path id="sig_path_bat_dis_' + w + '" class="sig-flow-path bat-color"   d="M242,71 Q242,125 158,125" marker-end="url(#mBat_' + w + ')"/>' +
             '<path id="sig_path_bat_chg_' + w + '" class="sig-flow-path bat-color"   d="M158,125 Q242,125 242,71"  marker-end="url(#mBat_' + w + ')"/>' +
-            '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125"/>' +
+            '<path id="sig_path_grid_buy_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125" marker-end="url(#mGrid_' + w + ')"/>' +
+            '<path id="sig_path_grid_exp_' + w + '" class="sig-flow-path grid-color"  d="M142,125 Q58,125  58,191"  marker-end="url(#mGrid_' + w + ')"/>' +
             '<path id="sig_path_house_'+ w + '" class="sig-flow-path house-color" d="M158,125 Q242,125 242,191" marker-end="url(#mHouse_'+ w + ')"/>' +
 
             // ── Hub-Kreis Mitte ───────────────────────────────────────────
@@ -212,8 +212,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             B._css("sig_ef_baticon_" + w, "fill", B._socCol(soc));
 
             // Pfade aktivieren/deaktivieren → startet/stoppt CSS-Dash-Animation
-            var paths = ["pv", "grid", "house"];
-            var vals  = [pv, grid, hous];
+            var paths = ["pv", "house"];
+            var vals  = [pv, hous];
             for (var i = 0; i < paths.length; i++) {
                 var el = B._el("sig_path_" + paths[i] + "_" + w);
                 if (el) {
@@ -241,21 +241,24 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                     batChg.classList.remove("active");
                 }
             }
-            // Netz-Richtung (gridActivePower):
-            // grid > 0 = Einspeisung: Energie fließt Mitte→Netz → reverse Animation, Pfeil zum Netz
-            // grid < 0 = Netzbezug:   Energie fließt Netz→Mitte → normale Animation, Pfeil zur Mitte
-            var gridEl = B._el("sig_path_grid_" + w);
-            if (gridEl) {
+            // Netz – zwei separate Pfade je Richtung:
+            // sig_path_grid_buy: Netz→Mitte  (Netzbezug,    grid > 0)
+            // sig_path_grid_exp: Mitte→Netz  (Einspeisung,  grid < 0)
+            var gridBuy = B._el("sig_path_grid_buy_" + w);
+            var gridExp = B._el("sig_path_grid_exp_" + w);
+            if (gridBuy && gridExp) {
                 if (grid > 0.05) {
-                    // Einspeisung: Pfeil zeigt zum Netz, Animation rückwärts
-                    gridEl.setAttribute("marker-start", "url(#mGridRev_" + w + ")");
-                    gridEl.removeAttribute("marker-end");
-                    gridEl.classList.add("reverse");
+                    // Netzbezug: Netz→Mitte aktiv
+                    gridBuy.classList.add("active");
+                    gridExp.classList.remove("active");
+                } else if (grid < -0.05) {
+                    // Einspeisung: Mitte→Netz aktiv
+                    gridExp.classList.add("active");
+                    gridBuy.classList.remove("active");
                 } else {
-                    // Netzbezug: Pfeil zeigt zur Mitte, Animation vorwärts
-                    gridEl.setAttribute("marker-end", "url(#mGrid_" + w + ")");
-                    gridEl.removeAttribute("marker-start");
-                    gridEl.classList.remove("reverse");
+                    // Inaktiv: beide aus
+                    gridBuy.classList.remove("active");
+                    gridExp.classList.remove("active");
                 }
             }
         }
