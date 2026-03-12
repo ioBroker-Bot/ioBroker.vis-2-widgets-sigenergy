@@ -148,7 +148,6 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<defs>' +
             '<marker id="mPv_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f39c12"/></marker>' +
             '<marker id="mBat_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
-            '<marker id="mBatRev_'+ w + '" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#9b59b6"/></marker>' +
             '<marker id="mGrid_'   + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
             '<marker id="mGridRev_'+ w + '" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker>' +
             '<marker id="mHouse_'  + w + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
@@ -156,7 +155,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
             // ── Animierte Flusspfade ──────────────────────────────────────
             '<path id="sig_path_pv_'   + w + '" class="sig-flow-path pv-color"    d="M58,63  Q58,125  142,125" marker-end="url(#mPv_'   + w + ')"/>' +
-            '<path id="sig_path_bat_'  + w + '" class="sig-flow-path bat-color"   d="M242,63 Q242,125 158,125" marker-end="url(#mBat_'  + w + ')"/>' +
+            '<path id="sig_path_bat_dis_' + w + '" class="sig-flow-path bat-color"   d="M242,63 Q242,125 158,125" marker-end="url(#mBat_' + w + ')"/>' +
+            '<path id="sig_path_bat_chg_' + w + '" class="sig-flow-path bat-color"   d="M158,125 Q242,125 242,63"  marker-end="url(#mBat_' + w + ')"/>' +
             '<path id="sig_path_grid_' + w + '" class="sig-flow-path grid-color"  d="M58,191 Q58,125  142,125"/>' +
             '<path id="sig_path_house_'+ w + '" class="sig-flow-path house-color" d="M158,125 Q242,125 242,191" marker-end="url(#mHouse_'+ w + ')"/>' +
 
@@ -212,8 +212,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             B._css("sig_ef_baticon_" + w, "fill", B._socCol(soc));
 
             // Pfade aktivieren/deaktivieren → startet/stoppt CSS-Dash-Animation
-            var paths = ["pv", "bat", "grid", "house"];
-            var vals  = [pv, bat, grid, hous];
+            var paths = ["pv", "grid", "house"];
+            var vals  = [pv, grid, hous];
             for (var i = 0; i < paths.length; i++) {
                 var el = B._el("sig_path_" + paths[i] + "_" + w);
                 if (el) {
@@ -221,21 +221,24 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                     else                           el.classList.remove("active");
                 }
             }
-            // Batterie-Richtung (essPower):
-            // bat > 0 = Laden:    Energie fließt Mitte→Battery → reverse Animation, Pfeil zur Batterie
-            // bat < 0 = Entladen: Energie fließt Battery→Mitte → normale Animation, Pfeil zur Mitte
-            var batEl = B._el("sig_path_bat_" + w);
-            if (batEl) {
-                if (bat > 0.05) {
-                    // Laden: Pfeil zeigt zur Batterie, Animation rückwärts
-                    batEl.setAttribute("marker-start", "url(#mBatRev_" + w + ")");
-                    batEl.removeAttribute("marker-end");
-                    batEl.classList.add("reverse");
+            // Batterie – zwei separate Pfade je Richtung:
+            // sig_path_bat_dis: Battery→Mitte (Entladen, bat < 0)
+            // sig_path_bat_chg: Mitte→Battery (Laden,    bat > 0)
+            var batDis = B._el("sig_path_bat_dis_" + w);
+            var batChg = B._el("sig_path_bat_chg_" + w);
+            if (batDis && batChg) {
+                if (bat < -0.05) {
+                    // Entladen: Entlade-Pfad aktiv, Lade-Pfad inaktiv
+                    batDis.classList.add("active");
+                    batChg.classList.remove("active");
+                } else if (bat > 0.05) {
+                    // Laden: Lade-Pfad aktiv, Entlade-Pfad inaktiv
+                    batChg.classList.add("active");
+                    batDis.classList.remove("active");
                 } else {
-                    // Entladen: Pfeil zeigt zur Mitte, Animation vorwärts
-                    batEl.setAttribute("marker-end", "url(#mBat_" + w + ")");
-                    batEl.removeAttribute("marker-start");
-                    batEl.classList.remove("reverse");
+                    // Inaktiv: beide aus
+                    batDis.classList.remove("active");
+                    batChg.classList.remove("active");
                 }
             }
             // Netz-Richtung (gridActivePower):

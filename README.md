@@ -99,6 +99,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 
 ## Changelog
+### 1.2.7 (2026-03-12)
+* Energiefluss-Widget: Batterie-Richtung komplett neu – zwei separate Pfade (Laden/Entladen) ersetzen fehlerhaftes auto-start-reverse
+
 ### 1.2.6 (2026-03-12)
 * Energiefluss-Widget: Netz-Animation und Pfeil umgekehrt
 * Energiefluss-Widget: Batterie-Animation und Pfeil umgekehrt
