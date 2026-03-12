@@ -107,8 +107,8 @@ Comprehensive monitoring and control of the inverter with tab navigation. Displa
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
-### 1.3.3 (2026-03-12)
-* Main README.md translated to English
+### 1.3.4 (2026-03-12)
+* common.news reduced to current version only (1.3.4)
 
 ### 1.3.2 (2026-03-12)
 * Documentation added to README.md - multilingual (RU, NL, FR)

@@ -107,8 +107,8 @@ Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Ze
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
-### 1.3.3 (2026-03-12)
-* Haupt-README.md auf Englisch übersetzt
+### 1.3.4 (2026-03-12)
+* common.news auf aktuelle Version reduziert (nur 1.3.4)
 
 ### 1.3.2 (2026-03-12)
 * Dokumentation in README.md eingefügt - mehrsprachig (RU, NL, FR)
