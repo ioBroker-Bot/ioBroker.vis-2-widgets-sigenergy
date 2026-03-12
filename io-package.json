@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.3.4",
+    "version": "1.3.5",
     "news": {
-      "1.3.4": {
-        "en": "Removed version 1.3.1 from common.news (E2004)",
-        "de": "Version 1.3.1 aus common.news entfernt (E2004)",
-        "ru": "Версия 1.3.1 удалена из common.news (E2004)",
-        "nl": "Versie 1.3.1 verwijderd uit common.news (E2004)",
-        "fr": "Version 1.3.1 supprimée de common.news (E2004)",
-        "it": "Versione 1.3.1 rimossa da common.news (E2004)",
-        "es": "Versión 1.3.1 eliminada de common.news (E2004)",
-        "pl": "Wersja 1.3.1 usunięta z common.news (E2004)",
-        "pt": "Versão 1.3.1 removida de common.news (E2004)",
-        "uk": "Версію 1.3.1 видалено з common.news (E2004)",
-        "zh-cn": "从 common.news 中删除版本 1.3.1 (E2004)"
+      "1.3.5": {
+        "en": "Documentation added to README.md - multilingual (IT, ES, PL, PT)",
+        "de": "Dokumentation in README.md eingefügt - mehrsprachig (IT, ES, PL, PT)",
+        "ru": "Документация добавлена в README.md — многоязычная (IT, ES, PL, PT)",
+        "nl": "Documentatie toegevoegd aan README.md — meertalig (IT, ES, PL, PT)",
+        "fr": "Documentation ajoutée dans README.md — multilingue (IT, ES, PL, PT)",
+        "it": "Documentazione inserita in README.md - multilingue",
+        "es": "Documentación insertada en README.md - multilingüe",
+        "pl": "Dokumentacja dodana do README.md - wielojęzyczna",
+        "pt": "Documentação inserida em README.md - multilingue",
+        "uk": "Документацію додано до README.md — багатомовна (IT, ES, PL, PT)",
+        "zh-cn": "文档已添加到 README.md — 多语言 (IT, ES, PL, PT)"
       }
     },
     "titleLang": {

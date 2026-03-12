@@ -106,8 +106,8 @@
 Все виджеты поддерживают **светлый и тёмный режим**, переключаемый через настройку виджета `Тёмный режим`.
 
 ## Changelog
-### 1.3.4 (2026-03-12)
-* common.news сокращён до текущей версии (только 1.3.4)
+### 1.3.5 (2026-03-12)
+* common.news сокращён до текущей версии (только 1.3.5)
 
 ### 1.3.2 (2026-03-12)
 * Документация добавлена в README.md — многоязычная (RU, NL, FR)
@@ -232,6 +232,10 @@ Copyright (c) 2026 ssbingo <s.sternitzke@online.de>
 
 - 🇷🇺 [Русский](../../doc/ru/README.md) — этот файл
 - 🇩🇪 [Deutsch](../../doc/de/README.md)
+- 🇬🇧 [English](../../README.md)
 - 🇳🇱 [Nederlands](../../doc/nl/README.md)
 - 🇫🇷 [Français](../../doc/fr/README.md)
-- 🇬🇧 [English](../../README.md)
+- 🇮🇹 [Italiano](../../doc/it/README.md)
+- 🇪🇸 [Español](../../doc/es/README.md)
+- 🇵🇱 [Polski](../../doc/pl/README.md)
+- 🇵🇹 [Português](../../doc/pt/README.md)

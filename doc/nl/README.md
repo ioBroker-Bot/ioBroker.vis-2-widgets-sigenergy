@@ -106,8 +106,8 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
-### 1.3.4 (2026-03-12)
-* common.news gereduceerd tot huidige versie (alleen 1.3.4)
+### 1.3.5 (2026-03-12)
+* common.news gereduceerd tot huidige versie (alleen 1.3.5)
 
 ### 1.3.2 (2026-03-12)
 * Documentatie toegevoegd aan README.md — meertalig (RU, NL, FR)
@@ -232,6 +232,10 @@ VOOR EEN BEPAALD DOEL EN NIET-INBREUK.
 
 - 🇳🇱 [Nederlands](../../doc/nl/README.md) — dit bestand
 - 🇩🇪 [Deutsch](../../doc/de/README.md)
+- 🇬🇧 [English](../../README.md)
 - 🇷🇺 [Русский](../../doc/ru/README.md)
 - 🇫🇷 [Français](../../doc/fr/README.md)
-- 🇬🇧 [English](../../README.md)
+- 🇮🇹 [Italiano](../../doc/it/README.md)
+- 🇪🇸 [Español](../../doc/es/README.md)
+- 🇵🇱 [Polski](../../doc/pl/README.md)
+- 🇵🇹 [Português](../../doc/pt/README.md)

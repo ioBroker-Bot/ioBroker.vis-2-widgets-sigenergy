@@ -106,8 +106,8 @@ Surveillance et contrôle complets de l'onduleur avec navigation par onglets. Af
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
-### 1.3.4 (2026-03-12)
-* common.news réduit à la version actuelle uniquement (1.3.4)
+### 1.3.5 (2026-03-12)
+* common.news réduit à la version actuelle uniquement (1.3.5)
 
 ### 1.3.2 (2026-03-12)
 * Documentation ajoutée dans README.md — multilingue (RU, NL, FR)
@@ -232,6 +232,10 @@ D'ABSENCE DE CONTREFAÇON.
 
 - 🇫🇷 [Français](../../doc/fr/README.md) — ce fichier
 - 🇩🇪 [Deutsch](../../doc/de/README.md)
+- 🇬🇧 [English](../../README.md)
 - 🇷🇺 [Русский](../../doc/ru/README.md)
 - 🇳🇱 [Nederlands](../../doc/nl/README.md)
-- 🇬🇧 [English](../../README.md)
+- 🇮🇹 [Italiano](../../doc/it/README.md)
+- 🇪🇸 [Español](../../doc/es/README.md)
+- 🇵🇱 [Polski](../../doc/pl/README.md)
+- 🇵🇹 [Português](../../doc/pt/README.md)
