@@ -222,11 +222,11 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             }
             // Batterie-Richtung:
             // Pfad: Battery(242,63)→Mitte(158,125)
-            // bat < 0 = Entladen: Energie fließt Battery→Mitte → marker-end (Pfeil an Mitte), normale Animation
-            // bat > 0 = Laden:    Energie fließt Mitte→Battery → marker-start-reverse (Pfeil an Battery), reverse Animation
+            // bat > 0 = Entladen: Energie fließt Battery→Mitte → marker-end (Pfeil zeigt zur Mitte), normale Animation
+            // bat < 0 = Laden:    Energie fließt Mitte→Battery → marker-start-reverse (Pfeil zeigt zur Batterie), reverse Animation
             var batEl = B._el("sig_path_bat_" + w);
             if (batEl) {
-                if (bat > 0.05) {
+                if (bat < -0.05) {
                     // Laden: Pfeil zeigt zur Batterie
                     batEl.setAttribute("marker-start", "url(#mBatRev_" + w + ")");
                     batEl.removeAttribute("marker-end");
