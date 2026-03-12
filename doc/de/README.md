@@ -107,7 +107,17 @@ Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Ze
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.3.3 (2026-03-12)
+* Haupt-README.md auf Englisch übersetzt
+
 ### 1.3.2 (2026-03-12)
+* Dokumentation in README.md eingefügt - mehrsprachig (RU, NL, FR)
+
+### 1.3.1 (2026-03-12)
+* Deutsche README unter doc/de/README.md ergänzt
+* README: Dokumentations-Sektion mit Sprachlinks ergänzt
+
+### 1.3.0 (2026-03-12)
 * Energiefluss-Widget: Netz-Animation auf zwei separate Pfade umgestellt (Netzbezug/Einspeisung)
 * Energiefluss-Widget: auto-start-reverse vollständig entfernt – alle Richtungen über separate Pfade
 

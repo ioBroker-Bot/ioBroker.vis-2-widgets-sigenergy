@@ -12,187 +12,205 @@
 
 ## vis-2-widgets-sigenergy adapter for ioBroker
 
-VIS-2 Widget-Set für den Sigenergy-Energiespeicher-Adapter (`ioBroker.sigenergy`).
-Enthält 7 Widgets zur Visualisierung und Steuerung von Energiefluss, Batteriestatus, Echtzeit-Leistung, Tagesstatistiken, AC-Lader, DC-Lader und Inverter.
+VIS-2 widget set for the Sigenergy energy storage adapter (`ioBroker.sigenergy`).
+Contains 7 widgets for visualisation and control of energy flow, battery status, real-time power, daily statistics, AC charger, DC charger and inverter.
 
-## Voraussetzungen
+## Requirements
 
-- ioBroker mit installiertem und konfiguriertem `sigenergy`-Adapter
-- ioBroker VIS-2 Adapter (≥ 2.0.0)
+- ioBroker with the `sigenergy` adapter installed and configured
+- ioBroker VIS-2 adapter (≥ 2.0.0)
 
 ## Installation
 
-Den Adapter über den ioBroker Admin als ZIP-Datei installieren:
+Install the adapter via ioBroker Admin as a ZIP file:
 
-1. Admin → Adapter → „Von eigener URL installieren" (GitHub-Icon)
-2. ZIP-Datei hochladen oder URL angeben
-3. Installation abwarten — VIS-2 wird automatisch neu gestartet
+1. Admin → Adapters → "Install from own URL" (GitHub icon)
+2. Upload the ZIP file or enter the URL
+3. Wait for the installation to complete — VIS-2 restarts automatically
 
-> **Hinweis:** Nach der Installation ist ein **Reload des VIS-2 Editors im Browser** erforderlich
-> (F5 bzw. Seite neu laden), damit die Widgets in der Palette erscheinen.
-> Der Neustart des VIS-2 Adapters erfolgt automatisch, der Browser muss jedoch
-> manuell aktualisiert werden.
+> **Note:** After installation a **reload of the VIS-2 editor in the browser** is required
+> (F5 or refresh the page) so that the widgets appear in the palette.
+> The VIS-2 adapter restarts automatically, but the browser must be
+> refreshed manually.
 
 ## Widgets
 
-### Energiefluss-Diagramm
-Zeigt den aktuellen Energiefluss zwischen Solar, Batterie, Netz und Haus als animiertes SVG-Diagramm.
-Fließende Pfeile visualisieren aktive Verbindungen in Echtzeit.
+### Energy Flow Diagram
+Displays the current energy flow between solar panels, battery, grid and house as an animated SVG diagram.
+Animated arrows visualise active connections in real time.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
-![Energiefluss-Diagramm](img/widget-energiefluss.png)
+![Energy Flow Diagram](img/widget-energiefluss.png)
 
-### Akku-Status & Prognosen
-Zeigt SOC, SOH, Ladeleistung sowie Prognosen für Ladezeit, Restlaufzeit, Eigenverbrauch und Autarkierate.
+#### Flow directions
+
+| Data point | Value > 0 | Value < 0 |
+|---|---|---|
+| `essPower` | Battery charging → arrow from centre to battery | Battery discharging → arrow from battery to centre |
+| `gridActivePower` | Grid consumption → arrow from grid to centre | Grid feed-in → arrow from centre to grid |
+| `pvPower` | PV producing → arrow from PV to centre | — |
+| `housePower` | House consuming → arrow from centre to house | — |
+
+### Battery Status & Forecasts
+Displays SOC, SOH, charging power and forecasts for time to full charge, remaining runtime, self-consumption and autarky rate.
 
 **OIDs:** `essSoc`, `essSoh`, `essPower`, `batteryTimeToFull`, `batteryTimeRemaining`, `selfConsumptionRate`, `autarkyRate`
 
-![Akku-Status & Prognosen](img/widget-batterie.png)
+![Battery Status & Forecasts](img/widget-batterie.png)
 
-### Echtzeit-Leistung
-Kompakte Listenansicht aller aktuellen Leistungswerte mit farbkodierter Richtungsanzeige.
+### Real-Time Power
+Compact list view of all current power values with colour-coded direction indicators.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
-![Echtzeit-Leistung](img/widget-leistung.png)
+![Real-Time Power](img/widget-leistung.png)
 
-### Energiestatistiken
-Tagesübersicht mit Autarkierate, Eigenverbrauch, SOC-Verlauf, Lade-/Entladeenergie und Batteriedeckung.
+### Energy Statistics
+Daily overview with autarky rate, self-consumption, SOC history, charge/discharge energy and battery coverage.
 
 **OIDs:** `autarkyRate`, `selfConsumptionRate`, `dayMaxSoc`, `dayMinSoc`, `essDailyChargeEnergy`, `essDailyDischargeEnergy`, `batteryCoverageToday`, `batteryDailyChargeTime`
 
-![Energiestatistiken](img/widget-statistiken.png)
+![Energy Statistics](img/widget-statistiken.png)
 
-### AC-Lader (Sigen EVAC)
-Überwachung und Steuerung des Sigenergy AC-Laders (EVAC). Zeigt Ladeleistung, Systemzustand, Nennleistung, Nennstrom und Gesamtenergieverbrauch. Alarme werden farblich hervorgehoben. Der Ladestrom lässt sich per Schieberegler (6–32 A) direkt einstellen.
+### AC Charger (Sigen EVAC)
+Monitoring and control of the Sigenergy AC charger (EVAC). Shows charging power, system state, rated power, rated current and total energy consumed. Alarms are highlighted in colour. The charging current can be set directly via a slider (6–32 A).
 
 **OIDs:** `acCharger.systemState`, `acCharger.chargingPower`, `acCharger.totalEnergyConsumed`, `acCharger.ratedPower`, `acCharger.ratedCurrent`, `acCharger.alarm1/2/3`, `acCharger.control.startStop`, `acCharger.control.outputCurrent`
 
-![AC-Lader](img/widget-ac-charger.png)
+![AC Charger](img/widget-ac-charger.png)
 
-### DC-Lader
-Überwachung und Steuerung des Sigenergy DC-Laders. Zeigt Ausgangsleistung, Fahrzeug-SOC mit Fortschrittsbalken, Fahrzeugspannung, Ladestrom sowie Energie und Dauer der aktuellen Ladesitzung.
+### DC Charger
+Monitoring and control of the Sigenergy DC charger. Shows output power, vehicle SOC with progress bar, vehicle battery voltage, charging current and the energy and duration of the current charging session.
 
 **OIDs:** `dcCharger.outputPower`, `dcCharger.vehicleSoc`, `dcCharger.vehicleBatteryVoltage`, `dcCharger.chargingCurrent`, `dcCharger.currentChargingCapacity`, `dcCharger.currentChargingDuration`, `dcCharger.control.startStop`
 
-![DC-Lader](img/widget-dc-charger.png)
+![DC Charger](img/widget-dc-charger.png)
 
 ### Inverter
-Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Zeigt Betriebs­zustand, Leistungsdaten, Batterietemperaturen, Phasenspannungen, alle 5 Alarm-Register sowie Geräteinformationen (Modell, Seriennummer, Firmware).
+Comprehensive monitoring and control of the inverter with tab navigation. Displays operating state, power data, battery temperatures, phase voltages, all 5 alarm registers and device information (model, serial number, firmware).
 
-| Tab | Inhalt |
+| Tab | Content |
 |---|---|
-| **Leistung** | Wirkleistung, PV-Leistung, Batterie-Lade/-Entladeleistung, Leistungsanteil-Slider (−100 % bis +100 %) |
-| **Batterie** | SOC & SOH mit Balken, Ø Zelltemperatur, Ø Zellspannung, Max/Min Temperatur |
-| **Netz** | Phasenspannungen L1/L2/L3, Netzfrequenz, Leistungsfaktor, PCS-Innentemperatur |
-| **Alarme** | 5 Alarm-Register (PCS ×2, ESS, Gateway, DC-Lader) mit Hex-Code und Farbmarkierung |
-| **Info** | Modelltyp, Seriennummer, Firmware-Version, Remote-EMS-Toggle |
+| **Power** | Active power, PV power, battery charge/discharge power, power share slider (−100 % to +100 %) |
+| **Battery** | SOC & SOH with bars, avg. cell temperature/voltage, max./min. temperature |
+| **Grid** | Phase voltages L1/L2/L3, grid frequency, power factor, PCS internal temperature |
+| **Alarms** | 5 alarm registers (PCS ×2, ESS, gateway, DC charger) with hex code and colour marking |
+| **Info** | Model type, serial number, firmware version, Remote-EMS toggle |
 
 ![Inverter](img/widget-inverter.png)
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
-## Darstellung
+## Appearance
 
-Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
-
+All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.3.3 (2026-03-12)
+* Main README.md translated to English
+
 ### 1.3.2 (2026-03-12)
-* Energiefluss-Widget: Netz-Animation auf zwei separate Pfade umgestellt (Netzbezug/Einspeisung)
-* Energiefluss-Widget: auto-start-reverse vollständig entfernt – alle Richtungen über separate Pfade
+* Documentation added to README.md - multilingual (RU, NL, FR)
+
+### 1.3.1 (2026-03-12)
+* Documentation added: German README under doc/de/README.md
+* README: documentation section with language links added
+
+### 1.3.0 (2026-03-12)
+* Energy flow widget: grid animation converted to two separate paths (consumption/feed-in)
+* Energy flow widget: auto-start-reverse fully removed — all directions via separate paths
 
 ### 1.2.9 (2026-03-12)
-* Energiefluss-Widget: Batterie-Pfad Ankerpunkt y=75 → y=71
+* Energy flow widget: battery path anchor point y=75 → y=71
 
 ### 1.2.8 (2026-03-12)
-* Energiefluss-Widget: Batterie-Pfeil beim Laden unterhalb der Ziffern positioniert
-* Energiefluss-Widget: Schriftgröße der Wertangaben von 10.5 auf 12.5 erhöht
+* Energy flow widget: battery arrow positioned below digits when charging
+* Energy flow widget: font size of value labels increased from 10.5 to 12.5
 
 ### 1.2.7 (2026-03-12)
-* Energiefluss-Widget: Batterie-Richtung komplett neu – zwei separate Pfade (Laden/Entladen) ersetzen fehlerhaftes auto-start-reverse
+* Energy flow widget: battery direction fully reworked — two separate paths (charge/discharge) replace faulty auto-start-reverse
 
 ### 1.2.6 (2026-03-12)
-* Energiefluss-Widget: Netz-Animation und Pfeil umgekehrt
-* Energiefluss-Widget: Batterie-Animation und Pfeil umgekehrt
+* Energy flow widget: grid animation and arrow reversed
+* Energy flow widget: battery animation and arrow reversed
 
 ### 1.2.5 (2026-03-12)
-* Energiefluss-Widget: Batterie-Pfeilrichtung invertiert
+* Energy flow widget: battery arrow direction inverted
 
 ### 1.2.4 (2026-03-11)
-* `common.mode` auf `none` geändert
+* `common.mode` changed to `none`
 
 ### 1.2.3 (2026-03-11)
-* `common.mode` auf `once` geändert
+* `common.mode` changed to `once`
 
 ### 1.2.2 (2026-03-11)
 * fixes
 
 ### 1.2.1 (2026-03-11)
-* Korrektur README.md
+* README.md correction
 
 ### 1.2.0 (2026-03-11)
-* README: Widget-Screenshots für alle 7 Widgets ergänzt
-* `img/` Ordner mit Screenshots in `package.json` files aufgenommen
+* README: widget screenshots added for all 7 widgets
+* `img/` folder with screenshots added to package.json files
 
 ### 1.1.9 (2026-03-11)
-* Energiefluss-Widget: Batterie-Pfeilkopf korrigiert — Laden zeigt zur Batterie (marker-start-reverse), Entladen zur Mitte (marker-end)
-* CSS: `@keyframes sig-dash-reverse` und Klasse `.active.reverse` für umgekehrte Pfadanimation ergänzt
+* Energy flow widget: battery arrow head corrected — charging points to battery (marker-start-reverse), discharging to centre (marker-end)
+* CSS: `@keyframes sig-dash-reverse` and class `.active.reverse` added for reverse path animation
 
 ### 1.1.8 (2026-03-11)
-* Energiefluss-Widget: Batterie-Pfeilrichtung korrigiert (Laden vs. Entladen war vertauscht)
+* Energy flow widget: battery arrow direction corrected (charging vs. discharging was swapped)
 
 ### 1.1.7 (2026-03-10)
-* W1084 behoben: veraltetes `common.title` entfernt
+* W1084 fixed: deprecated `common.title` removed
 
 ### 1.1.6 (2026-03-10)
-* `title`: "SigenEnergy Widgets" in io-package.json ergänzt
+* `title`: "SigenEnergy Widgets" added in io-package.json
 
 ### 1.1.5 (2026-03-10)
-* `vis` zu `restartAdapters` in io-package.json ergänzt
+* `vis` added to `restartAdapters` in io-package.json
 
 ### 1.1.4 (2026-03-10)
-* W1068 behoben: `ioBroker` aus keywords entfernt
+* W1068 fixed: `ioBroker` removed from keywords
 
 ### 1.1.3 (2026-03-10)
-* Keyword `ioBroker` in io-package.json ergänzt
+* Keyword `ioBroker` added in io-package.json
 
 ### 1.1.2 (2026-03-10)
-* `admin/` in package.json `files`-Feld ergänzt — Icon-PNG wird jetzt korrekt mit installiert
+* `admin/` added to `files` field in package.json — icon PNG now installed correctly
 
 ### 1.1.1 (2026-03-10)
-* E1012 behoben: `icon` = Dateiname, `extIcon` = identische GitHub-Raw-URL
+* E1012 fixed: `icon` = filename, `extIcon` = identical GitHub raw URL
 
 ### 1.1.0 (2026-03-10)
-* Icon als Base64-Data-URI in io-package.json eingebettet — unabhängig von Admin-Ordner-Serving
+* Icon embedded as Base64-Data-URI in io-package.json — independent of admin folder serving
 
 ### 1.0.9 (2026-03-10)
-* Icon-Auflösung auf 512×512 px korrigiert (war 64×64 px)
+* Icon resolution corrected to 512×512 px (was 64×64 px)
 
 ### 1.0.8 (2026-03-10)
-* `extIcon` auf GitHub-Raw-URL korrigiert (E1012)
+* `extIcon` corrected to GitHub raw URL (E1012)
 
 ### 1.0.7 (2026-03-10)
-* Icon-Einbindung korrigiert: `icon` als Dateiname, `extIcon` als Base64-URI
+* Icon integration corrected: `icon` as filename, `extIcon` as Base64-URI
 
 ### 1.0.6 (2026-03-10)
-* Sigenergy-Logo als Adapter-Icon hinterlegt
+* Sigenergy logo added as adapter icon
 
 ### 1.0.5 (2026-03-09)
-* Korrekturen
+* corrections
 ### 1.0.4 (2026-03-09)
-* Korrekturen
+* corrections
 ### 1.0.3 (2026-03-09)
-* Korrekturen
+* corrections
 ### 1.0.2 (2026-03-09)
-* Korrekturen
+* corrections
 ### 1.0.1 (2026-03-09)
-* (ssbingo) 4 Widgets neu erstellt im VIS-2-konformen Format
-* (ssbingo) Energiefluss-Diagramm mit SVG-Animationen
-* (ssbingo) Akku-Status & Prognosen Widget
-* (ssbingo) Echtzeit-Leistung Widget
-* (ssbingo) Energiestatistiken Widget
+* (ssbingo) 4 widgets created in VIS-2-compliant format
+* (ssbingo) Energy flow diagram with SVG animations
+* (ssbingo) Battery status & forecasts widget
+* (ssbingo) Real-time power widget
+* (ssbingo) Energy statistics widget
 
 ## License
 MIT License
@@ -216,7 +234,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 
 ## Documentation
 

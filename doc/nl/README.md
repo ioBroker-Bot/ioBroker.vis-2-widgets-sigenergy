@@ -106,12 +106,14 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.3.3 (2026-03-12)
+* Hoofd-README.md vertaald naar het Engels
+
 ### 1.3.2 (2026-03-12)
 * Documentatie toegevoegd aan README.md — meertalig (RU, NL, FR)
 
-### 1.3.2 (2026-03-12)
-* Duitse documentatie toegevoegd in doc/de/README.md
-* README: documentatiesectie met taallinks toegevoegd
+### 1.3.1 (2026-03-12)
+* Duitse documentatie toegevoegd in doc/de/README.md; README: documentatiesectie met taallinks toegevoegd
 
 ### 1.3.0 (2026-03-12)
 * Energiestroom-widget: netanimatie omgezet naar twee afzonderlijke paden (afname/teruglevering)
