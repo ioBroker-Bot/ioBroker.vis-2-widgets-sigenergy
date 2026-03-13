@@ -107,7 +107,7 @@ Monitorização e controlo abrangentes do inversor com navegação por separador
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
-### 1.4.1 (2026-03-12)
+### 1.4.2 (2026-03-12)
 * Correções
 
 ### 1.3.4 (2026-03-12)

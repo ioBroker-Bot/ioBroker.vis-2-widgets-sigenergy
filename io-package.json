@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "news": {
-      "1.4.1": {
+      "1.4.2": {
         "en": "fixes",
         "de": "Korrekturen",
         "ru": "Исправления",
