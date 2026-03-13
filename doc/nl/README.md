@@ -106,7 +106,7 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
-### 1.3.9 (2026-03-12)
+### 1.4.0 (2026-03-12)
 * Correcties
 
 ### 1.3.2 (2026-03-12)
