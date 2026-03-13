@@ -107,8 +107,8 @@ Monitorización y control completos del inversor con navegación por pestañas. 
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
-### 1.3.6 (2026-03-12)
-* Documentación insertada en README.md - multilingüe
+### 1.3.7 (2026-03-12)
+* Correcciones
 
 ### 1.3.4 (2026-03-12)
 * common.news reducido a la versión actual (solo 1.3.4)
