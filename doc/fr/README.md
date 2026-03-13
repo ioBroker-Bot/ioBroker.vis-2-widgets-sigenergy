@@ -106,7 +106,7 @@ Surveillance et contrôle complets de l'onduleur avec navigation par onglets. Af
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
-### 1.3.8 (2026-03-12)
+### 1.3.9 (2026-03-12)
 * Corrections
 
 ### 1.3.2 (2026-03-12)
