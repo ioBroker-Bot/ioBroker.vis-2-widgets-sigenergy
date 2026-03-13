@@ -107,7 +107,7 @@ Monitoraggio e controllo completi dell'inverter con navigazione a schede. Mostra
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
-### 1.3.5 (2026-03-12)
+### 1.3.6 (2026-03-12)
 * Documentazione inserita in README.md - multilingue
 
 ### 1.3.4 (2026-03-12)

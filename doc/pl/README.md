@@ -107,7 +107,7 @@ Kompleksowe monitorowanie i sterowanie falownikiem z nawigacją zakładkową. Wy
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
-### 1.3.5 (2026-03-12)
+### 1.3.6 (2026-03-12)
 * Dokumentacja dodana do README.md - wielojęzyczna
 
 ### 1.3.4 (2026-03-12)

@@ -106,8 +106,8 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
-### 1.3.5 (2026-03-12)
-* common.news gereduceerd tot huidige versie (alleen 1.3.5)
+### 1.3.6 (2026-03-12)
+* Documentatie toegevoegd aan README.md — meertalig
 
 ### 1.3.2 (2026-03-12)
 * Documentatie toegevoegd aan README.md — meertalig (RU, NL, FR)
