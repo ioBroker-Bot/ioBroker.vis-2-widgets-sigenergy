@@ -107,8 +107,8 @@ Monitorização e controlo abrangentes do inversor com navegação por separador
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
-### 1.4.3 (2026-03-12)
-* Widget fluxo de energia: visualização de SOC e ícone de bateria dinâmico adicionados
+### 1.4.4 (2026-03-12)
+* Widget fluxo de energia: etiqueta SOC e valor deslocados 5px para cima
 
 ### 1.3.4 (2026-03-12)
 * common.news reduzido à versão atual (apenas 1.3.4)

@@ -171,8 +171,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
             // ── Batterie  (oben-rechts, Knotenmitte 242, 42) ─────────────
             // SOC-Anzeige links neben dem Batterie-Icon
-            '<text x="202" y="23" text-anchor="middle" dominant-baseline="central" font-size="8" fill="' + tc + '" opacity="0.65">SOC</text>' +
-            '<text id="sig_ef_socval_'+ w + '" x="202" y="36" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="700" fill="#9b59b6">--%</text>' +
+            '<text x="202" y="18" text-anchor="middle" dominant-baseline="central" font-size="8" fill="' + tc + '" opacity="0.65">SOC</text>' +
+            '<text id="sig_ef_socval_'+ w + '" x="202" y="31" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="700" fill="#9b59b6">--%</text>' +
             // Batterie-Icon als SVG: Rahmen + dynamische Füllung + Pol
             '<rect x="229" y="21" width="22" height="14" rx="2" fill="none" stroke="#9b59b6" stroke-width="1.5"/>' +
             '<rect x="251" y="24" width="3" height="8" rx="1" fill="#9b59b6"/>' +

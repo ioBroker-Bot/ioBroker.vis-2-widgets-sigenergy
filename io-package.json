@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "news": {
-      "1.4.3": {
-        "en": "Energy flow widget: SOC display and dynamic battery icon added",
-        "de": "Energiefluss-Widget: SOC-Anzeige und dynamisches Batterie-Icon hinzugefügt",
-        "ru": "Виджет потока энергии: добавлены отображение SOC и динамический значок батареи",
-        "nl": "Energiestroom-widget: SOC-weergave en dynamisch batterijpictogram toegevoegd",
-        "fr": "Widget flux d'énergie : affichage SOC et icône batterie dynamique ajoutés",
-        "it": "Widget flusso energetico: aggiunta visualizzazione SOC e icona batteria dinamica",
-        "es": "Widget flujo de energía: visualización de SOC e icono de batería dinámico añadidos",
-        "pl": "Widget przepływu energii: dodano wyświetlanie SOC i dynamiczną ikonę baterii",
-        "pt": "Widget fluxo de energia: visualização de SOC e ícone de bateria dinâmico adicionados",
-        "uk": "Віджет потоку енергії: додано відображення SOC та динамічна іконка батареї",
-        "zh-cn": "能量流小部件：新增SOC显示和动态电池图标"
+      "1.4.4": {
+        "en": "Energy flow widget: SOC label and value shifted 5px upward",
+        "de": "Energiefluss-Widget: SOC-Beschriftung und Wert um 5px nach oben verschoben",
+        "ru": "Виджет потока энергии: метка SOC и значение сдвинуты на 5px вверх",
+        "nl": "Energiestroom-widget: SOC-label en waarde 5px omhoog verschoven",
+        "fr": "Widget flux d'énergie : étiquette SOC et valeur déplacées de 5px vers le haut",
+        "it": "Widget flusso energetico: etichetta SOC e valore spostati di 5px verso l'alto",
+        "es": "Widget flujo de energía: etiqueta SOC y valor desplazados 5px hacia arriba",
+        "pl": "Widget przepływu energii: etykieta SOC i wartość przesunięte o 5px w górę",
+        "pt": "Widget fluxo de energia: etiqueta SOC e valor deslocados 5px para cima",
+        "uk": "Віджет потоку енергії: мітка SOC і значення зміщені на 5px вгору",
+        "zh-cn": "能量流小部件：SOC标签和数值上移5px"
       }
     },
     "titleLang": {

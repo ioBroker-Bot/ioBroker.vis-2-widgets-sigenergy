@@ -106,8 +106,8 @@ Surveillance et contrôle complets de l'onduleur avec navigation par onglets. Af
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
-### 1.4.3 (2026-03-12)
-* Widget flux d'énergie : affichage SOC et icône batterie dynamique ajoutés
+### 1.4.4 (2026-03-12)
+* Widget flux d'énergie : étiquette SOC et valeur déplacées de 5px vers le haut
 
 ### 1.3.2 (2026-03-12)
 * Documentation ajoutée dans README.md — multilingue (RU, NL, FR)
