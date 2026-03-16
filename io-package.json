@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "news": {
-      "1.4.2": {
-        "en": "fixes",
-        "de": "Korrekturen",
-        "ru": "Исправления",
-        "nl": "Correcties",
-        "fr": "Corrections",
-        "it": "Correzioni",
-        "es": "Correcciones",
-        "pl": "Poprawki",
-        "pt": "Correções",
-        "uk": "Виправлення",
-        "zh-cn": "修复"
+      "1.4.3": {
+        "en": "Energy flow widget: SOC display and dynamic battery icon added",
+        "de": "Energiefluss-Widget: SOC-Anzeige und dynamisches Batterie-Icon hinzugefügt",
+        "ru": "Виджет потока энергии: добавлены отображение SOC и динамический значок батареи",
+        "nl": "Energiestroom-widget: SOC-weergave en dynamisch batterijpictogram toegevoegd",
+        "fr": "Widget flux d'énergie : affichage SOC et icône batterie dynamique ajoutés",
+        "it": "Widget flusso energetico: aggiunta visualizzazione SOC e icona batteria dinamica",
+        "es": "Widget flujo de energía: visualización de SOC e icono de batería dinámico añadidos",
+        "pl": "Widget przepływu energii: dodano wyświetlanie SOC i dynamiczną ikonę baterii",
+        "pt": "Widget fluxo de energia: visualização de SOC e ícone de bateria dinâmico adicionados",
+        "uk": "Віджет потоку енергії: додано відображення SOC та динамічна іконка батареї",
+        "zh-cn": "能量流小部件：新增SOC显示和动态电池图标"
       }
     },
     "titleLang": {

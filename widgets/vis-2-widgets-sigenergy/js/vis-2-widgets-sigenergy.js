@@ -170,7 +170,13 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<text id="sig_ef_pv_'   + w + '" x="58" y="57" text-anchor="middle" dominant-baseline="central" font-size="12.5" font-weight="700" fill="#f39c12">-- kW</text>' +
 
             // ── Batterie  (oben-rechts, Knotenmitte 242, 42) ─────────────
-            '<text id="sig_ef_baticon_'+ w + '" x="242" y="28" text-anchor="middle" dominant-baseline="central" font-size="20" fill="#9b59b6">&#128267;</text>' +
+            // SOC-Anzeige links neben dem Batterie-Icon
+            '<text x="202" y="23" text-anchor="middle" dominant-baseline="central" font-size="8" fill="' + tc + '" opacity="0.65">SOC</text>' +
+            '<text id="sig_ef_socval_'+ w + '" x="202" y="36" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="700" fill="#9b59b6">--%</text>' +
+            // Batterie-Icon als SVG: Rahmen + dynamische Füllung + Pol
+            '<rect x="229" y="21" width="22" height="14" rx="2" fill="none" stroke="#9b59b6" stroke-width="1.5"/>' +
+            '<rect x="251" y="24" width="3" height="8" rx="1" fill="#9b59b6"/>' +
+            '<rect id="sig_ef_batfill_'+ w + '" x="230" y="22" width="11" height="12" rx="1" fill="#9b59b6"/>' +
             '<text x="242" y="45" text-anchor="middle" dominant-baseline="central" font-size="8.5" fill="' + tc + '" opacity="0.65">Batterie</text>' +
             '<text id="sig_ef_bat_'  + w + '" x="242" y="57" text-anchor="middle" dominant-baseline="central" font-size="12.5" font-weight="700" fill="#9b59b6">-- kW</text>' +
 
@@ -208,8 +214,15 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
             // Netz-Farbe: grün = Einspeisung, rot = Bezug
             B._css("sig_ef_grid_"    + w, "fill", grid < 0 ? "#27ae60" : "#e74c3c");
-            // Batterie-Icon: Farbe nach SOC
-            B._css("sig_ef_baticon_" + w, "fill", B._socCol(soc));
+            // Batterie-SOC: Wert links + Icon-Füllung dynamisch
+            B._txt("sig_ef_socval_" + w, Math.round(soc) + " %");
+            B._css("sig_ef_socval_" + w, "fill", B._socCol(soc));
+            var batfill = B._el("sig_ef_batfill_" + w);
+            if (batfill) {
+                var fw = Math.max(1, Math.round(soc / 100 * 20));
+                batfill.setAttribute("width", String(fw));
+                batfill.setAttribute("fill", B._socCol(soc));
+            }
 
             // Pfade aktivieren/deaktivieren → startet/stoppt CSS-Dash-Animation
             var paths = ["pv", "house"];

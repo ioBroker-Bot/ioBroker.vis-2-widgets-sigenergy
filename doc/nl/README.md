@@ -106,8 +106,8 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
-### 1.4.2 (2026-03-12)
-* Correcties
+### 1.4.3 (2026-03-12)
+* Energiestroom-widget: SOC-weergave en dynamisch batterijpictogram toegevoegd
 
 ### 1.3.2 (2026-03-12)
 * Documentatie toegevoegd aan README.md — meertalig (RU, NL, FR)

@@ -107,8 +107,8 @@ Monitoraggio e controllo completi dell'inverter con navigazione a schede. Mostra
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
-### 1.4.2 (2026-03-12)
-* Correzioni
+### 1.4.3 (2026-03-12)
+* Widget flusso energetico: aggiunta visualizzazione SOC e icona batteria dinamica
 
 ### 1.3.4 (2026-03-12)
 * common.news ridotto alla versione corrente (solo 1.3.4)
