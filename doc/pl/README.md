@@ -102,11 +102,28 @@ Kompleksowe monitorowanie i sterowanie falownikiem z nawigacją zakładkową. Wy
 
 **OID:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### Przegląd SigenMicro
+Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie Modbus. Zakładka 1 pokazuje wszystkie urządzenia jako animowany segment sieci (topologia magistrali Ethernet z pionowymi odgałęzieniami).
+
+#### Dynamiczny układ
+| Urządzenia | Wiersze | Rozmiar obrazu |
+|---|---|---|
+| 1–5 | 1 wiersz | 80 × 90 px |
+| 6–10 | 1 wiersz | 52 × 60 px |
+| 11–15 | 2 wiersze | 46 × 52 px |
+| 16–20 | 2 wiersze | 40 × 46 px |
+
+
 ## Wygląd
 
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: przegląd SigenMicro z animowaną topologią magistrali Ethernet
+* (ssbingo) Dynamiczny układ dla 1–20 mikrofalowników, 4 poziomy rozmiarów, 1–2 wiersze
+* (ssbingo) Zakładka szczegółów dla każdego urządzenia ze wszystkimi 15 rejestrami Modbus (01–15)
+
 ### 1.4.4 (2026-03-12)
 * Widget przepływu energii: etykieta SOC i wartość przesunięte o 5px w górę
 

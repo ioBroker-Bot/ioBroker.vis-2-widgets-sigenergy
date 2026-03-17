@@ -13,7 +13,7 @@
 ## Adaptador vis-2-widgets-sigenergy para ioBroker
 
 Conjunto de widgets VIS-2 para el adaptador de almacenamiento de energía Sigenergy (`ioBroker.sigenergy`).
-Contiene 7 widgets para la visualización y el control del flujo de energía, el estado de la batería, la potencia en tiempo real, las estadísticas diarias, el cargador AC, el cargador DC y el inversor.
+Contiene 8 widgets para la visualización y control del flujo de energía, estado de la batería, potencia en tiempo real, estadísticas diarias, cargador AC, cargador DC, inversor y vista general de los microinversores SigenMicro. para la visualización y el control del flujo de energía, el estado de la batería, la potencia en tiempo real, las estadísticas diarias, el cargador AC, el cargador DC y el inversor.
 
 ## Requisitos
 
@@ -102,11 +102,28 @@ Monitorización y control completos del inversor con navegación por pestañas. 
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### Vista general SigenMicro
+Vista general y detallada de todos los microinversores SigenMicro en el bus Modbus. La pestaña 1 muestra todos los dispositivos como segmento de red animado (topología de bus Ethernet con derivaciones verticales).
+
+#### Diseño dinámico
+| Dispositivos | Filas | Tamaño imagen |
+|---|---|---|
+| 1–5 | 1 fila | 80 × 90 px |
+| 6–10 | 1 fila | 52 × 60 px |
+| 11–15 | 2 filas | 46 × 52 px |
+| 16–20 | 2 filas | 40 × 46 px |
+
+
 ## Apariencia
 
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: vista general SigenMicro con topología de bus Ethernet animada
+* (ssbingo) Diseño dinámico para 1–20 microinversores, 4 niveles de tamaño, 1–2 filas
+* (ssbingo) Pestaña de detalle por dispositivo con los 15 registros Modbus (01–15)
+
 ### 1.4.4 (2026-03-12)
 * Widget flujo de energía: etiqueta SOC y valor desplazados 5px hacia arriba
 

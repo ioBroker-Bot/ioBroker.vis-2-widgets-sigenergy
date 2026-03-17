@@ -13,7 +13,7 @@
 ## Adaptateur vis-2-widgets-sigenergy pour ioBroker
 
 Ensemble de widgets VIS-2 pour l'adaptateur de stockage d'énergie Sigenergy (`ioBroker.sigenergy`).
-Contient 7 widgets pour la visualisation et le contrôle du flux d'énergie, de l'état de la batterie, de la puissance en temps réel, des statistiques journalières, du chargeur AC, du chargeur DC et de l'onduleur.
+Contient 8 widgets pour la visualisation et le contrôle du flux d'énergie, l'état de la batterie, la puissance en temps réel, les statistiques journalières, le chargeur AC, le chargeur DC, l'onduleur et la vue d'ensemble des micro-onduleurs SigenMicro. pour la visualisation et le contrôle du flux d'énergie, de l'état de la batterie, de la puissance en temps réel, des statistiques journalières, du chargeur AC, du chargeur DC et de l'onduleur.
 
 ## Prérequis
 
@@ -101,11 +101,28 @@ Surveillance et contrôle complets de l'onduleur avec navigation par onglets. Af
 
 **OID :** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### Vue d'ensemble SigenMicro
+Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le bus Modbus. L'onglet 1 affiche tous les appareils sous forme de segment réseau animé (topologie bus Ethernet avec liaisons verticales).
+
+#### Disposition dynamique
+| Appareils | Lignes | Taille image |
+|---|---|---|
+| 1–5 | 1 ligne | 80 × 90 px |
+| 6–10 | 1 ligne | 52 × 60 px |
+| 11–15 | 2 lignes | 46 × 52 px |
+| 16–20 | 2 lignes | 40 × 46 px |
+
+
 ## Apparence
 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8 : vue d'ensemble SigenMicro avec topologie bus Ethernet animée
+* (ssbingo) Disposition dynamique pour 1–20 micro-onduleurs, 4 niveaux de taille, 1–2 lignes
+* (ssbingo) Onglet détail par appareil avec les 15 registres Modbus (01–15)
+
 ### 1.4.4 (2026-03-12)
 * Widget flux d'énergie : étiquette SOC et valeur déplacées de 5px vers le haut
 

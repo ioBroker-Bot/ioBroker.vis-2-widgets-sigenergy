@@ -13,7 +13,7 @@
 ## vis-2-widgets-sigenergy adapter voor ioBroker
 
 VIS-2 widget-set voor de Sigenergy energieopslag-adapter (`ioBroker.sigenergy`).
-Bevat 7 widgets voor visualisatie en bediening van energiestroom, batterijstatus, realtime vermogen, dagstatistieken, AC-lader, DC-lader en omvormer.
+Bevat 8 widgets voor visualisatie en besturing van energiestroom, batterijstatus, realtime vermogen, dagstatistieken, AC-lader, DC-lader, omvormer en SigenMicro micro-omvormer overzicht. voor visualisatie en bediening van energiestroom, batterijstatus, realtime vermogen, dagstatistieken, AC-lader, DC-lader en omvormer.
 
 ## Vereisten
 
@@ -101,11 +101,28 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 
 **OID's:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### SigenMicro Overzicht
+Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus. Tab 1 toont alle apparaten als een geanimeerd netwerksegment (Ethernet-bustopologie met verticale aftakkingen).
+
+#### Dynamische lay-out
+| Apparaten | Rijen | Afbeeldingsgrootte |
+|---|---|---|
+| 1–5 | 1 rij | 80 × 90 px |
+| 6–10 | 1 rij | 52 × 60 px |
+| 11–15 | 2 rijen | 46 × 52 px |
+| 16–20 | 2 rijen | 40 × 46 px |
+
+
 ## Weergave
 
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: SigenMicro overzicht met geanimeerde Ethernet-bustopologie
+* (ssbingo) Dynamische lay-out voor 1–20 micro-omvormers, 4 maatcategorieën, 1–2 rijen
+* (ssbingo) Detail-tab per apparaat met alle 15 Modbus-registers (01–15)
+
 ### 1.4.4 (2026-03-12)
 * Energiestroom-widget: SOC-label en waarde 5px omhoog verschoven
 

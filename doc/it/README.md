@@ -13,7 +13,7 @@
 ## Adattatore vis-2-widgets-sigenergy per ioBroker
 
 Set di widget VIS-2 per l'adattatore di accumulo energetico Sigenergy (`ioBroker.sigenergy`).
-Contiene 7 widget per la visualizzazione e il controllo del flusso energetico, dello stato della batteria, della potenza in tempo reale, delle statistiche giornaliere, del caricatore AC, del caricatore DC e dell'inverter.
+Contiene 8 widget per la visualizzazione e il controllo del flusso energetico, stato della batteria, potenza in tempo reale, statistiche giornaliere, caricatore AC, caricatore DC, inverter e panoramica dei micro-inverter SigenMicro. per la visualizzazione e il controllo del flusso energetico, dello stato della batteria, della potenza in tempo reale, delle statistiche giornaliere, del caricatore AC, del caricatore DC e dell'inverter.
 
 ## Requisiti
 
@@ -102,11 +102,28 @@ Monitoraggio e controllo completi dell'inverter con navigazione a schede. Mostra
 
 **OID:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### Panoramica SigenMicro
+Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro sul bus Modbus. La scheda 1 mostra tutti i dispositivi come segmento di rete animato (topologia bus Ethernet con derivazioni verticali).
+
+#### Layout dinamico
+| Dispositivi | Righe | Dimensione immagine |
+|---|---|---|
+| 1–5 | 1 riga | 80 × 90 px |
+| 6–10 | 1 riga | 52 × 60 px |
+| 11–15 | 2 righe | 46 × 52 px |
+| 16–20 | 2 righe | 40 × 46 px |
+
+
 ## Aspetto
 
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: panoramica SigenMicro con topologia bus Ethernet animata
+* (ssbingo) Layout dinamico per 1–20 micro-inverter, 4 livelli di dimensione, 1–2 righe
+* (ssbingo) Scheda dettaglio per dispositivo con tutti i 15 registri Modbus (01–15)
+
 ### 1.4.4 (2026-03-12)
 * Widget flusso energetico: etichetta SOC e valore spostati di 5px verso l'alto
 

@@ -13,7 +13,7 @@
 ## vis-2-widgets-sigenergy Adapter für ioBroker
 
 VIS-2 Widget-Set für den Sigenergy-Energiespeicher-Adapter (`ioBroker.sigenergy`).
-Enthält 7 Widgets zur Visualisierung und Steuerung von Energiefluss, Batteriestatus, Echtzeit-Leistung, Tagesstatistiken, AC-Lader, DC-Lader und Inverter.
+Enthält 8 Widgets zur Visualisierung und Steuerung von Energiefluss, Batteriestatus, Echtzeit-Leistung, Tagesstatistiken, AC-Lader, DC-Lader, Inverter und SigenMicro Mikro-Wechselrichter-Übersicht.
 
 ## Voraussetzungen
 
@@ -102,11 +102,49 @@ Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Ze
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### SigenMicro Übersicht
+Übersicht und Detailansicht aller SigenMicro Mikro-Wechselrichter am Modbus-Bus. Tab 1 zeigt alle Geräte als animiertes Netzwerksegment (Ethernet-Bus-Topologie mit senkrechten Stichleitungen). Jeder weitere Tab zeigt alle 15 Register des jeweiligen Geräts in aufsteigender Reihenfolge.
+
+| Tab | Inhalt |
+|---|---|
+| **Übersicht** | Alle Geräte als animierte Bus-Topologie, Aggregat-Kacheln (Gesamtleistung, Tagesertrag, Lebensertrag, Online-Anzahl) |
+| **Gerät 01–20** | Gerätebild oben-links (10 px Abstand), Modell/Seriennummer/Firmware/Status-Badge, alle 15 Register (01–15) mit Wert, Einheit und OID-Pfad |
+
+#### Netzwerksegment-Animation
+Die waagerechte Backbone-Linie und die senkrechten Stichleitungen zeigen animierte Dashes, die bei aktiven Geräten (Running) entlang der Leitungen fließen. Inaktive Geräte (Standby/Fault) zeigen nur die dunkle Basislinie ohne Animation.
+
+#### Dynamisches Layout
+| Geräte | Zeilen | Bildgröße |
+|---|---|---|
+| 1–5 | 1 Zeile | 80 × 90 px |
+| 6–10 | 1 Zeile | 52 × 60 px |
+| 11–15 | 2 Zeilen | 46 × 52 px |
+| 16–20 | 2 Zeilen | 40 × 46 px |
+
+#### Widget-Einstellungen
+| Parameter | Typ | Standard | Beschreibung |
+|---|---|---|---|
+| micro_count | Zahl (1–20) | 3 | Anzahl der anzuzeigenden Mikro-Wechselrichter |
+| sig_title | Text | SigenMicro Micro-Inverter | Widget-Titel |
+| sig_darkmode | Checkbox | true | Dunkel- / Hellmodus |
+| oid_micro1 … oid_micro20 | OID | — | Anker-OID je Gerät (z.B. sigenergy.0.sigenmicro.11.outputPower) |
+
+**OIDs (je Gerät, Präfix sigenergy.0.sigenmicro.<slaveId>):**
+modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
+
+
 ## Darstellung
 
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: SigenMicro Übersicht mit animierter Ethernet-Bus-Topologie (Backbone + senkrechte Stichleitungen)
+* (ssbingo) Dynamisches Layout für 1–20 Mikro-Wechselrichter, 4 Größenstufen, 1–2 Zeilen
+* (ssbingo) Detail-Tab je Gerät mit allen 15 Modbus-Registern (01–15, aufsteigend nach Adresse)
+* (ssbingo) VIS-2-konformes Anker-OID-Muster: oid_micro(1-micro_count)/id
+* (ssbingo) SigenMicroInverter.png in Widget-Bildordner aufgenommen
+
 ### 1.4.4 (2026-03-12)
 * Energiefluss-Widget: SOC-Beschriftung und Wert um 5px nach oben verschoben
 

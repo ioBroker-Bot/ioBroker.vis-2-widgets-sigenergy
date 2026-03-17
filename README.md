@@ -13,7 +13,7 @@
 ## vis-2-widgets-sigenergy adapter for ioBroker
 
 VIS-2 widget set for the Sigenergy energy storage adapter (`ioBroker.sigenergy`).
-Contains 7 widgets for visualisation and control of energy flow, battery status, real-time power, daily statistics, AC charger, DC charger and inverter.
+Contains 8 widgets for visualisation and control of energy flow, battery status, real-time power, daily statistics, AC charger, DC charger, inverter and SigenMicro micro-inverter overview.
 
 ## Requirements
 
@@ -102,11 +102,50 @@ Comprehensive monitoring and control of the inverter with tab navigation. Displa
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### SigenMicro Overview
+Overview and detail view of all SigenMicro micro-inverters connected via Modbus. Tab 1 shows all devices as an animated network segment (Ethernet bus topology with vertical drop lines). Each additional tab shows all 15 registers of the respective device in ascending order.
+
+| Tab | Content |
+|---|---|
+| **Overview** | All devices as animated bus topology, aggregate tiles (total power, daily yield, lifetime yield, online count) |
+| **Device 01–20** | Device image top-left (10 px offset), model/serial/firmware/status badge, all 15 registers (01–15) with value, unit and OID path |
+
+#### Network segment animation
+The horizontal backbone line and the vertical drop lines show animated dashes that flow along the cables when a device is active (Running). Inactive devices (Standby/Fault) show only the dark base line without animation.
+
+#### Dynamic layout
+| Devices | Rows | Image size |
+|---|---|---|
+| 1–5 | 1 row | 80 × 90 px |
+| 6–10 | 1 row | 52 × 60 px |
+| 11–15 | 2 rows | 46 × 52 px |
+| 16–20 | 2 rows | 40 × 46 px |
+
+#### Widget settings
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| micro_count | number (1–20) | 3 | Number of micro-inverters to display |
+| sig_title | text | SigenMicro Micro-Inverter | Widget title |
+| sig_darkmode | checkbox | true | Dark / Light mode |
+| oid_micro1 … oid_micro20 | OID | — | Anchor OID per device (e.g. sigenergy.0.sigenmicro.11.outputPower) |
+
+**OIDs (per device, prefix sigenergy.0.sigenmicro.<slaveId>):**
+modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
+
+
 ## Appearance
 
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: SigenMicro Overview with animated Ethernet bus topology (backbone + vertical drop lines)
+* (ssbingo) Dynamic layout for 1-20 micro-inverters, 4 size tiers, 1-2 rows
+* (ssbingo) Detail tab per device with all 15 Modbus registers (01-15, ascending by address)
+* (ssbingo) VIS-2-compliant Anchor-OID pattern: oid_micro(1-micro_count)/id
+* (ssbingo) SigenMicroInverter.png added to widget image folder
+* (ssbingo) CSS keyframes sig-sm-bus and sig-sm-stub for line-based dash animation
+
 ### 1.4.4 (2026-03-12)
 * Energy flow widget: SOC label and value shifted 5px upward
 

@@ -1,88 +1,88 @@
 {
-  "common": {
-    "name": "vis-2-widgets-sigenergy",
-    "version": "1.4.4",
-    "news": {
-      "1.4.4": {
-        "en": "Energy flow widget: SOC label and value shifted 5px upward",
-        "de": "Energiefluss-Widget: SOC-Beschriftung und Wert um 5px nach oben verschoben",
-        "ru": "Виджет потока энергии: метка SOC и значение сдвинуты на 5px вверх",
-        "nl": "Energiestroom-widget: SOC-label en waarde 5px omhoog verschoven",
-        "fr": "Widget flux d'énergie : étiquette SOC et valeur déplacées de 5px vers le haut",
-        "it": "Widget flusso energetico: etichetta SOC e valore spostati di 5px verso l'alto",
-        "es": "Widget flujo de energía: etiqueta SOC y valor desplazados 5px hacia arriba",
-        "pl": "Widget przepływu energii: etykieta SOC i wartość przesunięte o 5px w górę",
-        "pt": "Widget fluxo de energia: etiqueta SOC e valor deslocados 5px para cima",
-        "uk": "Віджет потоку енергії: мітка SOC і значення зміщені на 5px вгору",
-        "zh-cn": "能量流小部件：SOC标签和数值上移5px"
-      }
+    "common": {
+        "name": "vis-2-widgets-sigenergy",
+        "version": "1.5.0",
+        "news": {
+            "1.5.0": {
+                "en": "New widget 8: SigenMicro Overview with animated network segment, dynamic layout for 1-20 inverters, detail tabs per device",
+                "de": "Neues Widget 8: SigenMicro Uebersicht mit animiertem Netzwerksegment, dynamisches Layout fuer 1-20 Inverter, Detail-Tabs je Geraet",
+                "ru": "Новый виджет 8: Обзор SigenMicro с анимированным сегментом сети, динамическая компоновка для 1-20 инверторов",
+                "nl": "Nieuw widget 8: SigenMicro overzicht met geanimeerd netwerksegment, dynamische indeling voor 1-20 omvormers",
+                "fr": "Nouveau widget 8 : vue d ensemble SigenMicro avec segment reseau anime, disposition dynamique pour 1 a 20 onduleurs",
+                "it": "Nuovo widget 8: panoramica SigenMicro con segmento di rete animato, layout dinamico per 1-20 inverter",
+                "es": "Nuevo widget 8: vista general SigenMicro con segmento de red animado, diseno dinamico para 1-20 inversores",
+                "pl": "Nowy widget 8: przeglad SigenMicro z animowanym segmentem sieci, dynamiczny uklad dla 1-20 falownikow",
+                "pt": "Novo widget 8: visao geral SigenMicro com segmento de rede animado, layout dinamico para 1-20 inversores",
+                "uk": "Новий віджет 8: Огляд SigenMicro з анімованим мережевим сегментом",
+                "zh-cn": "新小部件8：SigenMicro概览，带动画网络段，1-20个逆变器动态布局"
+            }
+        },
+        "titleLang": {
+            "en": "Vis 2 Widgets Sigenergy",
+            "de": "Vis 2 Widgets Sigenergy",
+            "ru": "Виджеты Vis 2",
+            "pt": "Vis 2 Widgets Sigenergy",
+            "nl": "Vis 2 Widgets Sigenergy",
+            "fr": "Vis 2 Widgets Sigénergie",
+            "it": "Visualizza 2 widget Sigenergy",
+            "es": "Vis 2 Widgets Sigenergía",
+            "pl": "Vis 2 Widżety Sigenergy",
+            "uk": "Віджети Vis 2 Sigenergy",
+            "zh-cn": "Vis 2 小部件 Sigenergy"
+        },
+        "desc": {
+            "en": "Widgets for Sigenergy",
+            "de": "Widgets für Sigenergy",
+            "ru": "Виджеты для Sigenergy",
+            "pt": "Widgets para Sigenergy",
+            "nl": "Widgets voor Sigenergy",
+            "fr": "Widgets pour Sigenergy",
+            "it": "Widget per Sigenergy",
+            "es": "Widgets para Sigenergy",
+            "pl": "Widżety dla Sigenergy",
+            "uk": "Віджети для Sigenergy",
+            "zh-cn": "Sigenergy 小部件"
+        },
+        "authors": [
+            "ssbingo <s.sternitzke@online.de>"
+        ],
+        "keywords": [
+            "sigenergy",
+            "vis-2"
+        ],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "vis-2-widgets-sigenergy.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
+        "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "restartAdapters": [
+            "vis-2",
+            "vis"
+        ],
+        "onlyWWW": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "mode": "none",
+        "adminUI": {
+            "config": "none"
+        },
+        "dependencies": [
+            {
+                "vis-2": ">=2.0.0"
+            }
+        ],
+        "globalDependencies": []
     },
-    "titleLang": {
-      "en": "Vis 2 Widgets Sigenergy",
-      "de": "Vis 2 Widgets Sigenergy",
-      "ru": "Виджеты Vis 2",
-      "pt": "Vis 2 Widgets Sigenergy",
-      "nl": "Vis 2 Widgets Sigenergy",
-      "fr": "Vis 2 Widgets Sigénergie",
-      "it": "Visualizza 2 widget Sigenergy",
-      "es": "Vis 2 Widgets Sigenergía",
-      "pl": "Vis 2 Widżety Sigenergy",
-      "uk": "Віджети Vis 2 Sigenergy",
-      "zh-cn": "Vis 2 小部件 Sigenergy"
+    "native": {
+        "option1": true,
+        "option2": "42"
     },
-    "desc": {
-      "en": "Widgets for Sigenergy",
-      "de": "Widgets für Sigenergy",
-      "ru": "Виджеты для Sigenergy",
-      "pt": "Widgets para Sigenergy",
-      "nl": "Widgets voor Sigenergy",
-      "fr": "Widgets pour Sigenergy",
-      "it": "Widget per Sigenergy",
-      "es": "Widgets para Sigenergy",
-      "pl": "Widżety dla Sigenergy",
-      "uk": "Віджети для Sigenergy",
-      "zh-cn": "Sigenergy 小部件"
-    },
-    "authors": [
-      "ssbingo <s.sternitzke@online.de>"
-    ],
-    "keywords": [
-      "sigenergy",
-      "vis-2"
-    ],
-    "licenseInformation": {
-      "type": "free",
-      "license": "MIT"
-    },
-    "platform": "Javascript/Node.js",
-    "icon": "vis-2-widgets-sigenergy.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
-    "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
-    "loglevel": "info",
-    "tier": 3,
-    "restartAdapters": [
-      "vis-2",
-      "vis"
-    ],
-    "onlyWWW": true,
-    "singleton": true,
-    "type": "visualization-widgets",
-    "mode": "none",
-    "adminUI": {
-      "config": "none"
-    },
-    "dependencies": [
-      {
-        "vis-2": ">=2.0.0"
-      }
-    ],
-    "globalDependencies": []
-  },
-  "native": {
-    "option1": true,
-    "option2": "42"
-  },
-  "objects": [],
-  "instanceObjects": []
+    "objects": [],
+    "instanceObjects": []
 }

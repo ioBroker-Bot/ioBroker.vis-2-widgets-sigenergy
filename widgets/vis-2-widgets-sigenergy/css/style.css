@@ -413,3 +413,230 @@
 .sig-inv-soc-bar-bg { background: rgba(255,255,255,.1); border-radius: 5px; height: 7px; }
 .sig-inv-wrap.light .sig-inv-soc-bar-bg { background: rgba(0,0,0,.08); }
 .sig-inv-soc-bar-fill { height: 100%; border-radius: 5px; transition: width .5s; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   WIDGET 8 — SigenMicro Übersicht
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes für Backbone + Stichleitung ── */
+@keyframes sig-sm-bus  { to { stroke-dashoffset: -30; } }
+@keyframes sig-sm-stub { to { stroke-dashoffset: -20; } }
+
+/* ── Wrapper ── */
+.sig-sm-wrap {
+    background: linear-gradient(135deg, #0f1218, #131a25);
+    border-radius: 14px;
+    padding: 10px 0 0 0;
+    font-family: sans-serif;
+    color: #d8e4f0;
+    overflow: hidden;
+}
+.sig-sm-wrap.light {
+    background: linear-gradient(135deg, #f0f4f9, #e8eef5);
+    color: #2c3e50;
+}
+
+/* ── Titel ── */
+.sig-sm-title {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 8px;
+    opacity: 0.65;
+    padding: 0 10px;
+}
+
+/* ── SVG Netzwerk-Canvas ── */
+.sig-sm-net-svg {
+    width: 100%;
+    display: block;
+    overflow: visible;
+}
+
+/* ── Bus-Linie Basis ── */
+.sig-sm-bus-base {
+    stroke: #1e3048;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+.sig-sm-bus-glow {
+    stroke: #2ecc8a;
+    stroke-width: 4;
+    stroke-linecap: round;
+    opacity: 0.18;
+}
+.sig-sm-bus-anim {
+    stroke: #2ecc8a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 10 7;
+    stroke-dashoffset: 0;
+    opacity: 0.72;
+    animation: sig-sm-bus 1.3s linear infinite;
+}
+
+/* ── Stichleitung ── */
+.sig-sm-stub-base {
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+.sig-sm-stub-glow {
+    stroke: #2ecc8a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.18;
+}
+.sig-sm-stub-anim {
+    stroke: #2ecc8a;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 7 5;
+    stroke-dashoffset: 0;
+    opacity: 0.72;
+    animation: sig-sm-stub 0.95s linear infinite;
+}
+
+/* ── Labels unter dem SVG ── */
+.sig-sm-labels {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3px 12px 0;
+}
+.sig-sm-label {
+    text-align: center;
+    line-height: 1.4;
+}
+.sig-sm-label-id  { font-size: 0.62rem; font-weight: 600; }
+.sig-sm-label-pwr { font-size: 0.58rem; color: #2ecc8a; }
+.sig-sm-label-st  { font-size: 0.58rem; }
+
+/* ── Tab-Bar ── */
+.sig-sm-tabbar {
+    display: flex;
+    overflow-x: auto;
+    background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    scrollbar-width: none;
+    margin-top: 8px;
+}
+.sig-sm-tabbar::-webkit-scrollbar { display: none; }
+.sig-sm-wrap.light .sig-sm-tabbar {
+    background: rgba(0,0,0,0.06);
+    border-color: rgba(0,0,0,0.08);
+}
+.sig-sm-tab {
+    padding: 6px 14px;
+    font-size: 0.62rem;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    color: #5a7a90;
+    transition: color 0.15s, background 0.15s;
+}
+.sig-sm-tab:hover { background: rgba(255,255,255,0.04); color: #aac0d0; }
+.sig-sm-tab.active {
+    color: #2ecc8a;
+    border-bottom: 2px solid #2ecc8a;
+    font-weight: 600;
+}
+.sig-sm-wrap.light .sig-sm-tab.active { color: #1a9060; border-bottom-color: #1a9060; }
+
+/* ── Panel ── */
+.sig-sm-panel     { display: none; }
+.sig-sm-panel.active { display: block; }
+
+/* ── Summary-Kacheln (Tab 1) ── */
+.sig-sm-kacheln {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    padding: 8px 10px 10px;
+}
+.sig-sm-kach {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 8px 8px;
+    text-align: center;
+}
+.sig-sm-wrap.light .sig-sm-kach {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.09);
+}
+.sig-sm-kach-lbl  { font-size: 0.58rem; color: #4a6070; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+.sig-sm-kach-val  { font-size: 1.1rem; font-weight: 700; line-height: 1.1; }
+.sig-sm-kach-unit { font-size: 0.58rem; color: #4a6070; margin-left: 1px; }
+.sig-sm-kach-sub  { font-size: 0.52rem; color: #2a3a4a; margin-top: 2px; }
+.sig-sm-wrap.light .sig-sm-kach-lbl { color: #7a8a9a; }
+.sig-sm-wrap.light .sig-sm-kach-sub { color: #aab0ba; }
+
+/* ── Detail-Header (Tabs 2+) ── */
+.sig-sm-det-hdr {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 10px 0 10px;
+    margin-bottom: 10px;
+}
+.sig-sm-det-img {
+    width: 64px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #2a3a50;
+}
+.sig-sm-det-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.sig-sm-det-img.run { border-color: #2ecc8a; box-shadow: 0 0 8px rgba(46,204,138,0.3); }
+.sig-sm-det-img.err { border-color: #e05555; }
+.sig-sm-det-info { flex: 1; }
+.sig-sm-det-model  { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
+.sig-sm-det-serial { font-size: 0.65rem; color: #5a7a90; }
+.sig-sm-det-fw     { font-size: 0.58rem; color: #3a5060; margin-top: 1px; }
+.sig-sm-det-badge  {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.62rem; font-weight: 600;
+    padding: 2px 8px; border-radius: 10px; margin-top: 5px;
+}
+.sig-sm-badge-run  { background: rgba(46,204,138,0.12); color: #2ecc8a; border: 1px solid rgba(46,204,138,0.25); }
+.sig-sm-badge-idle { background: rgba(42,58,80,0.3); color: #5a7a90; border: 1px solid #2a3a50; }
+.sig-sm-badge-err  { background: rgba(224,85,85,0.12); color: #e05555; border: 1px solid rgba(224,85,85,0.25); }
+.sig-sm-badge-dot  { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.sig-sm-badge-run .sig-sm-badge-dot { animation: sig-pulse 1.8s infinite; }
+
+/* ── Register-Grid (Tabs 2+) ── */
+.sig-sm-reg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+    gap: 6px;
+    padding: 0 10px 10px;
+}
+.sig-sm-reg-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 7px;
+    padding: 7px 9px;
+}
+.sig-sm-wrap.light .sig-sm-reg-card {
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.08);
+}
+.sig-sm-reg-nr   { font-size: 0.5rem; color: #2a3a4a; margin-bottom: 2px; font-family: monospace; }
+.sig-sm-reg-lbl  { font-size: 0.6rem; color: #4a6070; margin-bottom: 3px; }
+.sig-sm-reg-val  { font-size: 1rem; font-weight: 700; line-height: 1.1; }
+.sig-sm-reg-unit { font-size: 0.58rem; color: #4a6070; margin-left: 1px; }
+.sig-sm-reg-oid  {
+    font-size: 0.48rem; color: #2a3a4a; margin-top: 3px;
+    font-family: monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sig-sm-wrap.light .sig-sm-reg-lbl { color: #7a8a9a; }
+.sig-sm-wrap.light .sig-sm-reg-oid { color: #aab0ba; }

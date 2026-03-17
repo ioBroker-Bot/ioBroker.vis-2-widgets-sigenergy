@@ -13,7 +13,7 @@
 ## Adaptador vis-2-widgets-sigenergy para ioBroker
 
 Conjunto de widgets VIS-2 para o adaptador de armazenamento de energia Sigenergy (`ioBroker.sigenergy`).
-Contém 7 widgets para visualização e controlo do fluxo de energia, estado da bateria, potência em tempo real, estatísticas diárias, carregador AC, carregador DC e inversor.
+Contém 8 widgets para visualização e controlo do fluxo de energia, estado da bateria, potência em tempo real, estatísticas diárias, carregador AC, carregador DC, inversor e visão geral dos micro-inversores SigenMicro. para visualização e controlo do fluxo de energia, estado da bateria, potência em tempo real, estatísticas diárias, carregador AC, carregador DC e inversor.
 
 ## Requisitos
 
@@ -102,11 +102,28 @@ Monitorização e controlo abrangentes do inversor com navegação por separador
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### Visão geral SigenMicro
+Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Modbus. O separador 1 mostra todos os dispositivos como segmento de rede animado (topologia de barramento Ethernet com derivações verticais).
+
+#### Layout dinâmico
+| Dispositivos | Linhas | Tamanho imagem |
+|---|---|---|
+| 1–5 | 1 linha | 80 × 90 px |
+| 6–10 | 1 linha | 52 × 60 px |
+| 11–15 | 2 linhas | 46 × 52 px |
+| 16–20 | 2 linhas | 40 × 46 px |
+
+
 ## Aparência
 
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.5.0 (2026-03-17)
+* (ssbingo) Widget 8: visão geral SigenMicro com topologia de barramento Ethernet animada
+* (ssbingo) Layout dinâmico para 1–20 micro-inversores, 4 níveis de tamanho, 1–2 linhas
+* (ssbingo) Separador de detalhe por dispositivo com todos os 15 registos Modbus (01–15)
+
 ### 1.4.4 (2026-03-12)
 * Widget fluxo de energia: etiqueta SOC e valor deslocados 5px para cima
 
