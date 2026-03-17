@@ -119,6 +119,9 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8: vista general SigenMicro con topología de bus Ethernet animada
 * (ssbingo) Diseño dinámico para 1–20 microinversores, 4 niveles de tamaño, 1–2 filas

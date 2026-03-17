@@ -118,6 +118,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8 : vue d'ensemble SigenMicro avec topologie bus Ethernet animée
 * (ssbingo) Disposition dynamique pour 1–20 micro-onduleurs, 4 niveaux de taille, 1–2 lignes

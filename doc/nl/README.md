@@ -118,6 +118,9 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8: SigenMicro overzicht met geanimeerde Ethernet-bustopologie
 * (ssbingo) Dynamische lay-out voor 1–20 micro-omvormers, 4 maatcategorieën, 1–2 rijen

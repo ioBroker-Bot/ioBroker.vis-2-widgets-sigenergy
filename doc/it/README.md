@@ -119,6 +119,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8: panoramica SigenMicro con topologia bus Ethernet animata
 * (ssbingo) Layout dinamico per 1–20 micro-inverter, 4 livelli di dimensione, 1–2 righe

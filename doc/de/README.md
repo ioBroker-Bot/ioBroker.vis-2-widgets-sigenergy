@@ -138,6 +138,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8: SigenMicro Übersicht mit animierter Ethernet-Bus-Topologie (Backbone + senkrechte Stichleitungen)
 * (ssbingo) Dynamisches Layout für 1–20 Mikro-Wechselrichter, 4 Größenstufen, 1–2 Zeilen

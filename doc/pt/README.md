@@ -119,6 +119,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8: visão geral SigenMicro com topologia de barramento Ethernet animada
 * (ssbingo) Layout dinâmico para 1–20 micro-inversores, 4 níveis de tamanho, 1–2 linhas

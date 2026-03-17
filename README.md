@@ -138,6 +138,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.1 (2026-03-17)
+* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
+
 ### 1.5.0 (2026-03-17)
 * (ssbingo) Widget 8: SigenMicro Overview with animated Ethernet bus topology (backbone + vertical drop lines)
 * (ssbingo) Dynamic layout for 1-20 micro-inverters, 4 size tiers, 1-2 rows
