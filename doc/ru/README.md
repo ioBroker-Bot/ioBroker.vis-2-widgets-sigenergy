@@ -118,6 +118,10 @@
 Все виджеты поддерживают **светлый и тёмный режим**, переключаемый через настройку виджета `Тёмный режим`.
 
 ## Changelog
+### 1.5.2 (2026-03-17)
+* (ssbingo) Добавлены скриншоты виджетов: обзор SigenMicro
+* (ssbingo) Скриншот потока энергии обновлён
+
 ### 1.5.1 (2026-03-17)
 * (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
 

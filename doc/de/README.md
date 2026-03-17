@@ -129,6 +129,10 @@ Die waagerechte Backbone-Linie und die senkrechten Stichleitungen zeigen animier
 | sig_darkmode | Checkbox | true | Dunkel- / Hellmodus |
 | oid_micro1 … oid_micro20 | OID | — | Anker-OID je Gerät (z.B. sigenergy.0.sigenmicro.11.outputPower) |
 
+![SigenMicro Übersicht — Übersichts-Tab](../../img/widget-microinverter_01.png)
+
+![SigenMicro Übersicht — Detail-Tab](../../img/widget-microinverter_02.png)
+
 **OIDs (je Gerät, Präfix sigenergy.0.sigenmicro.<slaveId>):**
 modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
 
@@ -138,6 +142,10 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.2 (2026-03-17)
+* (ssbingo) Widget-Screenshots ergänzt: SigenMicro Übersicht (widget-microinverter_01.png, widget-microinverter_02.png)
+* (ssbingo) Energiefluss-Screenshot aktualisiert (widget-energiefluss.png)
+
 ### 1.5.1 (2026-03-17)
 * (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
 

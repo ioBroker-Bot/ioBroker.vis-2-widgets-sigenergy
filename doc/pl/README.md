@@ -119,6 +119,10 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.5.2 (2026-03-17)
+* (ssbingo) Dodano zrzuty ekranu widgetów: przegląd SigenMicro
+* (ssbingo) Zrzut przepływu energii zaktualizowany
+
 ### 1.5.1 (2026-03-17)
 * (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
 

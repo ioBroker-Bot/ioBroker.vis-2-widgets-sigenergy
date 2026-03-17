@@ -1,20 +1,20 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.5.1",
+        "version": "1.5.2",
         "news": {
-            "1.5.1": {
-                "en": "Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again",
-                "de": "Bugfix: Widget-8-Code korrekt innerhalb des vis.binds-Objekts platziert — alle Widgets wieder sichtbar",
-                "ru": "Исправление: код виджета 8 корректно размещён внутри объекта vis.binds — все виджеты снова видны",
-                "nl": "Bugfix: Widget 8 code correct geplaatst in vis.binds object — alle widgets weer zichtbaar",
-                "fr": "Correctif: code widget 8 correctement placé dans l'objet vis.binds — tous les widgets à nouveau visibles",
-                "it": "Correzione: codice widget 8 posizionato correttamente nell'oggetto vis.binds — tutti i widget nuovamente visibili",
-                "es": "Corrección: código del widget 8 colocado correctamente dentro del objeto vis.binds — todos los widgets visibles de nuevo",
-                "pl": "Poprawka: kod widgetu 8 umieszczony poprawnie wewnątrz obiektu vis.binds — wszystkie widgety znów widoczne",
-                "pt": "Correção: código do widget 8 colocado corretamente dentro do objeto vis.binds — todos os widgets visíveis novamente",
-                "uk": "Виправлення: код віджета 8 розміщено правильно всередині об'єкта vis.binds — усі віджети знову видимі",
-                "zh-cn": "错误修复：Widget 8代码正确放置在vis.binds对象内部 — 所有小部件再次可见"
+            "1.5.2": {
+                "en": "Widget screenshots added: SigenMicro Overview (widget-microinverter_01.png, widget-microinverter_02.png); Energy Flow screenshot updated",
+                "de": "Widget-Screenshots ergänzt: SigenMicro Übersicht (widget-microinverter_01.png, widget-microinverter_02.png); Energiefluss-Screenshot aktualisiert",
+                "ru": "Добавлены скриншоты виджетов: обзор SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); скриншот потока энергии обновлён",
+                "nl": "Widget-screenshots toegevoegd: SigenMicro overzicht (widget-microinverter_01.png, widget-microinverter_02.png); schermafbeelding energiestroom bijgewerkt",
+                "fr": "Captures d'écran des widgets ajoutées : vue d'ensemble SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png) ; capture du flux d'énergie mise à jour",
+                "it": "Screenshot widget aggiunti: panoramica SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); screenshot flusso energetico aggiornato",
+                "es": "Capturas de pantalla de widgets añadidas: vista general SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); captura de flujo de energía actualizada",
+                "pl": "Dodano zrzuty ekranu widgetów: przegląd SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); zrzut przepływu energii zaktualizowany",
+                "pt": "Capturas de ecrã de widgets adicionadas: visão geral SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); captura do fluxo de energia atualizada",
+                "uk": "Додано знімки екрана віджетів: огляд SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); знімок потоку енергії оновлено",
+                "zh-cn": "添加小部件截图：SigenMicro概览(widget-microinverter_01.png, widget-microinverter_02.png)；能量流截图已更新"
             }
         },
         "titleLang": {

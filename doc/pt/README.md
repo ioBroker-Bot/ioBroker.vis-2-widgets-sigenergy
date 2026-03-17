@@ -119,6 +119,10 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.5.2 (2026-03-17)
+* (ssbingo) Capturas de ecrã de widgets adicionadas: visão geral SigenMicro
+* (ssbingo) Captura do fluxo de energia atualizada
+
 ### 1.5.1 (2026-03-17)
 * (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
 

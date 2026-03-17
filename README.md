@@ -129,6 +129,10 @@ The horizontal backbone line and the vertical drop lines show animated dashes th
 | sig_darkmode | checkbox | true | Dark / Light mode |
 | oid_micro1 … oid_micro20 | OID | — | Anchor OID per device (e.g. sigenergy.0.sigenmicro.11.outputPower) |
 
+![SigenMicro Übersicht — Übersichts-Tab](img/widget-microinverter_01.png)
+
+![SigenMicro Übersicht — Detail-Tab](img/widget-microinverter_02.png)
+
 **OIDs (per device, prefix sigenergy.0.sigenmicro.<slaveId>):**
 modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
 
@@ -138,6 +142,10 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.2 (2026-03-17)
+* (ssbingo) Widget screenshots added: SigenMicro Overview (widget-microinverter_01.png, widget-microinverter_02.png)
+* (ssbingo) Energy Flow screenshot updated (widget-energiefluss.png)
+
 ### 1.5.1 (2026-03-17)
 * (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
 

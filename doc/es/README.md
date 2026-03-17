@@ -119,6 +119,10 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.5.2 (2026-03-17)
+* (ssbingo) Capturas de pantalla de widgets añadidas: vista general SigenMicro
+* (ssbingo) Captura de flujo de energía actualizada
+
 ### 1.5.1 (2026-03-17)
 * (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
 
