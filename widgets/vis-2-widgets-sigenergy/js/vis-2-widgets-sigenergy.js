@@ -1026,8 +1026,8 @@ vis.binds["vis-2-widgets-sigenergy"] = {
              "oid_startStop","oid_emsEnable","oid_pwrPct"],
             update);
         update();
-    }
-};
+    },
+
 
 
     // ── Widget 8: SigenMicro Übersicht ──────────────────────────────────────
@@ -1478,4 +1478,5 @@ vis.binds["vis-2-widgets-sigenergy"] = {
     }
 
 
+};
 vis.binds["vis-2-widgets-sigenergy"].showVersion();
