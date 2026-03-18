@@ -112,6 +112,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.5.6 (2026-03-18)
+* (ssbingo) Incremento de versão para 1.5.6; sem alterações funcionais
+
 ### 1.5.5 (2026-03-18)
 * (ssbingo) Incremento de versão: 1.5.4 já estava publicada no npm; sem alterações funcionais
 

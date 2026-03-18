@@ -135,6 +135,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.6 (2026-03-18)
+* (ssbingo) Version bump to 1.5.6; no functional changes
+
 ### 1.5.5 (2026-03-18)
 * (ssbingo) Version bump: 1.5.4 was already published on npm; no functional changes
 
