@@ -22,12 +22,6 @@ Contient 8 widgets pour la visualisation et le contrôle du flux d'énergie, l'�
 
 ## Installation
 
-Installer l'adaptateur via ioBroker Admin en tant que fichier ZIP :
-
-1. Admin → Adaptateurs → « Installer depuis une URL personnalisée » (icône GitHub)
-2. Téléverser le fichier ZIP ou indiquer l'URL
-3. Attendre la fin de l'installation — VIS-2 redémarre automatiquement
-
 > **Remarque :** Après l'installation, un **rechargement de l'éditeur VIS-2 dans le navigateur** est nécessaire
 > (F5 ou actualiser la page) pour que les widgets apparaissent dans la palette.
 > L'adaptateur VIS-2 redémarre automatiquement, mais le navigateur doit être
@@ -112,12 +106,15 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 | 11–15 | 2 lignes | 46 × 52 px |
 | 16–20 | 2 lignes | 40 × 46 px |
 
-
 ## Apparence
 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.5.3 (2026-03-17)
+* (ssbingo) Étapes d'installation exemples supprimées de tous les fichiers README
+* (ssbingo) Erreur E1111 corrigée : configuration native exemple (option1/option2) supprimée de io-package.json
+
 ### 1.5.2 (2026-03-17)
 * (ssbingo) Captures d'écran des widgets ajoutées : vue d'ensemble SigenMicro
 * (ssbingo) Capture du flux d'énergie mise à jour

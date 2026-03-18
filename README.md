@@ -22,12 +22,6 @@ Contains 8 widgets for visualisation and control of energy flow, battery status,
 
 ## Installation
 
-Install the adapter via ioBroker Admin as a ZIP file:
-
-1. Admin → Adapters → "Install from own URL" (GitHub icon)
-2. Upload the ZIP file or enter the URL
-3. Wait for the installation to complete — VIS-2 restarts automatically
-
 > **Note:** After installation a **reload of the VIS-2 editor in the browser** is required
 > (F5 or refresh the page) so that the widgets appear in the palette.
 > The VIS-2 adapter restarts automatically, but the browser must be
@@ -136,12 +130,15 @@ The horizontal backbone line and the vertical drop lines show animated dashes th
 **OIDs (per device, prefix sigenergy.0.sigenmicro.<slaveId>):**
 modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
 
-
 ## Appearance
 
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.3 (2026-03-17)
+* (ssbingo) Removed example installation steps from all README files
+* (ssbingo) Fixed E1111: cleared native example config (option1/option2) from io-package.json
+
 ### 1.5.2 (2026-03-17)
 * (ssbingo) Widget screenshots added: SigenMicro Overview (widget-microinverter_01.png, widget-microinverter_02.png)
 * (ssbingo) Energy Flow screenshot updated (widget-energiefluss.png)

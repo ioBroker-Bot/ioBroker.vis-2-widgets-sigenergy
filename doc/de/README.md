@@ -22,12 +22,6 @@ Enthält 8 Widgets zur Visualisierung und Steuerung von Energiefluss, Batteriest
 
 ## Installation
 
-Den Adapter über den ioBroker Admin als ZIP-Datei installieren:
-
-1. Admin → Adapter → „Von eigener URL installieren" (GitHub-Icon)
-2. ZIP-Datei hochladen oder URL angeben
-3. Installation abwarten — VIS-2 wird automatisch neu gestartet
-
 > **Hinweis:** Nach der Installation ist ein **Reload des VIS-2 Editors im Browser** erforderlich
 > (F5 bzw. Seite neu laden), damit die Widgets in der Palette erscheinen.
 > Der Neustart des VIS-2 Adapters erfolgt automatisch, der Browser muss jedoch
@@ -136,12 +130,15 @@ Die waagerechte Backbone-Linie und die senkrechten Stichleitungen zeigen animier
 **OIDs (je Gerät, Präfix sigenergy.0.sigenmicro.<slaveId>):**
 modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
 
-
 ## Darstellung
 
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.3 (2026-03-17)
+* (ssbingo) Beispiel-Installationsschritte aus allen README-Dateien entfernt
+* (ssbingo) E1111 behoben: native-Beispielkonfiguration (option1/option2) aus io-package.json entfernt
+
 ### 1.5.2 (2026-03-17)
 * (ssbingo) Widget-Screenshots ergänzt: SigenMicro Übersicht (widget-microinverter_01.png, widget-microinverter_02.png)
 * (ssbingo) Energiefluss-Screenshot aktualisiert (widget-energiefluss.png)

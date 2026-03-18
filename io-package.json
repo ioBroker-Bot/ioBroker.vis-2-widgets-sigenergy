@@ -1,20 +1,20 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.5.2",
+        "version": "1.5.3",
         "news": {
-            "1.5.2": {
-                "en": "Widget screenshots added: SigenMicro Overview (widget-microinverter_01.png, widget-microinverter_02.png); Energy Flow screenshot updated",
-                "de": "Widget-Screenshots ergänzt: SigenMicro Übersicht (widget-microinverter_01.png, widget-microinverter_02.png); Energiefluss-Screenshot aktualisiert",
-                "ru": "Добавлены скриншоты виджетов: обзор SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); скриншот потока энергии обновлён",
-                "nl": "Widget-screenshots toegevoegd: SigenMicro overzicht (widget-microinverter_01.png, widget-microinverter_02.png); schermafbeelding energiestroom bijgewerkt",
-                "fr": "Captures d'écran des widgets ajoutées : vue d'ensemble SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png) ; capture du flux d'énergie mise à jour",
-                "it": "Screenshot widget aggiunti: panoramica SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); screenshot flusso energetico aggiornato",
-                "es": "Capturas de pantalla de widgets añadidas: vista general SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); captura de flujo de energía actualizada",
-                "pl": "Dodano zrzuty ekranu widgetów: przegląd SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); zrzut przepływu energii zaktualizowany",
-                "pt": "Capturas de ecrã de widgets adicionadas: visão geral SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); captura do fluxo de energia atualizada",
-                "uk": "Додано знімки екрана віджетів: огляд SigenMicro (widget-microinverter_01.png, widget-microinverter_02.png); знімок потоку енергії оновлено",
-                "zh-cn": "添加小部件截图：SigenMicro概览(widget-microinverter_01.png, widget-microinverter_02.png)；能量流截图已更新"
+            "1.5.3": {
+                "en": "Removed example installation steps from README; fixed E1111 by clearing native example config from io-package.json",
+                "de": "Beispiel-Installationsschritte aus README entfernt; E1111 behoben durch Bereinigung der nativen Beispielkonfiguration in io-package.json",
+                "ru": "Удалены примеры шагов установки из README; исправлена ошибка E1111 путём очистки примера конфигурации native в io-package.json",
+                "nl": "Voorbeeld installatiesstappen verwijderd uit README; E1111 opgelost door verwijdering van voorbeeldconfiguratie uit native in io-package.json",
+                "fr": "Étapes d'installation exemples supprimées du README ; erreur E1111 corrigée en supprimant la configuration native exemple de io-package.json",
+                "it": "Rimossi i passaggi di installazione di esempio dal README; corretto E1111 eliminando la configurazione native di esempio da io-package.json",
+                "es": "Eliminados los pasos de instalación de ejemplo del README; corregido E1111 limpiando la configuración native de ejemplo en io-package.json",
+                "pl": "Usunięto przykładowe kroki instalacji z README; naprawiono E1111 przez wyczyszczenie przykładowej konfiguracji native w io-package.json",
+                "pt": "Removidos os passos de instalação de exemplo do README; corrigido E1111 limpando a configuração native de exemplo no io-package.json",
+                "uk": "Видалено приклади кроків встановлення з README; виправлено E1111 очищенням прикладу конфігурації native в io-package.json",
+                "zh-cn": "从README中删除示例安装步骤；通过清除io-package.json中的native示例配置修复E1111"
             }
         },
         "titleLang": {
@@ -79,10 +79,7 @@
         ],
         "globalDependencies": []
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
-    },
+    "native": {},
     "objects": [],
     "instanceObjects": []
 }

@@ -22,12 +22,6 @@ Contiene 8 widget per la visualizzazione e il controllo del flusso energetico, s
 
 ## Installazione
 
-Installare l'adattatore tramite ioBroker Admin come file ZIP:
-
-1. Admin → Adattatori → «Installa da URL personalizzato» (icona GitHub)
-2. Caricare il file ZIP o inserire l'URL
-3. Attendere il completamento dell'installazione — VIS-2 si riavvia automaticamente
-
 > **Nota:** Dopo l'installazione è necessario **ricaricare l'editor VIS-2 nel browser**
 > (F5 o aggiorna la pagina) affinché i widget appaiano nella palette.
 > L'adattatore VIS-2 si riavvia automaticamente, ma il browser deve essere
@@ -113,12 +107,15 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 | 11–15 | 2 righe | 46 × 52 px |
 | 16–20 | 2 righe | 40 × 46 px |
 
-
 ## Aspetto
 
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.5.3 (2026-03-17)
+* (ssbingo) Rimossi i passaggi di installazione di esempio da tutti i file README
+* (ssbingo) Corretto E1111: configurazione native di esempio (option1/option2) rimossa da io-package.json
+
 ### 1.5.2 (2026-03-17)
 * (ssbingo) Screenshot widget aggiunti: panoramica SigenMicro
 * (ssbingo) Screenshot flusso energetico aggiornato

@@ -22,12 +22,6 @@ Zawiera 7 widżetów do wizualizacji i sterowania przepływem energii, stanem ba
 
 ## Instalacja
 
-Zainstaluj adapter przez ioBroker Admin jako plik ZIP:
-
-1. Admin → Adaptery → „Zainstaluj z własnego URL" (ikona GitHub)
-2. Prześlij plik ZIP lub podaj URL
-3. Poczekaj na zakończenie instalacji — VIS-2 restartuje się automatycznie
-
 > **Uwaga:** Po instalacji wymagane jest **ponowne załadowanie edytora VIS-2 w przeglądarce**
 > (F5 lub odśwież stronę), aby widżety pojawiły się w palecie.
 > Adapter VIS-2 restartuje się automatycznie, ale przeglądarka musi zostać
@@ -113,12 +107,15 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 | 11–15 | 2 wiersze | 46 × 52 px |
 | 16–20 | 2 wiersze | 40 × 46 px |
 
-
 ## Wygląd
 
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.5.3 (2026-03-17)
+* (ssbingo) Usunięto przykładowe kroki instalacji ze wszystkich plików README
+* (ssbingo) Naprawiono E1111: usunięto przykładową konfigurację native (option1/option2) z io-package.json
+
 ### 1.5.2 (2026-03-17)
 * (ssbingo) Dodano zrzuty ekranu widgetów: przegląd SigenMicro
 * (ssbingo) Zrzut przepływu energii zaktualizowany

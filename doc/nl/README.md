@@ -22,12 +22,6 @@ Bevat 8 widgets voor visualisatie en besturing van energiestroom, batterijstatus
 
 ## Installatie
 
-De adapter via ioBroker Admin installeren als ZIP-bestand:
-
-1. Admin → Adapters → „Installeren via eigen URL" (GitHub-icoon)
-2. ZIP-bestand uploaden of URL opgeven
-3. Wacht op voltooiing van de installatie — VIS-2 wordt automatisch opnieuw gestart
-
 > **Opmerking:** Na de installatie is een **herlaad van de VIS-2 editor in de browser** vereist
 > (F5 of pagina vernieuwen) zodat de widgets in de palette verschijnen.
 > De VIS-2 adapter wordt automatisch opnieuw gestart, maar de browser moet
@@ -112,12 +106,15 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 | 11–15 | 2 rijen | 46 × 52 px |
 | 16–20 | 2 rijen | 40 × 46 px |
 
-
 ## Weergave
 
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.5.3 (2026-03-17)
+* (ssbingo) Voorbeeld installatiesstappen verwijderd uit alle README-bestanden
+* (ssbingo) E1111 opgelost: native voorbeeldconfiguratie (option1/option2) verwijderd uit io-package.json
+
 ### 1.5.2 (2026-03-17)
 * (ssbingo) Widget-screenshots toegevoegd: SigenMicro overzicht
 * (ssbingo) Schermafbeelding energiestroom bijgewerkt
