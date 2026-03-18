@@ -112,6 +112,9 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.5.4 (2026-03-18)
+* (ssbingo) npm-token añadido al workflow test-and-release para publicación npm automática
+
 ### 1.5.3 (2026-03-17)
 * (ssbingo) Eliminados los pasos de instalación de ejemplo de todos los archivos README
 * (ssbingo) Corregido E1111: configuración native de ejemplo (option1/option2) eliminada de io-package.json

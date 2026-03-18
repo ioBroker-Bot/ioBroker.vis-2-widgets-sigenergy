@@ -112,6 +112,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.5.4 (2026-03-18)
+* (ssbingo) Aggiunto npm-token al workflow test-and-release per la pubblicazione npm automatica
+
 ### 1.5.3 (2026-03-17)
 * (ssbingo) Rimossi i passaggi di installazione di esempio da tutti i file README
 * (ssbingo) Corretto E1111: configurazione native di esempio (option1/option2) rimossa da io-package.json

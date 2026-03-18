@@ -1,20 +1,20 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.5.3",
+        "version": "1.5.4",
         "news": {
-            "1.5.3": {
-                "en": "Removed example installation steps from README; fixed E1111 by clearing native example config from io-package.json",
-                "de": "Beispiel-Installationsschritte aus README entfernt; E1111 behoben durch Bereinigung der nativen Beispielkonfiguration in io-package.json",
-                "ru": "Удалены примеры шагов установки из README; исправлена ошибка E1111 путём очистки примера конфигурации native в io-package.json",
-                "nl": "Voorbeeld installatiesstappen verwijderd uit README; E1111 opgelost door verwijdering van voorbeeldconfiguratie uit native in io-package.json",
-                "fr": "Étapes d'installation exemples supprimées du README ; erreur E1111 corrigée en supprimant la configuration native exemple de io-package.json",
-                "it": "Rimossi i passaggi di installazione di esempio dal README; corretto E1111 eliminando la configurazione native di esempio da io-package.json",
-                "es": "Eliminados los pasos de instalación de ejemplo del README; corregido E1111 limpiando la configuración native de ejemplo en io-package.json",
-                "pl": "Usunięto przykładowe kroki instalacji z README; naprawiono E1111 przez wyczyszczenie przykładowej konfiguracji native w io-package.json",
-                "pt": "Removidos os passos de instalação de exemplo do README; corrigido E1111 limpando a configuração native de exemplo no io-package.json",
-                "uk": "Видалено приклади кроків встановлення з README; виправлено E1111 очищенням прикладу конфігурації native в io-package.json",
-                "zh-cn": "从README中删除示例安装步骤；通过清除io-package.json中的native示例配置修复E1111"
+            "1.5.4": {
+                "en": "Added npm-token to test-and-release workflow to enable automated npm publishing",
+                "de": "npm-token zum test-and-release Workflow hinzugefügt für automatische npm-Veröffentlichung",
+                "ru": "Добавлен npm-token в рабочий процесс test-and-release для автоматической публикации npm",
+                "nl": "npm-token toegevoegd aan test-and-release workflow voor automatische npm-publicatie",
+                "fr": "npm-token ajouté au workflow test-and-release pour la publication npm automatique",
+                "it": "Aggiunto npm-token al workflow test-and-release per la pubblicazione npm automatica",
+                "es": "npm-token añadido al workflow test-and-release para publicación npm automática",
+                "pl": "Dodano npm-token do workflow test-and-release dla automatycznej publikacji npm",
+                "pt": "npm-token adicionado ao workflow test-and-release para publicação npm automática",
+                "uk": "Додано npm-token до робочого процесу test-and-release для автоматичної публікації npm",
+                "zh-cn": "在test-and-release工作流中添加npm-token以启用自动npm发布"
             }
         },
         "titleLang": {

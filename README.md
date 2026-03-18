@@ -135,6 +135,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.4 (2026-03-18)
+* (ssbingo) Added npm-token to test-and-release workflow to enable automated npm publishing
+
 ### 1.5.3 (2026-03-17)
 * (ssbingo) Removed example installation steps from all README files
 * (ssbingo) Fixed E1111: cleared native example config (option1/option2) from io-package.json
