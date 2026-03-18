@@ -135,6 +135,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.5 (2026-03-18)
+* (ssbingo) Versionserhöhung: 1.5.4 war bereits auf npm veröffentlicht; keine funktionalen Änderungen
+
 ### 1.5.4 (2026-03-18)
 * (ssbingo) npm-token zum test-and-release Workflow hinzugefügt für automatische npm-Veröffentlichung
 

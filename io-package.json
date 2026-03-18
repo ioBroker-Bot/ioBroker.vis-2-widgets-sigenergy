@@ -1,20 +1,20 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.5.4",
+        "version": "1.5.5",
         "news": {
-            "1.5.4": {
-                "en": "Added npm-token to test-and-release workflow to enable automated npm publishing",
-                "de": "npm-token zum test-and-release Workflow hinzugefügt für automatische npm-Veröffentlichung",
-                "ru": "Добавлен npm-token в рабочий процесс test-and-release для автоматической публикации npm",
-                "nl": "npm-token toegevoegd aan test-and-release workflow voor automatische npm-publicatie",
-                "fr": "npm-token ajouté au workflow test-and-release pour la publication npm automatique",
-                "it": "Aggiunto npm-token al workflow test-and-release per la pubblicazione npm automatica",
-                "es": "npm-token añadido al workflow test-and-release para publicación npm automática",
-                "pl": "Dodano npm-token do workflow test-and-release dla automatycznej publikacji npm",
-                "pt": "npm-token adicionado ao workflow test-and-release para publicação npm automática",
-                "uk": "Додано npm-token до робочого процесу test-and-release для автоматичної публікації npm",
-                "zh-cn": "在test-and-release工作流中添加npm-token以启用自动npm发布"
+            "1.5.5": {
+                "en": "Version bump: 1.5.4 was already published on npm; no functional changes",
+                "de": "Versionserhöhung: 1.5.4 war bereits auf npm veröffentlicht; keine funktionalen Änderungen",
+                "ru": "Повышение версии: 1.5.4 уже опубликована на npm; функциональных изменений нет",
+                "nl": "Versieverhoging: 1.5.4 was al gepubliceerd op npm; geen functionele wijzigingen",
+                "fr": "Montée de version : 1.5.4 était déjà publiée sur npm ; aucun changement fonctionnel",
+                "it": "Incremento versione: 1.5.4 era già pubblicata su npm; nessuna modifica funzionale",
+                "es": "Incremento de versión: 1.5.4 ya estaba publicada en npm; sin cambios funcionales",
+                "pl": "Podwyższenie wersji: 1.5.4 była już opublikowana na npm; brak zmian funkcjonalnych",
+                "pt": "Incremento de versão: 1.5.4 já estava publicada no npm; sem alterações funcionais",
+                "uk": "Підвищення версії: 1.5.4 вже опублікована на npm; функціональних змін немає",
+                "zh-cn": "版本升级：1.5.4已在npm上发布；无功能性更改"
             }
         },
         "titleLang": {

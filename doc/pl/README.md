@@ -112,6 +112,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.5.5 (2026-03-18)
+* (ssbingo) Podwyższenie wersji: 1.5.4 była już opublikowana na npm; brak zmian funkcjonalnych
+
 ### 1.5.4 (2026-03-18)
 * (ssbingo) Dodano npm-token do workflow test-and-release dla automatycznej publikacji npm
 
