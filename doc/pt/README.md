@@ -20,13 +20,6 @@ Contém 8 widgets para visualização e controlo do fluxo de energia, estado da 
 - ioBroker com o adaptador `sigenergy` instalado e configurado
 - Adaptador ioBroker VIS-2 (≥ 2.0.0)
 
-## Instalação
-
-> **Nota:** Após a instalação é necessário **recarregar o editor VIS-2 no browser**
-> (F5 ou atualizar a página) para que os widgets apareçam na paleta.
-> O adaptador VIS-2 reinicia automaticamente, mas o browser deve ser
-> atualizado manualmente.
-
 ## Widgets
 
 ### Diagrama de fluxo de energia
@@ -112,6 +105,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.5.7 (2026-03-18)
+* (ssbingo) Secção '## Instalação' removida de todos os ficheiros README (S6014)
+
 ### 1.5.6 (2026-03-18)
 * (ssbingo) Incremento de versão para 1.5.6; sem alterações funcionais
 

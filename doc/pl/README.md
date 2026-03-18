@@ -20,13 +20,6 @@ Zawiera 7 widżetów do wizualizacji i sterowania przepływem energii, stanem ba
 - ioBroker z zainstalowanym i skonfigurowanym adapterem `sigenergy`
 - Adapter ioBroker VIS-2 (≥ 2.0.0)
 
-## Instalacja
-
-> **Uwaga:** Po instalacji wymagane jest **ponowne załadowanie edytora VIS-2 w przeglądarce**
-> (F5 lub odśwież stronę), aby widżety pojawiły się w palecie.
-> Adapter VIS-2 restartuje się automatycznie, ale przeglądarka musi zostać
-> odświeżona ręcznie.
-
 ## Widżety
 
 ### Diagram przepływu energii
@@ -112,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.5.7 (2026-03-18)
+* (ssbingo) Sekcja '## Instalacja' usunięta ze wszystkich plików README (S6014)
+
 ### 1.5.6 (2026-03-18)
 * (ssbingo) Podwyższenie wersji do 1.5.6; brak zmian funkcjonalnych
 

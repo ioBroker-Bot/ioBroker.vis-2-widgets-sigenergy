@@ -20,13 +20,6 @@ Contient 8 widgets pour la visualisation et le contrôle du flux d'énergie, l'�
 - ioBroker avec l'adaptateur `sigenergy` installé et configuré
 - Adaptateur ioBroker VIS-2 (≥ 2.0.0)
 
-## Installation
-
-> **Remarque :** Après l'installation, un **rechargement de l'éditeur VIS-2 dans le navigateur** est nécessaire
-> (F5 ou actualiser la page) pour que les widgets apparaissent dans la palette.
-> L'adaptateur VIS-2 redémarre automatiquement, mais le navigateur doit être
-> actualisé manuellement.
-
 ## Widgets
 
 ### Diagramme de flux d'énergie
@@ -111,6 +104,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.5.7 (2026-03-18)
+* (ssbingo) Section '## Installation' supprimée de tous les fichiers README (S6014)
+
 ### 1.5.6 (2026-03-18)
 * (ssbingo) Montée de version à 1.5.6 ; aucun changement fonctionnel
 

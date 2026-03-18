@@ -20,13 +20,6 @@ Bevat 8 widgets voor visualisatie en besturing van energiestroom, batterijstatus
 - ioBroker met geïnstalleerde en geconfigureerde `sigenergy`-adapter
 - ioBroker VIS-2 adapter (≥ 2.0.0)
 
-## Installatie
-
-> **Opmerking:** Na de installatie is een **herlaad van de VIS-2 editor in de browser** vereist
-> (F5 of pagina vernieuwen) zodat de widgets in de palette verschijnen.
-> De VIS-2 adapter wordt automatisch opnieuw gestart, maar de browser moet
-> handmatig worden vernieuwd.
-
 ## Widgets
 
 ### Energiestroom-diagram
@@ -111,6 +104,9 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.5.7 (2026-03-18)
+* (ssbingo) Sectie '## Installatie' verwijderd uit alle README-bestanden (S6014)
+
 ### 1.5.6 (2026-03-18)
 * (ssbingo) Versieverhoging naar 1.5.6; geen functionele wijzigingen
 

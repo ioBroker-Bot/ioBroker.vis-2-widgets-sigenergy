@@ -20,13 +20,6 @@ Enthält 8 Widgets zur Visualisierung und Steuerung von Energiefluss, Batteriest
 - ioBroker mit installiertem und konfiguriertem `sigenergy`-Adapter
 - ioBroker VIS-2 Adapter (≥ 2.0.0)
 
-## Installation
-
-> **Hinweis:** Nach der Installation ist ein **Reload des VIS-2 Editors im Browser** erforderlich
-> (F5 bzw. Seite neu laden), damit die Widgets in der Palette erscheinen.
-> Der Neustart des VIS-2 Adapters erfolgt automatisch, der Browser muss jedoch
-> manuell aktualisiert werden.
-
 ## Widgets
 
 ### Energiefluss-Diagramm
@@ -135,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.7 (2026-03-18)
+* (ssbingo) Abschnitt '## Installation' aus allen README-Dateien entfernt (S6014)
+
 ### 1.5.6 (2026-03-18)
 * (ssbingo) Versionserhöhung auf 1.5.6; keine funktionalen Änderungen
 

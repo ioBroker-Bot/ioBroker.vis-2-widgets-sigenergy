@@ -20,13 +20,6 @@ Contains 8 widgets for visualisation and control of energy flow, battery status,
 - ioBroker with the `sigenergy` adapter installed and configured
 - ioBroker VIS-2 adapter (≥ 2.0.0)
 
-## Installation
-
-> **Note:** After installation a **reload of the VIS-2 editor in the browser** is required
-> (F5 or refresh the page) so that the widgets appear in the palette.
-> The VIS-2 adapter restarts automatically, but the browser must be
-> refreshed manually.
-
 ## Widgets
 
 ### Energy Flow Diagram
@@ -135,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.7 (2026-03-18)
+* (ssbingo) Removed '## Installation' section from all README files (S6014)
+
 ### 1.5.6 (2026-03-18)
 * (ssbingo) Version bump to 1.5.6; no functional changes
 
