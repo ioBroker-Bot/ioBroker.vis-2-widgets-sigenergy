@@ -1,20 +1,20 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.5.6",
+        "version": "1.5.7",
         "news": {
-            "1.5.6": {
-                "en": "Version bump to 1.5.6; no functional changes",
-                "de": "Versionserhöhung auf 1.5.6; keine funktionalen Änderungen",
-                "ru": "Повышение версии до 1.5.6; функциональных изменений нет",
-                "nl": "Versieverhoging naar 1.5.6; geen functionele wijzigingen",
-                "fr": "Montée de version à 1.5.6 ; aucun changement fonctionnel",
-                "it": "Incremento versione a 1.5.6; nessuna modifica funzionale",
-                "es": "Incremento de versión a 1.5.6; sin cambios funcionales",
-                "pl": "Podwyższenie wersji do 1.5.6; brak zmian funkcjonalnych",
-                "pt": "Incremento de versão para 1.5.6; sem alterações funcionais",
-                "uk": "Підвищення версії до 1.5.6; функціональних змін немає",
-                "zh-cn": "版本升级至1.5.6；无功能性更改"
+            "1.5.7": {
+                "en": "Removed '## Installation' section from all README files (S6014)",
+                "de": "Abschnitt '## Installation' aus allen README-Dateien entfernt (S6014)",
+                "ru": "Раздел '## Установка' удалён из всех файлов README (S6014)",
+                "nl": "Sectie '## Installatie' verwijderd uit alle README-bestanden (S6014)",
+                "fr": "Section '## Installation' supprimée de tous les fichiers README (S6014)",
+                "it": "Sezione '## Installazione' rimossa da tutti i file README (S6014)",
+                "es": "Sección '## Instalación' eliminada de todos los archivos README (S6014)",
+                "pl": "Sekcja '## Instalacja' usunięta ze wszystkich plików README (S6014)",
+                "pt": "Secção '## Instalação' removida de todos os ficheiros README (S6014)",
+                "uk": "Розділ '## Установка' видалено з усіх файлів README (S6014)",
+                "zh-cn": "从所有README文件中删除'## Installation'部分 (S6014)"
             }
         },
         "titleLang": {
