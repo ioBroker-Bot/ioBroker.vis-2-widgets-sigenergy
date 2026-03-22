@@ -1,20 +1,20 @@
 {
     "common": {
         "name": "vis-2-widgets-sigenergy",
-        "version": "1.5.7",
+        "version": "1.5.8",
         "news": {
-            "1.5.7": {
-                "en": "Removed '## Installation' section from all README files (S6014)",
-                "de": "Abschnitt '## Installation' aus allen README-Dateien entfernt (S6014)",
-                "ru": "Раздел '## Установка' удалён из всех файлов README (S6014)",
-                "nl": "Sectie '## Installatie' verwijderd uit alle README-bestanden (S6014)",
-                "fr": "Section '## Installation' supprimée de tous les fichiers README (S6014)",
-                "it": "Sezione '## Installazione' rimossa da tutti i file README (S6014)",
-                "es": "Sección '## Instalación' eliminada de todos los archivos README (S6014)",
-                "pl": "Sekcja '## Instalacja' usunięta ze wszystkich plików README (S6014)",
-                "pt": "Secção '## Instalação' removida de todos os ficheiros README (S6014)",
-                "uk": "Розділ '## Установка' видалено з усіх файлів README (S6014)",
-                "zh-cn": "从所有README文件中删除'## Installation'部分 (S6014)"
+            "1.5.8": {
+                "en": "fixed GitHub-Actions (PR)",
+                "de": "fixed GitHub-Actions (PR)",
+                "ru": "fixed GitHub-Actions (PR)",
+                "nl": "fixed GitHub-Actions (PR)",
+                "fr": "fixed GitHub-Actions (PR)",
+                "it": "fixed GitHub-Actions (PR)",
+                "es": "fixed GitHub-Actions (PR)",
+                "pl": "fixed GitHub-Actions (PR)",
+                "pt": "fixed GitHub-Actions (PR)",
+                "uk": "fixed GitHub-Actions (PR)",
+                "zh-cn": "fixed GitHub-Actions (PR)"
             }
         },
         "titleLang": {

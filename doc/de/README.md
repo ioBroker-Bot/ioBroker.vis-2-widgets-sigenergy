@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.5.8 (2026-03-18)
+* (ssbingo) fixed GitHub-Actions (PR)
+
 ### 1.5.7 (2026-03-18)
 * (ssbingo) Abschnitt '## Installation' aus allen README-Dateien entfernt (S6014)
 

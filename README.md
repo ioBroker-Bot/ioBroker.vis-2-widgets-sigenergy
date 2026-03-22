@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.8 (2026-03-18)
+* (ssbingo) fixed GitHub-Actions (PR)
+
 ### 1.5.7 (2026-03-18)
 * (ssbingo) Removed '## Installation' section from all README files (S6014)
 
