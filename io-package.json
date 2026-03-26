@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "common": {
     "name": "vis-2-widgets-sigenergy",
     "version": "1.5.11",
@@ -83,3 +84,89 @@
   "objects": [],
   "instanceObjects": []
 }
+=======
+    "common": {
+        "name": "vis-2-widgets-sigenergy",
+        "version": "1.5.8",
+        "news": {
+            "1.5.8": {
+                "en": "fixed GitHub-Actions (PR)",
+                "de": "fixed GitHub-Actions (PR)",
+                "ru": "fixed GitHub-Actions (PR)",
+                "nl": "fixed GitHub-Actions (PR)",
+                "fr": "fixed GitHub-Actions (PR)",
+                "it": "fixed GitHub-Actions (PR)",
+                "es": "fixed GitHub-Actions (PR)",
+                "pl": "fixed GitHub-Actions (PR)",
+                "pt": "fixed GitHub-Actions (PR)",
+                "uk": "fixed GitHub-Actions (PR)",
+                "zh-cn": "fixed GitHub-Actions (PR)"
+            }
+        },
+        "titleLang": {
+            "en": "Vis 2 Widgets Sigenergy",
+            "de": "Vis 2 Widgets Sigenergy",
+            "ru": "Виджеты Vis 2",
+            "pt": "Vis 2 Widgets Sigenergy",
+            "nl": "Vis 2 Widgets Sigenergy",
+            "fr": "Vis 2 Widgets Sigénergie",
+            "it": "Visualizza 2 widget Sigenergy",
+            "es": "Vis 2 Widgets Sigenergía",
+            "pl": "Vis 2 Widżety Sigenergy",
+            "uk": "Віджети Vis 2 Sigenergy",
+            "zh-cn": "Vis 2 小部件 Sigenergy"
+        },
+        "desc": {
+            "en": "Widgets for Sigenergy",
+            "de": "Widgets für Sigenergy",
+            "ru": "Виджеты для Sigenergy",
+            "pt": "Widgets para Sigenergy",
+            "nl": "Widgets voor Sigenergy",
+            "fr": "Widgets pour Sigenergy",
+            "it": "Widget per Sigenergy",
+            "es": "Widgets para Sigenergy",
+            "pl": "Widżety dla Sigenergy",
+            "uk": "Віджети для Sigenergy",
+            "zh-cn": "Sigenergy 小部件"
+        },
+        "authors": [
+            "ssbingo <s.sternitzke@online.de>"
+        ],
+        "keywords": [
+            "sigenergy",
+            "vis-2"
+        ],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "vis-2-widgets-sigenergy.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
+        "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "restartAdapters": [
+            "vis-2",
+            "vis"
+        ],
+        "onlyWWW": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "mode": "none",
+        "adminUI": {
+            "config": "none"
+        },
+        "dependencies": [
+            {
+                "vis-2": ">=2.0.0"
+            }
+        ],
+        "globalDependencies": []
+    },
+    "native": {},
+    "objects": [],
+    "instanceObjects": []
+}
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a

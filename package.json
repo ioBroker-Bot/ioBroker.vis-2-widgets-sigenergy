@@ -1,6 +1,10 @@
 {
   "name": "iobroker.vis-2-widgets-sigenergy",
+<<<<<<< HEAD
   "version": "1.5.11",
+=======
+  "version": "1.5.8",
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
   "description": "Widgets for Sigenergy",
   "author": {
     "name": "ssbingo",
@@ -28,7 +32,10 @@
     "@alcalzone/release-script-plugin-license": "^5.1.1",
     "@alcalzone/release-script-plugin-manual-review": "^5.1.1",
     "@iobroker/adapter-dev": "^1.5.0",
+<<<<<<< HEAD
     "@iobroker/eslint-config": "^1.0.0",
+=======
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
     "@iobroker/testing": "^5.2.2"
   },
   "main": "widgets/vis-2-widgets-sigenergy.html",
@@ -44,9 +51,13 @@
   ],
   "scripts": {
     "test:package": "mocha test/package --exit",
+<<<<<<< HEAD
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:package",
     "lint": "eslint -c eslint.config.mjs .",
+=======
+    "test": "npm run test:package",
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
     "translate": "translate-adapter",
     "release": "release-script"
   },

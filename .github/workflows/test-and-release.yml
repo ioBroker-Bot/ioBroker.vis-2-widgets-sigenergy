@@ -29,6 +29,7 @@ jobs:
       - uses: ioBroker/testing-action-check@v1
         with:
           node-version: '20.x'
+<<<<<<< HEAD
           install-command: 'npm install'
           lint: true
 
@@ -52,6 +53,14 @@ jobs:
   # Deploys the final package to NPM
   deploy:
     needs: [check-and-lint, adapter-tests]
+=======
+          # Uncomment the following line if your adapter cannot be installed using 'npm ci'
+          # install-command: 'npm install'
+
+  # Deploys the final package to NPM
+  deploy:
+    needs: [check-and-lint]
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
 
     # Trigger this step only when a commit on any branch is tagged with a version number
     if: |
@@ -70,5 +79,10 @@ jobs:
       - uses: ioBroker/testing-action-deploy@v1
         with:
           node-version: '20.x'
+<<<<<<< HEAD
           install-command: 'npm install'
+=======
+          # Uncomment the following line if your adapter cannot be installed using 'npm ci'
+          # install-command: 'npm install'
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
           github-token: ${{ secrets.GITHUB_TOKEN }}

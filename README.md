@@ -128,12 +128,15 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+<<<<<<< HEAD
 ### 1.5.11 (2026-03-26)
 * (ssbingo) Workflow: install-command set to npm install (package-lock.json regeneration required after adding @iobroker/eslint-config)
 
 ### 1.5.10 (2026-03-26)
 * (ssbingo) README.md: LICENSE section moved to end (after CHANGELOG), full MIT licence text
 
+=======
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 
@@ -273,6 +276,7 @@ All widgets support a **light and dark mode**, switchable via the widget setting
 * (ssbingo) Real-time power widget
 * (ssbingo) Energy statistics widget
 
+<<<<<<< HEAD
 ## Documentation
 
 - 🇬🇧 [English](README.md) — this file
@@ -286,6 +290,8 @@ All widgets support a **light and dark mode**, switchable via the widget setting
 - 🇵🇹 [Português](doc/pt/README.md)
 
 
+=======
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
 ## License
 MIT License
 
@@ -308,3 +314,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+<<<<<<< HEAD
+=======
+
+## Documentation
+
+- 🇬🇧 [English](README.md) — this file
+- 🇩🇪 [Deutsch](doc/de/README.md)
+- 🇷🇺 [Русский](doc/ru/README.md)
+- 🇳🇱 [Nederlands](doc/nl/README.md)
+- 🇫🇷 [Français](doc/fr/README.md)
+- 🇮🇹 [Italiano](doc/it/README.md)
+- 🇪🇸 [Español](doc/es/README.md)
+- 🇵🇱 [Polski](doc/pl/README.md)
+- 🇵🇹 [Português](doc/pt/README.md)
+>>>>>>> ff4988fcbf802fc4fe9d38947f93a8d92cc69f9a
