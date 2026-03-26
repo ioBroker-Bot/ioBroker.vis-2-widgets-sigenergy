@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command set to npm install (package-lock.json regeneration required after adding @iobroker/eslint-config)
+
 ### 1.5.10 (2026-03-26)
 * (ssbingo) README.md: LICENSE section moved to end (after CHANGELOG), full MIT licence text
 

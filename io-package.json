@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.5.10",
+    "version": "1.5.11",
     "news": {
-      "1.5.10": {
-        "en": "README.md: LICENSE section moved to end (after CHANGELOG), full MIT licence text",
-        "de": "README.md: LICENSE-Abschnitt ans Ende verschoben (nach CHANGELOG), vollständiger MIT-Lizenztext",
-        "ru": "README.md: раздел LICENSE перемещён в конец (после CHANGELOG), полный текст лицензии MIT",
-        "pt": "README.md: secção LICENSE movida para o fim (após CHANGELOG), texto completo da licença MIT",
-        "nl": "README.md: LICENSE-sectie verplaatst naar het einde (na CHANGELOG), volledige MIT-licentietekst",
-        "fr": "README.md: section LICENSE déplacée à la fin (après CHANGELOG), texte complet de la licence MIT",
-        "it": "README.md: sezione LICENSE spostata alla fine (dopo CHANGELOG), testo completo della licenza MIT",
-        "es": "README.md: sección LICENSE movida al final (después del CHANGELOG), texto completo de la licencia MIT",
-        "pl": "README.md: sekcja LICENSE przeniesiona na koniec (po CHANGELOG), pełny tekst licencji MIT",
-        "uk": "README.md: розділ LICENSE переміщено в кінець (після CHANGELOG), повний текст ліцензії MIT",
-        "zh-cn": "README.md：LICENSE部分已移至末尾（CHANGELOG之后），完整MIT许可证文本"
+      "1.5.11": {
+        "en": "Workflow: install-command set to npm install (lock file regeneration required after adding @iobroker/eslint-config)",
+        "de": "Workflow: install-command auf npm install gesetzt (Lock-File muss nach Hinzufügen von @iobroker/eslint-config neu generiert werden)",
+        "ru": "Workflow: install-command установлен на npm install (требуется регенерация lock-файла после добавления @iobroker/eslint-config)",
+        "pt": "Workflow: install-command definido como npm install (regeneração do lock file necessária após adicionar @iobroker/eslint-config)",
+        "nl": "Workflow: install-command ingesteld op npm install (lock file regeneratie vereist na toevoegen van @iobroker/eslint-config)",
+        "fr": "Workflow: install-command défini sur npm install (régénération du lock file requise après ajout de @iobroker/eslint-config)",
+        "it": "Workflow: install-command impostato su npm install (rigenerazione del lock file necessaria dopo l'aggiunta di @iobroker/eslint-config)",
+        "es": "Workflow: install-command configurado como npm install (regeneración del lock file requerida tras añadir @iobroker/eslint-config)",
+        "pl": "Workflow: install-command ustawiony na npm install (wymagana regeneracja lock file po dodaniu @iobroker/eslint-config)",
+        "uk": "Workflow: install-command встановлено на npm install (потрібна регенерація lock-файлу після додавання @iobroker/eslint-config)",
+        "zh-cn": "工作流：install-command设置为npm install（添加@iobroker/eslint-config后需要重新生成lock文件）"
       }
     },
     "titleLang": {
