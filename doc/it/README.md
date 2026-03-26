@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.4 (2026-03-26)
+* (ssbingo) test:integration ripristinato come no-op (richiesto da testing-action-adapter; nessun processo Node.js nell'adattatore widget mode:none)
+
 ### 1.6.3 (2026-03-26)
 * (ssbingo) Sincronizzati tutti i README di lingua con le voci di changelog mancanti (1.5.10–1.6.2)
 

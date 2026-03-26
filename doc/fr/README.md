@@ -104,6 +104,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.6.4 (2026-03-26)
+* (ssbingo) test:integration restauré comme no-op (requis par testing-action-adapter; pas de processus Node.js dans l'adaptateur widget mode:none)
+
 ### 1.6.3 (2026-03-26)
 * (ssbingo) Synchronisation de tous les READMEs de langue avec les entrées de changelog manquantes (1.5.10–1.6.2)
 

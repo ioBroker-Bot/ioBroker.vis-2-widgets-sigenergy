@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.4 (2026-03-26)
+* (ssbingo) test:integration als No-op wiederhergestellt (von testing-action-adapter benötigt; kein Node.js-Prozess im mode:none Widget-Adapter)
+
 ### 1.6.3 (2026-03-26)
 * (ssbingo) Alle Sprach-READMEs mit fehlenden Changelog-Einträgen synchronisiert (1.5.10–1.6.2)
 

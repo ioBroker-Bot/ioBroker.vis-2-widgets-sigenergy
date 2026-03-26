@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.4 (2026-03-26)
+* (ssbingo) Restored test:integration as no-op (required by testing-action-adapter; no Node.js process in mode:none widget adapter)
+
 ### 1.6.3 (2026-03-26)
 * (ssbingo) Sync all language READMEs with missing changelog entries (1.5.10–1.6.2)
 

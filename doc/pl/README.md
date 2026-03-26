@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.4 (2026-03-26)
+* (ssbingo) test:integration przywrócony jako no-op (wymagany przez testing-action-adapter; brak procesu Node.js w adapterze widgetów mode:none)
+
 ### 1.6.3 (2026-03-26)
 * (ssbingo) Zsynchronizowano wszystkie README języków z brakującymi wpisami changelog (1.5.10–1.6.2)
 

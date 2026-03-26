@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.3",
+    "version": "1.6.4",
     "news": {
-      "1.6.3": {
-        "en": "Sync all language READMEs with missing changelog entries (1.5.10–1.6.2)",
-        "de": "Alle Sprach-READMEs mit fehlenden Changelog-Einträgen synchronisiert (1.5.10–1.6.2)",
-        "ru": "Синхронизированы все языковые README с пропущенными записями changelog (1.5.10–1.6.2)",
-        "pt": "Sincronizados todos os READMEs de idiomas com entradas de changelog em falta (1.5.10–1.6.2)",
-        "nl": "Alle taal-READMEs gesynchroniseerd met ontbrekende changelog-vermeldingen (1.5.10–1.6.2)",
-        "fr": "Synchronisation de tous les READMEs de langue avec les entrées de changelog manquantes (1.5.10–1.6.2)",
-        "it": "Sincronizzati tutti i README di lingua con le voci di changelog mancanti (1.5.10–1.6.2)",
-        "es": "Sincronizados todos los READMEs de idiomas con entradas de changelog faltantes (1.5.10–1.6.2)",
-        "pl": "Zsynchronizowano wszystkie README języków z brakującymi wpisami changelog (1.5.10–1.6.2)",
-        "uk": "Синхронізовано всі мовні README з пропущеними записами changelog (1.5.10–1.6.2)",
-        "zh-cn": "同步所有语言README中缺失的更新日志条目（1.5.10–1.6.2）"
+      "1.6.4": {
+        "en": "Restored test:integration as no-op (required by testing-action-adapter; no Node.js process in mode:none widget adapter)",
+        "de": "test:integration als No-op wiederhergestellt (von testing-action-adapter benötigt; kein Node.js-Prozess im mode:none Widget-Adapter)",
+        "ru": "test:integration восстановлен как no-op (требуется testing-action-adapter; нет Node.js-процесса в mode:none widget-адаптере)",
+        "pt": "test:integration restaurado como no-op (exigido pelo testing-action-adapter; sem processo Node.js no adaptador widget mode:none)",
+        "nl": "test:integration hersteld als no-op (vereist door testing-action-adapter; geen Node.js-proces in mode:none widget-adapter)",
+        "fr": "test:integration restauré comme no-op (requis par testing-action-adapter; pas de processus Node.js dans l'adaptateur widget mode:none)",
+        "it": "test:integration ripristinato come no-op (richiesto da testing-action-adapter; nessun processo Node.js nell'adattatore widget mode:none)",
+        "es": "test:integration restaurado como no-op (requerido por testing-action-adapter; sin proceso Node.js en el adaptador widget mode:none)",
+        "pl": "test:integration przywrócony jako no-op (wymagany przez testing-action-adapter; brak procesu Node.js w adapterze widgetów mode:none)",
+        "uk": "test:integration відновлено як no-op (потрібно testing-action-adapter; немає Node.js-процесу у mode:none widget-адаптері)",
+        "zh-cn": "将test:integration恢复为no-op（testing-action-adapter要求；mode:none的widget适配器无Node.js进程）"
       }
     },
     "titleLang": {
