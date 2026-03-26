@@ -105,6 +105,24 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.3 (2026-03-26)
+* (ssbingo) Sincronizzati tutti i README di lingua con le voci di changelog mancanti (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Test di integrazione rimosso — non applicabile per adattatore widget mode:none (nessun processo Node.js principale)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) Configurazione ESLint/Prettier rimossa — nessun codice Node.js da analizzare in un adattatore widget puro; passo lint rimosso dal workflow
+
+### 1.6.0 (2026-03-26)
+* (ssbingo) Test completati
+
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command impostato su npm install (rigenerazione del lock file necessaria dopo l'aggiunta di @iobroker/eslint-config)
+
+### 1.5.10 (2026-03-26)
+* (ssbingo) README.md: sezione LICENSE spostata alla fine (dopo CHANGELOG), testo completo della licenza MIT
+
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 

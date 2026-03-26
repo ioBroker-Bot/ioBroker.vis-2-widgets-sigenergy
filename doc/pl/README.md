@@ -105,6 +105,24 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.3 (2026-03-26)
+* (ssbingo) Zsynchronizowano wszystkie README języków z brakującymi wpisami changelog (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Usunięto test integracyjny — nie dotyczy adaptera widgetów mode:none (brak głównego procesu Node.js)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) Usunięto konfigurację ESLint/Prettier — brak kodu Node.js do sprawdzenia w czystym adapterze widgetów; krok lint usunięty z workflow
+
+### 1.6.0 (2026-03-26)
+* (ssbingo) Testy zakończone
+
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command ustawiony na npm install (wymagana regeneracja lock file po dodaniu @iobroker/eslint-config)
+
+### 1.5.10 (2026-03-26)
+* (ssbingo) README.md: sekcja LICENSE przeniesiona na koniec (po CHANGELOG), pełny tekst licencji MIT
+
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 

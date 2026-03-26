@@ -128,6 +128,24 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.3 (2026-03-26)
+* (ssbingo) Alle Sprach-READMEs mit fehlenden Changelog-Einträgen synchronisiert (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Integrationstest entfernt — nicht anwendbar für mode:none Widget-Adapter (kein Node.js-Hauptprozess)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) ESLint/Prettier-Setup entfernt — kein Node.js-Quellcode in einem reinen Widget-Adapter; lint-Schritt aus Workflow entfernt
+
+### 1.6.0 (2026-03-26)
+* (ssbingo) Tests abgeschlossen
+
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command auf npm install gesetzt (Lock-File muss nach Hinzufügen von @iobroker/eslint-config neu generiert werden)
+
+### 1.5.10 (2026-03-26)
+* (ssbingo) README.md: LICENSE-Abschnitt ans Ende verschoben (nach CHANGELOG), vollständiger MIT-Lizenztext
+
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 

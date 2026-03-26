@@ -104,6 +104,24 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.6.3 (2026-03-26)
+* (ssbingo) Synchronisation de tous les READMEs de langue avec les entrées de changelog manquantes (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Test d'intégration supprimé — non applicable à l'adaptateur widget mode:none (pas de processus Node.js principal)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) Configuration ESLint/Prettier supprimée — pas de code Node.js à analyser dans un adaptateur widget pur; étape lint supprimée du workflow
+
+### 1.6.0 (2026-03-26)
+* (ssbingo) Tests terminés
+
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command défini sur npm install (régénération du lock file requise après ajout de @iobroker/eslint-config)
+
+### 1.5.10 (2026-03-26)
+* (ssbingo) README.md: section LICENSE déplacée à la fin (après CHANGELOG), texte complet de la licence MIT
+
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 

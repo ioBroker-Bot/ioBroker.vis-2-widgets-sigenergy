@@ -104,6 +104,24 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.6.3 (2026-03-26)
+* (ssbingo) Alle taal-READMEs gesynchroniseerd met ontbrekende changelog-vermeldingen (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Integratietest verwijderd — niet van toepassing op mode:none widget-adapter (geen Node.js-hoofdproces)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) ESLint/Prettier-configuratie verwijderd — geen Node.js-broncode te linten in een pure widget-adapter; lint-stap verwijderd uit workflow
+
+### 1.6.0 (2026-03-26)
+* (ssbingo) Tests voltooid
+
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command ingesteld op npm install (lock file regeneratie vereist na toevoegen van @iobroker/eslint-config)
+
+### 1.5.10 (2026-03-26)
+* (ssbingo) README.md: LICENSE-sectie verplaatst naar het einde (na CHANGELOG), volledige MIT-licentietekst
+
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 

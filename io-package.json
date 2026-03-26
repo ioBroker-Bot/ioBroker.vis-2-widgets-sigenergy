@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.1",
+    "version": "1.6.3",
     "news": {
-      "1.6.1": {
-        "en": "Removed ESLint/Prettier setup (no Node.js source to lint in a pure widget adapter); removed lint step from workflow",
-        "de": "ESLint/Prettier-Setup entfernt (kein Node.js-Quellcode in einem reinen Widget-Adapter zu prüfen); lint-Schritt aus Workflow entfernt",
-        "ru": "Удалена настройка ESLint/Prettier (нет Node.js-кода для проверки в чистом виджет-адаптере); шаг lint удалён из workflow",
-        "pt": "Configuração ESLint/Prettier removida (sem código Node.js para verificar num adaptador de widget puro); passo lint removido do workflow",
-        "nl": "ESLint/Prettier-configuratie verwijderd (geen Node.js-broncode te linten in een pure widget-adapter); lint-stap verwijderd uit workflow",
-        "fr": "Configuration ESLint/Prettier supprimée (pas de code Node.js à analyser dans un adaptateur widget pur); étape lint supprimée du workflow",
-        "it": "Configurazione ESLint/Prettier rimossa (nessun codice Node.js da analizzare in un adattatore widget puro); passo lint rimosso dal workflow",
-        "es": "Configuración ESLint/Prettier eliminada (sin código Node.js que analizar en un adaptador de widget puro); paso lint eliminado del workflow",
-        "pl": "Usunięto konfigurację ESLint/Prettier (brak kodu Node.js do sprawdzenia w czystym adapterze widgetów); krok lint usunięty z workflow",
-        "uk": "Видалено налаштування ESLint/Prettier (немає Node.js-коду для перевірки у чистому widget-адаптері); крок lint видалено з workflow",
-        "zh-cn": "移除ESLint/Prettier配置（纯widget适配器无Node.js源码可检查）；从工作流中移除lint步骤"
+      "1.6.3": {
+        "en": "Sync all language READMEs with missing changelog entries (1.5.10–1.6.2)",
+        "de": "Alle Sprach-READMEs mit fehlenden Changelog-Einträgen synchronisiert (1.5.10–1.6.2)",
+        "ru": "Синхронизированы все языковые README с пропущенными записями changelog (1.5.10–1.6.2)",
+        "pt": "Sincronizados todos os READMEs de idiomas com entradas de changelog em falta (1.5.10–1.6.2)",
+        "nl": "Alle taal-READMEs gesynchroniseerd met ontbrekende changelog-vermeldingen (1.5.10–1.6.2)",
+        "fr": "Synchronisation de tous les READMEs de langue avec les entrées de changelog manquantes (1.5.10–1.6.2)",
+        "it": "Sincronizzati tutti i README di lingua con le voci di changelog mancanti (1.5.10–1.6.2)",
+        "es": "Sincronizados todos los READMEs de idiomas con entradas de changelog faltantes (1.5.10–1.6.2)",
+        "pl": "Zsynchronizowano wszystkie README języków z brakującymi wpisami changelog (1.5.10–1.6.2)",
+        "uk": "Синхронізовано всі мовні README з пропущеними записами changelog (1.5.10–1.6.2)",
+        "zh-cn": "同步所有语言README中缺失的更新日志条目（1.5.10–1.6.2）"
       }
     },
     "titleLang": {

@@ -105,6 +105,24 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.6.3 (2026-03-26)
+* (ssbingo) Sincronizados todos os READMEs de idiomas com entradas de changelog em falta (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Teste de integração removido — não aplicável para adaptador widget com mode:none (sem processo Node.js principal)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) Configuração ESLint/Prettier removida — sem código Node.js para verificar num adaptador de widget puro; passo lint removido do workflow
+
+### 1.6.0 (2026-03-26)
+* (ssbingo) Testes concluídos
+
+### 1.5.11 (2026-03-26)
+* (ssbingo) Workflow: install-command definido como npm install (regeneração do lock file necessária após adicionar @iobroker/eslint-config)
+
+### 1.5.10 (2026-03-26)
+* (ssbingo) README.md: secção LICENSE movida para o fim (após CHANGELOG), texto completo da licença MIT
+
 ### 1.5.8 (2026-03-18)
 * (ssbingo) fixed GitHub-Actions (PR)
 

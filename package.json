@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-2-widgets-sigenergy",
-  "version": "1.6.1",
+  "version": "1.6.3",
   "description": "Widgets for Sigenergy",
   "author": {
     "name": "ssbingo",
@@ -43,7 +43,6 @@
   ],
   "scripts": {
     "test:package": "mocha test/package --exit",
-    "test:integration": "mocha test/integration --exit",
     "test": "npm run test:package",
     "translate": "translate-adapter",
     "release": "release-script"
