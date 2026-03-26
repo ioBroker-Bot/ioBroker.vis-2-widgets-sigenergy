@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.1 (2026-03-26)
+* (ssbingo) Removed ESLint/Prettier setup — no Node.js source to lint in a pure widget adapter; removed lint step from workflow
+
 ### 1.6.0 (2026-03-26)
 * (ssbingo) Test completed
 

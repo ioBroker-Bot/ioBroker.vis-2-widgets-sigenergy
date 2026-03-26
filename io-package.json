@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "news": {
-      "1.6.0": {
-        "en": "Test completed",
-        "de": "Tests abgeschlossen",
-        "ru": "Тестирование завершено",
-        "pt": "Testes concluídos",
-        "nl": "Tests voltooid",
-        "fr": "Tests terminés",
-        "it": "Test completati",
-        "es": "Pruebas completadas",
-        "pl": "Testy zakończone",
-        "uk": "Тестування завершено",
-        "zh-cn": "测试完成"
+      "1.6.1": {
+        "en": "Removed ESLint/Prettier setup (no Node.js source to lint in a pure widget adapter); removed lint step from workflow",
+        "de": "ESLint/Prettier-Setup entfernt (kein Node.js-Quellcode in einem reinen Widget-Adapter zu prüfen); lint-Schritt aus Workflow entfernt",
+        "ru": "Удалена настройка ESLint/Prettier (нет Node.js-кода для проверки в чистом виджет-адаптере); шаг lint удалён из workflow",
+        "pt": "Configuração ESLint/Prettier removida (sem código Node.js para verificar num adaptador de widget puro); passo lint removido do workflow",
+        "nl": "ESLint/Prettier-configuratie verwijderd (geen Node.js-broncode te linten in een pure widget-adapter); lint-stap verwijderd uit workflow",
+        "fr": "Configuration ESLint/Prettier supprimée (pas de code Node.js à analyser dans un adaptateur widget pur); étape lint supprimée du workflow",
+        "it": "Configurazione ESLint/Prettier rimossa (nessun codice Node.js da analizzare in un adattatore widget puro); passo lint rimosso dal workflow",
+        "es": "Configuración ESLint/Prettier eliminada (sin código Node.js que analizar en un adaptador de widget puro); paso lint eliminado del workflow",
+        "pl": "Usunięto konfigurację ESLint/Prettier (brak kodu Node.js do sprawdzenia w czystym adapterze widgetów); krok lint usunięty z workflow",
+        "uk": "Видалено налаштування ESLint/Prettier (немає Node.js-коду для перевірки у чистому widget-адаптері); крок lint видалено з workflow",
+        "zh-cn": "移除ESLint/Prettier配置（纯widget适配器无Node.js源码可检查）；从工作流中移除lint步骤"
       }
     },
     "titleLang": {
