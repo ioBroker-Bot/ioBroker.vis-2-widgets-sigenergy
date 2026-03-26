@@ -1,0 +1,27 @@
+{
+    "cli": true,
+    "target": "directory",
+    "adapterName": "vis-2-widgets-sigenergy",
+    "title": "Vis 2 Widgets Sigenergy",
+    "description": "Widgets for Sigenergy",
+    "keywords": [
+        "sigenergy",
+        "vis-2"
+    ],
+    "expert": "yes",
+    "features": [
+        "vis"
+    ],
+    "type": "visualization-widgets",
+    "widgetIsMainFunction": "main",
+    "releaseScript": "yes",
+    "authorName": "ssbingo",
+    "authorGithub": "ssbingo",
+    "authorEmail": "s.sternitzke@online.de",
+    "gitRemoteProtocol": "SSH",
+    "gitCommit": "yes",
+    "defaultBranch": "main",
+    "license": "MIT License",
+    "dependabot": "yes",
+    "creatorVersion": "3.1.2"
+}

@@ -1,0 +1,85 @@
+{
+  "common": {
+    "name": "vis-2-widgets-sigenergy",
+    "version": "1.5.10",
+    "news": {
+      "1.5.10": {
+        "en": "README.md: LICENSE section moved to end (after CHANGELOG), full MIT licence text",
+        "de": "README.md: LICENSE-Abschnitt ans Ende verschoben (nach CHANGELOG), vollständiger MIT-Lizenztext",
+        "ru": "README.md: раздел LICENSE перемещён в конец (после CHANGELOG), полный текст лицензии MIT",
+        "pt": "README.md: secção LICENSE movida para o fim (após CHANGELOG), texto completo da licença MIT",
+        "nl": "README.md: LICENSE-sectie verplaatst naar het einde (na CHANGELOG), volledige MIT-licentietekst",
+        "fr": "README.md: section LICENSE déplacée à la fin (après CHANGELOG), texte complet de la licence MIT",
+        "it": "README.md: sezione LICENSE spostata alla fine (dopo CHANGELOG), testo completo della licenza MIT",
+        "es": "README.md: sección LICENSE movida al final (después del CHANGELOG), texto completo de la licencia MIT",
+        "pl": "README.md: sekcja LICENSE przeniesiona na koniec (po CHANGELOG), pełny tekst licencji MIT",
+        "uk": "README.md: розділ LICENSE переміщено в кінець (після CHANGELOG), повний текст ліцензії MIT",
+        "zh-cn": "README.md：LICENSE部分已移至末尾（CHANGELOG之后），完整MIT许可证文本"
+      }
+    },
+    "titleLang": {
+      "en": "Vis 2 Widgets Sigenergy",
+      "de": "Vis 2 Widgets Sigenergy",
+      "ru": "Виджеты Vis 2",
+      "pt": "Vis 2 Widgets Sigenergy",
+      "nl": "Vis 2 Widgets Sigenergy",
+      "fr": "Vis 2 Widgets Sigénergie",
+      "it": "Visualizza 2 widget Sigenergy",
+      "es": "Vis 2 Widgets Sigenergía",
+      "pl": "Vis 2 Widżety Sigenergy",
+      "uk": "Віджети Vis 2 Sigenergy",
+      "zh-cn": "Vis 2 小部件 Sigenergy"
+    },
+    "desc": {
+      "en": "Widgets for Sigenergy",
+      "de": "Widgets für Sigenergy",
+      "ru": "Виджеты для Sigenergy",
+      "pt": "Widgets para Sigenergy",
+      "nl": "Widgets voor Sigenergy",
+      "fr": "Widgets pour Sigenergy",
+      "it": "Widget per Sigenergy",
+      "es": "Widgets para Sigenergy",
+      "pl": "Widżety dla Sigenergy",
+      "uk": "Віджети для Sigenergy",
+      "zh-cn": "Sigenergy 小部件"
+    },
+    "authors": [
+      "ssbingo <s.sternitzke@online.de>"
+    ],
+    "keywords": [
+      "sigenergy",
+      "vis-2"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "vis-2-widgets-sigenergy.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/main/admin/vis-2-widgets-sigenergy.png",
+    "readme": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "restartAdapters": [
+      "vis-2",
+      "vis"
+    ],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "mode": "none",
+    "adminUI": {
+      "config": "none"
+    },
+    "dependencies": [
+      {
+        "vis-2": ">=2.0.0"
+      }
+    ],
+    "globalDependencies": []
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
+}
