@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-2-widgets-sigenergy",
-  "version": "1.6.4",
+  "version": "1.6.6",
   "description": "Widgets for Sigenergy",
   "author": {
     "name": "ssbingo",
@@ -39,11 +39,11 @@
     "widgets/**/*.{html,css,png,svg,jpg,js}",
     "www/",
     "io-package.json",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG_OLD.md"
   ],
   "scripts": {
     "test:package": "mocha test/package --exit",
-    "test:integration": "echo \"No integration tests: mode:none widget adapter has no Node.js main process\"",
     "test": "npm run test:package",
     "translate": "translate-adapter",
     "release": "release-script"

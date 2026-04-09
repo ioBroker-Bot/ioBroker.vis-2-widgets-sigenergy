@@ -31,26 +31,9 @@ jobs:
           node-version: '20.x'
           install-command: 'npm install'
 
-  # Runs adapter tests on all supported node versions and OSes
-  adapter-tests:
-    if: contains(github.event.head_commit.message, '[skip ci]') == false
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node-version: [20.x, 22.x, 24.x]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-
-    steps:
-      - uses: ioBroker/testing-action-adapter@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-          os: ${{ matrix.os }}
-          install-command: 'npm install'
-
   # Deploys the final package to NPM
   deploy:
-    needs: [check-and-lint, adapter-tests]
+    needs: [check-and-lint]
 
     # Trigger this step only when a commit on any branch is tagged with a version number
     if: |
@@ -68,6 +51,6 @@ jobs:
     steps:
       - uses: ioBroker/testing-action-deploy@v1
         with:
-          node-version: '20.x'
+          node-version: '24.x'
           install-command: 'npm install'
           github-token: ${{ secrets.GITHUB_TOKEN }}

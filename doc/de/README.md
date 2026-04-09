@@ -128,6 +128,12 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Alte Changelog-Einträge in CHANGELOG_OLD.md verschoben; Dependabot-Cooldown (7 Tage) hinzugefügt
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) adapter-tests-Job aus Workflow entfernt (nicht anwendbar für VIS-Widget-Adapter); deploy verwendet jetzt Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration als No-op wiederhergestellt (von testing-action-adapter benötigt; kein Node.js-Prozess im mode:none Widget-Adapter)
 

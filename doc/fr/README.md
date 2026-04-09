@@ -104,6 +104,12 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Anciennes entrées du changelog déplacées dans CHANGELOG_OLD.md; cooldown Dependabot ajouté (7 jours)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Job adapter-tests supprimé du workflow (non applicable à l'adaptateur widget VIS); deploy utilise désormais Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration restauré comme no-op (requis par testing-action-adapter; pas de processus Node.js dans l'adaptateur widget mode:none)
 

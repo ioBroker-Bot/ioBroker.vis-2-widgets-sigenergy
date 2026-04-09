@@ -105,6 +105,12 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Entradas antiguas del changelog movidas a CHANGELOG_OLD.md; cooldown de Dependabot añadido (7 días)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Job adapter-tests eliminado del workflow (no aplicable al adaptador widget VIS); deploy usa ahora Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration restaurado como no-op (requerido por testing-action-adapter; sin proceso Node.js en el adaptador widget mode:none)
 

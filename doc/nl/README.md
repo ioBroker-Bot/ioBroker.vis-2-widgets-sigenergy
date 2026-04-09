@@ -104,6 +104,12 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Oude changelog-vermeldingen verplaatst naar CHANGELOG_OLD.md; Dependabot cooldown toegevoegd (7 dagen)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) adapter-tests job verwijderd uit workflow (niet van toepassing op VIS widget-adapter); deploy gebruikt nu Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration hersteld als no-op (vereist door testing-action-adapter; geen Node.js-proces in mode:none widget-adapter)
 

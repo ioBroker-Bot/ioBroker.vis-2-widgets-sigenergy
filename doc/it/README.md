@@ -105,6 +105,12 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Vecchie voci del changelog spostate in CHANGELOG_OLD.md; aggiunto cooldown Dependabot (7 giorni)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Job adapter-tests rimosso dal workflow (non applicabile all'adattatore widget VIS); deploy usa ora Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration ripristinato come no-op (richiesto da testing-action-adapter; nessun processo Node.js nell'adattatore widget mode:none)
 

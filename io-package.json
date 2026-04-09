@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.4",
+    "version": "1.6.6",
     "news": {
-      "1.6.4": {
-        "en": "Restored test:integration as no-op (required by testing-action-adapter; no Node.js process in mode:none widget adapter)",
-        "de": "test:integration als No-op wiederhergestellt (von testing-action-adapter benötigt; kein Node.js-Prozess im mode:none Widget-Adapter)",
-        "ru": "test:integration восстановлен как no-op (требуется testing-action-adapter; нет Node.js-процесса в mode:none widget-адаптере)",
-        "pt": "test:integration restaurado como no-op (exigido pelo testing-action-adapter; sem processo Node.js no adaptador widget mode:none)",
-        "nl": "test:integration hersteld als no-op (vereist door testing-action-adapter; geen Node.js-proces in mode:none widget-adapter)",
-        "fr": "test:integration restauré comme no-op (requis par testing-action-adapter; pas de processus Node.js dans l'adaptateur widget mode:none)",
-        "it": "test:integration ripristinato come no-op (richiesto da testing-action-adapter; nessun processo Node.js nell'adattatore widget mode:none)",
-        "es": "test:integration restaurado como no-op (requerido por testing-action-adapter; sin proceso Node.js en el adaptador widget mode:none)",
-        "pl": "test:integration przywrócony jako no-op (wymagany przez testing-action-adapter; brak procesu Node.js w adapterze widgetów mode:none)",
-        "uk": "test:integration відновлено як no-op (потрібно testing-action-adapter; немає Node.js-процесу у mode:none widget-адаптері)",
-        "zh-cn": "将test:integration恢复为no-op（testing-action-adapter要求；mode:none的widget适配器无Node.js进程）"
+      "1.6.6": {
+        "en": "Moved old changelog entries to CHANGELOG_OLD.md; added Dependabot cooldown (7 days)",
+        "de": "Alte Changelog-Einträge in CHANGELOG_OLD.md verschoben; Dependabot-Cooldown (7 Tage) hinzugefügt",
+        "ru": "Старые записи changelog перенесены в CHANGELOG_OLD.md; добавлен cooldown для Dependabot (7 дней)",
+        "pt": "Entradas antigas do changelog movidas para CHANGELOG_OLD.md; cooldown do Dependabot adicionado (7 dias)",
+        "nl": "Oude changelog-vermeldingen verplaatst naar CHANGELOG_OLD.md; Dependabot cooldown toegevoegd (7 dagen)",
+        "fr": "Anciennes entrées du changelog déplacées dans CHANGELOG_OLD.md; cooldown Dependabot ajouté (7 jours)",
+        "it": "Vecchie voci del changelog spostate in CHANGELOG_OLD.md; aggiunto cooldown Dependabot (7 giorni)",
+        "es": "Entradas antiguas del changelog movidas a CHANGELOG_OLD.md; cooldown de Dependabot añadido (7 días)",
+        "pl": "Stare wpisy changelog przeniesione do CHANGELOG_OLD.md; dodano cooldown Dependabot (7 dni)",
+        "uk": "Старі записи changelog перенесено до CHANGELOG_OLD.md; додано cooldown для Dependabot (7 днів)",
+        "zh-cn": "将旧的更新日志条目移至CHANGELOG_OLD.md；添加Dependabot冷却时间（7天）"
       }
     },
     "titleLang": {

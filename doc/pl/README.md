@@ -105,6 +105,12 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Stare wpisy changelog przeniesione do CHANGELOG_OLD.md; dodano cooldown Dependabot (7 dni)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Usunięto job adapter-tests z workflow (nie dotyczy adaptera widgetów VIS); deploy używa teraz Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration przywrócony jako no-op (wymagany przez testing-action-adapter; brak procesu Node.js w adapterze widgetów mode:none)
 

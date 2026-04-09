@@ -104,6 +104,12 @@
 Все виджеты поддерживают **светлый и тёмный режим**, переключаемый через настройку виджета `Тёмный режим`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Старые записи changelog перенесены в CHANGELOG_OLD.md; добавлен cooldown для Dependabot (7 дней)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Удалён job adapter-tests из workflow (неприменимо для VIS widget-адаптера); deploy теперь использует Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration восстановлен как no-op (требуется testing-action-adapter; нет Node.js-процесса в mode:none widget-адаптере)
 

@@ -105,6 +105,12 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.6.6 (2026-04-09)
+* (ssbingo) Entradas antigas do changelog movidas para CHANGELOG_OLD.md; cooldown do Dependabot adicionado (7 dias)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Job adapter-tests removido do workflow (não aplicável a adaptador widget VIS); deploy usa agora Node.js 24
+
 ### 1.6.4 (2026-03-26)
 * (ssbingo) test:integration restaurado como no-op (exigido pelo testing-action-adapter; sem processo Node.js no adaptador widget mode:none)
 
