@@ -105,6 +105,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Sintaxe cooldown do dependabot.yml corrigida (default-days em vez de default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Entradas antigas do changelog movidas para CHANGELOG_OLD.md; cooldown do Dependabot adicionado (7 dias)
 

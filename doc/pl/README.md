@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Poprawiono składnię cooldown w dependabot.yml (default-days zamiast default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Stare wpisy changelog przeniesione do CHANGELOG_OLD.md; dodano cooldown Dependabot (7 dni)
 

@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Dependabot.yml Cooldown-Syntax korrigiert (default-days statt default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Alte Changelog-Einträge in CHANGELOG_OLD.md verschoben; Dependabot-Cooldown (7 Tage) hinzugefügt
 

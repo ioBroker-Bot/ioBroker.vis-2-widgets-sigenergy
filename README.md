@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Moved old changelog entries to CHANGELOG_OLD.md; added Dependabot cooldown (7 days)
 

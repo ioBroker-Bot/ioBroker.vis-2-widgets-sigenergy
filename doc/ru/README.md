@@ -104,6 +104,9 @@
 Все виджеты поддерживают **светлый и тёмный режим**, переключаемый через настройку виджета `Тёмный режим`.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Исправлен синтаксис cooldown в dependabot.yml (default-days вместо default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Старые записи changelog перенесены в CHANGELOG_OLD.md; добавлен cooldown для Dependabot (7 дней)
 

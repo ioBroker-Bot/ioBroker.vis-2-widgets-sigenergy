@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Sintassi cooldown di dependabot.yml corretta (default-days invece di default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Vecchie voci del changelog spostate in CHANGELOG_OLD.md; aggiunto cooldown Dependabot (7 giorni)
 

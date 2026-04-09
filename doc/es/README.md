@@ -105,6 +105,9 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.6.7 (2026-04-09)
+* (ssbingo) Sintaxis cooldown de dependabot.yml corregida (default-days en lugar de default)
+
 ### 1.6.6 (2026-04-09)
 * (ssbingo) Entradas antiguas del changelog movidas a CHANGELOG_OLD.md; cooldown de Dependabot añadido (7 días)
 

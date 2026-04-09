@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.6",
+    "version": "1.6.7",
     "news": {
-      "1.6.6": {
-        "en": "Moved old changelog entries to CHANGELOG_OLD.md; added Dependabot cooldown (7 days)",
-        "de": "Alte Changelog-Einträge in CHANGELOG_OLD.md verschoben; Dependabot-Cooldown (7 Tage) hinzugefügt",
-        "ru": "Старые записи changelog перенесены в CHANGELOG_OLD.md; добавлен cooldown для Dependabot (7 дней)",
-        "pt": "Entradas antigas do changelog movidas para CHANGELOG_OLD.md; cooldown do Dependabot adicionado (7 dias)",
-        "nl": "Oude changelog-vermeldingen verplaatst naar CHANGELOG_OLD.md; Dependabot cooldown toegevoegd (7 dagen)",
-        "fr": "Anciennes entrées du changelog déplacées dans CHANGELOG_OLD.md; cooldown Dependabot ajouté (7 jours)",
-        "it": "Vecchie voci del changelog spostate in CHANGELOG_OLD.md; aggiunto cooldown Dependabot (7 giorni)",
-        "es": "Entradas antiguas del changelog movidas a CHANGELOG_OLD.md; cooldown de Dependabot añadido (7 días)",
-        "pl": "Stare wpisy changelog przeniesione do CHANGELOG_OLD.md; dodano cooldown Dependabot (7 dni)",
-        "uk": "Старі записи changelog перенесено до CHANGELOG_OLD.md; додано cooldown для Dependabot (7 днів)",
-        "zh-cn": "将旧的更新日志条目移至CHANGELOG_OLD.md；添加Dependabot冷却时间（7天）"
+      "1.6.7": {
+        "en": "Fixed dependabot.yml cooldown syntax (default-days instead of default)",
+        "de": "Dependabot.yml Cooldown-Syntax korrigiert (default-days statt default)",
+        "ru": "Исправлен синтаксис cooldown в dependabot.yml (default-days вместо default)",
+        "pt": "Sintaxe cooldown do dependabot.yml corrigida (default-days em vez de default)",
+        "nl": "Dependabot.yml cooldown syntaxis gecorrigeerd (default-days in plaats van default)",
+        "fr": "Syntaxe cooldown de dependabot.yml corrigée (default-days au lieu de default)",
+        "it": "Sintassi cooldown di dependabot.yml corretta (default-days invece di default)",
+        "es": "Sintaxis cooldown de dependabot.yml corregida (default-days en lugar de default)",
+        "pl": "Poprawiono składnię cooldown w dependabot.yml (default-days zamiast default)",
+        "uk": "Виправлено синтаксис cooldown у dependabot.yml (default-days замість default)",
+        "zh-cn": "修正dependabot.yml中的cooldown语法（default-days而非default）"
       }
     },
     "titleLang": {
