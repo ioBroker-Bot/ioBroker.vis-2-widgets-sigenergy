@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.13 (2026-04-16)
+* (ssbingo) All widgets: restored, fixed image loading by deferring innerHTML to update() call (VIS-2 context active)
+
 ### 1.6.12 (2026-04-16)
 * (ssbingo) All widgets: fixed image path using window.location.origin + /vis-2/ (VIS-2 exclusive)
 

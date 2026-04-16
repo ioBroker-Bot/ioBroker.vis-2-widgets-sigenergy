@@ -2,15 +2,10 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.6.12"
+    version: "1.6.13"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
-
-/* Absoluter Bildpfad für VIS-2.
-   window.location.origin = "http://10.10.10.240:8082"
-   Pfad /vis-2/ ist für VIS-2-Adapter fest — kein Fallback nötig.  */
-var _IMG_BASE = window.location.origin + "/vis-2/widgets/vis-2-widgets-sigenergy/img/";
 
 /* global $, vis, systemDictionary */
 
@@ -48,7 +43,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.6.12",
+    version: "1.6.13",
 
 
     showVersion: function () {
@@ -1223,7 +1218,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                  "border-radius:" + Math.max(4, imgW*.1) + "px;" +
                  "overflow:hidden;border:" + brd + ";" +
                  "filter:" + glow + "\">" +
-                 "<img src=\"" + _IMG_BASE + "SigenMicroInverter.png\""" +
+                 "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\""" +
                  " style=\"width:100%;height:100%;object-fit:contain;display:block\"/>" +
                  "</div></foreignObject>";
 
@@ -1351,7 +1346,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var header =
             "<div class=\"sig-sm-det-hdr\">" +
             "<div class=\"sig-sm-det-img " + si.cls + "\">" +
-            "<img src=\"" + _IMG_BASE + "SigenMicroInverter.png\""" +
+            "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\""" +
             " style=\"width:100%;height:100%;object-fit:contain\"/></div>" +
             "<div class=\"sig-sm-det-info\">" +
             "<div class=\"sig-sm-det-model\" style=\"color:" + tc + "\">Gerät " +
@@ -1508,7 +1503,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var markId = "mPvStr_" + w;
 
         // Bildpfade - identisch zum bewährten SigenMicro-Ansatz
-        /* Bildpfade via _IMG_BASE (absolut, ermittelt beim Script-Load) */
+
 
         var svgArrows =
             '<svg id="sig_pvs_svg_' + w + '" ' +
@@ -1529,22 +1524,21 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
         var sw = 130, sh = 65, hw = 220, hh = 96;
 
-        // ── Schritt 1: Leere Hülle via $div.html() — KEIN Bildinhalt ────────
-        // Identisch zu SigenMicro: $div.html() setzt nur das leere Gerüst.
-        // Bilder dürfen hier NICHT rein — jQuery .html() sanitiert href/src
-        // mit data:-URI (HTML5-Parser via createHTMLDocument).
+        // ── Schritt 1: Leere Hülle via $div.html() ──────────────────────────
         $div.html(
             '<div class="sig-w"><div id="sig_pvs_inner_' + w + '" style="' +
             'background:' + bg + ';border-radius:14px;padding:16px 14px 14px;' +
             'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;"></div></div>'
         );
 
-        // ── Schritt 2: Inhalt mit Bildern via innerHTML — wie SigenMicro ────
-        // B._el() = document.getElementById(). Das Element ist jetzt im
-        // echten DOM. innerHTML sanitiert data:-URIs in img src NICHT.
-        // → Exakt derselbe Mechanismus wie: ov.innerHTML = B._smBuildOverview()
-        var pvInner = B._el("sig_pvs_inner_" + w);
-        if (pvInner) {
+        // ── Schritt 2 + 3: Inhalt + Werte — aus update() heraus ─────────────
+        // Exakt wie SigenMicro: doUpdate() → _smRender() → ov.innerHTML.
+        // pvsBuild() setzt die Hülle mit Bildern beim ersten update()-Aufruf.
+        // Dadurch läuft es NACH VIS-2-Initialisierung mit korrekter Basis-URL.
+        var pvBuilt = false;
+        function pvsBuild() {
+            var pvInner = B._el("sig_pvs_inner_" + w);
+            if (!pvInner) return;
             pvInner.innerHTML =
                 '<div style="text-align:center;font-size:11px;letter-spacing:1.2px;' +
                 'text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">' +
@@ -1552,19 +1546,19 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
 
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="' + _IMG_BASE + 'solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
                 '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 1</div>' +
                 '</div>' +
 
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="' + _IMG_BASE + 'solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
                 '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 2</div>' +
                 '</div>' +
 
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="' + _IMG_BASE + 'solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
                 '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 3</div>' +
                 '</div>' +
@@ -1573,7 +1567,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
 
                 '<div style="text-align:center;">' +
-                '<img src="' + _IMG_BASE + 'Sigen_Hybrid_Vorderansicht.png" style="width:' + hw + 'px;height:' + hh + 'px;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png" style="width:' + hw + 'px;height:' + hh + 'px;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));object-fit:contain;">' +
                 '</div>' +
 
                 '<div style="text-align:center;margin-top:8px;">' +
@@ -1581,9 +1575,12 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '<div style="font-size:10px;color:' + subCol + ';letter-spacing:.5px;">Gesamt PV</div>' +
                 '<div id="sig_pvs_total_' + w + '" style="font-size:18px;font-weight:600;color:' + pvCol + ';line-height:1.25;">-- W</div>' +
                 '</div></div>';
+            pvBuilt = true;
         }
 
         function update() {
+            if (!pvBuilt) pvsBuild();
+
             var pv1   = parseFloat(B._val(data, "oid_pv1"))     || 0;
             var pv2   = parseFloat(B._val(data, "oid_pv2"))     || 0;
             var pv3   = parseFloat(B._val(data, "oid_pv3"))     || 0;

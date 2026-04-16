@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.12",
+    "version": "1.6.13",
     "news": {
-      "1.6.12": {
-        "en": "All widgets: fixed image path using window.location.origin + /vis-2/ (VIS-2 exclusive)",
-        "de": "Alle Widgets: Bildpfad auf window.location.origin + /vis-2/ umgestellt (nur VIS-2)",
-        "ru": "Все виджеты: исправлен путь изображений через window.location.origin + /vis-2/",
-        "pt": "Todos os widgets: caminho de imagem corrigido com window.location.origin + /vis-2/",
-        "nl": "Alle widgets: afbeeldingspad gecorrigeerd met window.location.origin + /vis-2/",
-        "fr": "Tous les widgets: chemin d'image corrigé avec window.location.origin + /vis-2/",
-        "it": "Tutti i widget: percorso immagine corretto con window.location.origin + /vis-2/",
-        "es": "Todos los widgets: ruta de imagen corregida con window.location.origin + /vis-2/",
-        "pl": "Wszystkie widżety: ścieżka obrazu poprawiona przez window.location.origin + /vis-2/"
+      "1.6.13": {
+        "en": "All widgets: restored, fixed image loading by deferring innerHTML to update() call (VIS-2 context active)",
+        "de": "Alle Widgets: wiederhergestellt, Bildladen durch Verlagerung von innerHTML in update()-Aufruf korrigiert (VIS-2-Kontext aktiv)",
+        "ru": "Все виджеты: восстановлено, исправлена загрузка изображений переносом innerHTML в вызов update()",
+        "pt": "Todos os widgets: restaurados, carregamento de imagens corrigido movendo innerHTML para chamada update()",
+        "nl": "Alle widgets: hersteld, afbeelding laden gecorrigeerd door innerHTML naar update()-aanroep te verplaatsen",
+        "fr": "Tous les widgets: restaurés, chargement des images corrigé en déplaçant innerHTML vers l'appel update()",
+        "it": "Tutti i widget: ripristinati, caricamento immagini corretto spostando innerHTML nella chiamata update()",
+        "es": "Todos los widgets: restaurados, carga de imágenes corregida moviendo innerHTML a la llamada update()",
+        "pl": "Wszystkie widżety: przywrócone, ładowanie obrazów poprawione przez przeniesienie innerHTML do wywołania update()"
       }
     },
     "titleLang": {

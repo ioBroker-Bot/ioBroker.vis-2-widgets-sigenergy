@@ -105,6 +105,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.6.13 (2026-04-16)
+* (ssbingo) Todos os widgets: restaurados, carregamento de imagens corrigido movendo innerHTML para chamada update()
+
 ### 1.6.12 (2026-04-16)
 * (ssbingo) Todos os widgets: caminho de imagem corrigido com window.location.origin + /vis-2/
 

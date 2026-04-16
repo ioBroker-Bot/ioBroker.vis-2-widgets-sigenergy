@@ -105,6 +105,9 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.6.13 (2026-04-16)
+* (ssbingo) Todos los widgets: restaurados, carga de imágenes corregida moviendo innerHTML a la llamada update()
+
 ### 1.6.12 (2026-04-16)
 * (ssbingo) Todos los widgets: ruta de imagen corregida con window.location.origin + /vis-2/
 
