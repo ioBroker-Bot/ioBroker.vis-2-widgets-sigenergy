@@ -1530,9 +1530,10 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;"></div></div>'
         );
 
-        // ── Inhalt mit Bildern via innerHTML — exakt wie SigenMicro ────────
-        // Bilder via CSS background-image (base64 in style.css) —
-        // kein Serverpfad nötig, funktioniert immer.
+        // ── Inhalt via innerHTML — identisch zum SigenMicro-Mechanismus ────
+        // B._el() = document.getElementById(). Nach $div.html() ist der
+        // Container im echten DOM → img src-Pfade werden korrekt aufgelöst.
+        // Voraussetzung: iobroker upload vis-2-widgets-sigenergy ausgeführt.
         var pvInner = B._el('sig_pvs_inner_' + w);
         if (pvInner) {
             pvInner.innerHTML =
@@ -1540,25 +1541,25 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 'text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">' +
                 '&#9728; ' + title + '</div>' +
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
-                '<div style="position:relative;width:150px;text-align:center;">' +
-                '<div class="sig-pvs-solar"></div>' +
+                '<div style="position:relative;width:110px;text-align:center;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
                 '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 1</div>' +
                 '</div>' +
-                '<div style="position:relative;width:150px;text-align:center;">' +
-                '<div class="sig-pvs-solar"></div>' +
+                '<div style="position:relative;width:110px;text-align:center;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
                 '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 2</div>' +
                 '</div>' +
-                '<div style="position:relative;width:150px;text-align:center;">' +
-                '<div class="sig-pvs-solar"></div>' +
+                '<div style="position:relative;width:110px;text-align:center;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
                 '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 3</div>' +
                 '</div>' +
                 '</div>' +
                 '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
                 '<div style="text-align:center;">' +
-                '<div class="sig-pvs-hybrid" style="margin:0 auto;"></div>' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png" style="width:220px;height:auto;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));">' +
                 '</div>' +
                 '<div style="text-align:center;margin-top:8px;">' +
                 '<div style="display:inline-block;background:rgba(243,156,18,.1);border:1px solid rgba(243,156,18,.35);border-radius:8px;padding:4px 18px;">' +
