@@ -7,6 +7,7 @@
 */
 "use strict";
 
+
 /* global $, vis, systemDictionary */
 
 // add translations for edit mode
@@ -1217,7 +1218,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                  "border-radius:" + Math.max(4, imgW*.1) + "px;" +
                  "overflow:hidden;border:" + brd + ";" +
                  "filter:" + glow + "\">" +
-                 "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\"" +
+                 "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\""" +
                  " style=\"width:100%;height:100%;object-fit:contain;display:block\"/>" +
                  "</div></foreignObject>";
 
@@ -1345,7 +1346,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var header =
             "<div class=\"sig-sm-det-hdr\">" +
             "<div class=\"sig-sm-det-img " + si.cls + "\">" +
-            "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\"" +
+            "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\""" +
             " style=\"width:100%;height:100%;object-fit:contain\"/></div>" +
             "<div class=\"sig-sm-det-info\">" +
             "<div class=\"sig-sm-det-model\" style=\"color:" + tc + "\">Gerät " +
