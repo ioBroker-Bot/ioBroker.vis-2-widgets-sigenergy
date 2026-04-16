@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.11 (2026-04-16)
+* (ssbingo) Tutti i widget: percorsi immagini corretti con URL assoluto (risolve il problema del percorso /vis.0/ vs /vis-2/)
+
 ### 1.6.10 (2026-04-16)
 * (ssbingo) Widget 9 PV Power: visualizzazione immagini corretta con meccanismo identico al widget SigenMicro
 

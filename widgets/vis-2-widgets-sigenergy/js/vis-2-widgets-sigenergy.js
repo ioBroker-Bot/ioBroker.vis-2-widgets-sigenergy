@@ -2,11 +2,21 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.6.10"
+    version: "1.6.11"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
 
+/* Absoluter Bildpfad — aus dem <script src="...">-Tag des Browsers abgeleitet.
+   In VIS-2 wird das Script unter /vis-2/widgets/.../js/... geladen,
+   daher ergibt sich _IMG_BASE = "http://host:port/vis-2/widgets/.../img/".
+   Gilt für alle Widgets einheitlich.                                        */
+var _IMG_BASE = (function () {
+    var tags = document.querySelectorAll('script[src*="vis-2-widgets-sigenergy"]');
+    return tags.length > 0
+        ? tags[0].src.replace(/\/js\/[^/]+$/, "/img/")
+        : "widgets/vis-2-widgets-sigenergy/img/";
+}());
 
 /* global $, vis, systemDictionary */
 
@@ -44,7 +54,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.6.10",
+    version: "1.6.11",
 
 
     showVersion: function () {
@@ -1219,7 +1229,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                  "border-radius:" + Math.max(4, imgW*.1) + "px;" +
                  "overflow:hidden;border:" + brd + ";" +
                  "filter:" + glow + "\">" +
-                 "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\""" +
+                 "<img src=\"" + _IMG_BASE + "SigenMicroInverter.png\""" +
                  " style=\"width:100%;height:100%;object-fit:contain;display:block\"/>" +
                  "</div></foreignObject>";
 
@@ -1347,7 +1357,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var header =
             "<div class=\"sig-sm-det-hdr\">" +
             "<div class=\"sig-sm-det-img " + si.cls + "\">" +
-            "<img src=\"widgets/vis-2-widgets-sigenergy/img/SigenMicroInverter.png\""" +
+            "<img src=\"" + _IMG_BASE + "SigenMicroInverter.png\""" +
             " style=\"width:100%;height:100%;object-fit:contain\"/></div>" +
             "<div class=\"sig-sm-det-info\">" +
             "<div class=\"sig-sm-det-model\" style=\"color:" + tc + "\">Gerät " +
@@ -1504,8 +1514,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var markId = "mPvStr_" + w;
 
         // Bildpfade - identisch zum bewährten SigenMicro-Ansatz
-        var imgPanel = "widgets/vis-2-widgets-sigenergy/img/solarpanel.png";
-        var imgInv   = "widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png";
+        /* Bildpfade via _IMG_BASE (absolut, ermittelt beim Script-Load) */
 
         var svgArrows =
             '<svg id="sig_pvs_svg_' + w + '" ' +
@@ -1549,19 +1558,19 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
 
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="' + _IMG_BASE + 'solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
                 '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 1</div>' +
                 '</div>' +
 
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="' + _IMG_BASE + 'solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
                 '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 2</div>' +
                 '</div>' +
 
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="' + _IMG_BASE + 'solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
                 '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 3</div>' +
                 '</div>' +
@@ -1570,7 +1579,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
 
                 '<div style="text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png" style="width:' + hw + 'px;height:' + hh + 'px;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));object-fit:contain;">' +
+                '<img src="' + _IMG_BASE + 'Sigen_Hybrid_Vorderansicht.png" style="width:' + hw + 'px;height:' + hh + 'px;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));object-fit:contain;">' +
                 '</div>' +
 
                 '<div style="text-align:center;margin-top:8px;">' +

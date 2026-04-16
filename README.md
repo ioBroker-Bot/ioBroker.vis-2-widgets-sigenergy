@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.11 (2026-04-16)
+* (ssbingo) All widgets: fixed image paths using absolute URL derived from script tag (fixes /vis.0/ vs /vis-2/ path issue)
+
 ### 1.6.10 (2026-04-16)
 * (ssbingo) Widget 9 PV Power: fixed image display using identical mechanism as SigenMicro widget
 

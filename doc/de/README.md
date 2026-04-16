@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.11 (2026-04-16)
+* (ssbingo) Alle Widgets: Bildpfade auf absolute URL umgestellt (behebt /vis.0/ vs /vis-2/ Pfad-Problem)
+
 ### 1.6.10 (2026-04-16)
 * (ssbingo) Widget 9 PV Power: Bildanzeige korrigiert, identischer Mechanismus wie SigenMicro-Widget
 

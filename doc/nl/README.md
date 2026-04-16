@@ -104,6 +104,9 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.6.11 (2026-04-16)
+* (ssbingo) Alle widgets: afbeeldingspaden gecorrigeerd met absolute URL (lost /vis.0/ vs /vis-2/ padprobleem op)
+
 ### 1.6.10 (2026-04-16)
 * (ssbingo) Widget 9 PV Power: beeldweergave gecorrigeerd met identiek mechanisme als SigenMicro-widget
 
