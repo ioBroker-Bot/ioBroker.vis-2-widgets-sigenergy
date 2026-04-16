@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.10 (2026-04-16)
+* (ssbingo) Widget 9 PV Power: poprawiono wyświetlanie obrazów, mechanizm identyczny jak w widżecie SigenMicro
+
 ### 1.6.9 (2026-04-16)
 * (ssbingo) Widżet 9 przemianowany na 'PV Power'
 
