@@ -1497,10 +1497,9 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var title = data.attr("sig_title") || "PV Power";
         var w     = widgetID;
 
-        // ── Bildpfade (relativ zur Widget-JS-Position) ──────────────────────
-        var imgBase  = "/vis.0/widgets/vis-2-widgets-sigenergy/img/";
-        var imgPanel = imgBase + "solarpanel.png";
-        var imgInv   = imgBase + "Sigen_Hybrid_Vorderansicht.png";
+        // ── Bildpfade (relativ, wie in allen anderen Widgets des Sets) ─────
+        var imgPanel = "widgets/vis-2-widgets-sigenergy/img/solarpanel.png";
+        var imgInv   = "widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png";
 
         // ── CSS-Farben abhängig von Dark-Mode ───────────────────────────────
         var bg     = dark ? "linear-gradient(160deg,#0d1219,#111a26)" : "#f0f4f8";
