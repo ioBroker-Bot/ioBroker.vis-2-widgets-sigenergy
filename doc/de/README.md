@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.14 (2026-04-16)
+* (ssbingo) JavaScript-Syntaxfehler im SigenMicro-Widget (dreifaches Anführungszeichen) behoben, der alle Widgets am Laden hinderte
+
 ### 1.6.13 (2026-04-16)
 * (ssbingo) Alle Widgets: wiederhergestellt, Bildladen durch Verlagerung von innerHTML in update()-Aufruf korrigiert (VIS-2-Kontext aktiv)
 

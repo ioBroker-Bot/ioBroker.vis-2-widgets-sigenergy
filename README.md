@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.14 (2026-04-16)
+* (ssbingo) Fixed JavaScript syntax error in SigenMicro widget (triple quote) that prevented all widgets from loading
+
 ### 1.6.13 (2026-04-16)
 * (ssbingo) All widgets: restored, fixed image loading by deferring innerHTML to update() call (VIS-2 context active)
 

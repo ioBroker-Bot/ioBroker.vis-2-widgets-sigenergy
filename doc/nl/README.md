@@ -104,6 +104,9 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.6.14 (2026-04-16)
+* (ssbingo) JavaScript-syntaxisfout in SigenMicro-widget (drievoudig aanhalingsteken) verholpen die alle widgets blokkeerde
+
 ### 1.6.13 (2026-04-16)
 * (ssbingo) Alle widgets: hersteld, afbeelding laden gecorrigeerd door innerHTML naar update()-aanroep te verplaatsen
 

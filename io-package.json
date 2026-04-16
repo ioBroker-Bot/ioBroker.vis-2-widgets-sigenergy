@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.13",
+    "version": "1.6.14",
     "news": {
-      "1.6.13": {
-        "en": "All widgets: restored, fixed image loading by deferring innerHTML to update() call (VIS-2 context active)",
-        "de": "Alle Widgets: wiederhergestellt, Bildladen durch Verlagerung von innerHTML in update()-Aufruf korrigiert (VIS-2-Kontext aktiv)",
-        "ru": "Все виджеты: восстановлено, исправлена загрузка изображений переносом innerHTML в вызов update()",
-        "pt": "Todos os widgets: restaurados, carregamento de imagens corrigido movendo innerHTML para chamada update()",
-        "nl": "Alle widgets: hersteld, afbeelding laden gecorrigeerd door innerHTML naar update()-aanroep te verplaatsen",
-        "fr": "Tous les widgets: restaurés, chargement des images corrigé en déplaçant innerHTML vers l'appel update()",
-        "it": "Tutti i widget: ripristinati, caricamento immagini corretto spostando innerHTML nella chiamata update()",
-        "es": "Todos los widgets: restaurados, carga de imágenes corregida moviendo innerHTML a la llamada update()",
-        "pl": "Wszystkie widżety: przywrócone, ładowanie obrazów poprawione przez przeniesienie innerHTML do wywołania update()"
+      "1.6.14": {
+        "en": "Fixed JavaScript syntax error in SigenMicro widget (triple quote) that prevented all widgets from loading",
+        "de": "JavaScript-Syntaxfehler im SigenMicro-Widget (dreifaches Anführungszeichen) behoben, der alle Widgets am Laden hinderte",
+        "ru": "Исправлена синтаксическая ошибка JavaScript в виджете SigenMicro (тройные кавычки), блокировавшая загрузку всех виджетов",
+        "pt": "Corrigido erro de sintaxe JavaScript no widget SigenMicro (aspas triplas) que impedia o carregamento de todos os widgets",
+        "nl": "JavaScript-syntaxisfout in SigenMicro-widget (drievoudig aanhalingsteken) verholpen die alle widgets blokkeerde",
+        "fr": "Corrigé une erreur de syntaxe JavaScript dans le widget SigenMicro (guillemets triples) qui empêchait le chargement de tous les widgets",
+        "it": "Corrotto errore di sintassi JavaScript nel widget SigenMicro (virgolette triple) che impediva il caricamento di tutti i widget",
+        "es": "Corregido error de sintaxis JavaScript en el widget SigenMicro (comillas triples) que impedía cargar todos los widgets",
+        "pl": "Naprawiono błąd składni JavaScript w widżecie SigenMicro (potrójny cudzysłów) uniemożliwiający ładowanie wszystkich widżetów"
       }
     },
     "titleLang": {

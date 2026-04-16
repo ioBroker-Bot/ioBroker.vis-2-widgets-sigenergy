@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.14 (2026-04-16)
+* (ssbingo) Corrotto errore di sintassi JavaScript nel widget SigenMicro (virgolette triple) che impediva il caricamento di tutti i widget
+
 ### 1.6.13 (2026-04-16)
 * (ssbingo) Tutti i widget: ripristinati, caricamento immagini corretto spostando innerHTML nella chiamata update()
 
