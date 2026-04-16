@@ -1523,6 +1523,11 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             'd="M333,0 Q333,45 194,65" marker-end="url(#' + markId + ')"/>' +
             '</svg>';
 
+        // ── Hülle ohne img-src setzen (wie SigenMicro) ─────────────────────
+        // jQuery .html() parst in temporärem Dokument ohne Base-URL →
+        // relative img-src würden falsch aufgelöst.
+        // Lösung: img ohne src in $div.html(), dann src via el.src setzen —
+        // exakt derselbe Mechanismus wie bei SigenMicro (_smBuildOverview).
         $div.html(
             '<div class="sig-w"><div style="' +
             'background:' + bg + ';border-radius:14px;padding:16px 14px 14px;' +
@@ -1532,24 +1537,24 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '&#9728; ' + title + '</div>' +
             '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
             '<div style="position:relative;width:110px;text-align:center;">' +
-            '<img src="' + imgPanel + '" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
+            '<img id="sig_pvs_img1_' + w + '" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
             '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
             '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 1</div>' +
             '</div>' +
             '<div style="position:relative;width:110px;text-align:center;">' +
-            '<img src="' + imgPanel + '" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
+            '<img id="sig_pvs_img2_' + w + '" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
             '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
             '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 2</div>' +
             '</div>' +
             '<div style="position:relative;width:110px;text-align:center;">' +
-            '<img src="' + imgPanel + '" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
+            '<img id="sig_pvs_img3_' + w + '" style="width:110px;height:auto;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
             '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
             '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 3</div>' +
             '</div>' +
             '</div>' +
             '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
             '<div style="text-align:center;">' +
-            '<img src="' + imgInv + '" style="width:220px;height:auto;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));">' +
+            '<img id="sig_pvs_inv_' + w + '" style="width:220px;height:auto;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));">' +
             '</div>' +
             '<div style="text-align:center;margin-top:8px;">' +
             '<div style="display:inline-block;background:rgba(243,156,18,.1);border:1px solid rgba(243,156,18,.35);border-radius:8px;padding:4px 18px;">' +
@@ -1558,6 +1563,18 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '</div></div>' +
             '</div></div>'
         );
+
+        // ── Bilder via el.src setzen — Element ist jetzt im echten DOM ──────
+        // Relative Pfade werden jetzt korrekt gegen die Seiten-URL aufgelöst,
+        // identisch zum SigenMicro-Mechanismus (ov.innerHTML nach $div.html).
+        var _el1 = document.getElementById('sig_pvs_img1_' + w);
+        var _el2 = document.getElementById('sig_pvs_img2_' + w);
+        var _el3 = document.getElementById('sig_pvs_img3_' + w);
+        var _elI = document.getElementById('sig_pvs_inv_'  + w);
+        if (_el1) _el1.src = imgPanel;
+        if (_el2) _el2.src = imgPanel;
+        if (_el3) _el3.src = imgPanel;
+        if (_elI) _elI.src = imgInv;
 
         function update() {
             var pv1   = parseFloat(B._val(data, "oid_pv1"))     || 0;
