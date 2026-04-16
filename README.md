@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.8 (2026-04-16)
+* (ssbingo) Added Widget 9: PV Strings Overview with animated arrows per string
+
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)
 

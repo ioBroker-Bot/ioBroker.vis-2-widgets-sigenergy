@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.8 (2026-04-16)
+* (ssbingo) Widget 9 aggiunto: Panoramica stringhe PV con frecce animate per stringa
+
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Sintassi cooldown di dependabot.yml corretta (default-days invece di default)
 

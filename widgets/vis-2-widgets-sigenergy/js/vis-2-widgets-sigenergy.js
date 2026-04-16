@@ -33,13 +33,17 @@ if (typeof systemDictionary !== "undefined") {
         "oid_charg":    { "en": "Daily Charge OID",  "de": "Tages-Ladung OID" },
         "oid_discharg": { "en": "Daily Discharge OID","de": "Tages-Entladung OID" },
         "oid_covtime":  { "en": "Battery Coverage OID","de": "Batteriedeckung OID" },
-        "oid_chargt":   { "en": "Daily Charge Time OID","de": "Tages-Ladezeit OID" }
+        "oid_chargt":   { "en": "Daily Charge Time OID","de": "Tages-Ladezeit OID" },
+        "oid_pv1":      { "en": "PV String 1 Power OID",  "de": "PV String 1 Leistung OID" },
+        "oid_pv2":      { "en": "PV String 2 Power OID",  "de": "PV String 2 Leistung OID" },
+        "oid_pv3":      { "en": "PV String 3 Power OID",  "de": "PV String 3 Leistung OID" },
+        "oid_pvtotal":  { "en": "Total PV Power OID",     "de": "PV Gesamtleistung OID" }
         }
     );
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.5.8",
+    version: "1.6.8",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -1475,6 +1479,156 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
         // Initiales Rendering
         doUpdate();
+    },
+
+    // ── Widget 9: PV Strings Übersicht ──────────────────────────────────────
+    // Zeigt 3 PV-Strings (pv1Power / pv2Power / pv3Power) mit je einem
+    // animierten Pfeil zum zentralen Wechselrichter-Bild.
+    // Die Animation (CSS-Dash-Klasse „active") wird nur gesetzt, wenn der
+    // jeweilige Leistungswert > 0 ist – ansonsten ist der Pfeil unsichtbar.
+    createPvStrings: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createPvStrings(widgetID, view, data, style); }, 100);
+        }
+
+        var dark  = B._isDark(data);
+        var title = data.attr("sig_title") || "PV Strings";
+        var w     = widgetID;
+
+        // ── Bildpfade (relativ zur Widget-JS-Position) ──────────────────────
+        var imgBase  = "/vis.0/widgets/vis-2-widgets-sigenergy/img/";
+        var imgPanel = imgBase + "solarpanel.png";
+        var imgInv   = imgBase + "Sigen_Hybrid_Vorderansicht.png";
+
+        // ── CSS-Farben abhängig von Dark-Mode ───────────────────────────────
+        var bg     = dark ? "linear-gradient(160deg,#0d1219,#111a26)" : "#f0f4f8";
+        var txtCol = dark ? "#d0e4f4" : "#1a2a3a";
+        var subCol = dark ? "#5a7898" : "#6a8aaa";
+        var pvCol  = "#f39c12";
+
+        // ── Marker-ID eindeutig per WidgetID ────────────────────────────────
+        var markId = "mPvStr_" + w;
+
+        // ── SVG-Schicht für animierte Pfeile ────────────────────────────────
+        // viewBox 388×70 mappt auf die 70px hohe Verbindungszone zwischen
+        // Solarmodul-Reihe (oben) und Wechselrichter-Bild (unten).
+        // x-Koordinaten der String-Mittelpunkte: 55 / 194 / 333
+        // (entspricht 110px-Panels mit 22px Lücke links, in 420px-Container)
+        var svgArrows =
+            '<svg id="sig_pvs_svg_' + w + '" class="sig-pvs-svg" ' +
+            'viewBox="0 0 388 70" preserveAspectRatio="none" ' +
+            'style="position:absolute;top:0;left:0;width:100%;height:70px;pointer-events:none;overflow:visible;">' +
+            '<defs>' +
+            '<marker id="' + markId + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
+            '<polygon points="0,0 6,3 0,6" fill="' + pvCol + '"/>' +
+            '</marker>' +
+            '</defs>' +
+            '<path id="sig_pvs_path_pv1_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" ' +
+            'd="M55,0 Q55,45 194,65" marker-end="url(#' + markId + ')"/>' +
+            '<path id="sig_pvs_path_pv2_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" ' +
+            'd="M194,0 L194,65" marker-end="url(#' + markId + ')"/>' +
+            '<path id="sig_pvs_path_pv3_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" ' +
+            'd="M333,0 Q333,45 194,65" marker-end="url(#' + markId + ')"/>' +
+            '</svg>';
+
+        // ── Widget-HTML ──────────────────────────────────────────────────────
+        $div.html(
+            '<div class="sig-w"><div style="' +
+            'background:' + bg + ';border-radius:14px;padding:16px 14px 14px;' +
+            'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;">' +
+
+            // Titel
+            '<div style="text-align:center;font-size:11px;letter-spacing:1.2px;' +
+            'text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">' +
+            '&#9728; ' + title + '</div>' +
+
+            // Obere Reihe: 3 Solarmodul-Panels
+            '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
+
+            // String 1
+            '<div style="position:relative;width:110px;text-align:center;">' +
+            '<img src="' + imgPanel + '" style="width:110px;height:auto;display:block;' +
+            'filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
+            '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;' +
+            'transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;' +
+            'padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
+            '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;letter-spacing:.5px;">String 1</div>' +
+            '</div>' +
+
+            // String 2
+            '<div style="position:relative;width:110px;text-align:center;">' +
+            '<img src="' + imgPanel + '" style="width:110px;height:auto;display:block;' +
+            'filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
+            '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;' +
+            'transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;' +
+            'padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
+            '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;letter-spacing:.5px;">String 2</div>' +
+            '</div>' +
+
+            // String 3
+            '<div style="position:relative;width:110px;text-align:center;">' +
+            '<img src="' + imgPanel + '" style="width:110px;height:auto;display:block;' +
+            'filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));">' +
+            '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;' +
+            'transform:translate(-50%,-50%);background:rgba(0,0,0,.55);border-radius:5px;' +
+            'padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
+            '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;letter-spacing:.5px;">String 3</div>' +
+            '</div>' +
+            '</div>' +
+
+            // Pfeil-Zone (relativer Anker für absolutes SVG)
+            '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
+
+            // Wechselrichter-Bild
+            '<div style="text-align:center;">' +
+            '<img src="' + imgInv + '" style="width:220px;height:auto;display:inline-block;' +
+            'filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));">' +
+            '</div>' +
+
+            // Gesamtleistung
+            '<div style="text-align:center;margin-top:8px;">' +
+            '<div style="display:inline-block;background:rgba(243,156,18,.1);' +
+            'border:1px solid rgba(243,156,18,.35);border-radius:8px;padding:4px 18px;">' +
+            '<div style="font-size:10px;color:' + subCol + ';letter-spacing:.5px;">Gesamt PV</div>' +
+            '<div id="sig_pvs_total_' + w + '" style="font-size:18px;font-weight:600;' +
+            'color:' + pvCol + ';line-height:1.25;">-- W</div>' +
+            '</div></div>' +
+
+            '</div></div>'
+        );
+
+        // ── Update-Funktion ─────────────────────────────────────────────────
+        function update() {
+            var pv1   = parseFloat(B._val(data, "oid_pv1"))     || 0;
+            var pv2   = parseFloat(B._val(data, "oid_pv2"))     || 0;
+            var pv3   = parseFloat(B._val(data, "oid_pv3"))     || 0;
+            var total = parseFloat(B._val(data, "oid_pvtotal")) || 0;
+
+            // Werte setzen
+            B._txt("sig_pvs_val1_"  + w, B._fmtKW(pv1));
+            B._txt("sig_pvs_val2_"  + w, B._fmtKW(pv2));
+            B._txt("sig_pvs_val3_"  + w, B._fmtKW(pv3));
+            B._txt("sig_pvs_total_" + w, B._fmtKW(total));
+
+            // Pfeile: active = CSS-Dash-Animation läuft
+            var keys = ["pv1", "pv2", "pv3"];
+            var vals = [pv1,   pv2,   pv3];
+            for (var i = 0; i < keys.length; i++) {
+                var el = B._el("sig_pvs_path_" + keys[i] + "_" + w);
+                if (el) {
+                    if (vals[i] > 0.05) {
+                        el.classList.add("active");
+                    } else {
+                        el.classList.remove("active");
+                    }
+                }
+            }
+        }
+
+        B._subscribe(widgetID, data, ["oid_pv1", "oid_pv2", "oid_pv3", "oid_pvtotal"], update);
+        update();
     }
 
 

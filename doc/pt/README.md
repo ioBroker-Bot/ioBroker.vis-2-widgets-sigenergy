@@ -105,6 +105,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.6.8 (2026-04-16)
+* (ssbingo) Widget 9 adicionado: Visão geral de strings PV com setas animadas por string
+
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Sintaxe cooldown do dependabot.yml corrigida (default-days em vez de default)
 

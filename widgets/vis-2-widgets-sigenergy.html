@@ -151,3 +151,23 @@
         vis.binds['vis-2-widgets-sigenergy'].createSigenMicroOverview(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     WIDGET 9 – PV Strings Übersicht
+     Zeigt 3 PV-String-Leistungen mit animierten Pfeilen zum Wechselrichter.
+     Animation nur aktiv wenn Leistung > 0.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script id="tplVis-2-widgets-sigenergyPvStrings"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="vis-2-widgets-sigenergy"
+        data-vis-name="PV Strings Übersicht"
+        data-vis-type="val"
+        data-vis-attrs="group.OIDs;oid_pv1[sigenergy.0.plant.pv1Power]/id;oid_pv2[sigenergy.0.plant.pv2Power]/id;oid_pv3[sigenergy.0.plant.pv3Power]/id;oid_pvtotal[sigenergy.0.plant.pvPower]/id;group.Darstellung;sig_title[PV Strings]/text;sig_darkmode[true]/checkbox"
+        data-vis-style="width:420px;height:380px;position:static;"
+        data-vis-prev='<div style="background:linear-gradient(160deg,#0d1219,#111a26);border-radius:14px;padding:14px;width:400px;height:360px;font-family:sans-serif;color:#d0e4f4;box-sizing:border-box"><div style="font-size:.55rem;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:10px;color:#f39c12;opacity:.85">&#9728; PV Strings Übersicht</div><div style="display:flex;justify-content:space-around;margin-bottom:4px"><div style="text-align:center;width:100px"><div style="width:100px;height:50px;background:linear-gradient(135deg,#1a2535,#223045);border:1px solid #2a4060;border-radius:6px;margin-bottom:4px"></div><div style="font-size:.5rem;color:#f39c12">0 W</div><div style="font-size:.45rem;color:#5a7898">String 1</div></div><div style="text-align:center;width:100px"><div style="width:100px;height:50px;background:linear-gradient(135deg,#1a2535,#223045);border:1px solid #2a4060;border-radius:6px;margin-bottom:4px"></div><div style="font-size:.5rem;color:#f39c12">0 W</div><div style="font-size:.45rem;color:#5a7898">String 2</div></div><div style="text-align:center;width:100px"><div style="width:100px;height:50px;background:linear-gradient(135deg,#1a2535,#223045);border:1px solid #2a4060;border-radius:6px;margin-bottom:4px"></div><div style="font-size:.5rem;color:#f39c12">0 W</div><div style="font-size:.45rem;color:#5a7898">String 3</div></div></div><div style="width:200px;height:70px;background:linear-gradient(135deg,#1a2535,#1e3050);border:1px solid #2a4060;border-radius:8px;margin:8px auto 0"></div><div style="text-align:center;margin-top:6px;font-size:.5rem;color:#f39c12">0,00 kW gesamt</div></div>'>
+    <div class="vis-widget <%== this.data.attr('class') %>" style="width:420px;height:380px;" id="<%= this.data.attr('wid') %>"><%
+        vis.binds['vis-2-widgets-sigenergy'].createPvStrings(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>

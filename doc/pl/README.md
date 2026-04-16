@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.8 (2026-04-16)
+* (ssbingo) Dodano widżet 9: Przegląd stringów PV z animowanymi strzałkami dla każdego stringa
+
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Poprawiono składnię cooldown w dependabot.yml (default-days zamiast default)
 

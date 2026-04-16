@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.8 (2026-04-16)
+* (ssbingo) Widget 9 hinzugefügt: PV-Strings Übersicht mit animierten Pfeilen je String
+
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Dependabot.yml Cooldown-Syntax korrigiert (default-days statt default)
 
