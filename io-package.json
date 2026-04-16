@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.8",
+    "version": "1.6.9",
     "news": {
-      "1.6.8": {
-        "en": "Added Widget 9: PV Strings Overview with animated arrows per string",
-        "de": "Widget 9 hinzugefügt: PV-Strings Übersicht mit animierten Pfeilen je String",
-        "ru": "Добавлен виджет 9: Обзор PV-строк с анимированными стрелками для каждой строки",
-        "pt": "Widget 9 adicionado: Visão geral de strings PV com setas animadas por string",
-        "nl": "Widget 9 toegevoegd: PV-strings overzicht met geanimeerde pijlen per string",
-        "fr": "Widget 9 ajouté : Vue d'ensemble des strings PV avec flèches animées par string",
-        "it": "Widget 9 aggiunto: Panoramica stringhe PV con frecce animate per stringa",
-        "es": "Widget 9 añadido: Resumen de strings PV con flechas animadas por string",
-        "pl": "Dodano widżet 9: Przegląd stringów PV z animowanymi strzałkami dla każdego stringa"
+      "1.6.9": {
+        "en": "Widget 9 renamed from 'PV Strings Overview' to 'PV Power'",
+        "de": "Widget 9 umbenannt von 'PV Strings Übersicht' in 'PV Power'",
+        "ru": "Виджет 9 переименован из 'Обзор PV-строк' в 'PV Power'",
+        "pt": "Widget 9 renomeado de 'Visão geral de strings PV' para 'PV Power'",
+        "nl": "Widget 9 hernoemd van 'PV-strings overzicht' naar 'PV Power'",
+        "fr": "Widget 9 renommé de 'Vue d'ensemble des strings PV' en 'PV Power'",
+        "it": "Widget 9 rinominato da 'Panoramica stringhe PV' a 'PV Power'",
+        "es": "Widget 9 renombrado de 'Resumen de strings PV' a 'PV Power'",
+        "pl": "Widżet 9 przemianowany z 'Przegląd stringów PV' na 'PV Power'"
       }
     },
     "titleLang": {
