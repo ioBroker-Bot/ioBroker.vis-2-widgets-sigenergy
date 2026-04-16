@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.11",
+    "version": "1.6.12",
     "news": {
-      "1.6.11": {
-        "en": "All widgets: fixed image paths using absolute URL derived from script tag (fixes /vis.0/ vs /vis-2/ path issue)",
-        "de": "Alle Widgets: Bildpfade auf absolute URL umgestellt (behebt /vis.0/ vs /vis-2/ Pfad-Problem)",
-        "ru": "Все виджеты: исправлены пути изображений через абсолютный URL (устраняет проблему путей /vis.0/ и /vis-2/)",
-        "pt": "Todos os widgets: caminhos de imagem corrigidos com URL absoluta (corrige problema de caminho /vis.0/ vs /vis-2/)",
-        "nl": "Alle widgets: afbeeldingspaden gecorrigeerd met absolute URL (lost /vis.0/ vs /vis-2/ padprobleem op)",
-        "fr": "Tous les widgets: chemins d'images corrigés avec URL absolue (résout le problème de chemin /vis.0/ vs /vis-2/)",
-        "it": "Tutti i widget: percorsi immagini corretti con URL assoluto (risolve il problema del percorso /vis.0/ vs /vis-2/)",
-        "es": "Todos los widgets: rutas de imágenes corregidas con URL absoluta (soluciona el problema de ruta /vis.0/ vs /vis-2/)",
-        "pl": "Wszystkie widżety: poprawiono ścieżki obrazów z bezwzględnym URL (naprawia problem ścieżki /vis.0/ vs /vis-2/)"
+      "1.6.12": {
+        "en": "All widgets: fixed image path using window.location.origin + /vis-2/ (VIS-2 exclusive)",
+        "de": "Alle Widgets: Bildpfad auf window.location.origin + /vis-2/ umgestellt (nur VIS-2)",
+        "ru": "Все виджеты: исправлен путь изображений через window.location.origin + /vis-2/",
+        "pt": "Todos os widgets: caminho de imagem corrigido com window.location.origin + /vis-2/",
+        "nl": "Alle widgets: afbeeldingspad gecorrigeerd met window.location.origin + /vis-2/",
+        "fr": "Tous les widgets: chemin d'image corrigé avec window.location.origin + /vis-2/",
+        "it": "Tutti i widget: percorso immagine corretto con window.location.origin + /vis-2/",
+        "es": "Todos los widgets: ruta de imagen corregida con window.location.origin + /vis-2/",
+        "pl": "Wszystkie widżety: ścieżka obrazu poprawiona przez window.location.origin + /vis-2/"
       }
     },
     "titleLang": {

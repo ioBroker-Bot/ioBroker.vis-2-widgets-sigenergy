@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.12 (2026-04-16)
+* (ssbingo) Alle Widgets: Bildpfad auf window.location.origin + /vis-2/ umgestellt (nur VIS-2)
+
 ### 1.6.11 (2026-04-16)
 * (ssbingo) Alle Widgets: Bildpfade auf absolute URL umgestellt (behebt /vis.0/ vs /vis-2/ Pfad-Problem)
 

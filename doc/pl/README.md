@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.12 (2026-04-16)
+* (ssbingo) Wszystkie widżety: ścieżka obrazu poprawiona przez window.location.origin + /vis-2/
+
 ### 1.6.11 (2026-04-16)
 * (ssbingo) Wszystkie widżety: poprawiono ścieżki obrazów z bezwzględnym URL (naprawia problem ścieżki /vis.0/ vs /vis-2/)
 

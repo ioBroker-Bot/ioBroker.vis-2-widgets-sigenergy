@@ -2,21 +2,15 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.6.11"
+    version: "1.6.12"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
 
-/* Absoluter Bildpfad — aus dem <script src="...">-Tag des Browsers abgeleitet.
-   In VIS-2 wird das Script unter /vis-2/widgets/.../js/... geladen,
-   daher ergibt sich _IMG_BASE = "http://host:port/vis-2/widgets/.../img/".
-   Gilt für alle Widgets einheitlich.                                        */
-var _IMG_BASE = (function () {
-    var tags = document.querySelectorAll('script[src*="vis-2-widgets-sigenergy"]');
-    return tags.length > 0
-        ? tags[0].src.replace(/\/js\/[^/]+$/, "/img/")
-        : "widgets/vis-2-widgets-sigenergy/img/";
-}());
+/* Absoluter Bildpfad für VIS-2.
+   window.location.origin = "http://10.10.10.240:8082"
+   Pfad /vis-2/ ist für VIS-2-Adapter fest — kein Fallback nötig.  */
+var _IMG_BASE = window.location.origin + "/vis-2/widgets/vis-2-widgets-sigenergy/img/";
 
 /* global $, vis, systemDictionary */
 
@@ -54,7 +48,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.6.11",
+    version: "1.6.12",
 
 
     showVersion: function () {
