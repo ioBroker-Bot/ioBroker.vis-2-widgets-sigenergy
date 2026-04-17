@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.16",
+    "version": "1.6.17",
     "news": {
-      "1.6.16": {
-        "en": "Widget 9 PV Power: moved value labels 10% up on panels for better visibility",
-        "de": "Widget 9 PV Power: Wertanzeigen um 10% nach oben verschoben für bessere Sichtbarkeit",
-        "ru": "Виджет 9 PV Power: значения сдвинуты на 10% вверх на панелях для лучшей видимости",
-        "pt": "Widget 9 PV Power: valores movidos 10% para cima nos painéis para melhor visibilidade",
-        "nl": "Widget 9 PV Power: waarden 10% omhoog verschoven op panelen voor betere zichtbaarheid",
-        "fr": "Widget 9 PV Power: valeurs déplacées de 10% vers le haut sur les panneaux pour meilleure visibilité",
-        "it": "Widget 9 PV Power: valori spostati del 10% verso l'alto sui pannelli per migliore visibilità",
-        "es": "Widget 9 PV Power: valores movidos 10% hacia arriba en paneles para mejor visibilidad",
-        "pl": "Widget 9 PV Power: wartości przesunięte o 10% w górę na panelach dla lepszej widoczności"
+      "1.6.17": {
+        "en": "Widget 9 PV Power: value labels moved 10% further up (now at 30%), text color gray when ≤0.1 kW",
+        "de": "Widget 9 PV Power: Wertanzeigen 10% weiter nach oben verschoben (jetzt 30%), Schrift grau bei ≤0.1 kW",
+        "ru": "Виджет 9 PV Power: значения смещены ещё на 10% вверх (теперь 30%), цвет текста серый при ≤0.1 кВт",
+        "pt": "Widget 9 PV Power: valores movidos mais 10% para cima (agora 30%), cor do texto cinza quando ≤0.1 kW",
+        "nl": "Widget 9 PV Power: waarden 10% verder omhoog verplaatst (nu 30%), tekstkleur grijs bij ≤0.1 kW",
+        "fr": "Widget 9 PV Power: valeurs déplacées de 10% supplémentaires vers le haut (maintenant 30%), couleur du texte grise à ≤0.1 kW",
+        "it": "Widget 9 PV Power: valori spostati ulteriore 10% verso l'alto (ora 30%), colore testo grigio a ≤0.1 kW",
+        "es": "Widget 9 PV Power: valores movidos 10% más hacia arriba (ahora 30%), color de texto gris cuando ≤0.1 kW",
+        "pl": "Widget 9 PV Power: wartości przesunięte o kolejne 10% w górę (teraz 30%), kolor tekstu szary przy ≤0.1 kW"
       }
     },
     "titleLang": {

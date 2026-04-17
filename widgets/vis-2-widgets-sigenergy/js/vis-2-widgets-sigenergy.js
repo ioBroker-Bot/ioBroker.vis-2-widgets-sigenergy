@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.6.16"
+    version: "1.6.17"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -46,7 +46,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.6.16",
+    version: "1.6.17",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -1538,7 +1538,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             return '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
                 '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
                 '<div id="sig_pvs_val' + nr + '_' + w + '" ' +
-                'style="position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);' +
+                'style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);' +
                 'background:rgba(0,0,0,.65);border-radius:5px;padding:3px 8px;' +
                 'font-size:13px;font-weight:600;color:' + pvCol + ';white-space:nowrap;' +
                 'box-shadow:0 1px 3px rgba(0,0,0,.3);">-- W</div>' +
@@ -1587,6 +1587,15 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             B._txt("sig_pvs_total_" + w, B._fmtKW(total));
 
             var vals = [pv1, pv2, pv3];
+            /* Wertfeld-Schriftfarbe: grau bei ≤0.1 kW, Standard-Orange bei Werten */
+            var grayCol = "#7a8a9a";
+            [1, 2, 3].forEach(function(n, i) {
+                var valEl = B._el("sig_pvs_val" + n + "_" + w);
+                if (valEl) {
+                    valEl.style.color = vals[i] > 0.1 ? pvCol : grayCol;
+                }
+            });
+
             ["pv1", "pv2", "pv3"].forEach(function(k, i) {
                 var el = B._el("sig_pvs_path_" + k + "_" + w);
                 if (!el) return;

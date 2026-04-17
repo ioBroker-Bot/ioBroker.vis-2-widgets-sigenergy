@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.17 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: value labels moved 10% further up (now at 30%), text color gray when ≤0.1 kW
+
 ### 1.6.16 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: moved value labels 10% up on panels for better visibility
 

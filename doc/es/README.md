@@ -105,6 +105,9 @@ Vista general y detallada de todos los microinversores SigenMicro en el bus Modb
 Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el ajuste de widget `Modo oscuro`.
 
 ## Changelog
+### 1.6.17 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: valores movidos 10% más hacia arriba (ahora 30%), color de texto gris cuando ≤0.1 kW
+
 ### 1.6.16 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: valores movidos 10% hacia arriba en paneles para mejor visibilidad
 
