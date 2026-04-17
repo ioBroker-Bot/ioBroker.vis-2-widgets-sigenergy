@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.15",
+    "version": "1.6.16",
     "news": {
-      "1.6.15": {
-        "en": "Widget 9 PV Power: configurable string names, centered value labels on panels, threshold-based arrow colors (<1kW orange, <2kW yellow, >2kW green)",
-        "de": "Widget 9 PV Power: frei wählbare String-Namen, Wertanzeige mittig auf Panels, schwellenbasierte Pfeilfarben (<1kW orange, <2kW gelb, >2kW grün)",
-        "ru": "Виджет 9 PV Power: настраиваемые имена строк, значения по центру панелей, цвета стрелок по порогу (<1кВт оранж., <2кВт жёлт., >2кВт зел.)",
-        "pt": "Widget 9 PV Power: nomes de strings configuráveis, valores centralizados nos painéis, cores de setas por limiar (<1kW laranja, <2kW amarelo, >2kW verde)",
-        "nl": "Widget 9 PV Power: configureerbare stringnamen, waarden gecentreerd op panelen, drempelgebaseerde pijlkleuren (<1kW oranje, <2kW geel, >2kW groen)",
-        "fr": "Widget 9 PV Power: noms de strings configurables, valeurs centrées sur les panneaux, couleurs de flèches par seuil (<1kW orange, <2kW jaune, >2kW vert)",
-        "it": "Widget 9 PV Power: nomi stringhe configurabili, valori centrati sui pannelli, colori frecce per soglia (<1kW arancio, <2kW giallo, >2kW verde)",
-        "es": "Widget 9 PV Power: nombres de strings configurables, valores centrados en paneles, colores de flechas por umbral (<1kW naranja, <2kW amarillo, >2kW verde)",
-        "pl": "Widget 9 PV Power: konfigurowalne nazwy stringów, wartości na środku paneli, kolory strzałek wg progu (<1kW pomarańcz, <2kW żółty, >2kW zielony)"
+      "1.6.16": {
+        "en": "Widget 9 PV Power: moved value labels 10% up on panels for better visibility",
+        "de": "Widget 9 PV Power: Wertanzeigen um 10% nach oben verschoben für bessere Sichtbarkeit",
+        "ru": "Виджет 9 PV Power: значения сдвинуты на 10% вверх на панелях для лучшей видимости",
+        "pt": "Widget 9 PV Power: valores movidos 10% para cima nos painéis para melhor visibilidade",
+        "nl": "Widget 9 PV Power: waarden 10% omhoog verschoven op panelen voor betere zichtbaarheid",
+        "fr": "Widget 9 PV Power: valeurs déplacées de 10% vers le haut sur les panneaux pour meilleure visibilité",
+        "it": "Widget 9 PV Power: valori spostati del 10% verso l'alto sui pannelli per migliore visibilità",
+        "es": "Widget 9 PV Power: valores movidos 10% hacia arriba en paneles para mejor visibilidad",
+        "pl": "Widget 9 PV Power: wartości przesunięte o 10% w górę na panelach dla lepszej widoczności"
       }
     },
     "titleLang": {

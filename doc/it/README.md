@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.16 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: valori spostati del 10% verso l'alto sui pannelli per migliore visibilità
+
 ### 1.6.15 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: nomi stringhe configurabili, valori centrati sui pannelli, colori frecce per soglia (<1kW arancio, <2kW giallo, >2kW verde)
 

@@ -104,6 +104,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.6.16 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: valeurs déplacées de 10% vers le haut sur les panneaux pour meilleure visibilité
+
 ### 1.6.15 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: noms de strings configurables, valeurs centrées sur les panneaux, couleurs de flèches par seuil (<1kW orange, <2kW jaune, >2kW vert)
 

@@ -105,6 +105,9 @@ Visão geral e detalhe de todos os micro-inversores SigenMicro no barramento Mod
 Todos os widgets suportam um **modo claro e escuro**, comutável através da definição do widget `Modo escuro`.
 
 ## Changelog
+### 1.6.16 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: valores movidos 10% para cima nos painéis para melhor visibilidade
+
 ### 1.6.15 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: nomes de strings configuráveis, valores centralizados nos painéis, cores de setas por limiar (<1kW laranja, <2kW amarelo, >2kW verde)
 
