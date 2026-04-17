@@ -100,7 +100,7 @@ Affichage jusqu'à 3 chaînes PV avec valeurs de puissance en direct et flèches
 | sig_name1 … sig_name3 | texte | String 1 … String 3 | Noms configurables par chaîne |
 | sig_darkmode | case à cocher | true | Mode sombre / clair |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
@@ -120,6 +120,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.7.2 (2026-04-17)
+* (ssbingo) Documentation uniquement : traductions README uk et zh-cn ajoutées
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Traductions uk et zh-cn manquantes ajoutées dans common.news
 

@@ -1,4 +1,4 @@
-![Logo](admin/vis-2-widgets-sigenergy.png)
+![Logo](../../admin/vis-2-widgets-sigenergy.png)
 # ioBroker.vis-2-widgets-sigenergy
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.vis-2-widgets-sigenergy.svg)](https://www.npmjs.com/package/iobroker.vis-2-widgets-sigenergy)
@@ -10,25 +10,25 @@
 
 **Tests:** ![Test and Release](https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy/workflows/Test%20and%20Release/badge.svg)
 
-## vis-2-widgets-sigenergy adapter for ioBroker
+## ioBroker 的 vis-2-widgets-sigenergy 适配器
 
-VIS-2 widget set for the Sigenergy energy storage adapter (`ioBroker.sigenergy`).
-Contains 8 widgets for visualisation and control of energy flow, battery status, real-time power, daily statistics, AC charger, DC charger, inverter and SigenMicro micro-inverter overview.
+用于 Sigenergy 储能适配器的 VIS-2 小部件集 (`ioBroker.sigenergy`).
+包含 8 个小部件,用于可视化和控制能量流、电池状态、实时功率、每日统计、AC 充电器、DC 充电器、逆变器和 SigenMicro 微型逆变器概览。
 
-## Requirements
+## 要求
 
-- ioBroker with the `sigenergy` adapter installed and configured
-- ioBroker VIS-2 adapter (≥ 2.0.0)
+- 已安装并配置 `sigenergy` 适配器的 ioBroker
+- ioBroker VIS-2 适配器(≥ 2.0.0)
 
-## Widgets
+## 小部件
 
-### Energy Flow Diagram
+### 能量流图
 Displays the current energy flow between solar panels, battery, grid and house as an animated SVG diagram.
 Animated arrows visualise active connections in real time.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
-![Energy Flow Diagram](img/widget-energiefluss.png)
+![Energy Flow Diagram](../../img/widget-energiefluss.png)
 
 #### Flow directions
 
@@ -39,42 +39,42 @@ Animated arrows visualise active connections in real time.
 | `pvPower` | PV producing → arrow from PV to centre | — |
 | `housePower` | House consuming → arrow from centre to house | — |
 
-### Battery Status & Forecasts
+### 电池状态与预测
 Displays SOC, SOH, charging power and forecasts for time to full charge, remaining runtime, self-consumption and autarky rate.
 
 **OIDs:** `essSoc`, `essSoh`, `essPower`, `batteryTimeToFull`, `batteryTimeRemaining`, `selfConsumptionRate`, `autarkyRate`
 
-![Battery Status & Forecasts](img/widget-batterie.png)
+![Battery Status & Forecasts](../../img/widget-batterie.png)
 
-### Real-Time Power
+### 实时功率
 Compact list view of all current power values with colour-coded direction indicators.
 
 **OIDs:** `pvPower`, `essPower`, `gridActivePower`, `housePower`, `essSoc`
 
-![Real-Time Power](img/widget-leistung.png)
+![Real-Time Power](../../img/widget-leistung.png)
 
-### Energy Statistics
+### 能量统计
 Daily overview with autarky rate, self-consumption, SOC history, charge/discharge energy and battery coverage.
 
 **OIDs:** `autarkyRate`, `selfConsumptionRate`, `dayMaxSoc`, `dayMinSoc`, `essDailyChargeEnergy`, `essDailyDischargeEnergy`, `batteryCoverageToday`, `batteryDailyChargeTime`
 
-![Energy Statistics](img/widget-statistiken.png)
+![Energy Statistics](../../img/widget-statistiken.png)
 
 ### AC Charger (Sigen EVAC)
 Monitoring and control of the Sigenergy AC charger (EVAC). Shows charging power, system state, rated power, rated current and total energy consumed. Alarms are highlighted in colour. The charging current can be set directly via a slider (6–32 A).
 
 **OIDs:** `acCharger.systemState`, `acCharger.chargingPower`, `acCharger.totalEnergyConsumed`, `acCharger.ratedPower`, `acCharger.ratedCurrent`, `acCharger.alarm1/2/3`, `acCharger.control.startStop`, `acCharger.control.outputCurrent`
 
-![AC Charger](img/widget-ac-charger.png)
+![AC Charger](../../img/widget-ac-charger.png)
 
-### DC Charger
+### DC 充电器
 Monitoring and control of the Sigenergy DC charger. Shows output power, vehicle SOC with progress bar, vehicle battery voltage, charging current and the energy and duration of the current charging session.
 
 **OIDs:** `dcCharger.outputPower`, `dcCharger.vehicleSoc`, `dcCharger.vehicleBatteryVoltage`, `dcCharger.chargingCurrent`, `dcCharger.currentChargingCapacity`, `dcCharger.currentChargingDuration`, `dcCharger.control.startStop`
 
-![DC Charger](img/widget-dc-charger.png)
+![DC Charger](../../img/widget-dc-charger.png)
 
-### Inverter
+### 逆变器
 Comprehensive monitoring and control of the inverter with tab navigation. Displays operating state, power data, battery temperatures, phase voltages, all 5 alarm registers and device information (model, serial number, firmware).
 
 | Tab | Content |
@@ -85,7 +85,7 @@ Comprehensive monitoring and control of the inverter with tab navigation. Displa
 | **Alarms** | 5 alarm registers (PCS ×2, ESS, gateway, DC charger) with hex code and colour marking |
 | **Info** | Model type, serial number, firmware version, Remote-EMS toggle |
 
-![Inverter](img/widget-inverter.png)
+![Inverter](../../img/widget-inverter.png)
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
@@ -101,11 +101,11 @@ Display of up to 3 PV strings with live power values and animated flow arrows le
 | sig_name1 … sig_name3 | text | String 1 … String 3 | Configurable names per string |
 | sig_darkmode | checkbox | true | Dark / Light mode |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
-### SigenMicro Overview
+### SigenMicro 概览
 Overview and detail view of all SigenMicro micro-inverters connected via Modbus. Tab 1 shows all devices as an animated network segment (Ethernet bus topology with vertical drop lines). Each additional tab shows all 15 registers of the respective device in ascending order.
 
 | Tab | Content |
@@ -132,26 +132,26 @@ The horizontal backbone line and the vertical drop lines show animated dashes th
 | sig_darkmode | checkbox | true | Dark / Light mode |
 | oid_micro1 … oid_micro20 | OID | — | Anchor OID per device (e.g. sigenergy.0.sigenmicro.11.outputPower) |
 
-![SigenMicro Übersicht — Übersichts-Tab](img/widget-microinverter_01.png)
+![SigenMicro Übersicht — Übersichts-Tab](../../img/widget-microinverter_01.png)
 
-![SigenMicro Übersicht — Detail-Tab](img/widget-microinverter_02.png)
+![SigenMicro Übersicht — Detail-Tab](../../img/widget-microinverter_02.png)
 
 **OIDs (per device, prefix sigenergy.0.sigenmicro.<slaveId>):**
 modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequency, temperature, mppt1Voltage, mppt1Current, mppt1Power, mppt2Voltage, mppt2Current, mppt2Power, dailyYield, totalYield
 
-## Appearance
+## 外观
 
-All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
+所有小部件均支持**浅色和深色模式**,可通过小部件设置 `Dark mode` 切换。
 
-## Changelog
+## 更新日志
 ### 1.7.2 (2026-04-17)
-* (ssbingo) Documentation only: added uk and zh-cn README translations
+* (ssbingo) 仅文档:添加了 uk 和 zh-cn 的 README 翻译
 
 ### 1.7.1 (2026-04-17)
-* (ssbingo) Added missing uk and zh-cn translations in common.news
+* (ssbingo) 在 common.news 中添加了缺失的 uk 和 zh-cn 翻译
 
 ### 1.7.0 (2026-04-17)
-* (ssbingo) Widget 9: PV Power added with 3 PV string display and animated flow arrows
+* (ssbingo) 小部件 9:添加 PV Power,显示 3 个光伏串及带动画的流动箭头
 
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)

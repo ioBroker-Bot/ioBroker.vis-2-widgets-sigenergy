@@ -101,7 +101,7 @@ Darstellung von bis zu 3 PV-Strings mit Live-Leistungswerten und animierten Flus
 | sig_name1 … sig_name3 | Text | String 1 … String 3 | Frei wählbare Namen je String |
 | sig_darkmode | Checkbox | true | Dunkel- / Hellmodus |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
@@ -144,6 +144,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.7.2 (2026-04-17)
+* (ssbingo) Nur Dokumentation: uk- und zh-cn-README-Übersetzungen ergänzt
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Fehlende uk- und zh-cn-Übersetzungen in common.news ergänzt
 

@@ -101,7 +101,7 @@ Wyświetlanie do 3 ciągów PV z wartościami mocy na żywo oraz animowanymi str
 | sig_name1 … sig_name3 | tekst | String 1 … String 3 | Konfigurowalne nazwy ciągów |
 | sig_darkmode | checkbox | true | Tryb ciemny / jasny |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
@@ -121,6 +121,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.7.2 (2026-04-17)
+* (ssbingo) Tylko dokumentacja: dodano tłumaczenia README dla uk i zh-cn
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Dodano brakujące tłumaczenia uk i zh-cn w common.news
 

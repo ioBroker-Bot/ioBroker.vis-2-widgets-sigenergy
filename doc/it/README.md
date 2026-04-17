@@ -101,7 +101,7 @@ Visualizzazione fino a 3 stringhe PV con valori di potenza in tempo reale e frec
 | sig_name1 … sig_name3 | testo | String 1 … String 3 | Nomi configurabili per stringa |
 | sig_darkmode | checkbox | true | Modalità scura / chiara |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
@@ -121,6 +121,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.7.2 (2026-04-17)
+* (ssbingo) Solo documentazione: aggiunte traduzioni README per uk e zh-cn
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Aggiunte traduzioni uk e zh-cn mancanti in common.news
 

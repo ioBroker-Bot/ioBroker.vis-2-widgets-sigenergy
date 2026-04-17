@@ -100,7 +100,7 @@
 | sig_name1 … sig_name3 | текст | String 1 … String 3 | Настраиваемые имена строк |
 | sig_darkmode | флажок | true | Тёмный / светлый режим |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
@@ -120,6 +120,9 @@
 Все виджеты поддерживают **светлый и тёмный режим**, переключаемый через настройку виджета `Тёмный режим`.
 
 ## Changelog
+### 1.7.2 (2026-04-17)
+* (ssbingo) Только документация: добавлены переводы README для uk и zh-cn
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Добавлены недостающие переводы uk и zh-cn в common.news
 

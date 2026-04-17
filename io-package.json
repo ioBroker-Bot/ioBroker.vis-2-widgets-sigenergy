@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.7.1",
+    "version": "1.7.2",
     "news": {
-      "1.7.1": {
-        "en": "Added missing uk and zh-cn translations in common.news",
-        "de": "Fehlende uk- und zh-cn-Übersetzungen in common.news ergänzt",
-        "ru": "Добавлены недостающие переводы uk и zh-cn в common.news",
-        "pt": "Adicionadas traduções uk e zh-cn em common.news",
-        "nl": "Ontbrekende uk- en zh-cn-vertalingen toegevoegd in common.news",
-        "fr": "Traductions uk et zh-cn manquantes ajoutées dans common.news",
-        "it": "Aggiunte traduzioni uk e zh-cn mancanti in common.news",
-        "es": "Añadidas traducciones uk y zh-cn faltantes en common.news",
-        "pl": "Dodano brakujące tłumaczenia uk i zh-cn w common.news",
-        "uk": "Додано відсутні переклади uk і zh-cn у common.news",
-        "zh-cn": "在 common.news 中添加了缺失的 uk 和 zh-cn 翻译"
+      "1.7.2": {
+        "en": "Documentation only: added uk and zh-cn README translations",
+        "de": "Nur Dokumentation: uk- und zh-cn-README-Übersetzungen ergänzt",
+        "ru": "Только документация: добавлены переводы README для uk и zh-cn",
+        "pt": "Apenas documentação: adicionadas traduções de README para uk e zh-cn",
+        "nl": "Alleen documentatie: uk- en zh-cn-README-vertalingen toegevoegd",
+        "fr": "Documentation uniquement : traductions README uk et zh-cn ajoutées",
+        "it": "Solo documentazione: aggiunte traduzioni README per uk e zh-cn",
+        "es": "Solo documentación: añadidas traducciones de README para uk y zh-cn",
+        "pl": "Tylko dokumentacja: dodano tłumaczenia README dla uk i zh-cn",
+        "uk": "Лише документація: додано переклади README для uk і zh-cn",
+        "zh-cn": "仅文档:添加了 uk 和 zh-cn 的 README 翻译"
       }
     },
     "titleLang": {

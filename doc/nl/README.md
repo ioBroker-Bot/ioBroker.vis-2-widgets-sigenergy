@@ -100,7 +100,7 @@ Weergave van maximaal 3 PV-strings met live vermogenswaarden en geanimeerde stro
 | sig_name1 … sig_name3 | tekst | String 1 … String 3 | Configureerbare namen per string |
 | sig_darkmode | checkbox | true | Donker / Licht modus |
 
-![PV Power](img/PV-PowerOverview.png)
+![PV Power](../../img/PV-PowerOverview.png)
 
 **OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
 
@@ -120,6 +120,9 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+### 1.7.2 (2026-04-17)
+* (ssbingo) Alleen documentatie: uk- en zh-cn-README-vertalingen toegevoegd
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Ontbrekende uk- en zh-cn-vertalingen toegevoegd in common.news
 
