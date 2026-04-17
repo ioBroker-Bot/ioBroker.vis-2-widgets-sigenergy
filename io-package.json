@@ -1,18 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "news": {
-      "1.7.0": {
-        "en": "Widget 9: PV Power added with 3 PV string display and animated flow arrows",
-        "de": "Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen",
-        "ru": "Виджет 9: добавлен PV Power с отображением 3 PV-строк и анимированными стрелками потока",
-        "pt": "Widget 9: PV Power adicionado com exibição de 3 strings PV e setas de fluxo animadas",
-        "nl": "Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen",
-        "fr": "Widget 9: PV Power ajouté avec affichage de 3 chaînes PV et flèches de flux animées",
-        "it": "Widget 9: PV Power aggiunto con visualizzazione di 3 stringhe PV e frecce di flusso animate",
-        "es": "Widget 9: PV Power añadido con visualización de 3 cadenas PV y flechas de flujo animadas",
-        "pl": "Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu"
+      "1.7.1": {
+        "en": "Added missing uk and zh-cn translations in common.news",
+        "de": "Fehlende uk- und zh-cn-Übersetzungen in common.news ergänzt",
+        "ru": "Добавлены недостающие переводы uk и zh-cn в common.news",
+        "pt": "Adicionadas traduções uk e zh-cn em common.news",
+        "nl": "Ontbrekende uk- en zh-cn-vertalingen toegevoegd in common.news",
+        "fr": "Traductions uk et zh-cn manquantes ajoutées dans common.news",
+        "it": "Aggiunte traduzioni uk e zh-cn mancanti in common.news",
+        "es": "Añadidas traducciones uk y zh-cn faltantes en common.news",
+        "pl": "Dodano brakujące tłumaczenia uk i zh-cn w common.news",
+        "uk": "Додано відсутні переклади uk і zh-cn у common.news",
+        "zh-cn": "在 common.news 中添加了缺失的 uk 和 zh-cn 翻译"
       }
     },
     "titleLang": {

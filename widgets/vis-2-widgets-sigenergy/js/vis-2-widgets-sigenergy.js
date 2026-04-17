@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.7.0"
+    version: "1.7.1"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -46,7 +46,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.7.0",
+    version: "1.7.1",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {

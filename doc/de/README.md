@@ -144,6 +144,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.7.1 (2026-04-17)
+* (ssbingo) Fehlende uk- und zh-cn-Übersetzungen in common.news ergänzt
+
 ### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen
 

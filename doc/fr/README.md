@@ -120,6 +120,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.7.1 (2026-04-17)
+* (ssbingo) Traductions uk et zh-cn manquantes ajoutées dans common.news
+
 ### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power ajouté avec affichage de 3 chaînes PV et flèches de flux animées
 

@@ -121,6 +121,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.7.1 (2026-04-17)
+* (ssbingo) Aggiunte traduzioni uk e zh-cn mancanti in common.news
+
 ### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power aggiunto con visualizzazione di 3 stringhe PV e frecce di flusso animate
 
