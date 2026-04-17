@@ -104,6 +104,9 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
+### 1.6.18 (2026-04-17)
+* (ssbingo) Titres des widgets unifiés: Energy Flow, Battery Status, Statistics et PV Power partagent maintenant la même taille (0.9rem, 600)
+
 ### 1.6.17 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: valeurs déplacées de 10% supplémentaires vers le haut (maintenant 30%), couleur du texte grise à ≤0.1 kW
 

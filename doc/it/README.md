@@ -105,6 +105,9 @@ Panoramica e visualizzazione dettagliata di tutti i micro-inverter SigenMicro su
 Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite l'impostazione widget `Modalità scura`.
 
 ## Changelog
+### 1.6.18 (2026-04-17)
+* (ssbingo) Titoli widget unificati: Energy Flow, Battery Status, Statistics e PV Power condividono ora la stessa dimensione (0.9rem, 600)
+
 ### 1.6.17 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: valori spostati ulteriore 10% verso l'alto (ora 30%), colore testo grigio a ≤0.1 kW
 

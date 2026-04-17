@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.18 (2026-04-17)
+* (ssbingo) Ujednolicone tytuły widżetów: Energy Flow, Battery Status, Statistics i PV Power mają teraz ten sam rozmiar (0.9rem, 600)
+
 ### 1.6.17 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: wartości przesunięte o kolejne 10% w górę (teraz 30%), kolor tekstu szary przy ≤0.1 kW
 

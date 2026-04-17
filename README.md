@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.18 (2026-04-17)
+* (ssbingo) Unified widget titles: Energy Flow, Battery Status, Statistics and PV Power now share identical title size (0.9rem, 600 weight)
+
 ### 1.6.17 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: value labels moved 10% further up (now at 30%), text color gray when ≤0.1 kW
 

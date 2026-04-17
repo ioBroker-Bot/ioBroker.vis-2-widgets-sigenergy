@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.6.17"
+    version: "1.6.18"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -46,7 +46,7 @@ if (typeof systemDictionary !== "undefined") {
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.6.17",
+    version: "1.6.18",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -1549,7 +1549,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var pvInner = document.getElementById("sig_pvs_inner_" + w);
         if (pvInner) {
             pvInner.innerHTML =
-                '<div style="text-align:center;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">&#9728; ' + title + '</div>' +
+                '<div style="text-align:center;font-size:.9rem;font-weight:600;margin-bottom:12px;color:' + txtCol + ';">&#9728; ' + title + '</div>' +
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
                 stringCol(1, name1) + stringCol(2, name2) + stringCol(3, name3) +
                 '</div>' +

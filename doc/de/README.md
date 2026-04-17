@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.18 (2026-04-17)
+* (ssbingo) Widget-Titel vereinheitlicht: Energiefluss, Batteriestatus, Tagesstatistik und PV Power haben jetzt identische Schriftgröße (0.9rem, 600)
+
 ### 1.6.17 (2026-04-17)
 * (ssbingo) Widget 9 PV Power: Wertanzeigen 10% weiter nach oben verschoben (jetzt 30%), Schrift grau bei ≤0.1 kW
 

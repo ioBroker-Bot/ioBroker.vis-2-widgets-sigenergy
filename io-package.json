@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.17",
+    "version": "1.6.18",
     "news": {
-      "1.6.17": {
-        "en": "Widget 9 PV Power: value labels moved 10% further up (now at 30%), text color gray when ≤0.1 kW",
-        "de": "Widget 9 PV Power: Wertanzeigen 10% weiter nach oben verschoben (jetzt 30%), Schrift grau bei ≤0.1 kW",
-        "ru": "Виджет 9 PV Power: значения смещены ещё на 10% вверх (теперь 30%), цвет текста серый при ≤0.1 кВт",
-        "pt": "Widget 9 PV Power: valores movidos mais 10% para cima (agora 30%), cor do texto cinza quando ≤0.1 kW",
-        "nl": "Widget 9 PV Power: waarden 10% verder omhoog verplaatst (nu 30%), tekstkleur grijs bij ≤0.1 kW",
-        "fr": "Widget 9 PV Power: valeurs déplacées de 10% supplémentaires vers le haut (maintenant 30%), couleur du texte grise à ≤0.1 kW",
-        "it": "Widget 9 PV Power: valori spostati ulteriore 10% verso l'alto (ora 30%), colore testo grigio a ≤0.1 kW",
-        "es": "Widget 9 PV Power: valores movidos 10% más hacia arriba (ahora 30%), color de texto gris cuando ≤0.1 kW",
-        "pl": "Widget 9 PV Power: wartości przesunięte o kolejne 10% w górę (teraz 30%), kolor tekstu szary przy ≤0.1 kW"
+      "1.6.18": {
+        "en": "Unified widget titles: Energy Flow, Battery Status, Statistics and PV Power now share identical title size (0.9rem, 600 weight)",
+        "de": "Widget-Titel vereinheitlicht: Energiefluss, Batteriestatus, Tagesstatistik und PV Power haben jetzt identische Schriftgröße (0.9rem, 600)",
+        "ru": "Унифицированы заголовки виджетов: Energy Flow, Battery Status, Statistics и PV Power имеют одинаковый размер (0.9rem, 600)",
+        "pt": "Títulos de widgets unificados: Energy Flow, Battery Status, Statistics e PV Power agora compartilham tamanho idêntico (0.9rem, 600)",
+        "nl": "Widgettitels geüniformeerd: Energy Flow, Battery Status, Statistics en PV Power hebben nu identieke grootte (0.9rem, 600)",
+        "fr": "Titres des widgets unifiés: Energy Flow, Battery Status, Statistics et PV Power partagent maintenant la même taille (0.9rem, 600)",
+        "it": "Titoli widget unificati: Energy Flow, Battery Status, Statistics e PV Power condividono ora la stessa dimensione (0.9rem, 600)",
+        "es": "Títulos de widgets unificados: Energy Flow, Battery Status, Statistics y PV Power ahora comparten el mismo tamaño (0.9rem, 600)",
+        "pl": "Ujednolicone tytuły widżetów: Energy Flow, Battery Status, Statistics i PV Power mają teraz ten sam rozmiar (0.9rem, 600)"
       }
     },
     "titleLang": {
