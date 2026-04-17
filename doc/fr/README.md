@@ -88,6 +88,22 @@ Surveillance et contrôle complets de l'onduleur avec navigation par onglets. Af
 
 **OID :** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### PV Power
+Affichage jusqu'à 3 chaînes PV avec valeurs de puissance en direct et flèches de flux animées vers l'onduleur hybride. Les couleurs des flèches changent dynamiquement selon la puissance (orange <1 kW, jaune <2 kW, vert >2 kW).
+
+#### Paramètres du widget
+| Paramètre | Type | Défaut | Description |
+|---|---|---|---|
+| oid_pv1 … oid_pv3 | OID | sigenergy.0.plant.pv1Power … pv3Power | OID de puissance par chaîne PV |
+| oid_pvtotal | OID | sigenergy.0.plant.pvPower | OID de puissance PV totale |
+| sig_title | texte | PV Power | Titre du widget |
+| sig_name1 … sig_name3 | texte | String 1 … String 3 | Noms configurables par chaîne |
+| sig_darkmode | case à cocher | true | Mode sombre / clair |
+
+![PV Power](img/PV-PowerOverview.png)
+
+**OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
+
 ### Vue d'ensemble SigenMicro
 Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le bus Modbus. L'onglet 1 affiche tous les appareils sous forme de segment réseau animé (topologie bus Ethernet avec liaisons verticales).
 
@@ -104,22 +120,7 @@ Vue d'ensemble et vue détaillée de tous les micro-onduleurs SigenMicro sur le 
 Tous les widgets prennent en charge un **mode clair et sombre**, commutable via le paramètre de widget `Mode sombre`.
 
 ## Changelog
-### 1.6.18 (2026-04-17)
-* (ssbingo) Titres des widgets unifiés: Energy Flow, Battery Status, Statistics et PV Power partagent maintenant la même taille (0.9rem, 600)
-
-### 1.6.17 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: valeurs déplacées de 10% supplémentaires vers le haut (maintenant 30%), couleur du texte grise à ≤0.1 kW
-
-### 1.6.16 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: valeurs déplacées de 10% vers le haut sur les panneaux pour meilleure visibilité
-
-### 1.6.15 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: noms de strings configurables, valeurs centrées sur les panneaux, couleurs de flèches par seuil (<1kW orange, <2kW jaune, >2kW vert)
-
-### 1.6.14 (2026-04-16)
-* (ssbingo) Corrigé une erreur de syntaxe JavaScript dans le widget SigenMicro (guillemets triples) qui empêchait le chargement de tous les widgets
-
-### 1.6.14 (2026-04-16)
+### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power ajouté avec affichage de 3 chaînes PV et flèches de flux animées
 
 ### 1.6.7 (2026-04-09)

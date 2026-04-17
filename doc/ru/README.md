@@ -88,6 +88,22 @@
 
 **OID:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### PV Power
+Отображение до 3 PV-строк с актуальными значениями мощности и анимированными стрелками потока к гибридному инвертору. Цвета стрелок изменяются динамически в зависимости от мощности (оранжевый <1 кВт, жёлтый <2 кВт, зелёный >2 кВт).
+
+#### Настройки виджета
+| Параметр | Тип | По умолчанию | Описание |
+|---|---|---|---|
+| oid_pv1 … oid_pv3 | OID | sigenergy.0.plant.pv1Power … pv3Power | OID мощности PV-строк |
+| oid_pvtotal | OID | sigenergy.0.plant.pvPower | OID общей мощности PV |
+| sig_title | текст | PV Power | Заголовок виджета |
+| sig_name1 … sig_name3 | текст | String 1 … String 3 | Настраиваемые имена строк |
+| sig_darkmode | флажок | true | Тёмный / светлый режим |
+
+![PV Power](img/PV-PowerOverview.png)
+
+**OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
+
 ### Обзор SigenMicro
 Обзор и детальное представление всех микроинверторов SigenMicro на шине Modbus. Вкладка 1 показывает все устройства в виде анимированного сетевого сегмента (топология Ethernet-шины с вертикальными ответвлениями). Каждая последующая вкладка отображает все 15 регистров соответствующего устройства в возрастающем порядке.
 
@@ -104,22 +120,7 @@
 Все виджеты поддерживают **светлый и тёмный режим**, переключаемый через настройку виджета `Тёмный режим`.
 
 ## Changelog
-### 1.6.18 (2026-04-17)
-* (ssbingo) Унифицированы заголовки виджетов: Energy Flow, Battery Status, Statistics и PV Power имеют одинаковый размер (0.9rem, 600)
-
-### 1.6.17 (2026-04-17)
-* (ssbingo) Виджет 9 PV Power: значения смещены ещё на 10% вверх (теперь 30%), цвет текста серый при ≤0.1 кВт
-
-### 1.6.16 (2026-04-17)
-* (ssbingo) Виджет 9 PV Power: значения сдвинуты на 10% вверх на панелях для лучшей видимости
-
-### 1.6.15 (2026-04-17)
-* (ssbingo) Виджет 9 PV Power: настраиваемые имена строк, значения по центру панелей, цвета стрелок по порогу (<1кВт оранж., <2кВт жёлт., >2кВт зел.)
-
-### 1.6.14 (2026-04-16)
-* (ssbingo) Исправлена синтаксическая ошибка JavaScript в виджете SigenMicro (тройные кавычки), блокировавшая загрузку всех виджетов
-
-### 1.6.14 (2026-04-16)
+### 1.7.0 (2026-04-17)
 * (ssbingo) Виджет 9: добавлен PV Power с отображением 3 PV-строк и анимированными стрелками потока
 
 ### 1.6.7 (2026-04-09)

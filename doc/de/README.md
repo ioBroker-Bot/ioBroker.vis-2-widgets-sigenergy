@@ -89,6 +89,22 @@ Umfassende Überwachung und Steuerung des Wechselrichters mit Tab-Navigation. Ze
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### PV Power
+Darstellung von bis zu 3 PV-Strings mit Live-Leistungswerten und animierten Fluss-Pfeilen zum Hybrid-Wechselrichter. Pfeilfarben ändern sich dynamisch je nach Leistung (orange <1 kW, gelb <2 kW, grün >2 kW).
+
+#### Widget-Einstellungen
+| Parameter | Typ | Standard | Beschreibung |
+|---|---|---|---|
+| oid_pv1 … oid_pv3 | OID | sigenergy.0.plant.pv1Power … pv3Power | PV-String-Leistungs-OIDs |
+| oid_pvtotal | OID | sigenergy.0.plant.pvPower | Gesamt-PV-Leistung OID |
+| sig_title | Text | PV Power | Widget-Titel |
+| sig_name1 … sig_name3 | Text | String 1 … String 3 | Frei wählbare Namen je String |
+| sig_darkmode | Checkbox | true | Dunkel- / Hellmodus |
+
+![PV Power](img/PV-PowerOverview.png)
+
+**OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
+
 ### SigenMicro Übersicht
 Übersicht und Detailansicht aller SigenMicro Mikro-Wechselrichter am Modbus-Bus. Tab 1 zeigt alle Geräte als animiertes Netzwerksegment (Ethernet-Bus-Topologie mit senkrechten Stichleitungen). Jeder weitere Tab zeigt alle 15 Register des jeweiligen Geräts in aufsteigender Reihenfolge.
 
@@ -128,22 +144,7 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
-### 1.6.18 (2026-04-17)
-* (ssbingo) Widget-Titel vereinheitlicht: Energiefluss, Batteriestatus, Tagesstatistik und PV Power haben jetzt identische Schriftgröße (0.9rem, 600)
-
-### 1.6.17 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: Wertanzeigen 10% weiter nach oben verschoben (jetzt 30%), Schrift grau bei ≤0.1 kW
-
-### 1.6.16 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: Wertanzeigen um 10% nach oben verschoben für bessere Sichtbarkeit
-
-### 1.6.15 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: frei wählbare String-Namen, Wertanzeige mittig auf Panels, schwellenbasierte Pfeilfarben (<1kW orange, <2kW gelb, >2kW grün)
-
-### 1.6.14 (2026-04-16)
-* (ssbingo) JavaScript-Syntaxfehler im SigenMicro-Widget (dreifaches Anführungszeichen) behoben, der alle Widgets am Laden hinderte
-
-### 1.6.14 (2026-04-16)
+### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen
 
 ### 1.6.7 (2026-04-09)

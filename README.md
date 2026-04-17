@@ -89,6 +89,22 @@ Comprehensive monitoring and control of the inverter with tab navigation. Displa
 
 **OIDs:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### PV Power
+Display of up to 3 PV strings with live power values and animated flow arrows leading to the hybrid inverter. Arrow colours change dynamically based on power level (orange <1 kW, yellow <2 kW, green >2 kW).
+
+#### Widget settings
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| oid_pv1 … oid_pv3 | OID | sigenergy.0.plant.pv1Power … pv3Power | PV string power OIDs |
+| oid_pvtotal | OID | sigenergy.0.plant.pvPower | Total PV power OID |
+| sig_title | text | PV Power | Widget title |
+| sig_name1 … sig_name3 | text | String 1 … String 3 | Configurable names per string |
+| sig_darkmode | checkbox | true | Dark / Light mode |
+
+![PV Power](img/PV-PowerOverview.png)
+
+**OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
+
 ### SigenMicro Overview
 Overview and detail view of all SigenMicro micro-inverters connected via Modbus. Tab 1 shows all devices as an animated network segment (Ethernet bus topology with vertical drop lines). Each additional tab shows all 15 registers of the respective device in ascending order.
 
@@ -128,22 +144,7 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
-### 1.6.18 (2026-04-17)
-* (ssbingo) Unified widget titles: Energy Flow, Battery Status, Statistics and PV Power now share identical title size (0.9rem, 600 weight)
-
-### 1.6.17 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: value labels moved 10% further up (now at 30%), text color gray when ≤0.1 kW
-
-### 1.6.16 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: moved value labels 10% up on panels for better visibility
-
-### 1.6.15 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: configurable string names, centered value labels on panels, threshold-based arrow colors (<1kW orange, <2kW yellow, >2kW green)
-
-### 1.6.14 (2026-04-16)
-* (ssbingo) Fixed JavaScript syntax error in SigenMicro widget (triple quote) that prevented all widgets from loading
-
-### 1.6.14 (2026-04-16)
+### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power added with 3 PV string display and animated flow arrows
 
 ### 1.6.7 (2026-04-09)

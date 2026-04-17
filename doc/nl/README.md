@@ -88,6 +88,22 @@ Uitgebreide bewaking en bediening van de omvormer met tabnavigatie. Toont bedrij
 
 **OID's:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### PV Power
+Weergave van maximaal 3 PV-strings met live vermogenswaarden en geanimeerde stroomspijlen naar de hybride omvormer. Pijlkleuren veranderen dynamisch afhankelijk van het vermogen (oranje <1 kW, geel <2 kW, groen >2 kW).
+
+#### Widget-instellingen
+| Parameter | Type | Standaard | Beschrijving |
+|---|---|---|---|
+| oid_pv1 … oid_pv3 | OID | sigenergy.0.plant.pv1Power … pv3Power | OID's van PV-string-vermogen |
+| oid_pvtotal | OID | sigenergy.0.plant.pvPower | Totaal PV-vermogen OID |
+| sig_title | tekst | PV Power | Widgettitel |
+| sig_name1 … sig_name3 | tekst | String 1 … String 3 | Configureerbare namen per string |
+| sig_darkmode | checkbox | true | Donker / Licht modus |
+
+![PV Power](img/PV-PowerOverview.png)
+
+**OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
+
 ### SigenMicro Overzicht
 Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus. Tab 1 toont alle apparaten als een geanimeerd netwerksegment (Ethernet-bustopologie met verticale aftakkingen).
 
@@ -104,22 +120,7 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
-### 1.6.18 (2026-04-17)
-* (ssbingo) Widgettitels geüniformeerd: Energy Flow, Battery Status, Statistics en PV Power hebben nu identieke grootte (0.9rem, 600)
-
-### 1.6.17 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: waarden 10% verder omhoog verplaatst (nu 30%), tekstkleur grijs bij ≤0.1 kW
-
-### 1.6.16 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: waarden 10% omhoog verschoven op panelen voor betere zichtbaarheid
-
-### 1.6.15 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: configureerbare stringnamen, waarden gecentreerd op panelen, drempelgebaseerde pijlkleuren (<1kW oranje, <2kW geel, >2kW groen)
-
-### 1.6.14 (2026-04-16)
-* (ssbingo) JavaScript-syntaxisfout in SigenMicro-widget (drievoudig aanhalingsteken) verholpen die alle widgets blokkeerde
-
-### 1.6.14 (2026-04-16)
+### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen
 
 ### 1.6.7 (2026-04-09)

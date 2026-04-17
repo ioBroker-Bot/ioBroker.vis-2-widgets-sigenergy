@@ -89,6 +89,22 @@ Kompleksowe monitorowanie i sterowanie falownikiem z nawigacją zakładkową. Wy
 
 **OID:** `inverter.activePower`, `inverter.pvPower`, `inverter.essChargeDischargePower`, `inverter.runningState`, `inverter.essBatterySoc/Soh`, `inverter.essAvgCellTemperature/Voltage`, `inverter.phaseA/B/CVoltage`, `inverter.gridFrequency`, `inverter.pcsInternalTemp`, `inverter.alarm1–5`, `inverter.firmwareVersion`, `inverter.modelType`, `inverter.serialNumber`, `inverter.control.startStop`, `inverter.control.remoteEmsDispatchEnable`, `inverter.control.activePowerPercent`
 
+### PV Power
+Wyświetlanie do 3 ciągów PV z wartościami mocy na żywo oraz animowanymi strzałkami przepływu do inwertera hybrydowego. Kolory strzałek zmieniają się dynamicznie w zależności od mocy (pomarańczowy <1 kW, żółty <2 kW, zielony >2 kW).
+
+#### Ustawienia widżetu
+| Parametr | Typ | Domyślnie | Opis |
+|---|---|---|---|
+| oid_pv1 … oid_pv3 | OID | sigenergy.0.plant.pv1Power … pv3Power | OID mocy na ciąg PV |
+| oid_pvtotal | OID | sigenergy.0.plant.pvPower | OID całkowitej mocy PV |
+| sig_title | tekst | PV Power | Tytuł widżetu |
+| sig_name1 … sig_name3 | tekst | String 1 … String 3 | Konfigurowalne nazwy ciągów |
+| sig_darkmode | checkbox | true | Tryb ciemny / jasny |
+
+![PV Power](img/PV-PowerOverview.png)
+
+**OIDs:** `plant.pv1Power`, `plant.pv2Power`, `plant.pv3Power`, `plant.pvPower`
+
 ### Przegląd SigenMicro
 Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie Modbus. Zakładka 1 pokazuje wszystkie urządzenia jako animowany segment sieci (topologia magistrali Ethernet z pionowymi odgałęzieniami).
 
@@ -105,22 +121,7 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
-### 1.6.18 (2026-04-17)
-* (ssbingo) Ujednolicone tytuły widżetów: Energy Flow, Battery Status, Statistics i PV Power mają teraz ten sam rozmiar (0.9rem, 600)
-
-### 1.6.17 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: wartości przesunięte o kolejne 10% w górę (teraz 30%), kolor tekstu szary przy ≤0.1 kW
-
-### 1.6.16 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: wartości przesunięte o 10% w górę na panelach dla lepszej widoczności
-
-### 1.6.15 (2026-04-17)
-* (ssbingo) Widget 9 PV Power: konfigurowalne nazwy stringów, wartości na środku paneli, kolory strzałek wg progu (<1kW pomarańcz, <2kW żółty, >2kW zielony)
-
-### 1.6.14 (2026-04-16)
-* (ssbingo) Naprawiono błąd składni JavaScript w widżecie SigenMicro (potrójny cudzysłów) uniemożliwiający ładowanie wszystkich widżetów
-
-### 1.6.14 (2026-04-16)
+### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu
 
 ### 1.6.7 (2026-04-09)

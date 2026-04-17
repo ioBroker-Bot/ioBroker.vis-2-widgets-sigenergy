@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.18",
+    "version": "1.7.0",
     "news": {
-      "1.6.18": {
-        "en": "Unified widget titles: Energy Flow, Battery Status, Statistics and PV Power now share identical title size (0.9rem, 600 weight)",
-        "de": "Widget-Titel vereinheitlicht: Energiefluss, Batteriestatus, Tagesstatistik und PV Power haben jetzt identische Schriftgröße (0.9rem, 600)",
-        "ru": "Унифицированы заголовки виджетов: Energy Flow, Battery Status, Statistics и PV Power имеют одинаковый размер (0.9rem, 600)",
-        "pt": "Títulos de widgets unificados: Energy Flow, Battery Status, Statistics e PV Power agora compartilham tamanho idêntico (0.9rem, 600)",
-        "nl": "Widgettitels geüniformeerd: Energy Flow, Battery Status, Statistics en PV Power hebben nu identieke grootte (0.9rem, 600)",
-        "fr": "Titres des widgets unifiés: Energy Flow, Battery Status, Statistics et PV Power partagent maintenant la même taille (0.9rem, 600)",
-        "it": "Titoli widget unificati: Energy Flow, Battery Status, Statistics e PV Power condividono ora la stessa dimensione (0.9rem, 600)",
-        "es": "Títulos de widgets unificados: Energy Flow, Battery Status, Statistics y PV Power ahora comparten el mismo tamaño (0.9rem, 600)",
-        "pl": "Ujednolicone tytuły widżetów: Energy Flow, Battery Status, Statistics i PV Power mają teraz ten sam rozmiar (0.9rem, 600)"
+      "1.7.0": {
+        "en": "Widget 9: PV Power added with 3 PV string display and animated flow arrows",
+        "de": "Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen",
+        "ru": "Виджет 9: добавлен PV Power с отображением 3 PV-строк и анимированными стрелками потока",
+        "pt": "Widget 9: PV Power adicionado com exibição de 3 strings PV e setas de fluxo animadas",
+        "nl": "Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen",
+        "fr": "Widget 9: PV Power ajouté avec affichage de 3 chaînes PV et flèches de flux animées",
+        "it": "Widget 9: PV Power aggiunto con visualizzazione di 3 stringhe PV e frecce di flusso animate",
+        "es": "Widget 9: PV Power añadido con visualización de 3 cadenas PV y flechas de flujo animadas",
+        "pl": "Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu"
       }
     },
     "titleLang": {
