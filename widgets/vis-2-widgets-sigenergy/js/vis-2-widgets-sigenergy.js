@@ -2,7 +2,7 @@
     ioBroker.vis vis-2-widgets-sigenergy — Widget-Set
     4 Widgets: Energiefluss · Akku-Status · Echtzeit-Leistung · Statistiken
 
-    version: "1.6.14"
+    version: "1.6.15"
     Copyright 2026 ssbingo s.sternitzke@online.de
 */
 "use strict";
@@ -37,13 +37,16 @@ if (typeof systemDictionary !== "undefined") {
         "oid_pv1":      { "en": "PV String 1 Power OID",  "de": "PV String 1 Leistung OID" },
         "oid_pv2":      { "en": "PV String 2 Power OID",  "de": "PV String 2 Leistung OID" },
         "oid_pv3":      { "en": "PV String 3 Power OID",  "de": "PV String 3 Leistung OID" },
-        "oid_pvtotal":  { "en": "Total PV Power OID",     "de": "PV Gesamtleistung OID" }
+        "oid_pvtotal":  { "en": "Total PV Power OID",     "de": "PV Gesamtleistung OID" },
+        "sig_name1":    { "en": "Name String 1",         "de": "Name String 1" },
+        "sig_name2":    { "en": "Name String 2",         "de": "Name String 2" },
+        "sig_name3":    { "en": "Name String 3",         "de": "Name String 3" }
         }
     );
 }
 
 vis.binds["vis-2-widgets-sigenergy"] = {
-    version: "1.6.14",
+    version: "1.6.15",
 
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
@@ -1494,6 +1497,10 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
         var dark  = B._isDark(data);
         var title = data.attr("sig_title") || "PV Power";
+        /* Frei wählbare String-Namen; Standard: "String 1/2/3" */
+        var name1 = data.attr("sig_name1") || "String 1";
+        var name2 = data.attr("sig_name2") || "String 2";
+        var name3 = data.attr("sig_name3") || "String 3";
         var w     = widgetID;
         var bg     = dark ? "linear-gradient(160deg,#0d1219,#111a26)" : "#f0f4f8";
         var txtCol = dark ? "#d0e4f4" : "#1a2a3a";
@@ -1502,14 +1509,21 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var markId = "mPvStr_" + w;
         var sw = 130, sh = 65, hw = 220, hh = 96;
 
+        /* SVG mit 3 Pfeil-Markern (orange/gelb/grün) für dynamische Farbe */
         var svgArrows =
             '<svg id="sig_pvs_svg_' + w + '" viewBox="0 0 388 70" preserveAspectRatio="none" ' +
             'style="position:absolute;top:0;left:0;width:100%;height:70px;pointer-events:none;overflow:visible;">' +
-            '<defs><marker id="' + markId + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
-            '<polygon points="0,0 6,3 0,6" fill="' + pvCol + '"/></marker></defs>' +
-            '<path id="sig_pvs_path_pv1_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M55,0 Q55,45 194,65" marker-end="url(#' + markId + ')"/>' +
-            '<path id="sig_pvs_path_pv2_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M194,0 L194,65" marker-end="url(#' + markId + ')"/>' +
-            '<path id="sig_pvs_path_pv3_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M333,0 Q333,45 194,65" marker-end="url(#' + markId + ')"/>' +
+            '<defs>' +
+            '<marker id="' + markId + '_o" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
+            '<polygon points="0,0 6,3 0,6" fill="#f39c12"/></marker>' +
+            '<marker id="' + markId + '_y" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
+            '<polygon points="0,0 6,3 0,6" fill="#f1c40f"/></marker>' +
+            '<marker id="' + markId + '_g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
+            '<polygon points="0,0 6,3 0,6" fill="#27ae60"/></marker>' +
+            '</defs>' +
+            '<path id="sig_pvs_path_pv1_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M55,0 Q55,45 194,65" marker-end="url(#' + markId + '_o)"/>' +
+            '<path id="sig_pvs_path_pv2_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M194,0 L194,65" marker-end="url(#' + markId + '_o)"/>' +
+            '<path id="sig_pvs_path_pv3_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M333,0 Q333,45 194,65" marker-end="url(#' + markId + '_o)"/>' +
             '</svg>';
 
         $div.html(
@@ -1518,26 +1532,26 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;"></div></div>'
         );
 
+        /* Baustein für eine PV-String-Spalte: Bild + mittiges Label mit Wert + Name darunter.
+           Das Label sitzt absolut positioniert mittig AUF dem Bild. */
+        function stringCol(nr, nameStr) {
+            return '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
+                '<div id="sig_pvs_val' + nr + '_' + w + '" ' +
+                'style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);' +
+                'background:rgba(0,0,0,.65);border-radius:5px;padding:3px 8px;' +
+                'font-size:13px;font-weight:600;color:' + pvCol + ';white-space:nowrap;' +
+                'box-shadow:0 1px 3px rgba(0,0,0,.3);">-- W</div>' +
+                '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">' + nameStr + '</div>' +
+                '</div>';
+        }
+
         var pvInner = document.getElementById("sig_pvs_inner_" + w);
         if (pvInner) {
             pvInner.innerHTML =
                 '<div style="text-align:center;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">&#9728; ' + title + '</div>' +
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
-                '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
-                '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
-                '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 1</div>' +
-                '</div>' +
-                '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
-                '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
-                '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 2</div>' +
-                '</div>' +
-                '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
-                '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
-                '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 3</div>' +
-                '</div>' +
+                stringCol(1, name1) + stringCol(2, name2) + stringCol(3, name3) +
                 '</div>' +
                 '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
                 '<div style="text-align:center;">' +
@@ -1550,6 +1564,18 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '</div></div>';
         }
 
+        /* Farbschwellen für Pfeile (Wert in kW):
+             < 0.1 kW  → inaktiv (Standard, grau)
+             0.1 – 1   → orange (#f39c12)
+             1   – 2   → gelb   (#f1c40f)
+             > 2       → grün   (#27ae60)                                      */
+        function arrowColor(kW) {
+            if (kW < 0.1) return null;
+            if (kW < 1)   return { col: "#f39c12", mark: "_o" };
+            if (kW < 2)   return { col: "#f1c40f", mark: "_y" };
+            return              { col: "#27ae60", mark: "_g" };
+        }
+
         function update() {
             var pv1   = parseFloat(B._val(data, "oid_pv1"))     || 0;
             var pv2   = parseFloat(B._val(data, "oid_pv2"))     || 0;
@@ -1559,11 +1585,20 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             B._txt("sig_pvs_val2_"  + w, B._fmtKW(pv2));
             B._txt("sig_pvs_val3_"  + w, B._fmtKW(pv3));
             B._txt("sig_pvs_total_" + w, B._fmtKW(total));
+
+            var vals = [pv1, pv2, pv3];
             ["pv1", "pv2", "pv3"].forEach(function(k, i) {
                 var el = B._el("sig_pvs_path_" + k + "_" + w);
-                if (el) {
-                    if ([pv1, pv2, pv3][i] > 0.05) { el.classList.add("active"); }
-                    else                             { el.classList.remove("active"); }
+                if (!el) return;
+                var c = arrowColor(vals[i]);
+                if (c) {
+                    el.classList.add("active");
+                    el.setAttribute("stroke", c.col);
+                    el.setAttribute("marker-end", "url(#" + markId + c.mark + ")");
+                } else {
+                    el.classList.remove("active");
+                    el.setAttribute("stroke", pvCol);
+                    el.setAttribute("marker-end", "url(#" + markId + "_o)");
                 }
             });
         }
@@ -1571,7 +1606,6 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         B._subscribe(widgetID, data, ["oid_pv1", "oid_pv2", "oid_pv3", "oid_pvtotal"], update);
         update();
     }
-
 };
 vis.binds["vis-2-widgets-sigenergy"].showVersion();
 

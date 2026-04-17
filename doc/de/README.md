@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget-Einstellung `Dunkelmodus` umgeschaltet werden kann.
 
 ## Changelog
+### 1.6.15 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: frei wählbare String-Namen, Wertanzeige mittig auf Panels, schwellenbasierte Pfeilfarben (<1kW orange, <2kW gelb, >2kW grün)
+
 ### 1.6.14 (2026-04-16)
 * (ssbingo) JavaScript-Syntaxfehler im SigenMicro-Widget (dreifaches Anführungszeichen) behoben, der alle Widgets am Laden hinderte
 

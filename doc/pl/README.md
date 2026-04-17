@@ -105,6 +105,9 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+### 1.6.15 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: konfigurowalne nazwy stringów, wartości na środku paneli, kolory strzałek wg progu (<1kW pomarańcz, <2kW żółty, >2kW zielony)
+
 ### 1.6.14 (2026-04-16)
 * (ssbingo) Naprawiono błąd składni JavaScript w widżecie SigenMicro (potrójny cudzysłów) uniemożliwiający ładowanie wszystkich widżetów
 

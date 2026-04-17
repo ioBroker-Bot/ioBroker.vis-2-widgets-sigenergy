@@ -1,18 +1,18 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.6.14",
+    "version": "1.6.15",
     "news": {
-      "1.6.14": {
-        "en": "Widget 9: PV Power added with 3 PV string display and animated flow arrows",
-        "de": "Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen",
-        "ru": "Виджет 9: добавлен PV Power с отображением 3 PV-строк и анимированными стрелками потока",
-        "pt": "Widget 9: PV Power adicionado com exibição de 3 strings PV e setas de fluxo animadas",
-        "nl": "Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen",
-        "fr": "Widget 9: PV Power ajouté avec affichage de 3 chaînes PV et flèches de flux animées",
-        "it": "Widget 9: PV Power aggiunto con visualizzazione di 3 stringhe PV e frecce di flusso animate",
-        "es": "Widget 9: PV Power añadido con visualización de 3 cadenas PV y flechas de flujo animadas",
-        "pl": "Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu"
+      "1.6.15": {
+        "en": "Widget 9 PV Power: configurable string names, centered value labels on panels, threshold-based arrow colors (<1kW orange, <2kW yellow, >2kW green)",
+        "de": "Widget 9 PV Power: frei wählbare String-Namen, Wertanzeige mittig auf Panels, schwellenbasierte Pfeilfarben (<1kW orange, <2kW gelb, >2kW grün)",
+        "ru": "Виджет 9 PV Power: настраиваемые имена строк, значения по центру панелей, цвета стрелок по порогу (<1кВт оранж., <2кВт жёлт., >2кВт зел.)",
+        "pt": "Widget 9 PV Power: nomes de strings configuráveis, valores centralizados nos painéis, cores de setas por limiar (<1kW laranja, <2kW amarelo, >2kW verde)",
+        "nl": "Widget 9 PV Power: configureerbare stringnamen, waarden gecentreerd op panelen, drempelgebaseerde pijlkleuren (<1kW oranje, <2kW geel, >2kW groen)",
+        "fr": "Widget 9 PV Power: noms de strings configurables, valeurs centrées sur les panneaux, couleurs de flèches par seuil (<1kW orange, <2kW jaune, >2kW vert)",
+        "it": "Widget 9 PV Power: nomi stringhe configurabili, valori centrati sui pannelli, colori frecce per soglia (<1kW arancio, <2kW giallo, >2kW verde)",
+        "es": "Widget 9 PV Power: nombres de strings configurables, valores centrados en paneles, colores de flechas por umbral (<1kW naranja, <2kW amarillo, >2kW verde)",
+        "pl": "Widget 9 PV Power: konfigurowalne nazwy stringów, wartości na środku paneli, kolory strzałek wg progu (<1kW pomarańcz, <2kW żółty, >2kW zielony)"
       }
     },
     "titleLang": {

@@ -128,6 +128,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.6.15 (2026-04-17)
+* (ssbingo) Widget 9 PV Power: configurable string names, centered value labels on panels, threshold-based arrow colors (<1kW orange, <2kW yellow, >2kW green)
+
 ### 1.6.14 (2026-04-16)
 * (ssbingo) Fixed JavaScript syntax error in SigenMicro widget (triple quote) that prevented all widgets from loading
 
