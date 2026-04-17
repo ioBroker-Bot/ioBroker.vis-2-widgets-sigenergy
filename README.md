@@ -131,23 +131,8 @@ All widgets support a **light and dark mode**, switchable via the widget setting
 ### 1.6.14 (2026-04-16)
 * (ssbingo) Fixed JavaScript syntax error in SigenMicro widget (triple quote) that prevented all widgets from loading
 
-### 1.6.13 (2026-04-16)
-* (ssbingo) All widgets: restored, fixed image loading by deferring innerHTML to update() call (VIS-2 context active)
-
-### 1.6.12 (2026-04-16)
-* (ssbingo) All widgets: fixed image path using window.location.origin + /vis-2/ (VIS-2 exclusive)
-
-### 1.6.11 (2026-04-16)
-* (ssbingo) All widgets: fixed image paths using absolute URL derived from script tag (fixes /vis.0/ vs /vis-2/ path issue)
-
-### 1.6.10 (2026-04-16)
-* (ssbingo) Widget 9 PV Power: fixed image display using identical mechanism as SigenMicro widget
-
-### 1.6.9 (2026-04-16)
-* (ssbingo) Widget 9 renamed to 'PV Power'
-
-### 1.6.8 (2026-04-16)
-* (ssbingo) Added Widget 9: PV Strings Overview with animated arrows per string
+### 1.6.14 (2026-04-16)
+* (ssbingo) Widget 9: PV Power added with 3 PV string display and animated flow arrows
 
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)

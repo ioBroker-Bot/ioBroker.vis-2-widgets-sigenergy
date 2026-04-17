@@ -108,23 +108,8 @@ Todos os widgets suportam um **modo claro e escuro**, comutável através da def
 ### 1.6.14 (2026-04-16)
 * (ssbingo) Corrigido erro de sintaxe JavaScript no widget SigenMicro (aspas triplas) que impedia o carregamento de todos os widgets
 
-### 1.6.13 (2026-04-16)
-* (ssbingo) Todos os widgets: restaurados, carregamento de imagens corrigido movendo innerHTML para chamada update()
-
-### 1.6.12 (2026-04-16)
-* (ssbingo) Todos os widgets: caminho de imagem corrigido com window.location.origin + /vis-2/
-
-### 1.6.11 (2026-04-16)
-* (ssbingo) Todos os widgets: caminhos de imagem corrigidos com URL absoluta (corrige problema de caminho /vis.0/ vs /vis-2/)
-
-### 1.6.10 (2026-04-16)
-* (ssbingo) Widget 9 PV Power: exibição de imagens corrigida usando mecanismo idêntico ao widget SigenMicro
-
-### 1.6.9 (2026-04-16)
-* (ssbingo) Widget 9 renomeado para 'PV Power'
-
-### 1.6.8 (2026-04-16)
-* (ssbingo) Widget 9 adicionado: Visão geral de strings PV com setas animadas por string
+### 1.6.14 (2026-04-16)
+* (ssbingo) Widget 9: PV Power adicionado com exibição de 3 strings PV e setas de fluxo animadas
 
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Sintaxe cooldown do dependabot.yml corrigida (default-days em vez de default)

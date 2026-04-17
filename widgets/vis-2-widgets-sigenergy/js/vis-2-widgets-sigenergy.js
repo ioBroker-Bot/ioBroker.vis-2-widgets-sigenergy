@@ -45,7 +45,6 @@ if (typeof systemDictionary !== "undefined") {
 vis.binds["vis-2-widgets-sigenergy"] = {
     version: "1.6.14",
 
-
     showVersion: function () {
         if (vis.binds["vis-2-widgets-sigenergy"].version) {
             console.log("Version vis-2-widgets-sigenergy: " + vis.binds["vis-2-widgets-sigenergy"].version);
@@ -1482,6 +1481,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         doUpdate();
     }
 
+
 ,
 
     // ── Widget 9: PV Power ─────────────────────────────────────────────────
@@ -1495,102 +1495,70 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var dark  = B._isDark(data);
         var title = data.attr("sig_title") || "PV Power";
         var w     = widgetID;
-
         var bg     = dark ? "linear-gradient(160deg,#0d1219,#111a26)" : "#f0f4f8";
         var txtCol = dark ? "#d0e4f4" : "#1a2a3a";
         var subCol = dark ? "#5a7898" : "#6a8aaa";
         var pvCol  = "#f39c12";
         var markId = "mPvStr_" + w;
-
-        // Bildpfade - identisch zum bewährten SigenMicro-Ansatz
-
-
-        var svgArrows =
-            '<svg id="sig_pvs_svg_' + w + '" ' +
-            'viewBox="0 0 388 70" preserveAspectRatio="none" ' +
-            'style="position:absolute;top:0;left:0;width:100%;height:70px;pointer-events:none;overflow:visible;">' +
-            '<defs>' +
-            '<marker id="' + markId + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
-            '<polygon points="0,0 6,3 0,6" fill="' + pvCol + '"/>' +
-            '</marker>' +
-            '</defs>' +
-            '<path id="sig_pvs_path_pv1_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" ' +
-            'd="M55,0 Q55,45 194,65" marker-end="url(#' + markId + ')"/>' +
-            '<path id="sig_pvs_path_pv2_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" ' +
-            'd="M194,0 L194,65" marker-end="url(#' + markId + ')"/>' +
-            '<path id="sig_pvs_path_pv3_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" ' +
-            'd="M333,0 Q333,45 194,65" marker-end="url(#' + markId + ')"/>' +
-            '</svg>';
-
         var sw = 130, sh = 65, hw = 220, hh = 96;
 
-        // ── Schritt 1: Leere Hülle via $div.html() ──────────────────────────
+        var svgArrows =
+            '<svg id="sig_pvs_svg_' + w + '" viewBox="0 0 388 70" preserveAspectRatio="none" ' +
+            'style="position:absolute;top:0;left:0;width:100%;height:70px;pointer-events:none;overflow:visible;">' +
+            '<defs><marker id="' + markId + '" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">' +
+            '<polygon points="0,0 6,3 0,6" fill="' + pvCol + '"/></marker></defs>' +
+            '<path id="sig_pvs_path_pv1_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M55,0 Q55,45 194,65" marker-end="url(#' + markId + ')"/>' +
+            '<path id="sig_pvs_path_pv2_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M194,0 L194,65" marker-end="url(#' + markId + ')"/>' +
+            '<path id="sig_pvs_path_pv3_' + w + '" class="sig-flow-path" stroke="' + pvCol + '" d="M333,0 Q333,45 194,65" marker-end="url(#' + markId + ')"/>' +
+            '</svg>';
+
         $div.html(
             '<div class="sig-w"><div id="sig_pvs_inner_' + w + '" style="' +
             'background:' + bg + ';border-radius:14px;padding:16px 14px 14px;' +
             'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;"></div></div>'
         );
 
-        // ── Schritt 2 + 3: Inhalt + Werte — aus update() heraus ─────────────
-        // Exakt wie SigenMicro: doUpdate() → _smRender() → ov.innerHTML.
-        // pvsBuild() setzt die Hülle mit Bildern beim ersten update()-Aufruf.
-        // Dadurch läuft es NACH VIS-2-Initialisierung mit korrekter Basis-URL.
-        var pvBuilt = false;
-        function pvsBuild() {
-            var pvInner = B._el("sig_pvs_inner_" + w);
-            if (!pvInner) return;
+        var pvInner = document.getElementById("sig_pvs_inner_" + w);
+        if (pvInner) {
             pvInner.innerHTML =
-                '<div style="text-align:center;font-size:11px;letter-spacing:1.2px;' +
-                'text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">' +
-                '&#9728; ' + title + '</div>' +
+                '<div style="text-align:center;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:' + pvCol + ';margin-bottom:12px;opacity:.85;">&#9728; ' + title + '</div>' +
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
-
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
                 '<div id="sig_pvs_val1_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 1</div>' +
                 '</div>' +
-
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
                 '<div id="sig_pvs_val2_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 2</div>' +
                 '</div>' +
-
                 '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;filter:drop-shadow(0 2px 6px rgba(243,156,18,.2));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
                 '<div id="sig_pvs_val3_' + w + '" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);border-radius:5px;padding:2px 7px;font-size:13px;font-weight:500;color:' + pvCol + ';white-space:nowrap;">-- W</div>' +
                 '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">String 3</div>' +
                 '</div>' +
                 '</div>' +
-
                 '<div style="position:relative;height:70px;width:100%;">' + svgArrows + '</div>' +
-
                 '<div style="text-align:center;">' +
-                '<img src="widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png" style="width:' + hw + 'px;height:' + hh + 'px;display:inline-block;filter:drop-shadow(0 3px 10px rgba(52,152,219,.18));object-fit:contain;">' +
+                '<img src="widgets/vis-2-widgets-sigenergy/img/Sigen_Hybrid_Vorderansicht.png" style="width:' + hw + 'px;height:' + hh + 'px;display:inline-block;object-fit:contain;">' +
                 '</div>' +
-
                 '<div style="text-align:center;margin-top:8px;">' +
                 '<div style="display:inline-block;background:rgba(243,156,18,.1);border:1px solid rgba(243,156,18,.35);border-radius:8px;padding:4px 18px;">' +
                 '<div style="font-size:10px;color:' + subCol + ';letter-spacing:.5px;">Gesamt PV</div>' +
                 '<div id="sig_pvs_total_' + w + '" style="font-size:18px;font-weight:600;color:' + pvCol + ';line-height:1.25;">-- W</div>' +
                 '</div></div>';
-            pvBuilt = true;
         }
 
         function update() {
-            if (!pvBuilt) pvsBuild();
-
             var pv1   = parseFloat(B._val(data, "oid_pv1"))     || 0;
             var pv2   = parseFloat(B._val(data, "oid_pv2"))     || 0;
             var pv3   = parseFloat(B._val(data, "oid_pv3"))     || 0;
             var total = parseFloat(B._val(data, "oid_pvtotal")) || 0;
-
             B._txt("sig_pvs_val1_"  + w, B._fmtKW(pv1));
             B._txt("sig_pvs_val2_"  + w, B._fmtKW(pv2));
             B._txt("sig_pvs_val3_"  + w, B._fmtKW(pv3));
             B._txt("sig_pvs_total_" + w, B._fmtKW(total));
-
             ["pv1", "pv2", "pv3"].forEach(function(k, i) {
                 var el = B._el("sig_pvs_path_" + k + "_" + w);
                 if (el) {
@@ -1606,3 +1574,4 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
 };
 vis.binds["vis-2-widgets-sigenergy"].showVersion();
+

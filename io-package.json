@@ -4,15 +4,15 @@
     "version": "1.6.14",
     "news": {
       "1.6.14": {
-        "en": "Fixed JavaScript syntax error in SigenMicro widget (triple quote) that prevented all widgets from loading",
-        "de": "JavaScript-Syntaxfehler im SigenMicro-Widget (dreifaches Anführungszeichen) behoben, der alle Widgets am Laden hinderte",
-        "ru": "Исправлена синтаксическая ошибка JavaScript в виджете SigenMicro (тройные кавычки), блокировавшая загрузку всех виджетов",
-        "pt": "Corrigido erro de sintaxe JavaScript no widget SigenMicro (aspas triplas) que impedia o carregamento de todos os widgets",
-        "nl": "JavaScript-syntaxisfout in SigenMicro-widget (drievoudig aanhalingsteken) verholpen die alle widgets blokkeerde",
-        "fr": "Corrigé une erreur de syntaxe JavaScript dans le widget SigenMicro (guillemets triples) qui empêchait le chargement de tous les widgets",
-        "it": "Corrotto errore di sintassi JavaScript nel widget SigenMicro (virgolette triple) che impediva il caricamento di tutti i widget",
-        "es": "Corregido error de sintaxis JavaScript en el widget SigenMicro (comillas triples) que impedía cargar todos los widgets",
-        "pl": "Naprawiono błąd składni JavaScript w widżecie SigenMicro (potrójny cudzysłów) uniemożliwiający ładowanie wszystkich widżetów"
+        "en": "Widget 9: PV Power added with 3 PV string display and animated flow arrows",
+        "de": "Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen",
+        "ru": "Виджет 9: добавлен PV Power с отображением 3 PV-строк и анимированными стрелками потока",
+        "pt": "Widget 9: PV Power adicionado com exibição de 3 strings PV e setas de fluxo animadas",
+        "nl": "Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen",
+        "fr": "Widget 9: PV Power ajouté avec affichage de 3 chaînes PV et flèches de flux animées",
+        "it": "Widget 9: PV Power aggiunto con visualizzazione di 3 stringhe PV e frecce di flusso animate",
+        "es": "Widget 9: PV Power añadido con visualización de 3 cadenas PV y flechas de flujo animadas",
+        "pl": "Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu"
       }
     },
     "titleLang": {

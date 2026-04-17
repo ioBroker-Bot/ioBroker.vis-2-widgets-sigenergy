@@ -131,23 +131,8 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 ### 1.6.14 (2026-04-16)
 * (ssbingo) JavaScript-Syntaxfehler im SigenMicro-Widget (dreifaches Anführungszeichen) behoben, der alle Widgets am Laden hinderte
 
-### 1.6.13 (2026-04-16)
-* (ssbingo) Alle Widgets: wiederhergestellt, Bildladen durch Verlagerung von innerHTML in update()-Aufruf korrigiert (VIS-2-Kontext aktiv)
-
-### 1.6.12 (2026-04-16)
-* (ssbingo) Alle Widgets: Bildpfad auf window.location.origin + /vis-2/ umgestellt (nur VIS-2)
-
-### 1.6.11 (2026-04-16)
-* (ssbingo) Alle Widgets: Bildpfade auf absolute URL umgestellt (behebt /vis.0/ vs /vis-2/ Pfad-Problem)
-
-### 1.6.10 (2026-04-16)
-* (ssbingo) Widget 9 PV Power: Bildanzeige korrigiert, identischer Mechanismus wie SigenMicro-Widget
-
-### 1.6.9 (2026-04-16)
-* (ssbingo) Widget 9 umbenannt in 'PV Power'
-
-### 1.6.8 (2026-04-16)
-* (ssbingo) Widget 9 hinzugefügt: PV-Strings Übersicht mit animierten Pfeilen je String
+### 1.6.14 (2026-04-16)
+* (ssbingo) Widget 9: PV Power hinzugefügt mit 3 PV-String-Anzeige und animierten Fluss-Pfeilen
 
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Dependabot.yml Cooldown-Syntax korrigiert (default-days statt default)

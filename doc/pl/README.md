@@ -108,23 +108,8 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 ### 1.6.14 (2026-04-16)
 * (ssbingo) Naprawiono błąd składni JavaScript w widżecie SigenMicro (potrójny cudzysłów) uniemożliwiający ładowanie wszystkich widżetów
 
-### 1.6.13 (2026-04-16)
-* (ssbingo) Wszystkie widżety: przywrócone, ładowanie obrazów poprawione przez przeniesienie innerHTML do wywołania update()
-
-### 1.6.12 (2026-04-16)
-* (ssbingo) Wszystkie widżety: ścieżka obrazu poprawiona przez window.location.origin + /vis-2/
-
-### 1.6.11 (2026-04-16)
-* (ssbingo) Wszystkie widżety: poprawiono ścieżki obrazów z bezwzględnym URL (naprawia problem ścieżki /vis.0/ vs /vis-2/)
-
-### 1.6.10 (2026-04-16)
-* (ssbingo) Widget 9 PV Power: poprawiono wyświetlanie obrazów, mechanizm identyczny jak w widżecie SigenMicro
-
-### 1.6.9 (2026-04-16)
-* (ssbingo) Widżet 9 przemianowany na 'PV Power'
-
-### 1.6.8 (2026-04-16)
-* (ssbingo) Dodano widżet 9: Przegląd stringów PV z animowanymi strzałkami dla każdego stringa
+### 1.6.14 (2026-04-16)
+* (ssbingo) Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu
 
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Poprawiono składnię cooldown w dependabot.yml (default-days zamiast default)

@@ -107,23 +107,8 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 ### 1.6.14 (2026-04-16)
 * (ssbingo) JavaScript-syntaxisfout in SigenMicro-widget (drievoudig aanhalingsteken) verholpen die alle widgets blokkeerde
 
-### 1.6.13 (2026-04-16)
-* (ssbingo) Alle widgets: hersteld, afbeelding laden gecorrigeerd door innerHTML naar update()-aanroep te verplaatsen
-
-### 1.6.12 (2026-04-16)
-* (ssbingo) Alle widgets: afbeeldingspad gecorrigeerd met window.location.origin + /vis-2/
-
-### 1.6.11 (2026-04-16)
-* (ssbingo) Alle widgets: afbeeldingspaden gecorrigeerd met absolute URL (lost /vis.0/ vs /vis-2/ padprobleem op)
-
-### 1.6.10 (2026-04-16)
-* (ssbingo) Widget 9 PV Power: beeldweergave gecorrigeerd met identiek mechanisme als SigenMicro-widget
-
-### 1.6.9 (2026-04-16)
-* (ssbingo) Widget 9 hernoemd naar 'PV Power'
-
-### 1.6.8 (2026-04-16)
-* (ssbingo) Widget 9 toegevoegd: PV-strings overzicht met geanimeerde pijlen per string
+### 1.6.14 (2026-04-16)
+* (ssbingo) Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen
 
 ### 1.6.7 (2026-04-09)
 * (ssbingo) Dependabot.yml cooldown syntaxis gecorrigeerd (default-days in plaats van default)
