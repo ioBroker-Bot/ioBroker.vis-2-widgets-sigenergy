@@ -7,6 +7,21 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* ── Skalierung (Widget-Inhalt skaliert synchron mit Container-Größe) ──── */
+.sig-scale-outer {
+    width: 100%; height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.sig-scale-inner {
+    position: absolute;
+    top: 0; left: 0;
+    transform-origin: 0 0;
+    /* width wird per JS gesetzt (Design-Breite des jeweiligen Widgets) */
+    /* transform: scale(...) wird per JS über ResizeObserver gesetzt */
+}
+
 /* ── Widget 1: Energiefluss ─────────────────────────────────────────────── */
 .sig-ef-wrap {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -16,8 +31,9 @@
     display: flex; flex-direction: column;
 }
 .sig-ef-wrap.light {
-    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    background: #fff;
     color: #2c3e50;
+    border: 1px solid #e8eef5;
 }
 .sig-ef-title {
     font-size: .9rem; font-weight: 600;
@@ -55,8 +71,9 @@
     width: 100%; height: 100%; box-sizing: border-box;
 }
 .sig-bat-wrap.light {
-    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    background: #fff;
     color: #2c3e50;
+    border: 1px solid #e8eef5;
 }
 .sig-bat-head        { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .sig-bat-head .icon  { font-size: 1.1rem; }
@@ -132,8 +149,9 @@
     display: flex; flex-direction: column; gap: 0;
 }
 .sig-ac-wrap.light {
-    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    background: #fff;
     color: #2c3e50;
+    border: 1px solid #e8eef5;
 }
 .sig-ac-head {
     display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-shrink: 0;
@@ -214,8 +232,9 @@
     display: flex; flex-direction: column;
 }
 .sig-dc-wrap.light {
-    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    background: #fff;
     color: #2c3e50;
+    border: 1px solid #e8eef5;
 }
 .sig-dc-head {
     display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-shrink: 0;
@@ -300,8 +319,9 @@
     display: flex; flex-direction: column;
 }
 .sig-inv-wrap.light {
-    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+    background: #fff;
     color: #2c3e50;
+    border: 1px solid #e8eef5;
 }
 
 /* Kopfzeile */
@@ -425,16 +445,17 @@
 
 /* ── Wrapper ── */
 .sig-sm-wrap {
-    background: linear-gradient(135deg, #0f1218, #131a25);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border-radius: 14px;
     padding: 10px 0 0 0;
     font-family: sans-serif;
-    color: #d8e4f0;
+    color: #e0e6ef;
     overflow: hidden;
 }
 .sig-sm-wrap.light {
-    background: linear-gradient(135deg, #f0f4f9, #e8eef5);
+    background: #fff;
     color: #2c3e50;
+    border: 1px solid #e8eef5;
 }
 
 /* ── Titel ── */

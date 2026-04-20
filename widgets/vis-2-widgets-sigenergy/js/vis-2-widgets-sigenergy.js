@@ -116,6 +116,73 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         $div.data("bindHandler", onChange);
     },
 
+    // ── Skalierungs-Helper ──────────────────────────────────────────────────
+    // Wrappt den aktuellen Content von $div in einen Scale-Container mit
+    // fester Design-Breite (designWidth). Der Scale-Faktor wird aus beiden
+    // Dimensionen berechnet: scale = min(w/designWidth, h/naturalHeight).
+    // Die naturalHeight wird dynamisch per inner.offsetHeight gelesen (nicht
+    // durch transform beeinflusst) — so passt die Skalierung auch nach
+    // Content-Updates (Tab-Wechsel, Datenaktualisierungen) automatisch.
+    // Alle Inhalte (Fonts, Padding, SVG, Bilder, Animationen) skalieren mit.
+    _applyScale: function ($div, designWidth) {
+        var el = $div[0];
+        if (!el || !designWidth) return;
+
+        var outer, inner;
+        var existing = el.querySelector(":scope > .sig-scale-outer");
+        if (existing) {
+            outer = existing;
+            inner = outer.firstChild;
+            inner.style.width = designWidth + "px";
+        } else {
+            outer = document.createElement("div");
+            outer.className = "sig-scale-outer";
+            inner = document.createElement("div");
+            inner.className = "sig-scale-inner";
+            inner.style.width = designWidth + "px";
+            while (el.firstChild) {
+                inner.appendChild(el.firstChild);
+            }
+            outer.appendChild(inner);
+            el.appendChild(outer);
+        }
+
+        var apply = function () {
+            var w = el.clientWidth;
+            var h = el.clientHeight;
+            if (!w) return;
+            /* offsetHeight ist die Layout-Höhe OHNE transform-scale
+               → bleibt stabil und liefert die "natürliche" Design-Höhe,
+                  auch nach Content-Änderungen (Tab-Wechsel, Updates). */
+            var innerH = inner.offsetHeight;
+            var sx     = w / designWidth;
+            var sy     = (h > 0 && innerH > 0) ? (h / innerH) : sx;
+            var scale  = Math.min(sx, sy);
+            inner.style.transform = "scale(" + scale + ")";
+            /* Inner horizontal zentrieren, wenn Widget breiter ist
+               als der skalierte Content (wenn Höhe limitiert) */
+            var scaledW = designWidth * scale;
+            inner.style.left = scaledW < w ? ((w - scaledW) / 2) + "px" : "0";
+            /* Und vertikal zentrieren, wenn Widget höher ist
+               als der skalierte Content (wenn Breite limitiert) */
+            var scaledH = innerH * scale;
+            inner.style.top = scaledH < h ? ((h - scaledH) / 2) + "px" : "0";
+        };
+        apply();
+
+        if (el._sigScaleObs) {
+            try { el._sigScaleObs.disconnect(); } catch (e) {}
+        }
+        if (window.ResizeObserver) {
+            el._sigScaleObs = new ResizeObserver(apply);
+            el._sigScaleObs.observe(el);    /* Outer-Container-Resize */
+            el._sigScaleObs.observe(inner); /* Inner-Layout (z.B. Tab-Wechsel) */
+        } else if (!el._sigScaleListener) {
+            el._sigScaleListener = apply;
+            window.addEventListener("resize", apply);
+        }
+    },
+
     // ── Widget 1: Energiefluss-Diagramm ─────────────────────────────────────
     //
     // SVG-Koordinaten (viewBox 0 0 300 248):
@@ -205,6 +272,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<div class="sig-ef-svg-wrap">' + svg + '</div>' +
             '</div></div>'
         );
+        B._applyScale($div, 300);
 
         function update() {
             var pv   = parseFloat(B._val(data, "oid_pv"))    || 0;
@@ -313,6 +381,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<div class="sig-stat-box"><div class="sig-stat-label">&#127969; Autarkierate</div><div class="sig-stat-val" id="sig_bat_aut_' + w + '">--</div></div>' +
             '</div></div></div>'
         );
+        B._applyScale($div, 300);
 
         function update() {
             var soc = parseFloat(B._val(data, "oid_soc")) || 0;
@@ -359,6 +428,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<div class="sig-pow-val" id="sig_pow_soc_' + w + '">--%</div></div>' +
             '</div></div>'
         );
+        B._applyScale($div, 300);
 
         function update() {
             var bat  = parseFloat(B._val(data, "oid_bat"))  || 0;
@@ -404,6 +474,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '<div class="sig-stats-item"><div class="s-label">&#9889; Ladezeit heute</div><div class="s-value" style="color:#c0392b" id="sig_st_cht_'    + w + '">--</div></div>' +
             '</div></div></div>'
         );
+        B._applyScale($div, 300);
 
         function update() {
             B._txt("sig_st_aut_"    + w, B._fmtPct(B._val(data, "oid_aut")));
@@ -494,6 +565,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '</div>' +
             '</div></div>'
         );
+        B._applyScale($div, 300);
 
         // ── Anzeige aktualisieren ────────────────────────────────────────────
         function update() {
@@ -667,6 +739,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             '</div>' +
             '</div></div>'
         );
+        B._applyScale($div, 300);
 
         // ── Anzeige aktualisieren ───────────────────────────────────────────
         function update() {
@@ -869,6 +942,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
             '</div></div>'
         );
+        B._applyScale($div, 340);
 
         // ── Tab-Umschaltung ──────────────────────────────────────────────────
         var tabs   = ["si_t0_", "si_t1_", "si_t2_", "si_t3_", "si_t4_"];
@@ -1449,6 +1523,7 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             panelsHTML +
             "</div></div>"
         );
+        B._applyScale($div, 380);
 
         // ── Tab-Klick-Handler ──
         var $tabBar = $("#sm_tabs_" + w);
@@ -1502,8 +1577,10 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         var name2 = data.attr("sig_name2") || "String 2";
         var name3 = data.attr("sig_name3") || "String 3";
         var w     = widgetID;
-        var bg     = dark ? "linear-gradient(160deg,#0d1219,#111a26)" : "#f0f4f8";
-        var txtCol = dark ? "#d0e4f4" : "#1a2a3a";
+        /* Einheitlicher Widget-Hintergrund (Vorlage: PV-Power / .sig-pow-wrap) */
+        var bg       = dark ? "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)" : "#fff";
+        var bgBorder = dark ? "none" : "1px solid #e8eef5";
+        var txtCol = dark ? "#e0e6ef" : "#2c3e50";
         var subCol = dark ? "#5a7898" : "#6a8aaa";
         var pvCol  = "#f39c12";
         var markId = "mPvStr_" + w;
@@ -1528,9 +1605,10 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
         $div.html(
             '<div class="sig-w"><div id="sig_pvs_inner_' + w + '" style="' +
-            'background:' + bg + ';border-radius:14px;padding:16px 14px 14px;' +
+            'background:' + bg + ';border:' + bgBorder + ';border-radius:14px;padding:16px 14px 14px;' +
             'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;"></div></div>'
         );
+        B._applyScale($div, 400);
 
         /* Baustein für eine PV-String-Spalte: Bild + mittiges Label mit Wert + Name darunter.
            Das Label sitzt absolut positioniert mittig AUF dem Bild. */

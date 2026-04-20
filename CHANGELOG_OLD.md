@@ -1,5 +1,29 @@
 # Older Changelog
 
+### 1.7.0 (2026-04-17)
+* (ssbingo) Widget 9: PV Power added with 3 PV string display and animated flow arrows
+
+### 1.6.7 (2026-04-09)
+* (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)
+
+### 1.6.6 (2026-04-09)
+* (ssbingo) Moved old changelog entries to CHANGELOG_OLD.md; added Dependabot cooldown (7 days)
+
+### 1.6.5 (2026-04-09)
+* (ssbingo) Removed adapter-tests job from workflow (not applicable for VIS widget adapter); deploy now uses Node.js 24
+
+### 1.6.4 (2026-03-26)
+* (ssbingo) Restored test:integration as no-op (required by testing-action-adapter; no Node.js process in mode:none widget adapter)
+
+### 1.6.3 (2026-03-26)
+* (ssbingo) Sync all language READMEs with missing changelog entries (1.5.10–1.6.2)
+
+### 1.6.2 (2026-03-26)
+* (ssbingo) Removed integration test — not applicable for mode:none widget adapter (no Node.js main process)
+
+### 1.6.1 (2026-03-26)
+* (ssbingo) Removed ESLint/Prettier setup — no Node.js source to lint in a pure widget adapter; removed lint step from workflow
+
 ### 1.6.0 (2026-03-26)
 * (ssbingo) Test completed
 

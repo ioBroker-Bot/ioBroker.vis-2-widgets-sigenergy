@@ -144,37 +144,21 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 Усі віджети підтримують **світлий і темний режим**, що перемикається через налаштування `Dark mode`.
 
 ## Журнал змін
+
+### 1.7.5 (2026-04-20)
+* (ssbingo) Масштабування віджетів тепер реагує також на зміни висоти — вміст масштабується пропорційно по обох осях і центрується у віджеті
+
+### 1.7.4 (2026-04-20)
+* (ssbingo) Усі 9 віджетів тепер адаптивно масштабують свій вміст відповідно до розміру віджета (шрифти, відступи, SVG, зображення)
+
+### 1.7.3 (2026-04-20)
+* (ssbingo) Усі 9 віджетів тепер мають уніфікований фон на основі дизайну віджета PV-Power
+
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Лише документація: додано переклади README для uk і zh-cn
 
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Додано відсутні переклади uk і zh-cn у common.news
-
-### 1.7.0 (2026-04-17)
-* (ssbingo) Віджет 9: додано PV Power із відображенням 3 PV-рядків та анімованими стрілками потоку
-
-### 1.6.7 (2026-04-09)
-* (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)
-
-### 1.6.6 (2026-04-09)
-* (ssbingo) Moved old changelog entries to CHANGELOG_OLD.md; added Dependabot cooldown (7 days)
-
-### 1.6.5 (2026-04-09)
-* (ssbingo) Removed adapter-tests job from workflow (not applicable for VIS widget adapter); deploy now uses Node.js 24
-
-### 1.6.4 (2026-03-26)
-* (ssbingo) Restored test:integration as no-op (required by testing-action-adapter; no Node.js process in mode:none widget adapter)
-
-### 1.6.3 (2026-03-26)
-* (ssbingo) Sync all language READMEs with missing changelog entries (1.5.10–1.6.2)
-
-### 1.6.2 (2026-03-26)
-* (ssbingo) Removed integration test — not applicable for mode:none widget adapter (no Node.js main process)
-
-### 1.6.1 (2026-03-26)
-* (ssbingo) Removed ESLint/Prettier setup — no Node.js source to lint in a pure widget adapter; removed lint step from workflow
-
-Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 
 ## Documentation
 
@@ -187,7 +171,6 @@ Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 - 🇪🇸 [Español](doc/es/README.md)
 - 🇵🇱 [Polski](doc/pl/README.md)
 - 🇵🇹 [Português](doc/pt/README.md)
-
 
 ## License
 MIT License

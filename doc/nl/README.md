@@ -120,178 +120,21 @@ Overzicht en detailweergave van alle SigenMicro micro-omvormers op de Modbus-bus
 Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgeschakeld via de widget-instelling `Donkere modus`.
 
 ## Changelog
+
+### 1.7.5 (2026-04-20)
+* (ssbingo) Widget-schaling reageert nu ook op hoogtewijzigingen — inhoud schaalt proportioneel op beide assen en wordt gecentreerd in de widget
+
+### 1.7.4 (2026-04-20)
+* (ssbingo) Alle 9 widgets schalen hun inhoud nu responsief mee met de widget-grootte (lettertypen, padding, SVG, afbeeldingen)
+
+### 1.7.3 (2026-04-20)
+* (ssbingo) Alle 9 widgets delen nu een uniforme achtergrond gebaseerd op het PV-Power widget-ontwerp
+
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Alleen documentatie: uk- en zh-cn-README-vertalingen toegevoegd
 
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Ontbrekende uk- en zh-cn-vertalingen toegevoegd in common.news
-
-### 1.7.0 (2026-04-17)
-* (ssbingo) Widget 9: PV Power toegevoegd met weergave van 3 PV-strings en geanimeerde stroomspijlen
-
-### 1.6.7 (2026-04-09)
-* (ssbingo) Dependabot.yml cooldown syntaxis gecorrigeerd (default-days in plaats van default)
-
-### 1.6.6 (2026-04-09)
-* (ssbingo) Oude changelog-vermeldingen verplaatst naar CHANGELOG_OLD.md; Dependabot cooldown toegevoegd (7 dagen)
-
-### 1.6.5 (2026-04-09)
-* (ssbingo) adapter-tests job verwijderd uit workflow (niet van toepassing op VIS widget-adapter); deploy gebruikt nu Node.js 24
-
-### 1.6.4 (2026-03-26)
-* (ssbingo) test:integration hersteld als no-op (vereist door testing-action-adapter; geen Node.js-proces in mode:none widget-adapter)
-
-### 1.6.3 (2026-03-26)
-* (ssbingo) Alle taal-READMEs gesynchroniseerd met ontbrekende changelog-vermeldingen (1.5.10–1.6.2)
-
-### 1.6.2 (2026-03-26)
-* (ssbingo) Integratietest verwijderd — niet van toepassing op mode:none widget-adapter (geen Node.js-hoofdproces)
-
-### 1.6.1 (2026-03-26)
-* (ssbingo) ESLint/Prettier-configuratie verwijderd — geen Node.js-broncode te linten in een pure widget-adapter; lint-stap verwijderd uit workflow
-
-### 1.6.0 (2026-03-26)
-* (ssbingo) Tests voltooid
-
-### 1.5.11 (2026-03-26)
-* (ssbingo) Workflow: install-command ingesteld op npm install (lock file regeneratie vereist na toevoegen van @iobroker/eslint-config)
-
-### 1.5.10 (2026-03-26)
-* (ssbingo) README.md: LICENSE-sectie verplaatst naar het einde (na CHANGELOG), volledige MIT-licentietekst
-
-### 1.5.8 (2026-03-18)
-* (ssbingo) fixed GitHub-Actions (PR)
-
-### 1.5.7 (2026-03-18)
-* (ssbingo) Sectie '## Installatie' verwijderd uit alle README-bestanden (S6014)
-
-### 1.5.6 (2026-03-18)
-* (ssbingo) Versieverhoging naar 1.5.6; geen functionele wijzigingen
-
-### 1.5.5 (2026-03-18)
-* (ssbingo) Versieverhoging: 1.5.4 was al gepubliceerd op npm; geen functionele wijzigingen
-
-### 1.5.4 (2026-03-18)
-* (ssbingo) npm-token toegevoegd aan test-and-release workflow voor automatische npm-publicatie
-
-### 1.5.3 (2026-03-17)
-* (ssbingo) Voorbeeld installatiesstappen verwijderd uit alle README-bestanden
-* (ssbingo) E1111 opgelost: native voorbeeldconfiguratie (option1/option2) verwijderd uit io-package.json
-
-### 1.5.2 (2026-03-17)
-* (ssbingo) Widget-screenshots toegevoegd: SigenMicro overzicht
-* (ssbingo) Schermafbeelding energiestroom bijgewerkt
-
-### 1.5.1 (2026-03-17)
-* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
-
-### 1.5.0 (2026-03-17)
-* (ssbingo) Widget 8: SigenMicro overzicht met geanimeerde Ethernet-bustopologie
-* (ssbingo) Dynamische lay-out voor 1–20 micro-omvormers, 4 maatcategorieën, 1–2 rijen
-* (ssbingo) Detail-tab per apparaat met alle 15 Modbus-registers (01–15)
-
-### 1.4.4 (2026-03-12)
-* Energiestroom-widget: SOC-label en waarde 5px omhoog verschoven
-
-### 1.3.2 (2026-03-12)
-* Documentatie toegevoegd aan README.md — meertalig (RU, NL, FR)
-
-### 1.3.1 (2026-03-12)
-* Duitse documentatie toegevoegd in doc/de/README.md; README: documentatiesectie met taallinks toegevoegd
-
-### 1.3.0 (2026-03-12)
-* Energiestroom-widget: netanimatie omgezet naar twee afzonderlijke paden (afname/teruglevering)
-* Energiestroom-widget: auto-start-reverse volledig verwijderd — alle richtingen via afzonderlijke paden
-
-### 1.2.9 (2026-03-12)
-* Energiestroom-widget: ankerpunt batterijpad y=75 → y=71
-
-### 1.2.8 (2026-03-12)
-* Energiestroom-widget: batterijpijl bij laden geplaatst onder de cijfers
-* Energiestroom-widget: lettergrootte van waarden vergroot van 10.5 naar 12.5
-
-### 1.2.7 (2026-03-12)
-* Energiestroom-widget: batterijrichting volledig vernieuwd — twee afzonderlijke paden (laden/ontladen) vervangen foutieve auto-start-reverse
-
-### 1.2.6 (2026-03-12)
-* Energiestroom-widget: netanimatie en pijl omgekeerd
-* Energiestroom-widget: batterijanimatie en pijl omgekeerd
-
-### 1.2.5 (2026-03-12)
-* Energiestroom-widget: richting van batterijpijl omgekeerd
-
-### 1.2.4 (2026-03-11)
-* `common.mode` gewijzigd naar `none`
-
-### 1.2.3 (2026-03-11)
-* `common.mode` gewijzigd naar `once`
-
-### 1.2.2 (2026-03-11)
-* Correcties
-
-### 1.2.1 (2026-03-11)
-* Correctie README.md
-
-### 1.2.0 (2026-03-11)
-* README: widget-schermafbeeldingen voor alle 7 widgets toegevoegd
-* Map `img/` met schermafbeeldingen opgenomen in package.json files
-
-### 1.1.9 (2026-03-11)
-* Energiestroom-widget: batterijpijlpunt gecorrigeerd
-
-### 1.1.8 (2026-03-11)
-* Energiestroom-widget: richting batterijpijl gecorrigeerd
-
-### 1.1.7 (2026-03-10)
-* W1084 opgelost: verouderd `common.title` verwijderd
-
-### 1.1.6 (2026-03-10)
-* `title` toegevoegd in io-package.json
-
-### 1.1.5 (2026-03-10)
-* `vis` toegevoegd aan `restartAdapters` in io-package.json
-
-### 1.1.4 (2026-03-10)
-* W1068 opgelost: `ioBroker` uit keywords verwijderd
-
-### 1.1.3 (2026-03-10)
-* Keyword `ioBroker` toegevoegd in io-package.json
-
-### 1.1.2 (2026-03-10)
-* `admin/` toegevoegd aan `files`-veld in package.json — icoon-PNG wordt nu correct meegeïnstalleerd
-
-### 1.1.1 (2026-03-10)
-* E1012 opgelost: `icon` = bestandsnaam, `extIcon` = GitHub Raw URL
-
-### 1.1.0 (2026-03-10)
-* Icoon ingebed als Base64-Data-URI in io-package.json
-
-### 1.0.9 (2026-03-10)
-* Icoonresolutie gecorrigeerd naar 512×512 pixels
-
-### 1.0.8 (2026-03-10)
-* `extIcon` gecorrigeerd naar GitHub Raw URL (E1012)
-
-### 1.0.7 (2026-03-10)
-* Icoonkoppeling gecorrigeerd
-
-### 1.0.6 (2026-03-10)
-* Sigenergy-logo toegevoegd als adapter-icoon
-
-### 1.0.5 (2026-03-09)
-* Correcties
-### 1.0.4 (2026-03-09)
-* Correcties
-### 1.0.3 (2026-03-09)
-* Correcties
-### 1.0.2 (2026-03-09)
-* Correcties
-### 1.0.1 (2026-03-09)
-* (ssbingo) 4 widgets gemaakt in VIS-2-conform formaat
-* (ssbingo) Energiestroom-diagram met SVG-animaties
-* (ssbingo) Widget batterijstatus en prognoses
-* (ssbingo) Widget realtime vermogen
-* (ssbingo) Widget energiestatistieken
 
 ## Licentie
 MIT License

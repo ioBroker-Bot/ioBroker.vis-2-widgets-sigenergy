@@ -121,185 +121,21 @@ Przegląd i widok szczegółowy wszystkich mikrofalowników SigenMicro na szynie
 Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez ustawienie widżetu `Tryb ciemny`.
 
 ## Changelog
+
+### 1.7.5 (2026-04-20)
+* (ssbingo) Skalowanie widżetów reaguje teraz również na zmiany wysokości — zawartość skaluje się proporcjonalnie na obu osiach i jest wyśrodkowana w widżecie
+
+### 1.7.4 (2026-04-20)
+* (ssbingo) Wszystkie 9 widżetów teraz responsywnie skaluje swoją zawartość wraz z rozmiarem widżetu (czcionki, odstępy, SVG, obrazy)
+
+### 1.7.3 (2026-04-20)
+* (ssbingo) Wszystkie 9 widżetów ma teraz ujednolicone tło oparte na projekcie widżetu PV-Power
+
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Tylko dokumentacja: dodano tłumaczenia README dla uk i zh-cn
 
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Dodano brakujące tłumaczenia uk i zh-cn w common.news
-
-### 1.7.0 (2026-04-17)
-* (ssbingo) Widget 9: PV Power dodany z wyświetlaniem 3 ciągów PV i animowanymi strzałkami przepływu
-
-### 1.6.7 (2026-04-09)
-* (ssbingo) Poprawiono składnię cooldown w dependabot.yml (default-days zamiast default)
-
-### 1.6.6 (2026-04-09)
-* (ssbingo) Stare wpisy changelog przeniesione do CHANGELOG_OLD.md; dodano cooldown Dependabot (7 dni)
-
-### 1.6.5 (2026-04-09)
-* (ssbingo) Usunięto job adapter-tests z workflow (nie dotyczy adaptera widgetów VIS); deploy używa teraz Node.js 24
-
-### 1.6.4 (2026-03-26)
-* (ssbingo) test:integration przywrócony jako no-op (wymagany przez testing-action-adapter; brak procesu Node.js w adapterze widgetów mode:none)
-
-### 1.6.3 (2026-03-26)
-* (ssbingo) Zsynchronizowano wszystkie README języków z brakującymi wpisami changelog (1.5.10–1.6.2)
-
-### 1.6.2 (2026-03-26)
-* (ssbingo) Usunięto test integracyjny — nie dotyczy adaptera widgetów mode:none (brak głównego procesu Node.js)
-
-### 1.6.1 (2026-03-26)
-* (ssbingo) Usunięto konfigurację ESLint/Prettier — brak kodu Node.js do sprawdzenia w czystym adapterze widgetów; krok lint usunięty z workflow
-
-### 1.6.0 (2026-03-26)
-* (ssbingo) Testy zakończone
-
-### 1.5.11 (2026-03-26)
-* (ssbingo) Workflow: install-command ustawiony na npm install (wymagana regeneracja lock file po dodaniu @iobroker/eslint-config)
-
-### 1.5.10 (2026-03-26)
-* (ssbingo) README.md: sekcja LICENSE przeniesiona na koniec (po CHANGELOG), pełny tekst licencji MIT
-
-### 1.5.8 (2026-03-18)
-* (ssbingo) fixed GitHub-Actions (PR)
-
-### 1.5.7 (2026-03-18)
-* (ssbingo) Sekcja '## Instalacja' usunięta ze wszystkich plików README (S6014)
-
-### 1.5.6 (2026-03-18)
-* (ssbingo) Podwyższenie wersji do 1.5.6; brak zmian funkcjonalnych
-
-### 1.5.5 (2026-03-18)
-* (ssbingo) Podwyższenie wersji: 1.5.4 była już opublikowana na npm; brak zmian funkcjonalnych
-
-### 1.5.4 (2026-03-18)
-* (ssbingo) Dodano npm-token do workflow test-and-release dla automatycznej publikacji npm
-
-### 1.5.3 (2026-03-17)
-* (ssbingo) Usunięto przykładowe kroki instalacji ze wszystkich plików README
-* (ssbingo) Naprawiono E1111: usunięto przykładową konfigurację native (option1/option2) z io-package.json
-
-### 1.5.2 (2026-03-17)
-* (ssbingo) Dodano zrzuty ekranu widgetów: przegląd SigenMicro
-* (ssbingo) Zrzut przepływu energii zaktualizowany
-
-### 1.5.1 (2026-03-17)
-* (ssbingo) Bugfix: Widget 8 code placed correctly inside vis.binds object — all widgets visible again
-
-### 1.5.0 (2026-03-17)
-* (ssbingo) Widget 8: przegląd SigenMicro z animowaną topologią magistrali Ethernet
-* (ssbingo) Dynamiczny układ dla 1–20 mikrofalowników, 4 poziomy rozmiarów, 1–2 wiersze
-* (ssbingo) Zakładka szczegółów dla każdego urządzenia ze wszystkimi 15 rejestrami Modbus (01–15)
-
-### 1.4.4 (2026-03-12)
-* Widget przepływu energii: etykieta SOC i wartość przesunięte o 5px w górę
-
-### 1.3.4 (2026-03-12)
-* common.news zredukowane do bieżącej wersji (tylko 1.3.4)
-
-### 1.3.3 (2026-03-12)
-* Główny README.md przetłumaczony na angielski
-
-### 1.3.2 (2026-03-12)
-* Dokumentacja dodana do README.md — wielojęzyczna (RU, NL, FR)
-
-### 1.3.1 (2026-03-12)
-* Dodano niemiecką dokumentację w doc/de/README.md
-* README: dodano sekcję dokumentacji z łączami do języków
-
-### 1.3.0 (2026-03-12)
-* Widget przepływu energii: animacja sieci podzielona na dwie osobne ścieżki (pobór/oddawanie)
-* Widget przepływu energii: auto-start-reverse całkowicie usunięty — wszystkie kierunki przez osobne ścieżki
-
-### 1.2.9 (2026-03-12)
-* Widget przepływu energii: punkt zakotwiczenia ścieżki baterii y=75 → y=71
-
-### 1.2.8 (2026-03-12)
-* Widget przepływu energii: strzałka baterii umieszczona poniżej cyfr podczas ładowania
-* Widget przepływu energii: rozmiar czcionki wartości zwiększony z 10.5 do 12.5
-
-### 1.2.7 (2026-03-12)
-* Widget przepływu energii: kierunek baterii całkowicie przeprojektowany — dwie osobne ścieżki (ładowanie/rozładowanie) zastępują wadliwy auto-start-reverse
-
-### 1.2.6 (2026-03-12)
-* Widget przepływu energii: animacja i strzałka sieci odwrócone
-* Widget przepływu energii: animacja i strzałka baterii odwrócone
-
-### 1.2.5 (2026-03-12)
-* Widget przepływu energii: kierunek strzałki baterii odwrócony
-
-### 1.2.4 (2026-03-11)
-* `common.mode` zmieniony na `none`
-
-### 1.2.3 (2026-03-11)
-* `common.mode` zmieniony na `once`
-
-### 1.2.2 (2026-03-11)
-* Poprawki
-
-### 1.2.1 (2026-03-11)
-* Korekta README.md
-
-### 1.2.0 (2026-03-11)
-* README: zrzuty ekranu widżetów dodane dla wszystkich 7 widżetów
-* Folder `img/` ze zrzutami ekranu dodany do package.json files
-
-### 1.1.9 (2026-03-11)
-* Widget przepływu energii: grot strzałki baterii poprawiony
-
-### 1.1.8 (2026-03-11)
-* Widget przepływu energii: kierunek strzałki baterii poprawiony
-
-### 1.1.7 (2026-03-10)
-* Naprawiono W1084: usunięto przestarzałe `common.title`
-
-### 1.1.6 (2026-03-10)
-* Dodano `title` w io-package.json
-
-### 1.1.5 (2026-03-10)
-* Dodano `vis` do `restartAdapters` w io-package.json
-
-### 1.1.4 (2026-03-10)
-* Naprawiono W1068: `ioBroker` usunięty z keywords
-
-### 1.1.3 (2026-03-10)
-* Keyword `ioBroker` dodany w io-package.json
-
-### 1.1.2 (2026-03-10)
-* `admin/` dodany do pola `files` w package.json — PNG ikony teraz instalowane poprawnie
-
-### 1.1.1 (2026-03-10)
-* Naprawiono E1012: `icon` = nazwa pliku, `extIcon` = identyczny GitHub Raw URL
-
-### 1.1.0 (2026-03-10)
-* Ikona osadzona jako Base64-Data-URI w io-package.json
-
-### 1.0.9 (2026-03-10)
-* Rozdzielczość ikony poprawiona do 512×512 px
-
-### 1.0.8 (2026-03-10)
-* `extIcon` poprawiony na GitHub Raw URL (E1012)
-
-### 1.0.7 (2026-03-10)
-* Powiązanie ikony poprawione
-
-### 1.0.6 (2026-03-10)
-* Logo Sigenergy dodane jako ikona adaptera
-
-### 1.0.5 (2026-03-09)
-* Poprawki
-### 1.0.4 (2026-03-09)
-* Poprawki
-### 1.0.3 (2026-03-09)
-* Poprawki
-### 1.0.2 (2026-03-09)
-* Poprawki
-### 1.0.1 (2026-03-09)
-* (ssbingo) 4 widżety stworzone w formacie zgodnym z VIS-2
-* (ssbingo) Diagram przepływu energii z animacjami SVG
-* (ssbingo) Widżet stanu baterii i prognoz
-* (ssbingo) Widżet mocy w czasie rzeczywistym
-* (ssbingo) Widżet statystyk energii
 
 ## Licencja
 MIT License

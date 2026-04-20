@@ -144,37 +144,21 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 所有小部件均支持**浅色和深色模式**,可通过小部件设置 `Dark mode` 切换。
 
 ## 更新日志
+
+### 1.7.5 (2026-04-20)
+* (ssbingo) 小部件缩放现在也会响应高度变化 — 内容在两个轴上按比例缩放并在小部件中居中
+
+### 1.7.4 (2026-04-20)
+* (ssbingo) 所有 9 个小部件现在会随着小部件大小响应式地缩放其内容(字体、间距、SVG、图像)
+
+### 1.7.3 (2026-04-20)
+* (ssbingo) 所有 9 个小部件现在共享基于 PV-Power 小部件设计的统一背景
+
 ### 1.7.2 (2026-04-17)
 * (ssbingo) 仅文档:添加了 uk 和 zh-cn 的 README 翻译
 
 ### 1.7.1 (2026-04-17)
 * (ssbingo) 在 common.news 中添加了缺失的 uk 和 zh-cn 翻译
-
-### 1.7.0 (2026-04-17)
-* (ssbingo) 小部件 9:添加 PV Power,显示 3 个光伏串及带动画的流动箭头
-
-### 1.6.7 (2026-04-09)
-* (ssbingo) Fixed dependabot.yml cooldown syntax (default-days instead of default)
-
-### 1.6.6 (2026-04-09)
-* (ssbingo) Moved old changelog entries to CHANGELOG_OLD.md; added Dependabot cooldown (7 days)
-
-### 1.6.5 (2026-04-09)
-* (ssbingo) Removed adapter-tests job from workflow (not applicable for VIS widget adapter); deploy now uses Node.js 24
-
-### 1.6.4 (2026-03-26)
-* (ssbingo) Restored test:integration as no-op (required by testing-action-adapter; no Node.js process in mode:none widget adapter)
-
-### 1.6.3 (2026-03-26)
-* (ssbingo) Sync all language READMEs with missing changelog entries (1.5.10–1.6.2)
-
-### 1.6.2 (2026-03-26)
-* (ssbingo) Removed integration test — not applicable for mode:none widget adapter (no Node.js main process)
-
-### 1.6.1 (2026-03-26)
-* (ssbingo) Removed ESLint/Prettier setup — no Node.js source to lint in a pure widget adapter; removed lint step from workflow
-
-Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 
 ## Documentation
 
@@ -187,7 +171,6 @@ Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 - 🇪🇸 [Español](doc/es/README.md)
 - 🇵🇱 [Polski](doc/pl/README.md)
 - 🇵🇹 [Português](doc/pt/README.md)
-
 
 ## License
 MIT License

@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.7.2",
+    "version": "1.7.5",
     "news": {
-      "1.7.2": {
-        "en": "Documentation only: added uk and zh-cn README translations",
-        "de": "Nur Dokumentation: uk- und zh-cn-README-Übersetzungen ergänzt",
-        "ru": "Только документация: добавлены переводы README для uk и zh-cn",
-        "pt": "Apenas documentação: adicionadas traduções de README para uk e zh-cn",
-        "nl": "Alleen documentatie: uk- en zh-cn-README-vertalingen toegevoegd",
-        "fr": "Documentation uniquement : traductions README uk et zh-cn ajoutées",
-        "it": "Solo documentazione: aggiunte traduzioni README per uk e zh-cn",
-        "es": "Solo documentación: añadidas traducciones de README para uk y zh-cn",
-        "pl": "Tylko dokumentacja: dodano tłumaczenia README dla uk i zh-cn",
-        "uk": "Лише документація: додано переклади README для uk і zh-cn",
-        "zh-cn": "仅文档:添加了 uk 和 zh-cn 的 README 翻译"
+      "1.7.5": {
+        "en": "Widget scaling now also reacts to height changes — content scales proportionally on both axes and is centered within the widget",
+        "de": "Widget-Skalierung reagiert jetzt auch auf Höhenänderungen — Inhalt skaliert proportional auf beiden Achsen und wird im Widget zentriert",
+        "ru": "Масштабирование виджета теперь реагирует и на изменение высоты — содержимое масштабируется пропорционально по обеим осям и центрируется в виджете",
+        "pt": "O escalonamento dos widgets agora também reage a alterações de altura — o conteúdo escala proporcionalmente em ambos os eixos e é centrado no widget",
+        "nl": "Widget-schaling reageert nu ook op hoogtewijzigingen — inhoud schaalt proportioneel op beide assen en wordt gecentreerd in de widget",
+        "fr": "La mise à l'échelle des widgets réagit désormais aussi aux changements de hauteur — le contenu s'adapte proportionnellement sur les deux axes et est centré dans le widget",
+        "it": "Il ridimensionamento dei widget ora reagisce anche alle variazioni di altezza — il contenuto si ridimensiona proporzionalmente su entrambi gli assi ed è centrato nel widget",
+        "es": "El escalado de los widgets ahora también reacciona a los cambios de altura — el contenido se escala proporcionalmente en ambos ejes y se centra en el widget",
+        "pl": "Skalowanie widżetów reaguje teraz również na zmiany wysokości — zawartość skaluje się proporcjonalnie na obu osiach i jest wyśrodkowana w widżecie",
+        "uk": "Масштабування віджетів тепер реагує також на зміни висоти — вміст масштабується пропорційно по обох осях і центрується у віджеті",
+        "zh-cn": "小部件缩放现在也会响应高度变化 — 内容在两个轴上按比例缩放并在小部件中居中"
       }
     },
     "titleLang": {
