@@ -118,12 +118,17 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
     // ── Skalierungs-Helper ──────────────────────────────────────────────────
     // Wrappt den aktuellen Content von $div in einen Scale-Container mit
-    // fester Design-Breite (designWidth). Der Scale-Faktor wird aus beiden
-    // Dimensionen berechnet: scale = min(w/designWidth, h/naturalHeight).
-    // Die naturalHeight wird dynamisch per inner.offsetHeight gelesen (nicht
-    // durch transform beeinflusst) — so passt die Skalierung auch nach
-    // Content-Updates (Tab-Wechsel, Datenaktualisierungen) automatisch.
-    // Alle Inhalte (Fonts, Padding, SVG, Bilder, Animationen) skalieren mit.
+    // fester Design-Breite (designWidth). Skaliert non-uniform per
+    //    transform: scale(sx, sy)
+    // wobei sx und sy unabhängig aus der aktuellen Widget-Breite bzw. -Höhe
+    // berechnet werden. Breite und Höhe reagieren dadurch separat auf
+    // Container-Änderungen; der Inhalt füllt immer die komplette Widget-
+    // Fläche. Bei stark abweichendem Seitenverhältnis ggü. dem Design kann
+    // dabei eine Verzerrung entstehen — das ist der Preis dafür, dass beide
+    // Achsen einzeln skalierbar bleiben.
+    // Die natürliche Design-Höhe wird dynamisch per inner.offsetHeight
+    // gelesen (nicht durch transform beeinflusst) — Content-Updates wie
+    // Tab-Wechsel im Inverter/SigenMicro-Widget werden automatisch erfasst.
     _applyScale: function ($div, designWidth) {
         var el = $div[0];
         if (!el || !designWidth) return;
@@ -155,18 +160,11 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                → bleibt stabil und liefert die "natürliche" Design-Höhe,
                   auch nach Content-Änderungen (Tab-Wechsel, Updates). */
             var innerH = inner.offsetHeight;
-            var sx     = w / designWidth;
-            var sy     = (h > 0 && innerH > 0) ? (h / innerH) : sx;
-            var scale  = Math.min(sx, sy);
-            inner.style.transform = "scale(" + scale + ")";
-            /* Inner horizontal zentrieren, wenn Widget breiter ist
-               als der skalierte Content (wenn Höhe limitiert) */
-            var scaledW = designWidth * scale;
-            inner.style.left = scaledW < w ? ((w - scaledW) / 2) + "px" : "0";
-            /* Und vertikal zentrieren, wenn Widget höher ist
-               als der skalierte Content (wenn Breite limitiert) */
-            var scaledH = innerH * scale;
-            inner.style.top = scaledH < h ? ((h - scaledH) / 2) + "px" : "0";
+            var sx = w / designWidth;
+            var sy = (h > 0 && innerH > 0) ? (h / innerH) : sx;
+            inner.style.transform = "scale(" + sx + ", " + sy + ")";
+            inner.style.left = "0";
+            inner.style.top  = "0";
         };
         apply();
 

@@ -145,6 +145,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) Skalierung erfolgt jetzt non-uniform: Breite und Höhe reagieren unabhängig auf Container-Änderungen, beide Achsen bleiben einzeln anpassbar
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) Widget-Skalierung reagiert jetzt auch auf Höhenänderungen — Inhalt skaliert proportional auf beiden Achsen und wird im Widget zentriert
 
@@ -156,9 +159,6 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Nur Dokumentation: uk- und zh-cn-README-Übersetzungen ergänzt
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Fehlende uk- und zh-cn-Übersetzungen in common.news ergänzt
 
 ## Lizenz
 MIT License

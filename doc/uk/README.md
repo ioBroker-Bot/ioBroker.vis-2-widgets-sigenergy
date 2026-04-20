@@ -145,6 +145,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ## Журнал змін
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) Масштабування тепер нерівномірне: ширина та висота реагують незалежно на зміни контейнера, обидві осі залишаються окремо регульованими
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) Масштабування віджетів тепер реагує також на зміни висоти — вміст масштабується пропорційно по обох осях і центрується у віджеті
 
@@ -156,9 +159,6 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Лише документація: додано переклади README для uk і zh-cn
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Додано відсутні переклади uk і zh-cn у common.news
 
 ## Documentation
 

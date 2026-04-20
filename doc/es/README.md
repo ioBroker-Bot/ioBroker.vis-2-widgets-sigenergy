@@ -122,6 +122,9 @@ Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el aju
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) El escalado ahora es no uniforme: ancho y alto reaccionan de forma independiente a los cambios del contenedor, ambos ejes siguen siendo ajustables por separado
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) El escalado de los widgets ahora también reacciona a los cambios de altura — el contenido se escala proporcionalmente en ambos ejes y se centra en el widget
 
@@ -133,9 +136,6 @@ Todos los widgets admiten un **modo claro y oscuro**, conmutable mediante el aju
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Solo documentación: añadidas traducciones de README para uk y zh-cn
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Añadidas traducciones uk y zh-cn faltantes en common.news
 
 ## Licencia
 MIT License

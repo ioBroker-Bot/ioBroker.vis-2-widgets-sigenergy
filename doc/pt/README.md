@@ -122,6 +122,9 @@ Todos os widgets suportam um **modo claro e escuro**, comutável através da def
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) O escalonamento é agora não uniforme: largura e altura reagem independentemente às alterações do contêiner, ambos os eixos permanecem ajustáveis separadamente
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) O escalonamento dos widgets agora também reage a alterações de altura — o conteúdo escala proporcionalmente em ambos os eixos e é centrado no widget
 
@@ -133,9 +136,6 @@ Todos os widgets suportam um **modo claro e escuro**, comutável através da def
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Apenas documentação: adicionadas traduções de README para uk e zh-cn
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Adicionadas traduções uk e zh-cn em common.news
 
 ## Licença
 MIT License

@@ -145,6 +145,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ## 更新日志
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) 缩放现在是非等比的:宽度和高度独立响应容器变化,两个轴可分别调节
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) 小部件缩放现在也会响应高度变化 — 内容在两个轴上按比例缩放并在小部件中居中
 
@@ -156,9 +159,6 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) 仅文档:添加了 uk 和 zh-cn 的 README 翻译
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) 在 common.news 中添加了缺失的 uk 和 zh-cn 翻译
 
 ## Documentation
 

@@ -122,6 +122,9 @@ Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite 
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) Il ridimensionamento è ora non uniforme: larghezza e altezza reagiscono indipendentemente alle variazioni del contenitore, entrambi gli assi restano regolabili singolarmente
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) Il ridimensionamento dei widget ora reagisce anche alle variazioni di altezza — il contenuto si ridimensiona proporzionalmente su entrambi gli assi ed è centrato nel widget
 
@@ -133,9 +136,6 @@ Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite 
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Solo documentazione: aggiunte traduzioni README per uk e zh-cn
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Aggiunte traduzioni uk e zh-cn mancanti in common.news
 
 ## Licenza
 MIT License

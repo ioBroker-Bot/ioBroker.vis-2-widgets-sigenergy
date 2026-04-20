@@ -121,6 +121,9 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) Schaling is nu non-uniform: breedte en hoogte reageren onafhankelijk op containerwijzigingen, beide assen blijven afzonderlijk instelbaar
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) Widget-schaling reageert nu ook op hoogtewijzigingen — inhoud schaalt proportioneel op beide assen en wordt gecentreerd in de widget
 
@@ -132,9 +135,6 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Alleen documentatie: uk- en zh-cn-README-vertalingen toegevoegd
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Ontbrekende uk- en zh-cn-vertalingen toegevoegd in common.news
 
 ## Licentie
 MIT License

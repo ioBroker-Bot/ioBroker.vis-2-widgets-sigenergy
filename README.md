@@ -144,6 +144,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.7.6 (2026-04-20)
+* (ssbingo) Scaling is now non-uniform: width and height react independently to container changes, keeping both axes individually adjustable
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) Widget scaling now also reacts to height changes — content scales proportionally on both axes and is centered within the widget
 
@@ -155,9 +158,6 @@ All widgets support a **light and dark mode**, switchable via the widget setting
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Documentation only: added uk and zh-cn README translations
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Added missing uk and zh-cn translations in common.news
 
 Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 

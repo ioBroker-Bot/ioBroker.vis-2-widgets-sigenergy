@@ -1,5 +1,8 @@
 # Older Changelog
 
+### 1.7.1 (2026-04-17)
+* (ssbingo) Added missing uk and zh-cn translations in common.news
+
 ### 1.7.0 (2026-04-17)
 * (ssbingo) Widget 9: PV Power added with 3 PV string display and animated flow arrows
 

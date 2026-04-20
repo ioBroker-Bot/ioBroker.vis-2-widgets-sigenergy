@@ -121,6 +121,9 @@ Tous les widgets prennent en charge un **mode clair et sombre**, commutable via 
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) La mise à l'échelle est désormais non uniforme : largeur et hauteur réagissent indépendamment aux changements du conteneur, les deux axes restent réglables individuellement
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) La mise à l'échelle des widgets réagit désormais aussi aux changements de hauteur — le contenu s'adapte proportionnellement sur les deux axes et est centré dans le widget
 
@@ -132,9 +135,6 @@ Tous les widgets prennent en charge un **mode clair et sombre**, commutable via 
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Documentation uniquement : traductions README uk et zh-cn ajoutées
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Traductions uk et zh-cn manquantes ajoutées dans common.news
 
 ## Licence
 MIT License

@@ -122,6 +122,9 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 
 ## Changelog
 
+### 1.7.6 (2026-04-20)
+* (ssbingo) Skalowanie jest teraz nierównomierne: szerokość i wysokość reagują niezależnie na zmiany kontenera, obie osie pozostają regulowane osobno
+
 ### 1.7.5 (2026-04-20)
 * (ssbingo) Skalowanie widżetów reaguje teraz również na zmiany wysokości — zawartość skaluje się proporcjonalnie na obu osiach i jest wyśrodkowana w widżecie
 
@@ -133,9 +136,6 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 
 ### 1.7.2 (2026-04-17)
 * (ssbingo) Tylko dokumentacja: dodano tłumaczenia README dla uk i zh-cn
-
-### 1.7.1 (2026-04-17)
-* (ssbingo) Dodano brakujące tłumaczenia uk i zh-cn w common.news
 
 ## Licencja
 MIT License
