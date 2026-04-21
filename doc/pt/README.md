@@ -122,6 +122,9 @@ Todos os widgets suportam um **modo claro e escuro**, comutável através da def
 
 ## Changelog
 
+### 1.7.7 (2026-04-20)
+* (ssbingo) O texto já não se distorce com escalonamento não uniforme — as letras mantêm as suas proporções enquanto os contêineres continuam a preencher a área do widget
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) O escalonamento é agora não uniforme: largura e altura reagem independentemente às alterações do contêiner, ambos os eixos permanecem ajustáveis separadamente
 
@@ -133,9 +136,6 @@ Todos os widgets suportam um **modo claro e escuro**, comutável através da def
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) Todos os 9 widgets agora compartilham um fundo unificado baseado no design do widget PV-Power
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) Apenas documentação: adicionadas traduções de README para uk e zh-cn
 
 ## Licença
 MIT License

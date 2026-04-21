@@ -122,6 +122,9 @@ Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite 
 
 ## Changelog
 
+### 1.7.7 (2026-04-20)
+* (ssbingo) Il testo non si deforma più con il ridimensionamento non uniforme — le lettere mantengono le proporzioni mentre i contenitori continuano a riempire l'area del widget
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) Il ridimensionamento è ora non uniforme: larghezza e altezza reagiscono indipendentemente alle variazioni del contenitore, entrambi gli assi restano regolabili singolarmente
 
@@ -133,9 +136,6 @@ Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite 
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) Tutti i 9 widget condividono ora uno sfondo unificato basato sul design del widget PV-Power
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) Solo documentazione: aggiunte traduzioni README per uk e zh-cn
 
 ## Licenza
 MIT License

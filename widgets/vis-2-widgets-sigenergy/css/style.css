@@ -21,6 +21,9 @@
     /* width wird per JS gesetzt (Design-Breite des jeweiligen Widgets) */
     /* transform: scale(...) wird per JS über ResizeObserver gesetzt */
 }
+/* Text-Elemente bekommen im JS-Helper (_applyScale) eine Gegen-Skalierung,
+   damit Buchstaben-Proportionen bei non-uniform scale erhalten bleiben.
+   Markerklasse für Spezialfälle (z.B. inline-styled Text im PV-Strings-Widget). */
 
 /* ── Widget 1: Energiefluss ─────────────────────────────────────────────── */
 .sig-ef-wrap {

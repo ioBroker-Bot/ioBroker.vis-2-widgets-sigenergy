@@ -121,6 +121,9 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 
 ## Changelog
 
+### 1.7.7 (2026-04-20)
+* (ssbingo) Tekst vervormt niet meer bij non-uniforme schaling — letters behouden hun proporties terwijl containers het widget-oppervlak blijven vullen
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) Schaling is nu non-uniform: breedte en hoogte reageren onafhankelijk op containerwijzigingen, beide assen blijven afzonderlijk instelbaar
 
@@ -132,9 +135,6 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) Alle 9 widgets delen nu een uniforme achtergrond gebaseerd op het PV-Power widget-ontwerp
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) Alleen documentatie: uk- en zh-cn-README-vertalingen toegevoegd
 
 ## Licentie
 MIT License

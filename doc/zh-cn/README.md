@@ -145,6 +145,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ## 更新日志
 
+### 1.7.7 (2026-04-20)
+* (ssbingo) 文本在非等比缩放时不再变形 — 字母保持原有比例,同时容器继续填满小部件区域
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) 缩放现在是非等比的:宽度和高度独立响应容器变化,两个轴可分别调节
 
@@ -156,9 +159,6 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) 所有 9 个小部件现在共享基于 PV-Power 小部件设计的统一背景
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) 仅文档:添加了 uk 和 zh-cn 的 README 翻译
 
 ## Documentation
 

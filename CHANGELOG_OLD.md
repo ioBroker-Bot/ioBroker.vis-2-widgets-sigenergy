@@ -1,5 +1,8 @@
 # Older Changelog
 
+### 1.7.2 (2026-04-17)
+* (ssbingo) Documentation only: added uk and zh-cn README translations
+
 ### 1.7.1 (2026-04-17)
 * (ssbingo) Added missing uk and zh-cn translations in common.news
 

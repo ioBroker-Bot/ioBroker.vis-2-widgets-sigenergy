@@ -165,6 +165,50 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             inner.style.transform = "scale(" + sx + ", " + sy + ")";
             inner.style.left = "0";
             inner.style.top  = "0";
+
+            /* Text-Kompensation: Text-Elemente bekommen eine Gegen-Skalierung,
+               sodass Buchstaben-Proportionen erhalten bleiben (keine Verzerrung),
+               während Container/Boxen die Widget-Fläche füllen.
+
+               Generischer Selector: alle Elemente mit Namens-Konventionen für
+               Text-Träger in den 9 Widgets:
+                 *-title, *-lbl, *-label, *-val, *-value, *-name,
+                 *-big, *-sub, *-soh, *-head, *-badge, *-btn, *-tab,
+                 *-toggle, *-startstop, plus .sig-text Marker-Klasse. */
+            var textCompensation;
+            if (sx >= sy) {
+                textCompensation = "scaleX(" + (sy / sx) + ")";
+            } else {
+                textCompensation = "scaleY(" + (sx / sy) + ")";
+            }
+            if (!el._sigTextSelector) {
+                el._sigTextSelector = [
+                    ".sig-text",
+                    "[class*='-title']", "[class*='-lbl']", "[class*='-label']",
+                    "[class*='-val']",   "[class*='-value']", "[class*='-name']",
+                    "[class*='-big']",   "[class*='-sub']",   "[class*='-soh']",
+                    "[class*='-head']",  "[class*='-badge']", "[class*='-btn']",
+                    "[class*='-tab']",   "[class*='-toggle']","[class*='-startstop']",
+                    "[class*='-oid']",   "[class*='-nr']",    "[class*='-unit']",
+                    "[class*='-model']", "[class*='-serial']","[class*='-fw']",
+                    /* SigenMicro Label-Sektion */
+                    ".sig-sm-label-id", ".sig-sm-label-pwr", ".sig-sm-label-st",
+                    ".sig-soc-labels span"
+                ].join(",");
+            }
+            var texts = inner.querySelectorAll(el._sigTextSelector);
+            for (var i = 0; i < texts.length; i++) {
+                /* Flex/Grid-Container nicht kompensieren — sonst verschieben sich
+                   deren Kind-Elemente. Layout-Container behalten sx,sy,
+                   nur echte Text-Blöcke bekommen die Gegen-Skalierung. */
+                var d = getComputedStyle(texts[i]).display;
+                if (d === "flex" || d === "grid" ||
+                    d === "inline-flex" || d === "inline-grid") {
+                    continue;
+                }
+                texts[i].style.transform = textCompensation;
+                texts[i].style.transformOrigin = "0 50%";
+            }
         };
         apply();
 
@@ -1606,26 +1650,31 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             'background:' + bg + ';border:' + bgBorder + ';border-radius:14px;padding:16px 14px 14px;' +
             'box-sizing:border-box;font-family:sans-serif;color:' + txtCol + ';width:100%;"></div></div>'
         );
-        B._applyScale($div, 400);
 
         /* Baustein für eine PV-String-Spalte: Bild + mittiges Label mit Wert + Name darunter.
-           Das Label sitzt absolut positioniert mittig AUF dem Bild. */
+           Das Label sitzt absolut positioniert mittig AUF dem Bild.
+           Der eigentliche Text liegt in einem inneren Span mit sig-text-Klasse,
+           damit die Kompensations-Transform nicht das translate(-50%,-50%) überschreibt. */
         function stringCol(nr, nameStr) {
             return '<div style="position:relative;width:' + sw + 'px;text-align:center;">' +
                 '<img src="widgets/vis-2-widgets-sigenergy/img/solarpanel.png" style="width:' + sw + 'px;height:' + sh + 'px;display:block;object-fit:contain;">' +
-                '<div id="sig_pvs_val' + nr + '_' + w + '" ' +
+                '<div ' +
                 'style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);' +
                 'background:rgba(0,0,0,.65);border-radius:5px;padding:3px 8px;' +
-                'font-size:13px;font-weight:600;color:' + pvCol + ';white-space:nowrap;' +
-                'box-shadow:0 1px 3px rgba(0,0,0,.3);">-- W</div>' +
-                '<div style="font-size:10px;color:' + subCol + ';margin-top:4px;">' + nameStr + '</div>' +
+                'white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.3);">' +
+                '<span class="sig-text" id="sig_pvs_val' + nr + '_' + w + '" ' +
+                'style="font-size:13px;font-weight:600;color:' + pvCol + ';">-- W</span>' +
+                '</div>' +
+                '<div style="margin-top:4px;"><span class="sig-text" ' +
+                'style="font-size:10px;color:' + subCol + ';">' + nameStr + '</span></div>' +
                 '</div>';
         }
 
         var pvInner = document.getElementById("sig_pvs_inner_" + w);
         if (pvInner) {
             pvInner.innerHTML =
-                '<div style="text-align:center;font-size:.9rem;font-weight:600;margin-bottom:12px;color:' + txtCol + ';">&#9728; ' + title + '</div>' +
+                '<div style="text-align:center;margin-bottom:12px;"><span class="sig-text" ' +
+                'style="font-size:.9rem;font-weight:600;color:' + txtCol + ';">&#9728; ' + title + '</span></div>' +
                 '<div style="display:flex;justify-content:space-around;align-items:flex-end;">' +
                 stringCol(1, name1) + stringCol(2, name2) + stringCol(3, name3) +
                 '</div>' +
@@ -1635,10 +1684,11 @@ vis.binds["vis-2-widgets-sigenergy"] = {
                 '</div>' +
                 '<div style="text-align:center;margin-top:8px;">' +
                 '<div style="display:inline-block;background:rgba(243,156,18,.1);border:1px solid rgba(243,156,18,.35);border-radius:8px;padding:4px 18px;">' +
-                '<div style="font-size:10px;color:' + subCol + ';letter-spacing:.5px;">Gesamt PV</div>' +
-                '<div id="sig_pvs_total_' + w + '" style="font-size:18px;font-weight:600;color:' + pvCol + ';line-height:1.25;">-- W</div>' +
+                '<div><span class="sig-text" style="font-size:10px;color:' + subCol + ';letter-spacing:.5px;">Gesamt PV</span></div>' +
+                '<div><span class="sig-text" id="sig_pvs_total_' + w + '" style="font-size:18px;font-weight:600;color:' + pvCol + ';line-height:1.25;">-- W</span></div>' +
                 '</div></div>';
         }
+        B._applyScale($div, 400);
 
         /* Farbschwellen für Pfeile (Wert in kW):
              < 0.1 kW  → inaktiv (Standard, grau)

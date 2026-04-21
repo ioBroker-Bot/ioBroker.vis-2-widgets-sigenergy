@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.7.6",
+    "version": "1.7.7",
     "news": {
-      "1.7.6": {
-        "en": "Scaling is now non-uniform: width and height react independently to container changes, keeping both axes individually adjustable",
-        "de": "Skalierung erfolgt jetzt non-uniform: Breite und Höhe reagieren unabhängig auf Container-Änderungen, beide Achsen bleiben einzeln anpassbar",
-        "ru": "Масштабирование теперь неоднородное: ширина и высота реагируют независимо на изменения контейнера, обе оси остаются настраиваемыми отдельно",
-        "pt": "O escalonamento é agora não uniforme: largura e altura reagem independentemente às alterações do contêiner, ambos os eixos permanecem ajustáveis separadamente",
-        "nl": "Schaling is nu non-uniform: breedte en hoogte reageren onafhankelijk op containerwijzigingen, beide assen blijven afzonderlijk instelbaar",
-        "fr": "La mise à l'échelle est désormais non uniforme : largeur et hauteur réagissent indépendamment aux changements du conteneur, les deux axes restent réglables individuellement",
-        "it": "Il ridimensionamento è ora non uniforme: larghezza e altezza reagiscono indipendentemente alle variazioni del contenitore, entrambi gli assi restano regolabili singolarmente",
-        "es": "El escalado ahora es no uniforme: ancho y alto reaccionan de forma independiente a los cambios del contenedor, ambos ejes siguen siendo ajustables por separado",
-        "pl": "Skalowanie jest teraz nierównomierne: szerokość i wysokość reagują niezależnie na zmiany kontenera, obie osie pozostają regulowane osobno",
-        "uk": "Масштабування тепер нерівномірне: ширина та висота реагують незалежно на зміни контейнера, обидві осі залишаються окремо регульованими",
-        "zh-cn": "缩放现在是非等比的:宽度和高度独立响应容器变化,两个轴可分别调节"
+      "1.7.7": {
+        "en": "Text no longer distorts under non-uniform scaling — letters keep their proportions while containers continue to fill the widget area",
+        "de": "Schrift wird bei non-uniform Skalierung nicht mehr verzerrt — Buchstaben behalten ihre Proportionen, während Container die Widget-Fläche weiterhin füllen",
+        "ru": "Текст больше не искажается при неравномерном масштабировании — буквы сохраняют пропорции, а контейнеры продолжают заполнять область виджета",
+        "pt": "O texto já não se distorce com escalonamento não uniforme — as letras mantêm as suas proporções enquanto os contêineres continuam a preencher a área do widget",
+        "nl": "Tekst vervormt niet meer bij non-uniforme schaling — letters behouden hun proporties terwijl containers het widget-oppervlak blijven vullen",
+        "fr": "Le texte ne se déforme plus en mise à l'échelle non uniforme — les lettres conservent leurs proportions tandis que les conteneurs continuent à remplir la zone du widget",
+        "it": "Il testo non si deforma più con il ridimensionamento non uniforme — le lettere mantengono le proporzioni mentre i contenitori continuano a riempire l'area del widget",
+        "es": "El texto ya no se distorsiona con el escalado no uniforme — las letras mantienen sus proporciones mientras los contenedores siguen ocupando el área del widget",
+        "pl": "Tekst nie zniekształca się już przy nierównomiernym skalowaniu — litery zachowują proporcje, a kontenery nadal wypełniają obszar widżetu",
+        "uk": "Текст більше не спотворюється при нерівномірному масштабуванні — літери зберігають пропорції, а контейнери продовжують заповнювати область віджета",
+        "zh-cn": "文本在非等比缩放时不再变形 — 字母保持原有比例,同时容器继续填满小部件区域"
       }
     },
     "titleLang": {

@@ -144,6 +144,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.7.7 (2026-04-20)
+* (ssbingo) Text no longer distorts under non-uniform scaling — letters keep their proportions while containers continue to fill the widget area
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) Scaling is now non-uniform: width and height react independently to container changes, keeping both axes individually adjustable
 
@@ -155,9 +158,6 @@ All widgets support a **light and dark mode**, switchable via the widget setting
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) All 9 widgets now share a unified background based on the PV-Power widget design
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) Documentation only: added uk and zh-cn README translations
 
 Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 

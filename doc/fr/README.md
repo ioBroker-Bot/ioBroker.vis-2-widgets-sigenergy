@@ -121,6 +121,9 @@ Tous les widgets prennent en charge un **mode clair et sombre**, commutable via 
 
 ## Changelog
 
+### 1.7.7 (2026-04-20)
+* (ssbingo) Le texte ne se déforme plus en mise à l'échelle non uniforme — les lettres conservent leurs proportions tandis que les conteneurs continuent à remplir la zone du widget
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) La mise à l'échelle est désormais non uniforme : largeur et hauteur réagissent indépendamment aux changements du conteneur, les deux axes restent réglables individuellement
 
@@ -132,9 +135,6 @@ Tous les widgets prennent en charge un **mode clair et sombre**, commutable via 
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) Les 9 widgets partagent désormais un arrière-plan unifié basé sur le design du widget PV-Power
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) Documentation uniquement : traductions README uk et zh-cn ajoutées
 
 ## Licence
 MIT License

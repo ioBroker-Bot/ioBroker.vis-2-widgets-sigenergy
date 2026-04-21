@@ -122,6 +122,9 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 
 ## Changelog
 
+### 1.7.7 (2026-04-20)
+* (ssbingo) Tekst nie zniekształca się już przy nierównomiernym skalowaniu — litery zachowują proporcje, a kontenery nadal wypełniają obszar widżetu
+
 ### 1.7.6 (2026-04-20)
 * (ssbingo) Skalowanie jest teraz nierównomierne: szerokość i wysokość reagują niezależnie na zmiany kontenera, obie osie pozostają regulowane osobno
 
@@ -133,9 +136,6 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 
 ### 1.7.3 (2026-04-20)
 * (ssbingo) Wszystkie 9 widżetów ma teraz ujednolicone tło oparte na projekcie widżetu PV-Power
-
-### 1.7.2 (2026-04-17)
-* (ssbingo) Tylko dokumentacja: dodano tłumaczenia README dla uk i zh-cn
 
 ## Licencja
 MIT License
