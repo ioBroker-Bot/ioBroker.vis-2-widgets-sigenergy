@@ -19,7 +19,7 @@
     "url": "https://github.com/ssbingo/ioBroker.vis-2-widgets-sigenergy.git"
   },
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   },
   "dependencies": {},
   "devDependencies": {
