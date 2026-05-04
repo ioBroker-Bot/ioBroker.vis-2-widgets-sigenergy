@@ -164,6 +164,8 @@ All widgets support a **light and dark mode**, switchable via the widget setting
 
 Older changelog entries can be found in [CHANGELOG_OLD.md](CHANGELOG_OLD.md)
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## Documentation
 
 - 🇬🇧 [English](README.md) — this file
