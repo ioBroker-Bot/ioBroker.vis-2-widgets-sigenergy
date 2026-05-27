@@ -122,6 +122,9 @@ Todos os widgets suportam um **modo claro e escuro**, comutável através da def
 
 ## Changelog
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Removidos .eslintrc.json e .prettierignore obsoletos
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) Adicionado ESLint, CI atualizado para Node.js 24; adaptador requer node.js >= 22
 

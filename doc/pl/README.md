@@ -122,6 +122,9 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 
 ## Changelog
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Usunięto przestarzałe .eslintrc.json i .prettierignore
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) Dodano ESLint, CI zaktualizowano do Node.js 24; adapter wymaga node.js >= 22
 

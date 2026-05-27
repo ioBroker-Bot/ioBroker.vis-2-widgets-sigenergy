@@ -145,6 +145,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ## 更新日志
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) 删除了过时的 .eslintrc.json 和 .prettierignore
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) 添加了 ESLint 代码检查，CI 更新至 Node.js 24；适配器需要 node.js >= 22
 

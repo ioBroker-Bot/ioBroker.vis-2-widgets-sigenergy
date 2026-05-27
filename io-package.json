@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.7.8",
+    "version": "1.7.9",
     "news": {
+      "1.7.9": {
+        "en": "Removed obsolete .eslintrc.json and .prettierignore",
+        "de": "Veraltete .eslintrc.json und .prettierignore entfernt",
+        "ru": "Удалены устаревшие .eslintrc.json и .prettierignore",
+        "pt": "Removidos .eslintrc.json e .prettierignore obsoletos",
+        "nl": "Verouderde .eslintrc.json en .prettierignore verwijderd",
+        "fr": ".eslintrc.json et .prettierignore obsolètes supprimés",
+        "it": "Rimossi .eslintrc.json e .prettierignore obsoleti",
+        "es": "Eliminados .eslintrc.json y .prettierignore obsoletos",
+        "pl": "Usunięto przestarzałe .eslintrc.json i .prettierignore",
+        "uk": "Видалено застарілі .eslintrc.json і .prettierignore",
+        "zh-cn": "删除了过时的 .eslintrc.json 和 .prettierignore"
+      },
       "1.7.8": {
         "en": "Added ESLint linting, updated CI to Node.js 24; adapter requires node.js >= 22",
         "de": "ESLint-Linting hinzugefügt, CI auf Node.js 24 aktualisiert; Adapter erfordert node.js >= 22",

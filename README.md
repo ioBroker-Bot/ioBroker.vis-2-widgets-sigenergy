@@ -144,6 +144,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### 1.7.9 (2026-05-27)
+* (ssbingo) Removed obsolete .eslintrc.json and .prettierignore
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) Added ESLint linting, updated CI to Node.js 24; adapter requires node.js >= 22
 

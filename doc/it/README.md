@@ -122,6 +122,9 @@ Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite 
 
 ## Changelog
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Rimossi .eslintrc.json e .prettierignore obsoleti
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) Aggiunto ESLint, CI aggiornato a Node.js 24; l'adattatore richiede node.js >= 22
 

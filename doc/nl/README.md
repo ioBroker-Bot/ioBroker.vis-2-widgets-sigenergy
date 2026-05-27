@@ -121,6 +121,9 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 
 ## Changelog
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Verouderde .eslintrc.json en .prettierignore verwijderd
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) ESLint-linting toegevoegd, CI bijgewerkt naar Node.js 24; adapter vereist node.js >= 22
 

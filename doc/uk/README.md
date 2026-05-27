@@ -145,6 +145,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 
 ## Журнал змін
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Видалено застарілі .eslintrc.json і .prettierignore
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) Додано ESLint, CI оновлено до Node.js 24; адаптер вимагає node.js >= 22
 

@@ -121,6 +121,9 @@
 
 ## Changelog
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Удалены устаревшие .eslintrc.json и .prettierignore
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) Добавлено ESLint-линтование, CI обновлён до Node.js 24; адаптер требует node.js >= 22
 

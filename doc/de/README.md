@@ -145,6 +145,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 ## Changelog
 
+### 1.7.9 (2026-05-27)
+* (ssbingo) Veraltete .eslintrc.json und .prettierignore entfernt
+
 ### 1.7.8 (2026-05-27)
 * (ssbingo) ESLint-Linting hinzugefügt, CI auf Node.js 24 aktualisiert; Adapter erfordert node.js >= 22
 
