@@ -121,6 +121,9 @@ Tous les widgets prennent en charge un **mode clair et sombre**, commutable via 
 
 ## Changelog
 
+### 1.7.8 (2026-05-27)
+* (ssbingo) Ajout de l'ESLint, CI mis à jour vers Node.js 24 ; l'adaptateur nécessite node.js >= 22
+
 ### 1.7.7 (2026-04-20)
 * (ssbingo) Le texte ne se déforme plus en mise à l'échelle non uniforme — les lettres conservent leurs proportions tandis que les conteneurs continuent à remplir la zone du widget
 

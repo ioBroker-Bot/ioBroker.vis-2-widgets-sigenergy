@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-sigenergy",
-    "version": "1.7.7",
+    "version": "1.7.8",
     "news": {
+      "1.7.8": {
+        "en": "Added ESLint linting, updated CI to Node.js 24; adapter requires node.js >= 22",
+        "de": "ESLint-Linting hinzugefügt, CI auf Node.js 24 aktualisiert; Adapter erfordert node.js >= 22",
+        "ru": "Добавлено ESLint-линтование, CI обновлён до Node.js 24; адаптер требует node.js >= 22",
+        "pt": "Adicionado ESLint, CI atualizado para Node.js 24; adaptador requer node.js >= 22",
+        "nl": "ESLint-linting toegevoegd, CI bijgewerkt naar Node.js 24; adapter vereist node.js >= 22",
+        "fr": "Ajout de l'ESLint, CI mis à jour vers Node.js 24 ; l'adaptateur nécessite node.js >= 22",
+        "it": "Aggiunto ESLint, CI aggiornato a Node.js 24; l'adattatore richiede node.js >= 22",
+        "es": "ESLint añadido, CI actualizado a Node.js 24; el adaptador requiere node.js >= 22",
+        "pl": "Dodano ESLint, CI zaktualizowano do Node.js 24; adapter wymaga node.js >= 22",
+        "uk": "Додано ESLint, CI оновлено до Node.js 24; адаптер вимагає node.js >= 22",
+        "zh-cn": "添加了 ESLint 代码检查，CI 更新至 Node.js 24；适配器需要 node.js >= 22"
+      },
       "1.7.7": {
         "en": "Text no longer distorts under non-uniform scaling — letters keep their proportions while containers continue to fill the widget area",
         "de": "Schrift wird bei non-uniform Skalierung nicht mehr verzerrt — Buchstaben behalten ihre Proportionen, während Container die Widget-Fläche weiterhin füllen",

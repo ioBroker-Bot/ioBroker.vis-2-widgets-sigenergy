@@ -145,6 +145,9 @@ Alle Widgets unterstützen einen **Hell- und Dunkelmodus**, der über die Widget
 
 ## Changelog
 
+### 1.7.8 (2026-05-27)
+* (ssbingo) ESLint-Linting hinzugefügt, CI auf Node.js 24 aktualisiert; Adapter erfordert node.js >= 22
+
 ### 1.7.7 (2026-04-20)
 * (ssbingo) Schrift wird bei non-uniform Skalierung nicht mehr verzerrt — Buchstaben behalten ihre Proportionen, während Container die Widget-Fläche weiterhin füllen
 

@@ -122,6 +122,9 @@ Tutti i widget supportano una **modalità chiara e scura**, commutabile tramite 
 
 ## Changelog
 
+### 1.7.8 (2026-05-27)
+* (ssbingo) Aggiunto ESLint, CI aggiornato a Node.js 24; l'adattatore richiede node.js >= 22
+
 ### 1.7.7 (2026-04-20)
 * (ssbingo) Il testo non si deforma più con il ridimensionamento non uniforme — le lettere mantengono le proporzioni mentre i contenitori continuano a riempire l'area del widget
 

@@ -122,6 +122,9 @@ Wszystkie widżety obsługują **tryb jasny i ciemny**, przełączany przez usta
 
 ## Changelog
 
+### 1.7.8 (2026-05-27)
+* (ssbingo) Dodano ESLint, CI zaktualizowano do Node.js 24; adapter wymaga node.js >= 22
+
 ### 1.7.7 (2026-04-20)
 * (ssbingo) Tekst nie zniekształca się już przy nierównomiernym skalowaniu — litery zachowują proporcje, a kontenery nadal wypełniają obszar widżetu
 

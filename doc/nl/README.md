@@ -121,6 +121,9 @@ Alle widgets ondersteunen een **lichte en donkere modus**, die kan worden omgesc
 
 ## Changelog
 
+### 1.7.8 (2026-05-27)
+* (ssbingo) ESLint-linting toegevoegd, CI bijgewerkt naar Node.js 24; adapter vereist node.js >= 22
+
 ### 1.7.7 (2026-04-20)
 * (ssbingo) Tekst vervormt niet meer bij non-uniforme schaling — letters behouden hun proporties terwijl containers het widget-oppervlak blijven vullen
 

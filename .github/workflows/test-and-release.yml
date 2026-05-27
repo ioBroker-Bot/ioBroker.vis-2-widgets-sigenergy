@@ -28,7 +28,8 @@ jobs:
     steps:
       - uses: ioBroker/testing-action-check@v1
         with:
-          node-version: '22.x'
+          node-version: '24.x'
+          lint: true
           install-command: 'npm install'
 
   # Deploys the final package to NPM
@@ -49,7 +50,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: ioBroker/testing-action-deploy@v1.5.0
+      - uses: ioBroker/testing-action-deploy@v1
         with:
           node-version: '24.x'
           install-command: 'npm install'
