@@ -43,7 +43,7 @@ if (typeof systemDictionary !== "undefined") {
         "sig_name3":    { "en": "Name String 3",         "de": "Name String 3" },
         "oid_ev_soc":   { "en": "Vehicle SOC OID",        "de": "Fahrzeug SOC OID" },
         "oid_charging": { "en": "Charging State OID",     "de": "Lade-Status OID" },
-        "sig_car_image":{ "en": "Car Image URL / Path",   "de": "Fahrzeug-Bild URL / Pfad" }
+        "sig_car_image":{ "en": "Car Image",               "de": "Fahrzeug-Bild" }
         }
     );
 }
