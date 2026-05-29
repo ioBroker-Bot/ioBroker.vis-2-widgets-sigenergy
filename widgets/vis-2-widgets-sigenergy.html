@@ -155,10 +155,11 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      WIDGET 10 – Fahrzeug-Ladestand (EV SOC)
-     Zeigt ein konfigurierbares Fahrzeugbild mit animierter SOC-Anzeige.
+     Fahrzeugbild (zentraler Blickpunkt) + SOC-Badge oben-rechts + Balken unten.
      oid_ev_soc  : State of Charge 0–100 (Pflicht)
-     oid_charging: Lade-Status bool/0/1   (optional → blinkendes ⚡-Badge)
+     oid_charging: Lade-Status bool/0/1   (optional → grüner Glow am Badge)
      sig_car_image: Fahrzeugbild aus ioBroker-Datei-Browser (z.B. /vis-2/img/)
+     sig_title    : Fahrzeugname unter dem Bild
      ═══════════════════════════════════════════════════════════════════════ -->
 <script id="tplVis-2-widgets-sigenergyEvSoc"
         type="text/ejs"
@@ -167,9 +168,9 @@
         data-vis-name="Fahrzeug-Ladestand"
         data-vis-type="val"
         data-vis-attrs="group.OIDs;oid_ev_soc[]/id;oid_charging[]/id;group.Darstellung;sig_title[Fahrzeug-Ladestand]/text;sig_car_image[]/image;sig_darkmode[true]/checkbox"
-        data-vis-style="width:340px;height:250px;position:static;"
-        data-vis-prev='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;width:340px;height:250px;font-family:sans-serif;color:#e0e6ef;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column"><div style="font-size:.6rem;text-transform:uppercase;letter-spacing:1px;text-align:center;padding:6px 10px 2px;opacity:.75">&#128664; Fahrzeug-Ladestand</div><div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center"><div style="font-size:5rem;opacity:.3">&#128664;</div><div style="position:absolute;top:8px;right:10px;background:rgba(74,222,128,.15);border:1px solid #4ade80;color:#4ade80;font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:20px">&#9889; L&auml;dt</div><div style="position:absolute;bottom:0;left:0;right:0;padding:6px 14px 8px;background:rgba(0,0,0,.5)"><div style="font-size:1.5rem;font-weight:700;text-align:center;margin-bottom:5px;color:#4ade80">68%</div><div style="background:rgba(255,255,255,.18);border-radius:6px;height:9px;overflow:hidden"><div style="background:#4ade80;height:100%;width:68%;border-radius:6px"></div></div></div></div></div>'>
-    <div class="vis-widget <%== this.data.attr('class') %>" style="width:340px;height:250px;" id="<%= this.data.attr('wid') %>"><%
+        data-vis-style="width:380px;height:240px;position:static;"
+        data-vis-prev='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;width:380px;height:240px;font-family:sans-serif;color:#e0e6ef;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column;padding:10px 12px 10px;position:relative"><div style="position:absolute;top:10px;right:10px;background:#111827;border-radius:10px;padding:6px 12px 7px;text-align:center;min-width:72px"><span style="font-size:.9rem;color:#4ade80">&#9889;</span><span style="display:block;font-size:1.35rem;font-weight:800;color:#fff;line-height:1.15">68%</span><div style="font-size:.48rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4ade80;margin-top:1px">LADESTAND</div></div><div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px 6px"><div style="font-size:5.5rem;opacity:.25">&#128664;</div></div><div style="font-size:.7rem;font-weight:500;text-align:center;opacity:.65;margin-bottom:6px">Fahrzeug-Ladestand</div><div style="padding:0 2px 2px"><div style="background:rgba(255,255,255,.15);border-radius:6px;height:10px;overflow:hidden"><div style="background:#4ade80;height:100%;width:68%;border-radius:6px"></div></div></div></div>'>
+    <div class="vis-widget <%== this.data.attr('class') %>" style="width:380px;height:240px;" id="<%= this.data.attr('wid') %>"><%
         vis.binds['vis-2-widgets-sigenergy'].createEvSoc(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>

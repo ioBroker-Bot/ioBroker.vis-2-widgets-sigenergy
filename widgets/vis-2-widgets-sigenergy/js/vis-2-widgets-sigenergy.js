@@ -1747,14 +1747,10 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
     // ── Widget 10: Fahrzeug-Ladestand (EV SOC) ──────────────────────────────
     //
-    // Zeigt ein per URL konfigurierbares Fahrzeugbild mit einer
-    // überlagerten SOC-Anzeige (Prozentzahl + farbiger Balken).
+    // Layout: SOC-Badge oben-rechts | Fahrzeugbild (Hauptblickpunkt) | Name | Balken
     //
-    // Farb-Logik:  ≤15 % → #f87171 (rot)
-    //              ≤35 % → #fbbf24 (gelb)
-    //               >35 % → #4ade80 (grün)
-    //
-    // oid_charging: optional — blinkendes ⚡-Badge wenn truthy (1/true/"1"/"true")
+    // Farb-Logik:  ≤15 % → #f87171  ≤35 % → #fbbf24  >35 % → #4ade80
+    // oid_charging: optional — grün leuchtender Glow am Badge wenn truthy
     createEvSoc: function (widgetID, view, data, style) {
         var B    = vis.binds["vis-2-widgets-sigenergy"];
         var $div = $("#" + widgetID);
@@ -1762,11 +1758,11 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             return setTimeout(function () { B.createEvSoc(widgetID, view, data, style); }, 100);
         }
 
-        var dark    = B._isDark(data);
-        var title   = data.attr("sig_title") || "Fahrzeug-Ladestand";
-        var carImg  = data.attr("sig_car_image") || "";
-        var w       = widgetID;
-        var cls     = "sig-ev-wrap" + (dark ? "" : " light");
+        var dark   = B._isDark(data);
+        var title  = data.attr("sig_title") || "Fahrzeug-Ladestand";
+        var carImg = data.attr("sig_car_image") || "";
+        var w      = widgetID;
+        var cls    = "sig-ev-wrap" + (dark ? "" : " light");
 
         var imgHtml = carImg
             ? '<img class="sig-ev-car-img" src="' + carImg + '" alt="EV" />'
@@ -1774,21 +1770,25 @@ vis.binds["vis-2-widgets-sigenergy"] = {
 
         $div.html(
             '<div class="sig-w"><div class="' + cls + '">' +
-            '<div class="sig-ev-title sig-text">&#128664; ' + title + '</div>' +
-            '<div class="sig-ev-car-wrap">' +
-            imgHtml +
-            '<div id="sig-ev-chg_' + w + '" class="sig-ev-charging-badge sig-text">&#9889; Lädt</div>' +
-            '<div class="sig-ev-soc-panel">' +
-            '<div id="sig-ev-pct_' + w + '" class="sig-ev-pct-lbl sig-text">--%</div>' +
+            /* SOC-Badge oben-rechts */
+            '<div id="sig-ev-badge_' + w + '" class="sig-ev-badge">' +
+            '<span id="sig-ev-badge-icon_' + w + '" class="sig-ev-badge-icon sig-text">&#9889;</span>' +
+            '<span id="sig-ev-badge-pct_' + w + '" class="sig-ev-badge-pct sig-text">--%</span>' +
+            '<div id="sig-ev-badge-lbl_' + w + '" class="sig-ev-badge-lbl sig-text">LADESTAND</div>' +
+            '</div>' +
+            /* Fahrzeugbild — zentraler Blickpunkt */
+            '<div class="sig-ev-img-area">' + imgHtml + '</div>' +
+            /* Fahrzeugname */
+            '<div class="sig-ev-car-name sig-text">' + title + '</div>' +
+            /* Ladebalken */
+            '<div class="sig-ev-bar-row">' +
             '<div class="sig-ev-bar-track">' +
             '<div id="sig-ev-bar_' + w + '" class="sig-ev-bar-fill"></div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
+            '</div></div>' +
             '</div></div>'
         );
 
-        B._applyScale($div, 340);
+        B._applyScale($div, 380);
 
         function update() {
             var raw  = B._val(data, "oid_ev_soc");
@@ -1799,22 +1799,32 @@ vis.binds["vis-2-widgets-sigenergy"] = {
             var pct   = isNaN(soc) ? "--%" : Math.round(soc) + "%";
             var color = fill <= 15 ? "#f87171" : fill <= 35 ? "#fbbf24" : "#4ade80";
 
-            var pctEl = document.getElementById("sig-ev-pct_" + w);
-            if (pctEl) {
-                pctEl.textContent  = pct;
-                pctEl.style.color  = color;
-            }
+            /* Badge: Prozent */
+            var pctEl = document.getElementById("sig-ev-badge-pct_" + w);
+            if (pctEl) pctEl.textContent = pct;
 
+            /* Badge: Icon + Label in SOC-Farbe */
+            var iconEl = document.getElementById("sig-ev-badge-icon_" + w);
+            if (iconEl) iconEl.style.color = color;
+            var lblEl = document.getElementById("sig-ev-badge-lbl_" + w);
+            if (lblEl) lblEl.style.color = color;
+
+            /* Ladebalken */
             var barEl = document.getElementById("sig-ev-bar_" + w);
             if (barEl) {
                 barEl.style.width           = fill + "%";
                 barEl.style.backgroundColor = color;
             }
 
-            var chgEl = document.getElementById("sig-ev-chg_" + w);
-            if (chgEl) {
+            /* Lade-Glow am Badge */
+            var badgeEl = document.getElementById("sig-ev-badge_" + w);
+            if (badgeEl) {
                 var isChg = chg === true || chg === 1 || chg === "1" || chg === "true";
-                chgEl.style.display = isChg ? "block" : "none";
+                if (isChg) {
+                    badgeEl.classList.add("ev-charging");
+                } else {
+                    badgeEl.classList.remove("ev-charging");
+                }
             }
         }
 
