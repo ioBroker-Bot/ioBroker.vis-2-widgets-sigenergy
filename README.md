@@ -144,6 +144,9 @@ modelType, serialNumber, firmwareVersion, runningState, outputPower, gridFrequen
 All widgets support a **light and dark mode**, switchable via the widget setting `Dark mode`.
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (ssbingo) New widget: "Fahrzeug-Ladestand" — shows a configurable EV image with animated SOC bar, color-coded charge level (red/yellow/green), and optional blinking charging badge
+
 ### 1.7.9 (2026-05-27)
 * (ssbingo) Removed obsolete .eslintrc.json and .prettierignore
 

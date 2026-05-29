@@ -154,6 +154,28 @@
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     WIDGET 10 – Fahrzeug-Ladestand (EV SOC)
+     Zeigt ein konfigurierbares Fahrzeugbild mit animierter SOC-Anzeige.
+     oid_ev_soc  : State of Charge 0–100 (Pflicht)
+     oid_charging: Lade-Status bool/0/1   (optional → blinkendes ⚡-Badge)
+     sig_car_image: URL/Pfad zum Fahrzeugbild (ioBroker-Files oder http)
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script id="tplVis-2-widgets-sigenergyEvSoc"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="vis-2-widgets-sigenergy"
+        data-vis-name="Fahrzeug-Ladestand"
+        data-vis-type="val"
+        data-vis-attrs="group.OIDs;oid_ev_soc[]/id;oid_charging[]/id;group.Darstellung;sig_title[Fahrzeug-Ladestand]/text;sig_car_image[]/text;sig_darkmode[true]/checkbox"
+        data-vis-style="width:340px;height:250px;position:static;"
+        data-vis-prev='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;width:340px;height:250px;font-family:sans-serif;color:#e0e6ef;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column"><div style="font-size:.6rem;text-transform:uppercase;letter-spacing:1px;text-align:center;padding:6px 10px 2px;opacity:.75">&#128664; Fahrzeug-Ladestand</div><div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center"><div style="font-size:5rem;opacity:.3">&#128664;</div><div style="position:absolute;top:8px;right:10px;background:rgba(74,222,128,.15);border:1px solid #4ade80;color:#4ade80;font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:20px">&#9889; L&auml;dt</div><div style="position:absolute;bottom:0;left:0;right:0;padding:6px 14px 8px;background:rgba(0,0,0,.5)"><div style="font-size:1.5rem;font-weight:700;text-align:center;margin-bottom:5px;color:#4ade80">68%</div><div style="background:rgba(255,255,255,.18);border-radius:6px;height:9px;overflow:hidden"><div style="background:#4ade80;height:100%;width:68%;border-radius:6px"></div></div></div></div></div>'>
+    <div class="vis-widget <%== this.data.attr('class') %>" style="width:340px;height:250px;" id="<%= this.data.attr('wid') %>"><%
+        vis.binds['vis-2-widgets-sigenergy'].createEvSoc(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      WIDGET 9 – PV Power
      Zeigt 3 PV-String-Leistungen mit animierten Pfeilen zum Wechselrichter.
      Animation nur aktiv wenn Leistung > 0.

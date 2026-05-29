@@ -40,7 +40,10 @@ if (typeof systemDictionary !== "undefined") {
         "oid_pvtotal":  { "en": "Total PV Power OID",     "de": "PV Gesamtleistung OID" },
         "sig_name1":    { "en": "Name String 1",         "de": "Name String 1" },
         "sig_name2":    { "en": "Name String 2",         "de": "Name String 2" },
-        "sig_name3":    { "en": "Name String 3",         "de": "Name String 3" }
+        "sig_name3":    { "en": "Name String 3",         "de": "Name String 3" },
+        "oid_ev_soc":   { "en": "Vehicle SOC OID",        "de": "Fahrzeug SOC OID" },
+        "oid_charging": { "en": "Charging State OID",     "de": "Lade-Status OID" },
+        "sig_car_image":{ "en": "Car Image URL / Path",   "de": "Fahrzeug-Bild URL / Pfad" }
         }
     );
 }
@@ -1739,6 +1742,83 @@ vis.binds["vis-2-widgets-sigenergy"] = {
         }
 
         B._subscribe(widgetID, data, ["oid_pv1", "oid_pv2", "oid_pv3", "oid_pvtotal"], update);
+        update();
+    },
+
+    // ── Widget 10: Fahrzeug-Ladestand (EV SOC) ──────────────────────────────
+    //
+    // Zeigt ein per URL konfigurierbares Fahrzeugbild mit einer
+    // überlagerten SOC-Anzeige (Prozentzahl + farbiger Balken).
+    //
+    // Farb-Logik:  ≤15 % → #f87171 (rot)
+    //              ≤35 % → #fbbf24 (gelb)
+    //               >35 % → #4ade80 (grün)
+    //
+    // oid_charging: optional — blinkendes ⚡-Badge wenn truthy (1/true/"1"/"true")
+    createEvSoc: function (widgetID, view, data, style) {
+        var B    = vis.binds["vis-2-widgets-sigenergy"];
+        var $div = $("#" + widgetID);
+        if (!$div.length) {
+            return setTimeout(function () { B.createEvSoc(widgetID, view, data, style); }, 100);
+        }
+
+        var dark    = B._isDark(data);
+        var title   = data.attr("sig_title") || "Fahrzeug-Ladestand";
+        var carImg  = data.attr("sig_car_image") || "";
+        var w       = widgetID;
+        var cls     = "sig-ev-wrap" + (dark ? "" : " light");
+
+        var imgHtml = carImg
+            ? '<img class="sig-ev-car-img" src="' + carImg + '" alt="EV" />'
+            : '<div class="sig-ev-no-img">&#128664;</div>';
+
+        $div.html(
+            '<div class="sig-w"><div class="' + cls + '">' +
+            '<div class="sig-ev-title sig-text">&#128664; ' + title + '</div>' +
+            '<div class="sig-ev-car-wrap">' +
+            imgHtml +
+            '<div id="sig-ev-chg_' + w + '" class="sig-ev-charging-badge sig-text">&#9889; Lädt</div>' +
+            '<div class="sig-ev-soc-panel">' +
+            '<div id="sig-ev-pct_' + w + '" class="sig-ev-pct-lbl sig-text">--%</div>' +
+            '<div class="sig-ev-bar-track">' +
+            '<div id="sig-ev-bar_' + w + '" class="sig-ev-bar-fill"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div></div>'
+        );
+
+        B._applyScale($div, 340);
+
+        function update() {
+            var raw  = B._val(data, "oid_ev_soc");
+            var soc  = parseFloat(raw);
+            var chg  = B._val(data, "oid_charging");
+
+            var fill  = isNaN(soc) ? 0 : Math.max(0, Math.min(100, soc));
+            var pct   = isNaN(soc) ? "--%" : Math.round(soc) + "%";
+            var color = fill <= 15 ? "#f87171" : fill <= 35 ? "#fbbf24" : "#4ade80";
+
+            var pctEl = document.getElementById("sig-ev-pct_" + w);
+            if (pctEl) {
+                pctEl.textContent  = pct;
+                pctEl.style.color  = color;
+            }
+
+            var barEl = document.getElementById("sig-ev-bar_" + w);
+            if (barEl) {
+                barEl.style.width           = fill + "%";
+                barEl.style.backgroundColor = color;
+            }
+
+            var chgEl = document.getElementById("sig-ev-chg_" + w);
+            if (chgEl) {
+                var isChg = chg === true || chg === 1 || chg === "1" || chg === "true";
+                chgEl.style.display = isChg ? "block" : "none";
+            }
+        }
+
+        B._subscribe(widgetID, data, ["oid_ev_soc", "oid_charging"], update);
         update();
     }
 };
